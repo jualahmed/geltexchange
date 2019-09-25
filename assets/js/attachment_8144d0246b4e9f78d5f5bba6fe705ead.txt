@@ -1,0 +1,36 @@
+Plant Automation via IOT 9/6/2019 
+
+Introduction
+We provide agriculture services on turn key basis. For each project, we establish a physical plant for the clients with necessary equipment, and then we intend to monitor and control them via IOT. We want quotation for creating the entire software infrastructure, with initial foundation setup. The long term partnership for upcoming clients would be based on performance and cost of the initial setup we develop with you. Please find the rough plan below and quote approximately how much would it cost.
+
+Major Phases
+After establishment of physical devices (PLCs) in the unit,
+
+Real-time data transfer from sensors to PLC and from PLC to configured IoT core platform
+Data transfer from IoT core to BigQuery platform and to permissioned Blockchain set up
+Real-time Customer and Admin Dashboards
+Device control using IoT commands
+Big Picture
+The data from unit goes via MQTT to Google Cloud Server (GCP IOT Core). Then it goes to storage (Private permissioned Blockchain). It also has persistent redudant storage for data analytics, and SCADA type monitoring/control of unit.
+
+Major Components
+Google IOT Core in GCP
+Google Could functions in GCP
+Google MQTT Pub/Sub via GCP
+Firebase webserver in GCP
+What is the capital of India?
+Private Blockchain in GCP
+The scope to send data to the server is our scope, would be done by our PLC team.Thus the major work is software infrastructure on cloud to manage all the datapoints from multiple physical units.
+
+Major roles
+Project Manager - responsible and SPOC
+Blockchain Architect
+Full Stack Web developer
+UI/UX designer (SCADA preferred)
+Tester (for entire cloud functionality)
+Timeline
+Initial Raw development without much UI/UX but with minimal control - 1 month
+Complete Initial Phase development - 2 months
+Please let us know the cost and your time proposal, with breakdown (including Man days). Please mention your assumptions and we only need initial approximate cost involved. We could refine later as needed.
+
+Initially we would deploy this in about 3 to 5 units this year. So urgently quote needed. Do not wait. Please instead read thoroughly, and give your best estimation with assumptions duly noted.
