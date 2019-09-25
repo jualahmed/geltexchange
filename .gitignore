@@ -43,4 +43,4 @@ Temporary Items
 .apdisk
 application/session/
 application/config/database.php
-application/config/common/database.php
+application/config/common/dp_config.php
