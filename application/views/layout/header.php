@@ -118,6 +118,7 @@
         </div>
 
       </div>
+      <?php if (!$this->ion_auth->logged_in()): ?>
        <div class="mobilessss">
                <a data-toggle="modal" data-target="#logins" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Login 
@@ -126,6 +127,7 @@
               Register 
             </a>
            </div>
+        <?php endif ?>
     </nav>
   </div><!-- container -->
 </header><!-- header -->
