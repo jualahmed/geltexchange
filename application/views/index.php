@@ -30,33 +30,36 @@
         </div>
         <div id="clickforscroll">Show More</div>
       </div>
-      <!-- recive section at mobile -->
+    
       <div class="col-md-3" id="atmobile">
-        <h2 align="center" class="text-white"><img src="<?php echo base_url().'assets/svgicon/arrouwdown.svg' ?>" alt="" width="30px;"> Receives</h2>
-        <div class="fixed-height scrollbar-outer scrollbar-outer2">
+        <h2 align="center" class="text-white">
+          <img src="<?php echo base_url().'assets/svgicon/arrouwdown.svg' ?>" alt="" width="30px;"> Receive
+        </h2>
+        <div class="fixed-height scrollbar-outer scrollbaroutertest">
           <form action="">
-            <?php
-              $this->db->where('allow_receive', 1);
-              $this->db->where('status', 1);
-              $gatewaysrevive = $this->db->get('gateways')->result();
-              if(count($gatewaysrevive)) {?>
+          <?php
+            $this->db->where('allow_receive', 1);
+            $this->db->where('status', 1);
+            $gatewaysrevive = $this->db->get('gateways')->result();
+            if(count($gatewaysrevive)) {?>
               <?php foreach ($gatewaysrevive as $key => $g): ?>
-                 <div class="inputGroup">
+                <div class="inputGroup">
                   <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
-                  <input @click="sendchange" v-model="send" id="receives<?php echo $g->id; ?>" name="receive" value="<?php echo $g->id; ?>"  type="radio"/>
-                  <label for="receives<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
-                </div>
+                  <input @click="recivechange" v-model="receive" id="receive<?php echo $g->id; ?>" name="receive" value="<?php echo $g->id; ?>" type="radio"/>
+                  <label for="receive<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
+                </div> 
               <?php endforeach ?>
-              <?php
-                } else {
-                  echo 'no_have_gateways';
-                }
-              ?>
+            <?php
+              } else {
+                echo 'no_have_gateways';
+              }
+            ?>
+
           </form>
         </div>
-        <div id="clickforscroll1">Show More</div>
+          <div id="scrollbaroutertestddd">Show More</div>
       </div>
-  
+
       <div class="col-md-6" v-if="confirmtransation">
         <div id="bit_transaction_results" class="selectedsend">
           <div class="row">
@@ -243,7 +246,7 @@
                 if(count($query2)) {
                   foreach ($query2 as $key => $row) {
                   ?>
-                  <div class="col-md-2 col-sm-2">
+                  <div class="col-md-4 col-lg-2 col-sm-4 col-xs-4">
                     <div class="card text-center box-shadow fixed-heights">
                       <img src="">
                       <div class="card-body">
@@ -285,7 +288,7 @@
             <strong>Today's Buy-Sell Price</strong>
           </div>
           <div class="table-responsive">
-            <table class="table table-bordered table-sm">
+            <table class="table table-bordered table-sm table-worw">
                 <tbody>
                   <tr>
                       <th>

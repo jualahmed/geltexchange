@@ -106,15 +106,26 @@
               <h6 class="text-center"><a href="<?php echo site_url('auth/logout'); ?>">Sign Out</a></h6>
             </div>
           <?php else: ?>
-             <a data-toggle="modal" data-target="#logins" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <div class="desktopdddd">
+               <a data-toggle="modal" data-target="#logins" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Login 
             </a>/
             <a href="#" id="navbarDropdown" data-toggle="modal" data-target="#exampleModal" aria-expanded="false">
               Register 
             </a>
+           </div>
           <?php endif ?>
         </div>
+
       </div>
+       <div class="mobilessss">
+               <a data-toggle="modal" data-target="#logins" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Login 
+            </a>/
+            <a href="#" id="navbarDropdown" data-toggle="modal" data-target="#exampleModal" aria-expanded="false">
+              Register 
+            </a>
+           </div>
     </nav>
   </div><!-- container -->
 </header><!-- header -->
