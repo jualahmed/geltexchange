@@ -135,61 +135,60 @@
 <!-- login model -->
 <!-- Modal -->
 <div class="modal fade" id="logins" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <?php echo form_open('auth/loginajax','id=login');?>
+  <?php echo form_open('auth/loginajax','id=login');?>
 
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                             <div class="login-box-body">
-                            <p class="login-box-msg"><?php echo lang('auth_sign_session'); ?></p>
-                                <div class="form-group has-feedback">
-                                    <input type="text" class="form-control text-lowercase" id="identity" name="identity" placeholder="Enter Your Email">
-                                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <input type="password" class="form-control text-lowercase" autocomplete="on" id="password" name="password" placeholder="Enter Your Password">
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="checkbox icheck form-group" >
-                                            <label class="form-label">
-                                                <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"'); ?><?php echo "Remember me"; ?>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="message text-center text-danger">
-                                  
-                                </div>
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                   <div class="login-box-body">
+                  <p class="login-box-msg"><?php echo lang('auth_sign_session'); ?></p>
+                      <div class="form-group has-feedback">
+                          <input type="text" class="form-control text-lowercase" id="identity" name="identity" placeholder="Enter Your Email">
+                          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                      </div>
+                      <div class="form-group has-feedback">
+                          <input type="password" class="form-control text-lowercase" autocomplete="on" id="password" name="password" placeholder="Enter Your Password">
+                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-8">
+                              <div class="checkbox icheck form-group" >
+                                  <label class="form-label">
+                                      <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"'); ?><?php echo "Remember me"; ?>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="message text-center text-danger">
+                        
+                      </div>
 
-            <?php if ($auth_social_network == true): ?>
-                            <div class="social-auth-links text-center">
-                                <p>- <?php echo lang('auth_or'); ?> -</p>
-                                <?php echo anchor('#', '<i class="fa fa-facebook"></i>' . lang('auth_sign_facebook'), array('class' => 'btn btn-block btn-social btn-facebook btn-flat')); ?>
-                                <?php echo anchor('#', '<i class="fa fa-google-plus"></i>' . lang('auth_sign_google'), array('class' => 'btn btn-block btn-social btn-google btn-flat')); ?>
-                            </div>
-            <?php endif; ?>
-            <?php if ($forgot_password == false): ?>
-                            <?php echo anchor('#', lang('auth_forgot_password')); ?><br />
-            <?php endif; ?>
-                        </div>
+  <?php if ($auth_social_network == true): ?>
+                  <div class="social-auth-links text-center">
+                      <p>- <?php echo lang('auth_or'); ?> -</p>
+                      <?php echo anchor('#', '<i class="fa fa-facebook"></i>' . lang('auth_sign_facebook'), array('class' => 'btn btn-block btn-social btn-facebook btn-flat')); ?>
+                      <?php echo anchor('#', '<i class="fa fa-google-plus"></i>' . lang('auth_sign_google'), array('class' => 'btn btn-block btn-social btn-google btn-flat')); ?>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <?php echo form_submit('submit', lang('auth_login'), array('class' => 'btn btn-primary btn-flat'));?>
-                  </div>
-                </div>
+  <?php endif; ?>
+  <?php if ($forgot_password == false): ?>
+                  <?php echo anchor('#', lang('auth_forgot_password')); ?><br />
+  <?php endif; ?>
               </div>
-                <?php echo form_close();?>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <?php echo form_submit('submit', lang('auth_login'), array('class' => 'btn btn-primary btn-flat'));?>
+        </div>
+      </div>
+  </div>
+  <?php echo form_close();?>
 </div>
-
 <!-- resister model -->
 
 <!-- Modal -->
@@ -232,7 +231,7 @@
                                           <input type="password" id="passwords" autocomplete="on" name="passwords" placeholder="passwords" class="form-control">
                                       </div>
                                   </div>
-
+                               
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
@@ -249,12 +248,32 @@
                                     </div>
                                   </div>
 
+                                  <div class="form-group">
+                                    <?php echo lang('users_phone', 'phone', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                    <div class="col-sm-12 col-md-12">
+                                      <input type="text" id="phone" placeholder="Phone" name="phone" class="form-control">
+                                    </div>
+                                  </div>
+
+
                                     <div class="form-group">
                                         <?php echo lang('users_password_confirm', 'password_confirm', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
                                         <div class="col-sm-12 col-md-12">
                                             <input type="password" id="users_password_confirm" placeholder="Confirm Password" name="password_confirm" class="form-control text-lowercase">
                                         </div>
                                     </div>
+                              </div>
+                              <div class="col-md-12">
+                                   <div class="form-group">
+                                    <div class="group">
+                                      <label class="checkbox">
+                                          <input name="terms" type="checkbox" value="1" id="term" required=""> I accept the <a href="<?php echo base_url().'home/termsofservices' ?>" target="_blank">Terms of service &amp;  </a><a href="<?php echo base_url().'home/privacypolicy' ?>" target="_blank">privacy policy</a>
+                                      </label>
+                                      <label class="checkbox">
+                                          <input name="terms" type="checkbox" value="1" id="term" required=""> আমি এই সার্ভিস অনলাইন জুয়ার কাজে ব্যবহার করবো না এবং আমি মানতে রাজি সাইটের শর্তাবলি
+                                      </label>
+                                    </div>
+                                  </div>
                               </div>
                             </div>
                     </div>

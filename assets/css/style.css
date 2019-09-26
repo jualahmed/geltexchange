@@ -53,6 +53,7 @@ li{
 }
 .username{
  margin-top: 14px;
+ padding-right: 12px;
 }
 .dropdown-toggle::after{
   margin-top: 20px!important;
