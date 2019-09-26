@@ -210,58 +210,52 @@
                     <div class="box-body">
                             <div class="row">
                               <div class="col-md-6">
-
-                                  <div class="form-group">
-                                    <?php echo lang('users_firstname', 'first_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                    <div class="col-sm-12 col-md-12">
-                                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name">
-                                    </div>
+                                <div class="form-group">
+                                  <?php echo lang('users_firstname', 'first_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                  <div class="col-sm-12 col-md-12">
+                                      <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name">
                                   </div>
-
-                                  <div class="form-group">
-                                      <?php echo lang('users_email', 'email', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                      <div class="col-sm-12 col-md-12">
-                                        <input type="text" id="email" name="email" placeholder="Email" class="form-control text-lowercase">
-                                      </div>
-                                  </div>
-                                  
-                                  <div class="form-group">
-                                      <?php echo lang('users_password', 'password', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                      <div class="col-sm-12 col-md-12">
-                                          <input type="password" id="passwords" autocomplete="on" name="passwords" placeholder="passwords" class="form-control">
-                                      </div>
-                                  </div>
-                               
+                                </div>
                               </div>
                               <div class="col-md-6">
-                                 <div class="form-group">
-                                    <?php echo lang('users_lastname', 'last_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                    <div class="col-sm-12 col-md-12">
-                                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name">
-                                    </div>
+                                <div class="form-group">
+                                  <?php echo lang('users_lastname', 'last_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                  <div class="col-sm-12 col-md-12">
+                                      <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name">
                                   </div>
-
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo lang('users_email', 'email', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                    <div class="col-sm-12 col-md-12">
+                                      <input type="text" id="email" name="email" placeholder="Email" class="form-control text-lowercase">
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <?php echo lang('users_phone', 'phone', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                  <div class="col-sm-12 col-md-12">
+                                    <input type="text" id="phone" placeholder="Phone" name="phone" class="form-control">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo lang('users_password', 'password', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                    <div class="col-sm-12 col-md-12">
+                                        <input type="password" id="passwords" autocomplete="on" name="passwords" placeholder="passwords" class="form-control">
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
                                   <div class="form-group">
-                                    <?php echo lang('users_phone', 'phone', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                    <div class="col-sm-12 col-md-12">
-                                      <input type="text" id="phone" placeholder="Phone" name="phone" class="form-control">
-                                    </div>
+                                      <?php echo lang('users_password_confirm', 'password_confirm', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                      <div class="col-sm-12 col-md-12">
+                                          <input type="password" id="users_password_confirm" placeholder="Confirm Password" name="password_confirm" class="form-control text-lowercase">
+                                      </div>
                                   </div>
-
-                                  <div class="form-group">
-                                    <?php echo lang('users_phone', 'phone', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                    <div class="col-sm-12 col-md-12">
-                                      <input type="text" id="phone" placeholder="Phone" name="phone" class="form-control">
-                                    </div>
-                                  </div>
-
-
-                                    <div class="form-group">
-                                        <?php echo lang('users_password_confirm', 'password_confirm', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                        <div class="col-sm-12 col-md-12">
-                                            <input type="password" id="users_password_confirm" placeholder="Confirm Password" name="password_confirm" class="form-control text-lowercase">
-                                        </div>
-                                    </div>
                               </div>
                               <div class="col-md-12">
                                    <div class="form-group">

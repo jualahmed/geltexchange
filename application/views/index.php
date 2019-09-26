@@ -284,8 +284,8 @@
     <div class="row">
        <div class="col-md-12">
         <div class="box-shadow p-3">
-          <div class="my-2">
-            <strong>Today's Buy-Sell Price</strong>
+          <div class="my-2 text-center">
+            <h2><button class="btn btn-success btn-block pl-0 ml-0">Today's Buy-Sell Price</button></h2>
           </div>
           <div class="table-responsive">
             <table class="table table-bordered table-sm table-worw">
@@ -340,7 +340,7 @@
   <div class="container">
     <div id="put">
       <div class="section box-shadow p-3">
-        <h3>Latest Exchanges</h3>
+        <h2 class="text-center"><button class="btn btn-success btn-block pl-0 ml-0">Latest Exchanges</button></h2>
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
               <thead>
