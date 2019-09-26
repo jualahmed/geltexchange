@@ -5,10 +5,9 @@
   <div id="infoMessage" class="text-danger"><?php echo $message;?></div>
 
   <?php echo form_open("home/forgerpassword");?>
-
         <p>
           <label for="email"><?php echo sprintf(lang('forgot_password_email_label'), $identity_label);?></label> <br />
-          <input type="text" name="email" class="text-lowercase">
+          <input type="text" name="email" class="text-lowercase form-control">
         </p>
 
         <p><?php echo form_submit('submit', "Send Code");?></p>

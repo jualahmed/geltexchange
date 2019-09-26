@@ -149,7 +149,7 @@ class Ion_auth
 					'forgotten_password_code' => $user->forgotten_password_code
 				);
 
-				if (!$this->config->item('use_ci_email', 'ion_auth'))
+				if ($this->config->item('use_ci_email', 'ion_auth'))
 				{
 					$this->set_message('forgot_password_successful');
 					return $data;
@@ -157,20 +157,47 @@ class Ion_auth
 				else
 				{
 					$message = $this->load->view($this->config->item('email_templates', 'ion_auth') . $this->config->item('email_forgot_password', 'ion_auth'), $data, TRUE);
-					$this->email->clear();
-					$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
-					$this->email->to($user->email);
-					$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_forgotten_password_subject'));
-					$this->email->message($message);
-
-					if ($this->email->send())
-					{
-						$this->set_message('forgot_password_successful');
-						return TRUE;
-					}
+          $this->load->library("phpmailer_library");
+          $mail = $this->phpmailer_library->load();
+          //Enable SMTP debugging. 
+          $mail->SMTPDebug = 0;                               
+          //Set PHPMailer to use SMTP.
+          $mail->isSMTP();            
+          $mail->Host = "smtp.gmail.com";
+          //Set this to true if SMTP host requires authentication to send email
+          $mail->SMTPAuth = true;                          
+          //Provide username and password     
+          $mail->Username = "md.jual1212.ah@gmail.com";                 
+          $mail->Password = "Ad009257"; 
+          //If SMTP requires TLS encryption then set it
+          $mail->SMTPSecure = "ssl";                           
+          //Set TCP port to connect to 
+          $mail->Port = 465;                                   
+          $mail->From = "md.jual1212.ah@gmail.com";
+          $mail->FromName = "";
+          $mail->smtpConnect(
+              array(
+                "ssl" => array(
+                  "verify_peer" => false,
+                  "verify_peer_name" => false,
+                  "allow_self_signed" => true
+                )
+              )
+          );
+            
+          $msubject = 'Password Reset';
+         
+          $mail->addAddress($user->email, "Recepient Name");
+          $mail->isHTML(true);
+          $mail->Subject = $msubject;
+          $mail->Body = $message;
+          if($mail->send()) 
+          {
+            $this->set_message('forgot_password_successful');
+          } 
 					else
 					{
-						$this->set_error('forgot_password_unsuccessful');
+						$this->set_error($mail->ErrorInfo);
 						return FALSE;
 					}
 				}

@@ -145,8 +145,6 @@ class Home extends Public_Controller {
     $this->__randerview('allfeedback', $this->data);
   }
 
-
-
   // forgot password
   function forgerpassword()
   {
@@ -202,20 +200,125 @@ class Home extends Public_Controller {
 
       // run the forgotten password method to email an activation code to the user
       $forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
- var_dump($forgotten);
       if ($forgotten)
       {
         // if there were no errors
         $this->session->set_flashdata('message', $this->ion_auth->messages());
         var_dump($this->ion_auth->messages());
-        // redirect("home", 'refresh'); //we should display a confirmation page here instead of the login page
+        redirect("home", 'refresh'); //we should display a confirmation page here instead of the login page
       }
       else
       {
-        $this->session->set_flashdata('message', $this->ion_auth->errors());
+        $this->session->set_flashdata('message', "A verification code send to your email please check your email");
+        var_dump($this->ion_auth->errors());
         redirect("home/forgerpassword", 'refresh');
       }
     }
   }
+
+    // reset password - final step for forgotten password
+  public function reset_password($code = NULL)
+  {
+    if (!$code)
+    {
+      show_404();
+    }
+
+    $user = $this->ion_auth->forgotten_password_check($code);
+
+    if ($user)
+    {
+      // if the code is valid then display the password reset form
+
+      $this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
+      $this->form_validation->set_rules('new_confirm', $this->lang->line('reset_password_validation_new_password_confirm_label'), 'required');
+
+      if ($this->form_validation->run() == false)
+      {
+        // display the form
+
+        // set the flash data error message if there is one
+        $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+        $this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
+        $this->data['new_password'] = array(
+          'name' => 'new',
+          'id'   => 'new',
+          'type' => 'password',
+          'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
+        );
+        $this->data['new_password_confirm'] = array(
+          'name'    => 'new_confirm',
+          'id'      => 'new_confirm',
+          'type'    => 'password',
+          'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
+        );
+        $this->data['user_id'] = array(
+          'name'  => 'user_id',
+          'id'    => 'user_id',
+          'type'  => 'hidden',
+          'value' => $user->id,
+        );
+        $this->data['csrf'] = $this->_get_csrf_nonce();
+        $this->data['code'] = $code;
+
+        // render
+        $this->__randerview('auth/reset_password', $this->data);
+      }
+      else
+      {
+        if ($this->_valid_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
+        {
+          $this->ion_auth->clear_forgotten_password_code($code);
+          show_error($this->lang->line('error_csrf'));
+        }
+        else
+        {
+          $identity = $user->{$this->config->item('identity', 'ion_auth')};
+          $change = $this->ion_auth->reset_password($identity, $this->input->post('new'));
+          if ($change)
+          {
+            $this->session->set_flashdata('message', $this->ion_auth->messages());
+            redirect("home", 'refresh');
+          }
+          else
+          {
+            $this->session->set_flashdata('message', $this->ion_auth->errors());
+            redirect('home/reset_password/' . $code, 'refresh');
+          }
+        }
+      }
+    }
+    else
+    {
+      $this->session->set_flashdata('message', $this->ion_auth->errors());
+      redirect("home/forgerpassword", 'refresh');
+    }
+  }
+
+  function _get_csrf_nonce()
+  {
+    $this->load->helper('string');
+    $key   = random_string('alnum', 8);
+    $value = random_string('alnum', 20);
+    $this->session->set_flashdata('csrfkey', $key);
+    $this->session->set_flashdata('csrfvalue', $value);
+
+    return array($key => $value);
+  }
+
+  function _valid_csrf_nonce()
+  {
+    if ($this->input->post($this->session->flashdata('csrfkey')) !== FALSE &&
+      $this->input->post($this->session->flashdata('csrfkey')) == $this->session->flashdata('csrfvalue'))
+    {
+      return TRUE;
+    }
+    else
+    {
+      return TRUE;
+    }
+  }
+
 
 }
