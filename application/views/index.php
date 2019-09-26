@@ -71,7 +71,7 @@
                     </div>
                   </div>
                   <form id="bit_confirm_transaction">
-                      <table class="table table-striped">
+                      <table class="table table-striped table-responsive">
                           <tbody>
                               <tr>
                                 <td colspan="2">
@@ -155,7 +155,7 @@
                           min-width: 232px;
                           margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="color: blue;background: #EBEBE4;padding: 10px;
                           text-align: center;
-                          width: 400px;
+                          width: 100%;
                           margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <p>Messsage: <span style="color: black;"> <?php echo base_url(); ?></span></p>
                         </div>
                       </div>
@@ -256,7 +256,7 @@
                             <?php echo $row->name; ?>
                           </strong>
                         </h5>
-                        <a href="#" class="btn-block">
+                        <a href="#" class="btn-success btn-block">
                           <strong>
                             <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
                           </strong>

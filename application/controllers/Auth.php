@@ -156,6 +156,11 @@ class Auth extends MY_Controller {
         'rules' => 'required'
       ),
       array(
+        'field' => 'username',
+        'label' => 'username',
+        'rules' => 'required'
+      ),
+      array(
         'field' => 'email',
         'label' => 'email',
         'rules' => 'required|is_unique[users.email]'
@@ -180,8 +185,9 @@ class Auth extends MY_Controller {
     $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
        if ($this->form_validation->run() == TRUE)
     {
-       $jsonData['check'] = true;
-      $username = strtolower($this->input->post('first_name')) . ' ' . strtolower($this->input->post('last_name'));
+      $jsonData['check'] = true;
+      $username = strtolower($this->input->post('username'));
+      $username = str_replace(' ', '', $username);
       $email    = strtolower($this->input->post('email'));
       $password = $this->input->post('passwords');
 

@@ -40,7 +40,7 @@
         </div>
       </center>
     </div>
-    <div class="col-md-12 text-center officeinfobar" style="width: 96%;overflow-x: hidden!important;">
+    <div class="col-md-12 text-center officeinfobar">
       <img width="23px" src="<?php echo base_url()."assets/images/icon/clock.png"; ?>" alt=""> Office Time: <?php echo $d->start_time ?> - <?php echo $d->end_time ?>
       <img width="20px" src="<?php echo base_url()."assets/images/icon/operator.png"; ?>" alt=""> Operator:
       <?php if($d->is_online){ ?>
@@ -53,8 +53,10 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="<?php echo base_url() ?>">
-        <img class="img-responsive nav-image" src="<?php echo base_url(); ?>assets/images/logo.png" alt="Logo">
+        <img class="img-responsive nav-image" src="<?php echo base_url(); ?>assets/images/logo.png" alt="Logo"><br>
+        
       </a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -100,7 +102,7 @@
               <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/exchanges"><img width="20px" src="<?php echo base_url().'assets/svgicon/exchange.svg' ?>" alt=""> My Exchanges</a>
               <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/testimonials"><img width="20px" src="<?php echo base_url().'assets/svgicon/commend.svg' ?>" alt=""> My Feedback</a>
               <a style="display: none;" class="dropdown-item" href="<?php echo base_url(); ?>account/referrals"><i class="fa fa-users"></i> Referrals</a>
-              <a style="display: none;" class="dropdown-item" href="<?php echo base_url(); ?>account/settings"><i class="fa fa-cogs"></i> Settings</a>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>profile/change_password"><img width="20px" src="<?php echo base_url().'assets/svgicon/setting.svg' ?>" alt=""> Settings</a>
               <a class="dropdown-item" href="<?php echo base_url(); ?>profile/verification"><img width="20px" src="<?php echo base_url().'assets/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
               <div class="dropdown-divider"></div>
               <h6 class="text-center"><a href="<?php echo site_url('auth/logout'); ?>">Sign Out</a></h6>
@@ -128,6 +130,22 @@
             </a>
            </div>
         <?php endif ?>
+         <?php if ($this->ion_auth->logged_in()): ?>
+        <b class="ddddddddddddd">
+
+          <?php if ($user_login['profile']): ?>
+            <img src="<?php echo base_url().'assets/images'.$user_login['profile']; ?>" class="pr-2 user-image rounded-circle" alt="User Image" width="55px">
+          <?php else: ?>
+            <img src="<?php echo base_url().'assets/images'.'/avatar.jpg'; ?>" class="pr-2 user-image rounded-circle" alt="User Image" width="55px">
+          <?php endif ?>
+          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile"><img width="20px" src="<?php echo base_url().'assets/svgicon/user.svg' ?>" alt=""> My Profile</a>
+          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/exchanges"><img width="20px" src="<?php echo base_url().'assets/svgicon/exchange.svg' ?>" alt=""> My Exchanges</a>
+          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/testimonials"><img width="20px" src="<?php echo base_url().'assets/svgicon/commend.svg' ?>" alt=""> My Feedback</a>
+          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/change_password"><img width="20px" src="<?php echo base_url().'assets/svgicon/setting.svg' ?>" alt="">  Settings</a>
+          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/verification"><img width="20px" src="<?php echo base_url().'assets/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
+          <a class="pr-2" style="font-size: 11px" href="<?php echo site_url('auth/logout'); ?>"><img width="20px" src="<?php echo base_url().'assets/svgicon/logout.svg' ?>" alt=""> Sign Out</a>
+        </b>
+      <?php endif ?>
     </nav>
   </div><!-- container -->
 </header><!-- header -->
@@ -177,7 +195,7 @@
                   </div>
   <?php endif; ?>
   <?php if ($forgot_password == false): ?>
-                  <?php echo anchor('#', lang('auth_forgot_password')); ?><br />
+                  <?php echo anchor('home/forgerpassword', lang('auth_forgot_password')); ?><br />
   <?php endif; ?>
               </div>
         </div>
@@ -222,6 +240,14 @@
                                   <?php echo lang('users_lastname', 'last_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
                                   <div class="col-sm-12 col-md-12">
                                       <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <?php echo lang('users_username', 'username', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
+                                  <div class="col-sm-12 col-md-12">
+                                      <input type="text" id="username" name="username" class="form-control" placeholder="Last Name">
                                   </div>
                                 </div>
                               </div>
@@ -277,6 +303,9 @@
     </section>
       </div>
       <div class="modal-footer">
+        <?php if ($forgot_password == false): ?>
+            <?php echo anchor('home/forgerpassword', lang('auth_forgot_password')); ?><br />
+        <?php endif; ?>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <?php echo form_button(array('type' => 'submit', 'class' => 'btn btn-primary btn-flat', 'content' => "Submit")); ?>
       </div>

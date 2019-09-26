@@ -1,6 +1,6 @@
 <section id="main" class="py-4 my-4" style="min-height: 460px;">
     <div class="container">
-        <div class="ads-info" style="display: block;">
+        <div class="ads-info box-shadow p-4" style="display: block;">
             <div class="row">
                 <div class="col-sm-12">
                   <?php if (isset($error)): ?>
@@ -19,7 +19,7 @@
                         <?php if ($users_info->document_verified): ?>
                           <p><span class="text text-success"><i class="fa fa-check"></i> Your documents are accepted!</span></p>
                         <?php elseif($users_info->document_1 && $users_info->document_2): ?>
-                            <h2>You have upload file for Verification. admin is checking.....</h2>
+                            <h4 class="text-info">You have upload file for Verification. admin is checking.....</h4>
                         <?php else: ?>
                           <form action="<?php echo base_url().'profile/document_verified' ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">

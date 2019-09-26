@@ -9,6 +9,10 @@
 
 *{
   text-transform: capitalize!important;
+  font-weight: 700!important;
+}
+table,th,td,tr{
+  font-weight: 400!important;
 }
 .fixed-heights{
   min-height: 174px!important;
@@ -114,6 +118,11 @@ li{
   display: none;
 }
 
+.ddddddddddddd{
+  display: none!important;
+}
+
+
 @media only screen and (max-width: 768px) {
   #atmobile{
     display: block;
@@ -130,6 +139,12 @@ li{
   .mobilessss{
     display: block;
   }
+  #header{
+    overflow-x: hidden;
+  }
+  .ddddddddddddd{
+    display: block!important;
+  }
 }
 
 @media only screen and (max-width: 425px) {
@@ -144,6 +159,15 @@ li{
   }
 }
 
+.fixed-heights{
+  width: 160px;
+  margin: auto;
+  height: 151px;
+}
+.card-body{
+  padding: 7px!important;
+  margin-top: 11px;
+}
 
 
 #copudesign{
