@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/owlcarousel/assets/owl.theme.default.min.css">
 </head>
-<body style="width: 100%;overflow-x: hidden;">
+<body style="width: 100%;overflow-x: hidden!important;">
 <header id="header" class="bg-light">
   <div class="row">
     <div class="col-md-12">
@@ -40,7 +40,7 @@
         </div>
       </center>
     </div>
-    <div class="col-md-12 text-center officeinfobar">
+    <div class="col-md-12 text-center officeinfobar" style="width: 96%;overflow-x: hidden!important;">
       <img width="23px" src="<?php echo base_url()."assets/images/icon/clock.png"; ?>" alt=""> Office Time: <?php echo $d->start_time ?> - <?php echo $d->end_time ?>
       <img width="20px" src="<?php echo base_url()."assets/images/icon/operator.png"; ?>" alt=""> Operator:
       <?php if($d->is_online){ ?>
@@ -96,12 +96,12 @@
               </div>
                </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<?php echo base_url(); ?>profile"><i class="fa fa-user"></i>My Profile</a>
-              <a class="dropdown-item" href="<?php echo base_url(); ?>profile/exchanges"><i class="fa fa-refresh"></i> My Exchanges</a>
-              <a class="dropdown-item" href="<?php echo base_url(); ?>profile/testimonials"><i class="fa fa-comments-o"></i> My Feedback</a>
+              <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile"><img width="20px" src="<?php echo base_url().'assets/svgicon/user.svg' ?>" alt=""> My Profile</a>
+              <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/exchanges"><img width="20px" src="<?php echo base_url().'assets/svgicon/exchange.svg' ?>" alt=""> My Exchanges</a>
+              <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/testimonials"><img width="20px" src="<?php echo base_url().'assets/svgicon/commend.svg' ?>" alt=""> My Feedback</a>
               <a style="display: none;" class="dropdown-item" href="<?php echo base_url(); ?>account/referrals"><i class="fa fa-users"></i> Referrals</a>
               <a style="display: none;" class="dropdown-item" href="<?php echo base_url(); ?>account/settings"><i class="fa fa-cogs"></i> Settings</a>
-              <a class="dropdown-item" href="<?php echo base_url(); ?>profile/verification"><i class="fa fa-check"></i> Account verification</a>
+              <a class="dropdown-item" href="<?php echo base_url(); ?>profile/verification"><img width="20px" src="<?php echo base_url().'assets/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
               <div class="dropdown-divider"></div>
               <h6 class="text-center"><a href="<?php echo site_url('auth/logout'); ?>">Sign Out</a></h6>
             </div>

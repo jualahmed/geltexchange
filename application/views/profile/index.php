@@ -72,46 +72,48 @@
                             <br>
                             <br>
                             <br>
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th>Status</th>
-                                        <th>Email verified</th>
-                                        <th>Document verified</th>
-                                        <th>Mobile verified</th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                          <?php if ($user->final_verified): ?>
-                                            <span class="btn btn-success">Verified</span>
-                                          <?php else: ?>
-                                            <span class="btn btn-danger">Not varified</span>
-                                          <?php endif ?>
-                                        </td>
-                                        <td>
-                                          <?php if ($user->email_verified): ?>
-                                            <span class="btn btn-success">Yes</span>
-                                          <?php else: ?>
-                                            <span class="btn btn-danger">Not</span>
-                                          <?php endif ?>
-                                        </td>
-                                        <td>
-                                          <?php if ($user->document_verified): ?>
-                                            <span class="btn btn-success">Yes</span>
-                                          <?php else: ?>
-                                            <span class="btn btn-danger">Not</span>
-                                          <?php endif ?>
-                                        </td>
-                                        <td>
-                                          <?php if ($user->phone_verified): ?>
-                                            <span class="btn btn-success">Yes</span>
-                                          <?php else: ?>
-                                            <span class="btn btn-danger">Not</span>
-                                          <?php endif ?>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                              <table class="table table-bordered">
+                                  <tbody>
+                                      <tr>
+                                          <th>Status</th>
+                                          <th>Email verified</th>
+                                          <th>Document verified</th>
+                                          <th>Mobile verified</th>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                            <?php if ($user->final_verified): ?>
+                                              <span class="btn btn-success">Verified</span>
+                                            <?php else: ?>
+                                              <span class="btn btn-danger">Not varified</span>
+                                            <?php endif ?>
+                                          </td>
+                                          <td>
+                                            <?php if ($user->email_verified): ?>
+                                              <span class="btn btn-success">Yes</span>
+                                            <?php else: ?>
+                                              <span class="btn btn-danger">Not</span>
+                                            <?php endif ?>
+                                          </td>
+                                          <td>
+                                            <?php if ($user->document_verified): ?>
+                                              <span class="btn btn-success">Yes</span>
+                                            <?php else: ?>
+                                              <span class="btn btn-danger">Not</span>
+                                            <?php endif ?>
+                                          </td>
+                                          <td>
+                                            <?php if ($user->phone_verified): ?>
+                                              <span class="btn btn-success">Yes</span>
+                                            <?php else: ?>
+                                              <span class="btn btn-danger">Not</span>
+                                            <?php endif ?>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                            </div>
                             <div>
                               <?php if(!$user->final_verified || !$user->email_verified || !$user->document_verified || !$user->phone_verified){ ?>
                                 <h1>
