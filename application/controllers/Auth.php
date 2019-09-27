@@ -156,11 +156,6 @@ class Auth extends MY_Controller {
         'rules' => 'required'
       ),
       array(
-        'field' => 'username',
-        'label' => 'username',
-        'rules' => 'required'
-      ),
-      array(
         'field' => 'email',
         'label' => 'email',
         'rules' => 'required|is_unique[users.email]'
@@ -186,7 +181,7 @@ class Auth extends MY_Controller {
        if ($this->form_validation->run() == TRUE)
     {
       $jsonData['check'] = true;
-      $username = strtolower($this->input->post('username'));
+      $username = strtolower($this->input->post('first_name').$this->input->post('last_name'));
       $username = str_replace(' ', '', $username);
       $email    = strtolower($this->input->post('email'));
       $password = $this->input->post('passwords');

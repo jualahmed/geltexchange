@@ -9,7 +9,7 @@
                             <a href="<?php echo base_url()?>profile/submit_testimonial" class="btn btn-info btn-xs"><i class="fa fa-plus"></i> give us a feedback</a>
                           </span>
                           </h3>
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive">
                             <thead>
                                 <tr>
                                     <th width="40%">Feedback</th>
@@ -23,7 +23,7 @@
                                 <tr>
                                     <td><?php echo $var->content ?></td>
                                     <td>
-                                        <a href="https://usdbuysell.com/account/exchange/"></a>
+                                        <a></a>
                                     </td>
                                     <td><?php echo $var->content ?></td>
                                     <td>

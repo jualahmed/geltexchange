@@ -51,10 +51,10 @@ jQuery(document).ready(function($) {
                     $('#resisterform').find('div.form-group').removeClass('has-error').removeClass('has-success');
                     $('#resisterform').find('p.text-danger').remove();
                     if (res.success == true) {
-                        $('#resisterform')[0].reset();
                         setTimeout(() => {
                             location.reload();
                         }, 500);
+                        window.location.href = base_url+"/";
                     }
                 }else {
                     $.each(res.errors, function (key, value){
