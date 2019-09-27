@@ -108,7 +108,11 @@ class Home extends Public_Controller {
 
   public function regirter($value='')
   {
-    $this->__randerview('registation', $this->data);
+    if(!$this->ion_auth->logged_in()){
+     $this->__randerview('registation', $this->data);
+    }else{
+      redirect('home','refresh');
+    }
   }
 
   public function allfeedback()
