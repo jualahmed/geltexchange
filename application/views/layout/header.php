@@ -63,25 +63,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item <?php if($this->uri->segment(2)=='')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url(); ?>">Home</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='about')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url().'home/about' ?>">About</a>
+            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/about' ?>">About</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='faq')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url().'home/faq' ?>">FAQ</a>
+            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/faq' ?>">FAQ</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='tutorial')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url().'home/tutorial' ?>">Tutorial</a>
+            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/tutorial' ?>">Tutorial</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='affiliate')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url().'home/affiliate' ?>">Affiliate</a>
+            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/affiliate' ?>">Affiliate</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='paymentproff')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url().'home/paymentproff' ?>">Payment Proof</a>
+            <a class="nav-link text-center btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/paymentproff' ?>">PaymentProof</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='contact')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url().'home/contact' ?>">Contact</a>
+            <a class="nav-link text-center btn-danger m-1 text-white" href="<?php echo base_url().'home/contact' ?>">Contact</a>
           </li>
         </ul>
         <div class="mr-0 dropdown">

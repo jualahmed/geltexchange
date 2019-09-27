@@ -10,16 +10,16 @@
                     </a>
                   </div>
                   <div>
-                    <p><?php $d=json_decode($setting->data); echo $d->siteabout; ?></p>
+                    <p class="text-info"><?php $d=json_decode($setting->data); echo $d->siteabout; ?></p>
                   </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6">
                   <div class="usefull-link">
                       <h4>Useful Links</h4>
                       <ul class="list-group">
-                          <li><a href="<?php echo base_url(); ?>">Home</a></li>
-                          <li><a href="<?php echo base_url(); ?>home/about">About Us</a></li>
-                          <li><a href="<?php echo base_url(); ?>home/affiliate">Affiliate</a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>">Home</a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/about">About Us</a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/affiliate">Affiliate</a></li>
                       </ul>
                   </div>
                 </div>
@@ -27,10 +27,10 @@
                   <div class="usefull-link">
                       <h4>Help &amp; Support</h4>
                       <ul class="list-group">
-                          <li><a href="<?php echo base_url(); ?>home/faq">FAQ</a></li>
-                          <li><a href="<?php echo base_url(); ?>home/contact">Contact</a></li>
-                          <li><a href="<?php echo base_url(); ?>home/termsofservices"> <span style="font-size: 15px;">Terms & Conditions</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>home/privacypolicy" class="link gray4 hover-white dib v-mid hide-child"><span style="font-size: 15px;">Privacy Policy</span></a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/faq">FAQ</a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/contact">Contact</a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/termsofservices"> <span style="font-size: 15px;">Terms & Conditions</span></a></li>
+                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/privacypolicy" class="link gray4 hover-white dib v-mid hide-child"><span style="font-size: 15px;">Privacy Policy</span></a></li>
                       </ul>
                   </div>
                 </div>
