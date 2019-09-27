@@ -196,6 +196,7 @@
   <?php endif; ?>
   <?php if ($forgot_password == false): ?>
                   <?php echo anchor('home/forgerpassword', lang('auth_forgot_password')); ?><br />
+                  <?php echo anchor('home/regirter', "Register"); ?><br />
   <?php endif; ?>
               </div>
         </div>

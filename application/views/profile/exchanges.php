@@ -1,6 +1,6 @@
 <section id="exchanges" class="my-4 py-4" style="min-height: 460px;">
     <div class="container">
-        <div class="ads-info" style="display: block;">
+        <div class="ads-info box-shadow p-3" style="display: block;">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="my-ads section" style="display: block;">
@@ -13,7 +13,7 @@
                           $this->db->where('gateways.id', $var->gateway_receive);
                           $recive=$this->db->get('exchanges')->row();
                           ?>
-                          <div class="panel-body">
+                          <div class="panel-body table-responsive">
                               <table class="table table-striped">
                                   <tbody>
                                       <tr>
