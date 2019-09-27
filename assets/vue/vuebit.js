@@ -28,7 +28,7 @@ const vm= new Vue({
 		gateways:[],
 		send_account:"",
 		me:0,
-
+		messsssss:'',
 	},
 	created(){
 		var self = this;
@@ -91,6 +91,7 @@ const vm= new Vue({
 								var re=JSON.parse(re);
 								self.gateways.push(re);
 								self.confirmtransation=1;
+								self.messsssss="Enter Your "+self.gateways[0].name+" address After Sending";
 							})
 							.fail(function() {
 								console.log("error");

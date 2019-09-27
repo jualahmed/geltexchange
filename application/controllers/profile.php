@@ -72,6 +72,13 @@ class Profile extends Public_Controller {
     $this->__randerview('profile/submit_testimonial', $this->data);
   }
 
+  public function testdelete($id='')
+  {
+    $this->db->where('id', $id);
+    $this->db->delete('testimonials');
+    redirect('profile/testimonials','refresh');
+  }
+
    // edit a user
   public function editprofile($id='')
   {

@@ -100,18 +100,18 @@
                               </tr>
                               <tr class="text-center">
                                 <td>
-                                  <span class="pull-left">Our Skrill Email:</span>
+                                  <span class="pull-left">Our {{ gateways[0].name }} Address:</span>
                                 </td>
                                 <td>
                                   <span class="pull-right">
-                                    <input type="text" disabled="" value="realearn0@gmail.com" id="myInput" desa=""><button>Copy</button></span>
+                                    <input type="text" disabled="" :value="gateways[0].account" id="myInput" desa=""><button>Copy</button></span>
                                 </td>
                               </tr>
                           </tbody>
                       </table>
                       <div class="form-group">
                           <label></label>
-                          <input type="text"  class="form-control" v-model="send_account" placeholder="Enter Your Skrill Email Address After Sending Dollars">
+                          <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
                       </div>
                       <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary btn-block">Confirm Order</button>
                       <h4 class="text-danger" v-if="me">Please enter account.</h4>
@@ -156,7 +156,7 @@
                           margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="color: blue;background: #EBEBE4;padding: 10px;
                           text-align: center;
                           width: 100%;
-                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <p>Messsage: <span style="color: black;"> <?php echo base_url(); ?></span></p>
+                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <p>Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
                         </div>
                       </div>
                       <hr>
@@ -174,8 +174,8 @@
                 <div class="form-group" style="text-align: center;">
                     <label class="checkbox">
                     <input name="terms" type="checkbox" v-model="tos" value="1" id="term" required style="width: 20px;margin-left: -31px;">
-                    <?php echo 'variimportantpllicy' ?>
-                    <a style="text-decoration: underline;" href="<?php echo base_url(); ?>index.php?a=page&prefix=terms-of-services" target="_blank">TOS</a>
+                    <?php if($d->importentmessage) echo $d->importentmessage; ?>
+                    <a style="text-decoration: underline;" href="<?php echo base_url().'home/termsofservices'; ?>" target="_blank">TOS</a>
                 </label>
                   <button id="" class="btn btn-primary btn-sm" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
                   <button id="startExchange" class="btn btn-primary btn-sm" type="button"  @click="submit" v-else>Start Order</button>

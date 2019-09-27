@@ -27,7 +27,7 @@
                                     </td>
                                     <td><?php echo $var->content ?></td>
                                     <td>
-                                      <a href="https://usdbuysell.com/account/delete_testimonial/69"><i class="fa fa-times"></i> Delete</a>
+                                      <a href="<?php echo base_url().'profile/testdelete/'.$var->id ?>"><i class="fa fa-times"></i> Delete</a>
                                     </td>
                                 </tr>
                               <?php endforeach ?>
