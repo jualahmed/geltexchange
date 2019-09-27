@@ -138,12 +138,12 @@
           <?php else: ?>
             <img src="<?php echo base_url().'assets/images'.'/avatar.jpg'; ?>" class="pr-2 user-image rounded-circle" alt="User Image" width="55px">
           <?php endif ?>
-          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile"><img width="20px" src="<?php echo base_url().'assets/svgicon/user.svg' ?>" alt=""> My Profile</a>
-          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/exchanges"><img width="20px" src="<?php echo base_url().'assets/svgicon/exchange.svg' ?>" alt=""> My Exchanges</a>
-          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/testimonials"><img width="20px" src="<?php echo base_url().'assets/svgicon/commend.svg' ?>" alt=""> My Feedback</a>
-          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/change_password"><img width="20px" src="<?php echo base_url().'assets/svgicon/setting.svg' ?>" alt="">  Settings</a>
-          <a class="pr-2" style="font-size: 11px" href="<?php echo base_url(); ?>profile/verification"><img width="20px" src="<?php echo base_url().'assets/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
-          <a class="pr-2" style="font-size: 11px" href="<?php echo site_url('auth/logout'); ?>"><img width="20px" src="<?php echo base_url().'assets/svgicon/logout.svg' ?>" alt=""> Sign Out</a>
+          <a class="btn-danger mr-1 p-1" style="font-size: 11px;" href="<?php echo base_url(); ?>profile"><img width="20px" src="<?php echo base_url().'assets/svgicon/user.svg' ?>" alt=""> My Profile</a>
+          <a class="btn-danger mr-1 p-1" style="font-size: 11px;" href="<?php echo base_url(); ?>profile/exchanges"><img width="20px" src="<?php echo base_url().'assets/svgicon/exchange.svg' ?>" alt=""> My Exchanges</a>
+          <a class="btn-danger mr-1 p-1" style="font-size: 11px;" href="<?php echo base_url(); ?>profile/testimonials"><img width="20px" src="<?php echo base_url().'assets/svgicon/commend.svg' ?>" alt=""> My Feedback</a>
+          <a class="btn-danger mr-1 p-1" style="font-size: 11px;" href="<?php echo base_url(); ?>profile/change_password"><img width="20px" src="<?php echo base_url().'assets/svgicon/setting.svg' ?>" alt="">  Settings</a>
+          <a class="btn-danger mr-1 p-1" style="font-size: 11px;" href="<?php echo base_url(); ?>profile/verification"><img width="20px" src="<?php echo base_url().'assets/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
+          <a class="btn-danger mr-1 p-1" style="font-size: 11px;" href="<?php echo site_url('auth/logout'); ?>"><img width="20px" src="<?php echo base_url().'assets/svgicon/logout.svg' ?>" alt=""> Sign Out</a>
         </b>
       <?php endif ?>
     </nav>
