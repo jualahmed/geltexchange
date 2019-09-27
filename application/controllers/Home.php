@@ -106,6 +106,11 @@ class Home extends Public_Controller {
     $this->__randerview('privacypolicy', $this->data);
   }
 
+  public function regirter($value='')
+  {
+    $this->__randerview('registation', $this->data);
+  }
+
   public function allfeedback()
   {
     $this->load->library("pagination");

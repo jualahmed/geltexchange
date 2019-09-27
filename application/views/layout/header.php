@@ -112,7 +112,7 @@
                <a data-toggle="modal" data-target="#logins" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Login 
             </a>/
-            <a href="#" id="navbarDropdown" data-toggle="modal" data-target="#exampleModal" aria-expanded="false">
+            <a href="<?php echo base_url().'home/regirter' ?>">
               Register 
             </a>
            </div>
@@ -125,7 +125,7 @@
                <a data-toggle="modal" data-target="#logins" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Login 
             </a>/
-            <a href="#" id="navbarDropdown" data-toggle="modal" data-target="#exampleModal" aria-expanded="false">
+            <a href="<?php echo base_url().'home/regirter' ?>">
               Register 
             </a>
            </div>
@@ -209,110 +209,3 @@
 </div>
 <!-- resister model -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <form action="<?php echo base_url().'auth/ajaxcreate' ?>" id="resisterform">
-  <div class="modal-dialog rmodal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-         <h3 class="box-title"><?php echo lang('users_create_user'); ?></h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                 <div class="box">
-                    <div class="box-body">
-                            <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <?php echo lang('users_firstname', 'first_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                  <div class="col-sm-12 col-md-12">
-                                      <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <?php echo lang('users_lastname', 'last_name', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                  <div class="col-sm-12 col-md-12">
-                                      <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <?php echo lang('users_username', 'username', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                  <div class="col-sm-12 col-md-12">
-                                      <input type="text" id="username" name="username" class="form-control" placeholder="Last Name">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <?php echo lang('users_email', 'email', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                    <div class="col-sm-12 col-md-12">
-                                      <input type="text" id="email" name="email" placeholder="Email" class="form-control text-lowercase">
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <?php echo lang('users_phone', 'phone', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                  <div class="col-sm-12 col-md-12">
-                                    <input type="text" id="phone" placeholder="Phone" name="phone" class="form-control">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                    <?php echo lang('users_password', 'password', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                    <div class="col-sm-12 col-md-12">
-                                        <input type="password" id="passwords" autocomplete="on" name="passwords" placeholder="passwords" class="form-control">
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <?php echo lang('users_password_confirm', 'password_confirm', array('class' => 'col-sm-12 col-md-12 control-label')); ?>
-                                      <div class="col-sm-12 col-md-12">
-                                          <input type="password" id="users_password_confirm" placeholder="Confirm Password" name="password_confirm" class="form-control text-lowercase">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-12">
-                                   <div class="form-group">
-                                    <div class="group">
-                                      <label class="checkbox">
-                                          <input name="terms" type="checkbox" value="1" id="term" required=""> I accept the <a href="<?php echo base_url().'home/termsofservices' ?>" target="_blank">Terms of service &amp;  </a><a href="<?php echo base_url().'home/privacypolicy' ?>" target="_blank">privacy policy</a>
-                                      </label>
-                                      <label class="checkbox">
-                                          <input name="terms" type="checkbox" value="1" id="term" required=""> আমি এই সার্ভিস অনলাইন জুয়ার কাজে ব্যবহার করবো না এবং আমি মানতে রাজি সাইটের শর্তাবলি
-                                      </label>
-                                    </div>
-                                  </div>
-                              </div>
-                            </div>
-                    </div>
-                </div>
-             </div>
-        </div>
-    </section>
-      </div>
-      <div class="modal-footer">
-        <?php if ($forgot_password == false): ?>
-            <?php echo anchor('home/forgerpassword', lang('auth_forgot_password')); ?><br />
-        <?php endif; ?>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <?php echo form_button(array('type' => 'submit', 'class' => 'btn btn-primary btn-flat', 'content' => "Submit")); ?>
-      </div>
-    </div>
-  </div>
-  </form>
-</div>
-
-
- 

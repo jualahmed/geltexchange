@@ -6,7 +6,9 @@
   --color4: #0E191F; 
   --color5: #fff; 
 }
-
+.text-none{
+  text-transform: none!important;
+}
 *{
   text-transform: capitalize!important;
   font-weight: 700!important;
