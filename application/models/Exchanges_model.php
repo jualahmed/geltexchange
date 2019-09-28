@@ -29,6 +29,7 @@ class Exchanges_model extends CI_Model {
     $this->db->insert('exchanges', $value);
     $id=$this->db->insert_id();
 
+    $this->db->select('gateways.*,gateways.id as gid,exchanges.*');
     $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
     $this->db->where('exchanges.id', $id);
     return $this->db->get('exchanges')->row();

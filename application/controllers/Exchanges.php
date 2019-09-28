@@ -112,7 +112,7 @@ class Exchanges extends Public_Controller {
     $this->db->set('send_account',$send_account);
     $this->db->set('status',1);
     $this->db->update('exchanges');
-    return 1;
+    echo "1"; 
   }
 
 }
