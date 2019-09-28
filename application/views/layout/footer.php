@@ -75,11 +75,11 @@
     <!-- footer -->
 		<!-- login and register modals-->
     <script>var base_url="<?php echo base_url() ?>";</script>
-    <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
-	  <script src="<?php echo base_url(); ?>/assets/js/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/vue/vue.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/vue/vuebit.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+	  <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vue/vue.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vue/vuebit.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/owl.carousel.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/jquery.countdown.js"></script>   
     <script src="<?php echo base_url(); ?>assets/js/jquery.scrollbar.min.js"></script>   

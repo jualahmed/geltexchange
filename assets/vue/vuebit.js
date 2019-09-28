@@ -28,7 +28,7 @@ const vm= new Vue({
 		gateways:[],
 		send_account:"",
 		me:0,
-		messsssss:'',
+		messsssss:'dd',
 	},
 	created(){
 		var self = this;

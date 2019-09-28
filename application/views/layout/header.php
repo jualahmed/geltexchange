@@ -19,14 +19,14 @@
   s0.parentNode.insertBefore(s1,s0);
   })();
   </script> -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" >
-  <link rel="icon" href="<?php echo base_url(); ?>/assets/images/favicon.ico" type="image/x-icon"/>
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/owl.carousel.css">  
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/jquery.scrollbar.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/style.css?v1.0.0">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/responsive.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/owlcarousel/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/owlcarousel/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" >
+  <link rel="icon" href="<?php echo base_url(); ?>/assets/icon/ficon.jpg" type="image/x-icon"/>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.carousel.css">  
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.scrollbar.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?v1.0.0">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.theme.default.min.css">
 </head>
 <body style="width: 100%;overflow-x: hidden!important;">
 <header id="header" class="bg-light">
@@ -154,7 +154,6 @@
 <!-- Modal -->
 <div class="modal fade" id="logins" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <?php echo form_open('auth/loginajax','id=login');?>
-
   <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
