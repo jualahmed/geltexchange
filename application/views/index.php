@@ -292,13 +292,13 @@
                 <tbody>
                   <tr>
                       <th>
-                          <strong>We Accept</strong>
+                          <strong><a href="" class="btn btn-success">We Accept</a></strong>
                       </th>
                       <th class="text-center">
-                          <strong>We Buy</strong>
+                          <strong><a href="" class="btn btn-success">We Buy</a></strong>
                       </th>
                       <th class="text-center">
-                          <strong>We Sell</strong>
+                          <strong><a href="" class="btn btn-success">We Sell</a></strong>
                       </th>
                   </tr>
                   <?php

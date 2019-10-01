@@ -15,6 +15,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 ">
                   <div class="usefull-link text-center box-shadow">
+                    <h4><a href="" class="btn btn-success btn-block">Help and Support</a></h4>
                       <ul class="list-group">
                           <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;"  class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/faq">FAQ</a></li>
                           <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;"  class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/contact">Contact</a></li>
