@@ -1,4 +1,4 @@
-<section id="home" class="mainexchange py-5">
+<section id="home" class="mainexchange py-2">
   <div class="container">
     <div class="row">
       <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
@@ -75,15 +75,15 @@
                           <tbody>
                               <tr>
                                 <td colspan="2">
-                                  <h4 class="text-center">Order Summery</h4>
+                                  <h4 class="text-center"><a href="" class="btn btn-success">Order Summery</a></h4>
                                 </td>
                               </tr>
                               <tr>
                                 <td colspan="2">
-                                  <h4>Order ID : {{ gateways[0].id }}</h4>
+                                  <h4 class="text-center"><a href="" class="btn btn-success">Order ID : {{ gateways[0].id }}</a></h4>
                                 </td>
                               </tr>
-                              <tr>
+                              <tr style="background: #003E11;color: #fff;">
                                   <td class="text-center">
                                       <div>You send</div>
                                       <p>{{ gateways[0].amount_send }}</p>
@@ -100,7 +100,7 @@
                               </tr>
                               <tr class="text-center">
                                 <td>
-                                  <span class="pull-left">Our {{ gateways[0].name }} Address:</span>
+                                  <span style="font-size: 10px;" class="pull-left">Our {{ gateways[0].name }} Address:</span>
                                 </td>
                                 <td>
                                   <span class="pull-right">
@@ -113,7 +113,7 @@
                           <label></label>
                           <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
                       </div>
-                      <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary btn-block">Confirm Order</button>
+                      <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
                       <h4 class="text-danger" v-if="me">Please enter account.</h4>
                   </form>
               </div>
@@ -122,7 +122,7 @@
       </div>
 
       <div class="col-md-6" v-else>
-          <br><br><br>
+          <br>
           <div class="selectedsend" id="bit_transaction_results">
             <form v-if="send && receive" id="exchangeForm">
                 <div class="row">
@@ -149,14 +149,14 @@
                              <p style="text-align: center;font-size: 12px;">Reserve: {{ reserve }}</p>
                           </div>
                         </div>
-                        <div class="col-md-12" style="color: red;text-align: center;">
-                          <div v-if="currency_to=='Wallet'" style="color: blue;background: #EBEBE4;padding: 10px;
+                        <div class="col-md-12" style="color: red;text-align: center;width: 50%!important;">
+                          <div v-if="currency_to=='Wallet'" style="width: 50%!important;color: blue;background: #003E11;padding: 10px;
                           text-align: center;
                           min-width: 232px;
-                          margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="color: blue;background: #EBEBE4;padding: 10px;
+                          margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="width: 50%;border-radius: 35px;;color: red;background: #003E11;padding: 10px;
                           text-align: center;
-                          width: 100%;
-                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <p>Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
+                          
+                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <br><p class="box-shadow">Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
                         </div>
                       </div>
                       <hr>
@@ -181,11 +181,11 @@
                   <button id="startExchange" class="btn btn-primary btn-sm" type="button"  @click="submit" v-else>Start Order</button>
                 </div>
                   
-                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
+                <div style="    border-radius: 20px; padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
                   <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
                 </div>
 
-                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
+                <div style="    border-radius: 20px; padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
                   <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
                 </div>
               
@@ -233,12 +233,12 @@
   </div>
 </section>  
 
-<section id="reserve" class="py-5">
+<section id="reserve" class="py-2">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="section box-shadow p-3">
-          <h3><strong>Reserve</strong></h3>
+          <h3 class="text-center"><strong><a class="btn btn-success btn-block" href="">Reserve</a></strong></h3>
             <div class="row">
               <?php
                 $this->db->join('currency', 'currency.currency_id = gateways.currency');
@@ -279,7 +279,7 @@
   </div>
 </section>
 
-<section id="todayprice" class="pb-5">
+<section id="todayprice" class="pb-2">
   <div class="container">
     <div class="row">
        <div class="col-md-12">
@@ -336,7 +336,7 @@
   </div>
 </section>
 
-<section id="sechange" class="pb-5">
+<section id="sechange" class="pb-2">
   <div class="container">
     <div id="put">
       <div class="section box-shadow p-3">
@@ -345,13 +345,13 @@
             <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
               <thead>
                 <tr>
-                  <th><?php echo 'username'; ?></th>
-                  <th><?php echo 'send'; ?></th>
-                  <th><?php echo 'receive'; ?></th>
-                  <th><?php echo 'Send amount'; ?></th>
-                  <th><?php echo 'Recive amount'; ?></th>
-                  <th class="al"><?php echo 'status'; ?></th>
-                  <th class="al">Date</th>
+                  <th><span class="btn btn-success"><?php echo 'username'; ?></span></th>
+                  <th><span class="btn btn-success"><?php echo 'send'; ?></span></th>
+                  <th><span class="btn btn-success"><?php echo 'receive'; ?></span></th>
+                  <th><span class="btn btn-success"><?php echo 'Send amount'; ?></span></th>
+                  <th><span class="btn btn-success"><?php echo 'Recive amount'; ?></span></th>
+                  <th class="al"><span class="btn btn-success"> <?php echo 'status'; ?></span></th>
+                  <th class="al"><span class="btn btn-success"> Date</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -419,7 +419,7 @@
     <div class="row">
       <div class="col-md-12 col-sm-12">
         <div class="section box-shadow p-3">
-          <h3 class="ml-1"><strong>Customers Feedback</strong></h3>
+        <h2 class="text-center"><button class="btn btn-success btn-block pl-0 ml-0">Customers Feedback</button></h2>
             <div class="owl-carousel">
                 <?php if(count($query)) { ?>
                   <?php foreach ($query as $key => $var): ?>

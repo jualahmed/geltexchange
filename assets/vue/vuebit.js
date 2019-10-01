@@ -58,9 +58,9 @@ const vm= new Vue({
 					$('#logins').modal('show');
 				}else{
 					var ses_uid = this.loginuser[0].id;
-					if(this.loginuser==0){
+					if(this.loginuser[0].final_verified==0){
 						console.log(this.loginuser)
-						this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href='https://usdbuysell.com/account/verification'>Verify now</a>");
+						this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href='http://amaderhelp.com/profile/verification'>Verify now</a>");
 					}else{
 						if(!this.receiverid){
 							this.error.push(this.gatewayreciveinfo.name + " Account is required");

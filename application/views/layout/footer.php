@@ -1,4 +1,4 @@
-    <footer id="footer" class="pt-4 box-shadow bg-light">
+    <footer id="footer" class="pt-2 box-shadow bg-light">
       <div class="footer">
         <div class="footer-bottom">
           <div class="container">
@@ -13,40 +13,30 @@
                     <p class="text-info"><?php $d=json_decode($setting->data); echo $d->siteabout; ?></p>
                   </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6">
-                  <div class="usefull-link">
-                      <h4>Useful Links</h4>
-                      <ul class="list-group">
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>">Home</a></li>
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/about">About Us</a></li>
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/affiliate">Affiliate</a></li>
-                      </ul>
-                  </div>
-                </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 ">
-                  <div class="usefull-link">
-                      <h4>Help &amp; Support</h4>
+                  <div class="usefull-link text-center box-shadow">
                       <ul class="list-group">
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/faq">FAQ</a></li>
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/contact">Contact</a></li>
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/termsofservices"> <span style="font-size: 15px;">Terms & Conditions</span></a></li>
-                          <li class="m-2"><a class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/privacypolicy" class="link gray4 hover-white dib v-mid hide-child"><span style="font-size: 15px;">Privacy Policy</span></a></li>
+                          <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;"  class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/faq">FAQ</a></li>
+                          <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;"  class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/contact">Contact</a></li>
+                          <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;"  class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/termsofservices"> <span style="font-size: 15px;">Terms & Conditions</span></a></li>
+                          <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;"  class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/privacypolicy" class="link gray4 hover-white dib v-mid hide-child"><span style="font-size: 15px;">Privacy Policy</span></a></li>
+                          <li class="m-2"><a style="border-radius: 47px;background: #044313;margin-left: -11px;" class="btn-danger p-1" style="margin: 10px;" href="<?php echo base_url(); ?>home/about">About Us</a></li>
                       </ul>
                   </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="col-xl-3 col-lg-3 col-md-6" style="background: #003E11;color: #fff!important">
                     <div class="contact-hoster">
-                        <h4>Contact Us</h4>
+                        <h4><a href="" class="btn btn-success btn-block">Contact Us</a></h4>
                         <ul class="list-group">
-                            <li class="text-info">Supportemail:<span class="text-lowercase"> <?php echo $d->supportemail; ?></span></li>
-                            <li class="text-info">Skype: <span><?php echo $d->skype; ?></span></li>
+                            <li style="color: #fff!important" class="text-info">Supportemail: <span class="text-lowercase"> <?php echo $d->supportemail; ?></span></li>
+                            <li style="color: #fff!important" class="text-info">Skype: <span><?php echo $d->skype; ?></span></li>
                         </ul>
                     </div>
                 </div>
               </div>
           </div>
       </div>
-    	<div class="container">
+    	<div class="container" style="background: #003E11;color: #fff!important">
         <div class="row">
           <div class="col-md-4">
             <a target="_blanck" href="<?php echo $d->facebook ?>" class="mr-2">

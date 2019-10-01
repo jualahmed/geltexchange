@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.scrollbar.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?v1.0.0">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/owlcarousel/assets/owl.theme.default.min.css">
 </head>
@@ -62,26 +63,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item <?php if($this->uri->segment(2)=='')echo 'active'; ?>">
-            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url(); ?>">Home</a>
-          </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='about')echo 'active'; ?>">
-            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/about' ?>">About</a>
+            <a style="border-radius: 15px;" class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/about' ?>">About</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='faq')echo 'active'; ?>">
-            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/faq' ?>">FAQ</a>
+            <a style="border-radius: 15px;" class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/faq' ?>">FAQ</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='tutorial')echo 'active'; ?>">
-            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/tutorial' ?>">Tutorial</a>
+            <a style="border-radius: 15px;" class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/tutorial' ?>">Tutorial</a>
           </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='affiliate')echo 'active'; ?>">
-            <a class="nav-link btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/affiliate' ?>">Affiliate</a>
-          </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='paymentproff')echo 'active'; ?>">
-            <a class="nav-link text-center btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/paymentproff' ?>">PaymentProof</a>
+          <li style="width: 47%" class="nav-item <?php if($this->uri->segment(2)=='paymentproff')echo 'active'; ?>">
+            <a style="border-radius: 15px;" class="nav-link text-center btn-danger m-1 text-white text-center" href="<?php echo base_url().'home/paymentproff' ?>">PaymentProof</a>
           </li>
           <li class="nav-item <?php if($this->uri->segment(2)=='contact')echo 'active'; ?>">
-            <a class="nav-link text-center btn-danger m-1 text-white" href="<?php echo base_url().'home/contact' ?>">Contact</a>
+            <a style="border-radius: 15px;" class="nav-link text-center btn-danger m-1 text-white" href="<?php echo base_url().'home/contact' ?>">Contact</a>
           </li>
         </ul>
         <div class="mr-0 dropdown">
@@ -156,8 +151,8 @@
   <?php echo form_open('auth/loginajax','id=login');?>
   <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+        <div class="modal-header text-center">
+          <h5 class="modal-title btn btn-success text-cente" id="exampleModalLabel">Sign in</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -194,8 +189,8 @@
                   </div>
   <?php endif; ?>
   <?php if ($forgot_password == false): ?>
-                  <?php echo anchor('home/forgerpassword', lang('auth_forgot_password')); ?><br />
-                  <?php echo anchor('home/regirter', "Register"); ?><br />
+                  <?php echo anchor('home/forgerpassword', lang('auth_forgot_password'),array('class' => 'btn btn-primary btn-social btn-facebook btn-flat')); ?><br /><br />
+                  <?php echo anchor('home/regirter', "Register",array('class' => 'btn btn-primary btn-social btn-facebook btn-flat')); ?><br />
   <?php endif; ?>
               </div>
         </div>

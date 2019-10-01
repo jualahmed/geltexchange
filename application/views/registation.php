@@ -2,7 +2,7 @@
     <div class="modal-dialog rmodal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-           <h3 class="box-title"><?php echo lang('users_create_user'); ?></h3>
+           <h3 class="box-title"><a href="" class="btn btn-success">Create User</a></h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -73,10 +73,10 @@
                                 <div class="col-md-12">
                                      <div class="form-group">
                                       <div class="group">
-                                        <label class="checkbox">
+                                        <label class="checkbox fffffffffffffff">
                                             <input name="terms" type="checkbox" value="1" id="term" required=""> I accept the <a href="<?php echo base_url().'home/termsofservices' ?>" target="_blank">Terms of service &amp;  </a><a href="<?php echo base_url().'home/privacypolicy' ?>" target="_blank">privacy policy</a>
                                         </label>
-                                        <label class="checkbox">
+                                        <label class="checkbox fffffffffffffff">
                                             <input name="terms" type="checkbox" value="1" id="term" required=""> আমি এই সার্ভিস অনলাইন জুয়ার কাজে ব্যবহার করবো না এবং আমি মানতে রাজি সাইটের শর্তাবলি
                                         </label>
                                       </div>
@@ -91,10 +91,10 @@
         </div>
         <div class="modal-footer">
           <?php if ($forgot_password == false): ?>
-              <?php echo anchor('home/forgerpassword', lang('auth_forgot_password')); ?><br />
+              <?php echo anchor('home/forgerpassword', lang('auth_forgot_password'),array('class' => 'btn btn-lg btn-primary btn-social btn-facebook btn-flat')); ?><br />
           <?php endif; ?>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <?php echo form_button(array('type' => 'submit', 'class' => 'btn btn-primary btn-flat', 'content' => "Submit")); ?>
+          <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+          <?php echo form_button(array('type' => 'submit', 'class' => 'btn btn-primary btn-lg btn-flat', 'content' => "Submit")); ?>
         </div>
       </div>
     </div>

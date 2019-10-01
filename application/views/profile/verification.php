@@ -47,19 +47,19 @@
                           </form>
                          <?php endif ?>
                         <hr>
-                        <h3>Mobile verification</h3>
-                        <hr>
+                        <!-- <h3>Mobile verification</h3> -->
+                        <!-- <hr> -->
                         <?php if ($users_info->phone_verified): ?>
-                          <p><span class="text text-success"><i class="fa fa-check"></i> Your Mobile Number was verified!</span></p>
+                          <!-- <p><span class="text text-success"><i class="fa fa-check"></i> Your Mobile Number was verified!</span></p> -->
                         <?php else: ?>
-                          <form action="" method="POST">
+                        <!--   <form action="" method="POST">
                             <div class="form-group">
                               <label><?php echo "enter_sms_code" ?></label>
                               <input type="text" class="form-control" name="sms_code">
                             </div>
                             <button type="submit" class="btn btn-primary btn-sm" name="bit_send_sms_code"><i class="fa fa-reply"></i> <?php echo "Verify Now"; ?></button> 
                             <button type="submit" class="btn btn-primary btn-sm" name="bit_verify_sms_code"><i class="fa fa-check"></i> <?php echo "btn_verify_sms_code"; ?></button>
-                          </form>
+                          </form> -->
                         <?php endif ?>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
         <div class="main-content">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section">
+                    <div class="section box-shadow p-3">
                         <div class="row">
                             <div class="col-md-12">
                                 <h3>Contact</h3>
@@ -12,10 +12,12 @@
                                     <div class="col-md-12"></div>
                                     <div class="col-md-3"><b><i class="fa fa-skype"></i> Skype</b>
                                       <?php $d=json_decode($setting->data); ?>
-                                        <br> Mobile Number: <?php echo $d->contactnumber ?> / Facebook:
-                                        <span class="text-lowercase">
+                                        <br> Mobile Number: <?php echo $d->contactnumber ?> <br> Facebook: <br>
+                                        <div style="overflow: scroll;">
+                                            <b class="text-lowercase" style="width: 30px">
                                           <?php echo $d->facebook ?>
-                                        </span>
+                                        </b>
+                                        </div>
                                         <br>
                                         <br> <b><i class="fa fa-whatsapp"></i> Whatsapp</b>
                                         <br> <?php echo $d->contactnumber ?>
