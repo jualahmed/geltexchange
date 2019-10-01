@@ -33,6 +33,13 @@ class Home extends Public_Controller {
     $this->__randerview('contact', $this->data);
   }
 
+  public function recerve($value='',$adasd)
+  { 
+    $this->db->where('id', $adasd);
+    $ddddddd=$this->db->get('gateways')->row();
+    echo json_encode($ddddddd);
+  }
+
   public function paymentproff($value='')
   {
     $this->load->library("pagination");

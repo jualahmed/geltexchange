@@ -291,22 +291,21 @@ const vm= new Vue({
 			this.rate_from=data;
 		},
 		bit_reserve() {
-			var url = $("#url").val();
 			var self=this;
 			var gateway_send = this.send
 			var gateway_receive =this.receive;
-			var data_url = url + "requests/bit_reserve.php?gateway_send="+gateway_send+"&gateway_receive="+gateway_receive;
-			// $.ajax({
-			// 	type: "GET",
-			// 	url: data_url,
-			// 	dataType: "html",
-			// 	success: function (data) {
-			// 		var data= JSON.parse(data)
-			// 		self.reserve=data.reserve;
-			// 	}
-			// });
+			var data_url = base_url+"home/recerve/"+gateway_send+"/"+gateway_receive;
+			$.ajax({
+				type: "GET",
+				url: data_url,
+				dataType: "html",
+				success: function (data) {
+					console.log(data)
+					var data= JSON.parse(data)
+					self.reserve=data.reserve;
+				}
+			});
 		}
-
 	},
 	watch:{
 		rate_to:function (val) {
