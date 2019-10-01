@@ -149,14 +149,14 @@
                              <p style="text-align: center;font-size: 12px;">Reserve: {{ reserve }}</p>
                           </div>
                         </div>
-                        <div class="col-md-12" style="color: red;text-align: center;width: 203px!important;">
-                          <div v-if="currency_to=='Wallet'" style="width: 203px!important;color: blue;background: #003E11;padding: 10px;
+                        <div class="col-md-12" style="color: red;text-align: center;">
+                          <div v-if="currency_to=='Wallet'" style="width: 220px!important;color: blue;background: #003E11;padding: 10px;
                           text-align: center;
                           min-width: 232px;
                           margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="width: 203px;border-radius: 35px;;color: red;background: #003E11;padding: 10px;
                           text-align: center;
                           
-                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <br><p style="min-width: 206px;" class="box-shadow">Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
+                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <br><p style="min-width: 320px;" class="box-shadow">Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
                         </div>
                       </div>
                       <hr>
