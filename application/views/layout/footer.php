@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6" style="background: #003E11;color: #fff!important">
                     <div class="contact-hoster">
-                        <h4><a href="" class="btn btn-success btn-block">Contact Us</a></h4>
+                        <h4><a href="" class="btn btn-success btn-block text-white">Contact Us</a></h4>
                         <ul class="list-group">
                             <li style="color: #fff!important" class="text-info">Supportemail: <span class="text-lowercase"> <?php echo $d->supportemail; ?></span></li>
                             <li style="color: #fff!important" class="text-info">Skype: <span><?php echo $d->skype; ?></span></li>
