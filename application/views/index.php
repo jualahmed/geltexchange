@@ -149,14 +149,14 @@
                              <p style="text-align: center;font-size: 12px;">Reserve: {{ reserve }}</p>
                           </div>
                         </div>
-                        <div class="col-md-12" style="color: red;text-align: center;width: 50%!important;">
-                          <div v-if="currency_to=='Wallet'" style="width: 50%!important;color: blue;background: #003E11;padding: 10px;
+                        <div class="col-md-12" style="color: red;text-align: center;width: 203px!important;">
+                          <div v-if="currency_to=='Wallet'" style="width: 203px!important;color: blue;background: #003E11;padding: 10px;
                           text-align: center;
                           min-width: 232px;
-                          margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="width: 50%;border-radius: 35px;;color: red;background: #003E11;padding: 10px;
+                          margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="width: 203px;border-radius: 35px;;color: red;background: #003E11;padding: 10px;
                           text-align: center;
                           
-                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <br><p class="box-shadow">Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
+                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <br><p style="min-width: 206px;" class="box-shadow">Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
                         </div>
                       </div>
                       <hr>
@@ -181,11 +181,11 @@
                   <button id="startExchange" class="btn btn-primary btn-sm" type="button"  @click="submit" v-else>Start Order</button>
                 </div>
                   
-                <div style="    border-radius: 20px; padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
+                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
                   <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
                 </div>
 
-                <div style="    border-radius: 20px; padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
+                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
                   <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
                 </div>
               
