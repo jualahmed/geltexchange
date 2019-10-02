@@ -1,12 +1,12 @@
 <section class="my-3 py-3">
     <div class="container">
-        <div class="main-content" style="min-height: 400px;">
+        <div class="main-content box-shadow p-3" style="min-height: 400px;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section">
                         <div class="row">
                           <div class="col-md-12">
-                            <h2 class="text-center pb-3"><b>Privacy Policy</b></h2>
+                            <h2 class="text-center pb-3"><b><a href="" class="btn btn-success">Privacy Policy</a></b></h2>
                             <?php
                               $this->db->where('id', 4);
                               $d=$this->db->get('settings')->row();
