@@ -1,12 +1,12 @@
 <section class="py-3 my-3">
-  <div class="container">
+  <div class="container box-shadow p-3">
     <div class="faq-page" style="min-height: 300px">
       <div class="accordion">
           <div id="accordion" class="panel-group">
               <h2 class="title">Tutorials</h2>
           </div>
          <?php foreach ($info as $var): ?>
-            <div class="panel panel-default panel-faq">
+            <div class="panel panel-default panel-faq box-shadow p-2">
                 <div class="panel-heading">
                   <a data-toggle="collapse" data-parent="#accordion" href="#faq-<?php echo $var->id ?>">
                   <p class="panel-title">
