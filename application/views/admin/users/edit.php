@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <?php echo form_input($password_confirm);?>
                                             </div>
                                         </div>
-                                        <?php $user = $this->ion_auth->user($this->ion_auth->user()->row()->id)->row(); ?>
+                                       
                                          <div class="form-group">
                                             <div class="col-md-2"></div>
                                             <div class="col-sm-2">

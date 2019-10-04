@@ -142,9 +142,12 @@ class Users extends Admin_Controller {
 		$this->template->admin_render('admin/users/delete', $this->data);
 	}
 
-	public function edit($id)
+
+	public function edit($id='')
 	{
 		$id = (int) $id;
+
+    $this->data['user']=$this->ion_auth->user($id)->row();
 
 		if ( ! $this->ion_auth->logged_in() OR ( ! $this->ion_auth->is_admin() && ! ($this->ion_auth->user()->row()->id == $id)))
 		{
@@ -164,15 +167,10 @@ class Users extends Admin_Controller {
 		$this->form_validation->set_rules('first_name', 'lang:edit_user_validation_fname_label', 'required');
 		$this->form_validation->set_rules('last_name', 'lang:edit_user_validation_lname_label', 'required');
 		$this->form_validation->set_rules('phone', 'lang:edit_user_validation_phone_label', 'required');
-		$this->form_validation->set_rules('company', 'lang:edit_user_validation_company_label', 'required');
 
 		if (isset($_POST) && ! empty($_POST))
 		{
-			if ($this->_valid_csrf_nonce() === FALSE OR $id != $this->input->post('id'))
-			{
-				show_error($this->lang->line('error_csrf'));
-			}
-
+			
 			if ($this->input->post('password'))
 			{
 				$this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
@@ -212,7 +210,7 @@ class Users extends Admin_Controller {
 					}
 				}
 
-				if($this->ion_auth->update($user->id, $data))
+				if($this->ion_auth->update($id, $data))
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
 
@@ -296,6 +294,7 @@ class Users extends Admin_Controller {
 
 		$this->template->admin_render('admin/users/edit', $this->data);
 	}
+
 
 	public function activate($id, $code = FALSE)
 	{
