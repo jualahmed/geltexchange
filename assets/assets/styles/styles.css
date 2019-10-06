@@ -1,0 +1,18 @@
+@import url('dependancy/bootstrap.min.css');
+/* global module */
+@import url('globalcssmodule/__var');
+@import url('globalcssmodule/__typography');
+@import url('globalcssmodule/__btn');
+/* section module */
+@import url('sectioncssmodule/__header');
+@import url('sectioncssmodule/__todayrate');
+@import url('sectioncssmodule/__rating');
+@import url('sectioncssmodule/__startsection');
+@import url('sectioncssmodule/__footer');
+@import url('sectioncssmodule/__contac');
+@import url('sectioncssmodule/__register');
+@import url('sectioncssmodule/__allreview');
+@import url('sectioncssmodule/__trickexchange');
+@import url('sectioncssmodule/__profilesetting');
+@import url('sectioncssmodule/__exchange');
+

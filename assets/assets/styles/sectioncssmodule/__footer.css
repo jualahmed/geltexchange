@@ -1,0 +1,28 @@
+#footer{
+	padding: 50px 30px;
+	background: $bl;
+	min-height: 300px;
+	.lists{
+		border-bottom:2px dashed #fff;
+		a{
+			padding: 10px;
+			color: #fff!important;
+			padding-left: 0px;
+			padding: 10px 38px 26px 0;
+		}
+	}
+	
+	@media (max-width: 768px){
+		.footerContent{
+			grid-template-columns: auto auto;
+		}
+		.logoddd{
+			width: 183px;
+		}
+	}
+	@media (max-width: 500px){
+		.footerContent{
+			grid-template-columns: auto;
+		}
+	}
+}

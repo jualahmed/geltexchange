@@ -1,0 +1,24 @@
+#startsection{
+	background: url('../img/startbg.jpg');
+	background-repeat: no-repeat; 
+	background-size: 100% 120%;
+	min-height: 320px;
+	opacity: .6;
+}
+
+#startsections{
+	position: relative;
+	.startcontent{
+		position: absolute;
+		top: 30%;
+		width: 50%;
+		left: 25%;
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	h3{
+		font-size: 23px;
+	}
+}

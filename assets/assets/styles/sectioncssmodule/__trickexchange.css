@@ -1,0 +1,13 @@
+.thisfrom{
+	margin: auto;
+    width: 388px;
+    input{
+    	width: 310px;
+    	font-weight: 700;
+    	padding: 29px 31px;
+    }
+}
+
+.form-inline{
+	justify-content: center;
+}
