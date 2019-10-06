@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10">
-           <img class="logoddd" src="http://localhost/exchange/assets/temp/img/logo1.png" alt="" width="350px">
+           <img class="logoddd" src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt="" width="350px">
            <div class="lists">
               <a href="#">EHT</a>
               <a href="#">Exchange</a>
@@ -18,21 +18,25 @@
         </div>
         <div class="col-md-2">
           <h4 class="text-white">Follow Us</h4>
-          <img src="http://localhost/exchange/assets/temp/img/images/allinco_05.png" alt="" width="40px">
-          <img src="http://localhost/exchange/assets/temp/img/images/allinco_07.png" alt="" width="40px">
+          <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_05.png" alt="" width="40px">
+          <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_07.png" alt="" width="40px">
         </div>
       </div>
     </div>
   </footer>
-
+  <script>
+    var base_url="<?php echo base_url() ?>";
+  </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="http://localhost/exchange/assets/temp/scripts/owl.carousel.min.js"></script>
-  <script src="http://localhost/exchange/assets/temp/scripts/App.js"></script>
-  <?php if (isset($vuecomp)): ?>
-    <script src="<?php echo base_url(); ?>assets/vue/vuecom/<?php echo $vuecomp ?>"></script>
-  <?php endif ?>
+  <script src="<?php echo base_url() ?>assets/temp/scripts/owl.carousel.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/temp/scripts/App.js"></script>
+  <script src="<?php echo base_url() ?>assets/temp/scripts/vue.js"></script>
+  <script src="<?php echo base_url() ?>assets/temp/scripts/owl.carousel.min.js"></script>
+  <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
+  <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
+  <script src="<?php echo base_url() ?>assets/temp/scripts/vuebit.js"></script>
   <script>
     $('.owl-carousel').owlCarousel({
         loop:true,

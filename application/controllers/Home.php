@@ -28,6 +28,11 @@ class Home extends Public_Controller {
     $this->__randerview('index', $this->data);
 	}
 
+  public function exchange()
+  { 
+    $this->__randerview1('exchange', $this->data);
+  }
+
   public function contact($value='')
   {
     $this->__randerview('contact', $this->data);
@@ -116,7 +121,16 @@ class Home extends Public_Controller {
   public function regirter($value='')
   {
     if(!$this->ion_auth->logged_in()){
-     $this->__randerview('registation', $this->data);
+     $this->load->view('registation', $this->data);
+    }else{
+      redirect('home','refresh');
+    }
+  }
+
+  public function login($value='')
+  {
+    if(!$this->ion_auth->logged_in()){
+     $this->load->view('login', $this->data);
     }else{
       redirect('home','refresh');
     }

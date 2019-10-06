@@ -1,8 +1,7 @@
 
-
 <section id="todayrate" class="py-5">
   <div class="container">
-    <h3 class="text-center pb-4"><button class="btn btn-lg thisbtn color11 text-white ">Today USD Rate:</button></h3>
+    <h3 class="text-center pb-4"><button class="btn btn-lg thisbtn text-white">Today USD Rate</button></h3>
     <div class="row">
       <div class="col-md-4">
         <div class="single-box py-4 text-center">
@@ -110,7 +109,7 @@
  <div id="startsection">
   </div> 
    <div class="startcontent">
-      <h6>Ready to go Beyond? Start today with our free payment solution</h6>
+      <h3>Ready to go Beyond? Start today with our free payment solution</h3>
       <div>
         <a href="" class="px-3 m-3 btn btn-outline-primary">Login</a>
           <a href="" class="btn btn-primary thisbtn">Register</a>
