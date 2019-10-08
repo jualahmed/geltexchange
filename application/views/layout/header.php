@@ -48,36 +48,62 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto marginh text-center">
-          <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url() ?>">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item <?php if($this->uri->segment(2)=='')echo 'active'; ?>">
+            <a class="nav-link" href="<?php echo base_url() ?>home/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url().'home/exchange' ?>">Exchange</a>
+          <li class="nav-item <?php if($this->uri->segment(2)=='exchange')echo 'active'; ?>">
+            <a class="nav-link" href="<?php echo base_url() ?>home/exchange">Exchange</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="contac.html">Contect</a>
+          <li class="nav-item <?php if($this->uri->segment(2)=='contact') echo 'active'; ?> ">
+            <a class="nav-link" href="<?php echo base_url() ?>home/contact">Contect</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#">Review</a>
+          <li class="nav-item <?php if($this->uri->segment(2)=='review')echo 'active'; ?> ">
+            <a class="nav-link" href="<?php echo base_url() ?>home/review">Review</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#">FAQ</a>
+          <li class="nav-item <?php if($this->uri->segment(2)=='faq')echo 'active'; ?> ">
+            <a class="nav-link" href="<?php echo base_url() ?>home/faq">FAQ</a>
           </li>
         </ul>
+        <?php if (!$this->ion_auth->logged_in()): ?>
         <div>
-          <a href="" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
+          <a href="<?php echo base_url() ?>home/login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
           <a href="<?php echo base_url() ?>home/regirter">Register</a>
         </div>
+        <?php else: ?>
+          <div class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> <?php echo $user_login['username'] ?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?php echo base_url() ?>profile">
+                  <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url() ?>profile/myexchanges"><img src="<?php echo base_url() ?>assets/temp/img/images/eh.png" width="25px" class="rounded-circle" alt=""> Exchange History</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url() ?>profile/referrals"><img src="<?php echo base_url() ?>assets/temp/img/images/ap.png" width="25px" class="rounded-circle" alt=""> Affiliate Program </a>
+                 <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url() ?>profile/myexchanges"><img src="<?php echo base_url() ?>assets/temp/img/images/about.png" width="25px" class="rounded-circle" alt=""> About </a>
+                 <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url() ?>auth/logout"><img src="<?php echo base_url() ?>assets/temp/img/images/lw.png" width="25px" class="rounded-circle" alt=""> Logout </a>
+              </div>
+          </div>
+        <?php endif ?>
       </div>
     </nav>
-    <div class="content ">
-      <marquee class="text-white btn g-btn btn-sm border-r15">NOTE:Your Registered email and number must be verified then your account automatically actavited and you can set up the exchange, you do not have to pay the transfer fee if you buy above $20</marquee>
+    <div class="content">
+      <?php
+        $this->db->where('id', 1);
+        $d=$this->db->get('settings')->row();
+        $dd=json_decode($d->data);
+      ?>
+      <marquee class="text-white btn g-btn btn-sm border-r15"><?php echo($dd->notice); ?></marquee>
       <h1 class="text-white py-2">International currency exchange</h1>
       <ul class="text-white pb-2">
         <li class="py-1">Quentity of service if our advantage</li>
         <li class="py-1">Working 24 hours a day 24/7</li>
       </ul>
-      <a href="" class="btn btn-sm btn-primary px-3 p-2">Exchange</a>
+      <a href="<?php echo base_url() ?>home/exchange" class="btn btn-sm btn-primary px-3 p-2">Exchange</a>
     </div>
   </div>
 </header>

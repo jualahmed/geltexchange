@@ -1,0 +1,31 @@
+.exchanges{
+	.bg-dark{
+		background: #03050C!important;
+		color: #F3F10B!important;
+		font-weight: 700;
+	}
+	.tbtn{
+		color: black!important;
+		font-weight: 700;
+	}
+	.bg-light{
+		background:#032A5C!important;
+		opacity: .8;
+		font-weight: 700;
+		border-radius: 0px 25px 25px 0px;
+	}
+	table,tr,td{
+		border: 0px!important;
+		color: #F3F10B!important;
+		font-weight: 700;
+	}
+	.bordertop{
+		border-top: 2px solid #fff!important;
+	}
+	p{
+		color: #F3F10B!important;
+		text-align: center;
+		    font-size: .8rem;
+		    font-weight: 700;
+	}
+}

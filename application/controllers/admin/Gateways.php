@@ -78,7 +78,7 @@ class Gateways extends Admin_Controller {
     if ($this->form_validation->run() == TRUE)
     { 
       $file_name='';
-      $config['upload_path']          = './assets/icon';
+      $config['upload_path']          = './assets/temp/img/gicon';
       $config['allowed_types']        = 'gif|jpg|png';
       $config['max_size']             = 100;
       $config['max_width']            = 1024;
@@ -91,7 +91,7 @@ class Gateways extends Admin_Controller {
       else
       {
        $upload_data = $this->upload->data();
-       $file_name = 'assets/icon/'.$upload_data['file_name'];
+       $file_name = 'assets/temp/img/gicon/'.$upload_data['file_name'];
       }
 
       $l=$this->input->post('allow_send');
@@ -165,7 +165,7 @@ class Gateways extends Admin_Controller {
     $this->form_validation->set_rules('t_message', 't_message');
     if ($this->form_validation->run() == TRUE)
     { 
-      $config['upload_path']          = './assets/icon';
+      $config['upload_path']          = './assets/temp/img/gicon';
       $config['allowed_types']        = 'gif|jpg|png';
       $config['max_size']             = 1000;
       $config['max_width']            = 2024;
@@ -179,7 +179,7 @@ class Gateways extends Admin_Controller {
       else
       {
        $upload_data = $this->upload->data();
-       $file_name = 'assets/icon/'.$upload_data['file_name'];
+       $file_name = 'assets/temp/img/gicon/'.$upload_data['file_name'];
       }
       $l=$this->input->post('allow_send');
       if($l==NULL){

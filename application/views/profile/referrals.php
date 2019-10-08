@@ -1,19 +1,54 @@
-<section id="main" class="clearfix myads-page" style="min-height: 460px;">
+
+<section id="profilesetting" class="py-5">
+  <div class="bg-light">
     <div class="container">
-        <div class="ads-info" style="display: block;">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="my-ads section" style="display: block;">
-                        <h3>Referrals</h3>
-                        <hr>
-                        <div class="input-group"><span id="basic-addon1" class="input-group-addon">Your referral link</span>
-                            <input type="text" value="https://usdbuysell.com/ref/2781" onclick="this.select();" class="form-control">
-                        </div>
-                        <br>
-                        <div class="alert alert-info"><i class="fa fa-info-circle"></i> Still no have exchanges from your referral link.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <h3 class="p-2 text-info">Referral Link</h3>
     </div>
+  </div>
+  <div class="container pt-3">
+    <div class="pb-4">
+       <form class="form-inline">
+        <input class="form-control w-75 py-3" type="search" value="http://localhost:3000/referlink.html" placeholder="Your Exchanges id" aria-label="Search">
+        <button class="btn my-2 py-2 g-btn thisbtn1 ml" type="submit">Copy</button>
+      </form>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered">
+        <thead>
+          <th>id</th>
+          <th>Login</th>
+          <th>Profit</th>
+          <th>Registration</th>
+          <th>Where did it from</th>
+          <th>Long</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+          </tr>
+           <tr>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+          </tr>
+           <tr>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+            <td>123456789</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>

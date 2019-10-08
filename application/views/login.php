@@ -21,24 +21,27 @@
 <section id="register">
   <div class="contentr bg-white">
     <h4 class="thistext mt-5 pt-3">Account Login</h4>
-    <form action="" class="m-5">
+    <form action="<?php echo base_url() ?>auth/loginajax" class="m-5" id="login">
       <div class="row">
         <div class="col-md-12 my-2">
-          <input type="text" placeholder="Enter First Name" class="form-control">
+          <input type="text" placeholder="Enter Email" name="identity" class="form-control text-none" id="identity">
         </div>
         <div class="col-md-12 my-2">
-          <input type="text" placeholder="Enter Last Name" class="form-control">
+          <input type="text" placeholder="Enter Passsword" name="password" class="form-control text-none" id="password">
         </div>
+        <div id="message" class="text-center text-danger"></div>
         <div class="col-md-12 my-2">
           <input type="submit" class="btn thisbtn text-white py-2 px-5 roundeddd" value="Sign up">
         </div>
         <div class="col-md-12">
-          <p><a href="" class="thistext">Forget Passsword</a> | <a href="" class="thistext">Create an account</a></p>
+          <p><a href="<?php echo base_url() ?>home/forgerpassword" class="thistext">Forget Passsword</a> | <a href="<?php echo base_url() ?>home/regirter" class="thistext">Create an account</a></p>
         </div>
       </div>
     </form>
   </div>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="<?php echo base_url() ?>assets/temp/scripts/vuecom/loginregister.js"></script>
 </body>
 </html>

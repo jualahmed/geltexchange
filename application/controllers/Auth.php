@@ -156,6 +156,11 @@ class Auth extends MY_Controller {
         'rules' => 'required'
       ),
       array(
+        'field' => 'username',
+        'label' => 'username',
+        'rules' => 'required|is_unique[users.username]'
+      ),
+      array(
         'field' => 'email',
         'label' => 'email',
         'rules' => 'required|is_unique[users.email]'
@@ -163,6 +168,11 @@ class Auth extends MY_Controller {
       array(
         'field' => 'phone',
         'label' => 'phone',
+        'rules' => 'required'
+      ),
+      array(
+        'field' => 'address',
+        'label' => 'address',
         'rules' => 'required'
       ),
       array(
@@ -177,11 +187,11 @@ class Auth extends MY_Controller {
       )
     );
     $this->form_validation->set_rules($rules);
-    $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+    $this->form_validation->set_error_delimiters('<p class="text-danger text-left">', '</p>');
        if ($this->form_validation->run() == TRUE)
     {
       $jsonData['check'] = true;
-      $username = strtolower($this->input->post('first_name').$this->input->post('last_name'));
+      $username = strtolower($this->input->post('username'));
       $username = str_replace(' ', '', $username);
       $email    = strtolower($this->input->post('email'));
       $password = $this->input->post('passwords');
@@ -190,6 +200,7 @@ class Auth extends MY_Controller {
         'first_name' => $this->input->post('first_name'),
         'last_name'  => $this->input->post('last_name'),
         'phone'      => $this->input->post('phone'),
+        'address'      => $this->input->post('address'),
       );
       if ($this->form_validation->run() == TRUE && $this->ion_auth->register($username, $password, $email, $additional_data))
       {

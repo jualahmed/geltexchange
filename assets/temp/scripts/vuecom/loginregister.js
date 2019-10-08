@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
             dataType: 'json',
             success: function (res){
                 if (res.check == true) {
-                    $('#login').find('div.form-group').removeClass('has-error').removeClass('has-success');
+                    $('#login').find('div.form-group').removeClass('border border-danger').removeClass('has-success');
                     $('#login').find('p.text-danger').remove();
                     if (res.success == true) {
                         $('#login')[0].reset();
@@ -21,14 +21,15 @@ jQuery(document).ready(function($) {
                 }else {
                     $.each(res.errors, function (key, value){
                         var el = $('#'+key);
-                        el.removeClass('has-error').addClass(value.length > 0 ? 'has-error':'has-success').siblings('p.text-danger').remove();
+                        el.removeClass('border border-danger').addClass(value.length > 0 ? 'border border-danger':'has-success').siblings('p.text-danger').remove();
                         el.after(value);
                     });
 
 
                 }
              	if(res.errors.resmessage){
-                	$('.message').html(res.errors.resmessage);
+                console.log(res)
+                	$('#message').html("Email or Password Wrong");
                 }
             }
         });
@@ -48,7 +49,7 @@ jQuery(document).ready(function($) {
             success: function (res){
                 console.log(res);
                 if (res.check == true) {
-                    $('#resisterform').find('div.form-group').removeClass('has-error').removeClass('has-success');
+                    $('#resisterform').find('div.form-group').removeClass('border border-danger').removeClass('has-success');
                     $('#resisterform').find('p.text-danger').remove();
                     if (res.success == true) {
                         setTimeout(() => {
@@ -59,7 +60,7 @@ jQuery(document).ready(function($) {
                 }else {
                     $.each(res.errors, function (key, value){
                         var el = $('#'+key);
-                        el.removeClass('has-error').addClass(value.length > 0 ? 'has-error':'has-success').siblings('p.text-danger').remove();
+                        el.removeClass('border border-danger').addClass(value.length > 0 ? 'border border-danger':'has-success').siblings('p.text-danger').remove();
                         el.after(value);
                     });
                 }

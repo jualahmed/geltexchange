@@ -16,3 +16,6 @@
 @import url('sectioncssmodule/__profilesetting');
 @import url('sectioncssmodule/__exchange');
 
+input{
+	text-transform: none!important;
+}

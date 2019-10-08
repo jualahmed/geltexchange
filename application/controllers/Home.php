@@ -30,12 +30,17 @@ class Home extends Public_Controller {
 
   public function exchange()
   { 
-    $this->__randerview1('exchange', $this->data);
+    $this->load->view('exchange', $this->data);
   }
 
   public function contact($value='')
   {
-    $this->__randerview('contact', $this->data);
+    $this->__randerview1('contact', $this->data);
+  }
+
+  public function review($value='')
+  {
+    $this->__randerview1('allfeedback', $this->data);
   }
 
   public function recerve($value='',$adasd)
@@ -100,7 +105,7 @@ class Home extends Public_Controller {
 
   public function about($value='')
   {
-    $this->__randerview('about', $this->data);
+    $this->__randerview1('about', $this->data);
   }
 
   public function testimonials($value='')
@@ -110,7 +115,7 @@ class Home extends Public_Controller {
 
   public function termsofservices($value='')
   {
-    $this->__randerview('termsofservices', $this->data);
+    $this->__randerview1('termsofservices', $this->data);
   }
 
   public function privacypolicy($value='')
@@ -176,7 +181,7 @@ class Home extends Public_Controller {
   }
 
   // forgot password
-  function forgerpassword()
+  public function forgerpassword()
   {
     // setting validation rules by checking wheather identity is username or email
     if($this->config->item('identity', 'ion_auth') != 'email' )
@@ -348,6 +353,22 @@ class Home extends Public_Controller {
     {
       return TRUE;
     }
+  }
+
+  public function getsend($value='')
+  {
+    $this->db->where('allow_send', 1);
+    $this->db->join('currency', 'currency.currency_id = gateways.currency');
+    $data=$this->db->get('gateways')->result();
+    echo json_encode($data);
+  }
+
+  public function getrecive($value='')
+  {
+    $this->db->where('allow_receive', 1);
+    $this->db->join('currency', 'currency.currency_id = gateways.currency');
+    $data=$this->db->get('gateways')->result();
+    echo json_encode($data);
   }
 
 

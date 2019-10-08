@@ -1,57 +1,200 @@
-<section id="" class="py-4 my-4">                
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <div class="section box-shadow p-3">
-          <h3 class="ml-1"><strong>Customers Feedback</strong></h3>
-            <div class="row">
-                <?php if(count($results)) { ?>
-                  <?php foreach ($results as $key => $var): ?>
-                      <div class="col-md-4">
-                        <div class="ad-info box-shadow m-1 p-3 text-center">
-                        <div class="text-center my-3">
-                          <?php if($var->profile!=null){ ?>
-                            <img class="rounded-circle d-inline" style="height: 150px;width: 150px;" src="<?php echo base_url()?>assets/images/<?php echo $var->profile; ?>" alt="ssssss">
-                          <?php }else{ ?>
-                            <img class="rounded-circle d-inline" style="height: 150px;width: 150px;" src="<?php echo base_url()?>assets/images/avatar.jpg" alt="ssssss">
-                          <?php } ?>
-                        </div>
-                        <?php if($var->type == "1") { ?>
-                        <h3 class="item-price">
-                          <span class="btn btn-sm btn-success"><i class="fa fa-smile-o"></i> positive</span>
-                        </h3>
-                        <?php } elseif($var->type == "2") { ?>
-                        <h3 class="item-price">
-                          <span class="badge badge-warning">
-                            <i class="fa fa-meh-o"></i> neutral</span>
-                          </h3>
-                        
-                        <?php } elseif($var->type == "3") { ?>
-                        <h3 class="item-price"><span class="btn btn-sm btn-danger">
-                          <i class="fa fa-frown-o"></i> negative</span>
-                        </h3>
-                        
-                        <?php } else { ?>
-                        <h3 class="item-price"><span class="btn btn-sm btn-light"><i class="fa fa-meh-o"></i> Unknown</span></h3>
-                        
-                        <?php } ?>
-                        <h5 class="item-title" style="font-size: 15px;"><?php echo $var->content; ?></h5>
-                        <div class="item-cat">
-                          <span><?php echo $var->username ?></span> 
-                          <p><span><?php echo $var->date ?></span> </p>
-                        </div>
-                        </div>
-                      </div><!-- ad-info -->
-                <?php endforeach ?>
-                <?php } else { ?>
-                  <h2> no_have_testimonials </h2>
-              <?php   }
-              ?>
-            </div>
-            <div class="my-4 text-right"><?php echo $this->pagination->create_links(); ?></div>
-        </div>
 
+
+<section id="allreview" class="py-5">
+  <div class="container">
+    <div class="owl-carousel owl-theme">
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Lorannel, e valprop e valprop your property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt="">
+        </div>
+          <p>Safety is integrated within Loram’s core  valp s core  valpro roperty and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vaur property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+    </div>
+    <div class="owl-carousel owl-theme">
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Lorannel, e valprop e valprop your property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt="">
+        </div>
+          <p>Safety is integrated within Loram’s core  valp s core  valpro roperty and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vaur property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+        <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+        <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
+      </div>
+      <div class="content m-3 p-3 single-review bg-white text-center">
+        <div class="text-center">
+         <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle w-50 m-auto" alt=""></div>
+          <p>Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.</p>
       </div>
     </div>
   </div>
 </section>
+
+<section id="todayrate" class="py-5">
+  <div class="container">
+    <h3 class="text-center pb-4"><button class="btn btn-lg thisbtn text-white">Today USD Rate</button></h3>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="single-box py-4 text-center">
+          <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+           <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_02.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+           <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_03.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="single-box py-4 text-center">
+          <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_04.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+           <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_05.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+           <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="single-box py-4 text-center">
+          <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+           <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_02.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+           <div class="singlegetway">
+            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_03.png" alt="" width="50px">
+            <p>buy:25 USD,sale:30 USD</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rating" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="right col-md-8 pl-4">
+        <div class="ml-5">
+          <h3 class="text-white">Our Inovaton are chaning the world</h3>
+          <img src="<?php echo base_url() ?>assets/temp/img/starsretins.png" alt="" width="250px;">
+          <br>
+          <br>
+          <a href="" class="btn btn-lg thisbtn text-white">Place your revirw Sumbit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="startsections">
+ <div id="startsection">
+  </div> 
+   <div class="startcontent">
+      <h3>Ready to go Beyond? Start today with our free payment solution</h3>
+      <div>
+        <a href="" class="px-3 m-3 btn btn-outline-primary">Login</a>
+          <a href="" class="btn btn-primary thisbtn">Register</a>
+      </div>
+  </div>
+</section>
+
+<section id="service" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-0 col-lg-1"></div>
+      <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="80px">
+      </div>
+       <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_02.png" alt="" width="80px">
+      </div>
+       <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_03.png" alt="" width="80px">
+      </div>
+      <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_04.png" alt="" width="80px">
+      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_16.png" alt="" width="80px">
+      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_06.png" alt="" width="80px">
+      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_13.png" alt="" width="80px">
+      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_15.png" alt="" width="80px">
+      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_09.png" alt="" width="80px">
+      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
+        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_11.png" alt="" width="80px">
+      </div>
+      <div class="col-md-2 col-lg-1"></div>
+    </div>
+  </div>
+</section>
+  

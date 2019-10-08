@@ -138,6 +138,6 @@ class Public_Controller extends MY_Controller
   {
     $this->load->view('layout/header1',$data);
     $this->load->view($viewname, $data);
-    $this->load->view('layout/footer', $data);
+    $this->load->view('layout/footer1', $data);
   }
 }

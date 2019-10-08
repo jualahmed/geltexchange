@@ -1,0 +1,6 @@
+cPanel details
+URL (options)	https://server227.web-hosting.com/cpanel
+ 	(if DNS propagation is pending)
+ 	http://exchangetk.com/cpanel
+cPanel username	exchcefx
+cPanel password	altYEmxuFAW0

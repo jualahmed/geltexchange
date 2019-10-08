@@ -1,94 +1,90 @@
 
-
+<?php
+  $this->db->where('buy_price >', 0);
+  $this->db->where('sales_price >', 0);
+  $this->db->join('currency', 'currency.currency_id = gateways.currency');
+  $data=$this->db->get('gateways')->result();
+?>
 <section id="todayrate" class="py-5">
   <div class="container">
     <h3 class="text-center pb-4"><button class="btn btn-lg thisbtn color11 text-white ">Today USD Rate:</button></h3>
     <div class="row">
       <div class="col-md-4">
         <div class="single-box py-4 text-center">
+          <?php foreach ($data as $key => $var): ?>
           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
-           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_02.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
-           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_03.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
+               <?php if ($var->external_icon): ?>
+                  <img src="<?php echo base_url() ?><?php echo $var->external_icon ?>" alt="" width="50px" height="50px">
+                <?php else: ?>
+                  <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" alt="" width="50px" height="50px">
+                <?php endif ?>
+              <p>buy:<?php echo $var->buy_price ?> <?php echo $var->currency_name ?>,sale:<?php echo $var->sales_price ?> <?php echo $var->currency_name ?></p>
+            </div>
+            <?php if ($key==2)break; ?>
+          <?php endforeach ?>
         </div>
       </div>
       <div class="col-md-4">
         <div class="single-box py-4 text-center">
-          <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_04.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
-           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_05.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
-           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
+          <?php foreach ($data as $key => $var): ?>
+            <?php if ($key<3)continue;?>
+              <div class="singlegetway">
+                <?php if ($var->external_icon): ?>
+                  <img src="<?php echo base_url() ?><?php echo $var->external_icon ?>" alt="" width="50px" height="50px">
+                <?php else: ?>
+                  <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" alt="" width="50px" height="50px">
+                <?php endif ?>
+                <p>buy:<?php echo $var->buy_price ?> <?php echo $var->currency_name ?>,sale:<?php echo $var->sales_price ?> <?php echo $var->currency_name ?></p>
+              </div>
+            <?php if ($key==5)break;  ?>
+          <?php endforeach ?>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="single-box py-4 text-center">
-          <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
-           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_02.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
-           <div class="singlegetway">
-            <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_03.png" alt="" width="50px">
-            <p>buy:25 USD,sale:30 USD</p>
-          </div>
+          <div class="single-box py-4 text-center">
+          <?php foreach ($data as $key => $var): ?>
+            <?php if ($key<5)continue;?>
+              <div class="singlegetway">
+                <?php if ($var->external_icon): ?>
+                  <img src="<?php echo base_url() ?><?php echo $var->external_icon ?>" alt="" width="50px" height="50px">
+                <?php else: ?>
+                  <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" alt="" width="50px" height="50px">
+                <?php endif ?>
+                <p>buy:<?php echo $var->buy_price ?> <?php echo $var->currency_name ?>,sale:<?php echo $var->sales_price ?> <?php echo $var->currency_name ?></p>
+              </div>
+            <?php if ($key==7)break; ?>
+          <?php endforeach ?>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<?php
+  $this->db->order_by('testimonials.id', 'desc');
+  $this->db->limit(6);
+  $this->db->join('users', 'users.id = testimonials.user_id');
+  $data=$this->db->get('testimonials')->result();
+?>
 <section id="rating" class="py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-3">
          <div class="owl-carousel owl-theme">
+          <?php foreach ($data as $key => $var): ?>
             <div class="item">
               <div class="content m-3 p-3 single-review bg-white text-center">
                 <div class="text-center">
-                 <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle m-auto" style="width:100px;" alt=""></div>
-                  <p class="p-1">Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.Safety is integrated within Loram’s core vour property and our people. core vour property and our people. L Loram complies with all occupational reg</p>
+                  <?php if ($var->profile): ?>
+                     <img src="<?php echo base_url() ?>assets/temp/img<?php echo $var->profile ?>" class="rounded-circle m-auto" style="width:100px;" alt="">
+                  <?php else: ?>
+                     <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle m-auto" style="width:100px;" alt="">
+                  <?php endif ?>
+                </div>
+                <p class="p-1"><?php echo $var->content ?></p>
               </div>
             </div>
-             <div class="item">
-              <div class="content m-3 p-3 single-review bg-white text-center">
-                <div class="text-center">
-                 <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle m-auto" style="width:100px;" alt=""></div>
-                   <p class="p-1">Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.Safety is integrated within Loram’s core vour property and our people. core vour property and our people. L Loram complies with all occupational reg</p>
-              </div>
-            </div>
-             <div class="item">
-              <div class="content m-3 p-3 single-review bg-white text-center">
-                <div class="text-center">
-                 <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle m-auto" style="width:100px;" alt=""></div>
-                  <p class="p-1">Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.Safety is integrated within Loram’s core vour property and our people. core vour property and our people. L Loram complies with all occupational reg</p>
-              </div>
-            </div>
-             <div class="item">
-              <div class="content m-3 p-3 single-review bg-white text-center">
-                <div class="text-center">
-                 <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle m-auto" style="width:100px;" alt=""></div>
-                   <p class="p-1">Safety is integrated within Loram’s core vour property and our people. Loram complies with all occupational reg.Safety is integrated within Loram’s core vour property and our people. core vour property and our people. L Loram complies with all occupational reg</p>
-              </div>
-            </div>
+          <?php endforeach ?>
         </div>
       </div>
       <div class="right col-md-8 pl-4">
@@ -112,8 +108,8 @@
    <div class="startcontent">
       <h6>Ready to go Beyond? Start today with our free payment solution</h6>
       <div>
-        <a href="" class="px-3 m-3 btn btn-outline-primary">Login</a>
-          <a href="" class="btn btn-primary thisbtn">Register</a>
+        <a href="<?php echo base_url().'home/login' ?>" class="px-3 m-3 btn btn-outline-primary">Login</a>
+        <a href="<?php echo base_url().'home/regirter' ?>" class="btn btn-primary thisbtn">Register</a>
       </div>
   </div>
 </section>
