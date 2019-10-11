@@ -21,13 +21,13 @@
 <![endif]-->
 
 <header id="header" class="header2 exchanges">
-  <div class="container">
+  <div class="" id="navigation-sections">
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-       <img src="<?php echo base_url() ?>assets/temp/img/svgicon/toggle.svg" alt="" width="20px;">
+        <img src="<?php echo base_url() ?>assets/temp/img/svgicon/toggle.svg" alt="" width="20px;">
       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto marginh text-center">
           <li class="nav-item <?php if($this->uri->segment(2)=='')echo 'active'; ?>">
             <a class="nav-link" href="<?php echo base_url() ?>home/">Home <span class="sr-only">(current)</span></a>
@@ -53,7 +53,7 @@
         <?php else: ?>
           <div class="dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> <?php echo $user_login['username'] ?>
+                <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> <?php echo $user_login['username'] ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">
@@ -63,15 +63,17 @@
                 <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/eh.png" width="25px" class="rounded-circle" alt=""> Exchange History</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/ap.png" width="25px" class="rounded-circle" alt=""> Affiliate Program </a>
-                 <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/about.png" width="25px" class="rounded-circle" alt=""> About </a>
-                 <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo base_url() ?>auth/logout"><img src="<?php echo base_url() ?>assets/temp/img/images/lw.png" width="25px" class="rounded-circle" alt=""> Logout </a>
               </div>
           </div>
         <?php endif ?>
       </div>
     </nav>
+  </div>
+  <div class="container">
     <div class="content py-2" v-if="!confirmtransation">
       <marquee class="text-white btn g-btn btn-sm border-r15">NOTE:Your Registered email and number must be verified then your account automatically actavited and you can set up the exchange, you do not have to pay the transfer fee if you buy above $20</marquee>
       <h1 class="text-white">Internationa currency exchange</h1>
@@ -387,6 +389,7 @@
 <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
 <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="<?php echo base_url() ?>assets/temp/scripts/App.js"></script>
 <script src="<?php echo base_url() ?>assets/temp/scripts/vuebit.js"></script>
 <script>
   $('.owl-carousel').owlCarousel({

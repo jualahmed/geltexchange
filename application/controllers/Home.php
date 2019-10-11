@@ -100,7 +100,7 @@ class Home extends Public_Controller {
   {
     $this->db->where('status',1);
     $this->data['info']=$this->db->get('faqandtutorial')->result();
-    $this->__randerview('faq', $this->data);
+    $this->__randerview1('faq', $this->data);
   }
 
   public function about($value='')

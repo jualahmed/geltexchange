@@ -102,9 +102,9 @@
               <tr>
                 <td><span><span></span><br><?php echo $stinglegetway->email ?></span></td>
                 <td>
-                  <?php if(isset($stinglegetway->profile)){ ?>
+                  <?php if(isset($stinglegetway->profile)) { ?>
                   <img src="<?php echo $stinglegetway->profile ?>" alt="">
-                  <?php} else{ ?>
+                  <?php } else { ?>
                     <img src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="30px">
                   <?php } ?>
                 </td>

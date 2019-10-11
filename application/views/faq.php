@@ -3,7 +3,7 @@
     <div class="faq-page box-shadow p-3" style="min-height: 300px">
       <div class="accordion">
           <div id="accordion" class="panel-group text-center">
-              <h2 class="title btn btn-success">Frequently asked questions</h2>
+              <h2 class="title"><button class="btn btn-lg thisbtn color11 text-white">Frequently asked questions</button></h2>
           </div>
           <?php foreach ($info as $var): ?>
             <div class="panel panel-default panel-faq box-shadow p-2">

@@ -111,7 +111,7 @@ class Profile extends Public_Controller {
     }else{
       $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
     }
-    $this->__randerview1('profile/editprofile', $this->data);
+    $this->__randerview1('profile/index', $this->data);
   }
 
   public function changeprofile($id='')
@@ -265,7 +265,7 @@ class Profile extends Public_Controller {
     $this->__randerview1('profile/passwordchange', $this->data);
   }
 
-  function change_password()
+  public function change_password()
   {
     $this->form_validation->set_rules('old', $this->lang->line('change_password_validation_old_password_label'), 'required');
     $this->form_validation->set_rules('new', $this->lang->line('change_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
@@ -310,7 +310,7 @@ class Profile extends Public_Controller {
       );
 
       // render
-      $this->__randerview1('profile/passwordchange', $this->data);
+      $this->__randerview1('profile/index', $this->data);
     }
     else
     {
@@ -322,12 +322,13 @@ class Profile extends Public_Controller {
       {
         //if the password was successfully changed
         $this->session->set_flashdata('message', $this->ion_auth->messages());
-        $this->logout();
+        redirect('profile', 'refresh');
+
       }
       else
       {
         $this->session->set_flashdata('message', $this->ion_auth->errors());
-        redirect('profile/change_password', 'refresh');
+        redirect('profile', 'refresh');
       }
     }
   }

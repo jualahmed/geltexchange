@@ -2,7 +2,7 @@
 <section id="traking" class="py-5">
   <div class="container" style="min-height: 400px;">
     <div>
-      <h3>About</h3>
+      <h3 class="text-center"><button class="btn btn-lg thisbtn color11 text-white ">About</button></h3>
       <hr>
       <?php
         $this->db->where('id', 2);

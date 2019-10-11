@@ -27,7 +27,7 @@
           <input type="text" placeholder="Enter Email" name="identity" class="form-control text-none" id="identity">
         </div>
         <div class="col-md-12 my-2">
-          <input type="text" placeholder="Enter Passsword" name="password" class="form-control text-none" id="password">
+          <input type="password" placeholder="Enter Passsword" name="password" class="form-control text-none" id="password">
         </div>
         <div id="message" class="text-center text-danger"></div>
         <div class="col-md-12 my-2">

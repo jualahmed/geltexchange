@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/assets/scriptss/app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/assets/scriptss/App.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/assets/scriptss/app.js":
+/***/ "./assets/assets/scriptss/App.js":
 /*!***************************************!*\
-  !*** ./assets/assets/scriptss/app.js ***!
+  !*** ./assets/assets/scriptss/App.js ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var distance = $('#navigation-sections').offset().top; \r\n$(window).scroll(function () {\r\n     if ($(window).scrollTop() >0) {\r\n         $('#navigation-sections').addClass(\"affix\");\r\n     } else {\r\n         $('#navigation-sections').removeClass(\"affix\");\r\n     }\r\n });\r\n\r\n\n\n//# sourceURL=webpack:///./assets/assets/scriptss/app.js?");
+eval("var distance = $('#navigation-sections').offset().top; \r\nconsole.log(distance)\r\n$(window).scroll(function () {\r\n     \r\n     if ($(window).scrollTop() >= distance) {\r\n         $('#navigation-sections').addClass(\"affix\");\r\n\r\n     } else {\r\n         $('#navigation-sections').removeClass(\"affix\");\r\n     }\r\n });\r\n\n\n//# sourceURL=webpack:///./assets/assets/scriptss/App.js?");
 
 /***/ })
 

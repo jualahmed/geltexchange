@@ -1,3 +1,13 @@
+.affix{
+	position:fixed;
+	top:0;
+	background: url('../img/headerbg.jpg');
+	width: 100%;
+	z-index: 100;
+}
+#navigation-sections{
+	padding: 0px 120px;
+}
 #header{
 	background: url('../img/headerbg.jpg');
 	background-size: 100% 100%; 
@@ -108,5 +118,8 @@
 				width: 220px;
 			}
 		}
+	}
+	#navigation-sections{
+		padding: 0px 20px;
 	}
 }
