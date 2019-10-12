@@ -22,56 +22,58 @@
 
 <header id="header" class="header2 exchanges">
   <div class="" id="navigation-sections">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt=""></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <img src="<?php echo base_url() ?>assets/temp/img/svgicon/toggle.svg" alt="" width="20px;">
-      </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto marginh text-center">
-          <li class="nav-item <?php if($this->uri->segment(2)=='')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url() ?>home/">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='exchange')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url() ?>home/exchange">Exchange</a>
-          </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='contact') echo 'active'; ?> ">
-            <a class="nav-link" href="<?php echo base_url() ?>home/contact">Contect</a>
-          </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='review')echo 'active'; ?> ">
-            <a class="nav-link" href="<?php echo base_url() ?>home/review">Review</a>
-          </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='faq')echo 'active'; ?> ">
-            <a class="nav-link" href="<?php echo base_url() ?>home/faq">FAQ</a>
-          </li>
-        </ul>
-        <?php if (!$this->ion_auth->logged_in()): ?>
-        <div>
-          <a href="<?php echo base_url() ?>home/login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
-          <a href="<?php echo base_url() ?>home/regirter">Register</a>
-        </div>
-        <?php else: ?>
-          <div class="dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> <?php echo $user_login['username'] ?>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
-                  <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> Profile
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/eh.png" width="25px" class="rounded-circle" alt=""> Exchange History</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/ap.png" width="25px" class="rounded-circle" alt=""> Affiliate Program </a>
-                  <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/about.png" width="25px" class="rounded-circle" alt=""> About </a>
-                  <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php echo base_url() ?>auth/logout"><img src="<?php echo base_url() ?>assets/temp/img/images/lw.png" width="25px" class="rounded-circle" alt=""> Logout </a>
-              </div>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="<?php echo base_url() ?>assets/temp/img/svgicon/toggle.svg" alt="" width="20px;">
+        </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto marginh text-center">
+            <li class="nav-item <?php if($this->uri->segment(1)=='')echo 'active'; ?>">
+              <a class="nav-link" href="<?php echo base_url() ?>">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='exchange')echo 'active'; ?>">
+              <a class="nav-link" href="<?php echo base_url() ?>exchange">Exchange</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='contact') echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo base_url() ?>contact">Contect</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='review')echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo base_url() ?>review">Review</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='faq')echo 'active'; ?> ">
+              <a class="nav-link" href="<?php echo base_url() ?>faq">FAQ</a>
+            </li>
+          </ul>
+          <?php if (!$this->ion_auth->logged_in()): ?>
+          <div>
+            <a href="<?php echo base_url() ?>login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
+            <a href="<?php echo base_url() ?>regirter">Register</a>
           </div>
-        <?php endif ?>
-      </div>
-    </nav>
+          <?php else: ?>
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> <?php echo $user_login['username'] ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">
+                    <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="25px" class="rounded-circle" alt=""> Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/eh.png" width="25px" class="rounded-circle" alt=""> Exchange History</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/ap.png" width="25px" class="rounded-circle" alt=""> Affiliate Program </a>
+                    <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><img src="<?php echo base_url() ?>assets/temp/img/images/about.png" width="25px" class="rounded-circle" alt=""> About </a>
+                    <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<?php echo base_url() ?>auth/logout"><img src="<?php echo base_url() ?>assets/temp/img/images/lw.png" width="25px" class="rounded-circle" alt=""> Logout </a>
+                </div>
+            </div>
+          <?php endif ?>
+        </div>
+      </nav>
+    </div>
   </div>
   <div class="container">
     <div class="content py-2" v-if="!confirmtransation">
@@ -314,8 +316,8 @@
    <div class="startcontent">
       <h6>Ready to go Beyond? Start today with our free payment solution</h6>
       <div>
-        <a href="<?php echo base_url().'home/login' ?>" class="px-3 m-3 btn btn-outline-primary">Login</a>
-        <a href="<?php echo base_url().'home/regirter' ?>" class="btn btn-primary thisbtn">Register</a>
+        <a href="<?php echo base_url().'login' ?>" class="px-3 m-3 btn btn-outline-primary">Login</a>
+        <a href="<?php echo base_url().'regirter' ?>" class="btn btn-primary thisbtn">Register</a>
       </div>
   </div>
 </section>

@@ -1,9 +1,17 @@
 .thisbtn{
 	background: $color1!important;
 }
+.thisbtn:hover{
+	background: #d73f03!important;
+}
 .thisbtn1{
     border-radius: 56px;
     padding: 25px;
+ }
+.btn:hover{
+	background: rgba(255,255,255,0.2);
+    border-color: #ffffff;
+    color: #ffffff;
 }
 .ml{
     margin-left: -38px;

@@ -40,7 +40,8 @@
 
 <header id="header">
   <div class="" id="navigation-sections">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <img src="<?php echo base_url() ?>assets/temp/img/svgicon/toggle.svg" alt="" width="20px;">
@@ -48,26 +49,26 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto marginh text-center">
-          <li class="nav-item <?php if($this->uri->segment(2)=='')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url() ?>home/">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item <?php if($this->uri->segment(1)=='')echo 'active'; ?>">
+            <a class="nav-link" href="<?php echo base_url() ?>">Home<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='exchange')echo 'active'; ?>">
-            <a class="nav-link" href="<?php echo base_url() ?>home/exchange">Exchange</a>
+          <li class="nav-item <?php if($this->uri->segment(1)=='exchange')echo 'active'; ?>">
+            <a class="nav-link" href="<?php echo base_url() ?>exchange">Exchange</a>
           </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='contact') echo 'active'; ?> ">
-            <a class="nav-link" href="<?php echo base_url() ?>home/contact">Contect</a>
+          <li class="nav-item <?php if($this->uri->segment(1)=='contact') echo 'active'; ?> ">
+            <a class="nav-link" href="<?php echo base_url() ?>contact">Contect</a>
           </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='review')echo 'active'; ?> ">
-            <a class="nav-link" href="<?php echo base_url() ?>home/review">Review</a>
+          <li class="nav-item <?php if($this->uri->segment(1)=='review')echo 'active'; ?> ">
+            <a class="nav-link" href="<?php echo base_url() ?>review">Review</a>
           </li>
-          <li class="nav-item <?php if($this->uri->segment(2)=='faq')echo 'active'; ?> ">
-            <a class="nav-link" href="<?php echo base_url() ?>home/faq">FAQ</a>
+          <li class="nav-item <?php if($this->uri->segment(1)=='faq')echo 'active'; ?> ">
+            <a class="nav-link" href="<?php echo base_url() ?>faq">FAQ</a>
           </li>
         </ul>
         <?php if (!$this->ion_auth->logged_in()): ?>
         <div>
-          <a href="<?php echo base_url() ?>home/login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
-          <a href="<?php echo base_url() ?>home/regirter">Register</a>
+          <a href="<?php echo base_url() ?>login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
+          <a class="btn" href="<?php echo base_url() ?>regirter">Register</a>
         </div>
         <?php else: ?>
           <div class="dropdown">
@@ -91,6 +92,7 @@
         <?php endif ?>
       </div>
     </nav>
+    </div>
   </div>
   <div class="container">
     <div class="content">
@@ -105,7 +107,7 @@
         <li class="py-1">Quentity of service if our advantage</li>
         <li class="py-1">Working 24 hours a day 24/7</li>
       </ul>
-      <a href="<?php echo base_url() ?>home/exchange" class="btn btn-sm btn-primary px-3 p-2">Exchange</a>
+      <a href="<?php echo base_url() ?>exchange" class="btn btn-sm btn-primary px-3 p-2">Exchange</a>
     </div>
   </div>
 </header>
