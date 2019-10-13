@@ -19,8 +19,9 @@
 <![endif]-->
 
 <section id="register">
-  <div class="contentr bg-white">
-    <h4 class="thistext mt-5 pt-3">Account Login</h4>
+  <div class="contentr bg-white" style="max-width: 450px;">
+    <img src="<?php echo base_url().'assets/temp/img/logo12.png' ?>" alt="" width="357px">
+    <h4 class="thistext mt-5 pt-1">Account Login</h4>
     <form action="<?php echo base_url() ?>auth/loginajax" class="m-5" id="login">
       <div class="row">
         <div class="col-md-12 my-2">

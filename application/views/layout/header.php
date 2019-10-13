@@ -42,7 +42,7 @@
   <div class="" id="navigation-sections">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt=""></a>
+      <a class="navbar-brand" href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/temp/img/logo1.png" alt="" width="300px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <img src="<?php echo base_url() ?>assets/temp/img/svgicon/toggle.svg" alt="" width="20px;">
       </button>
@@ -68,7 +68,7 @@
         <?php if (!$this->ion_auth->logged_in()): ?>
         <div>
           <a href="<?php echo base_url() ?>login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
-          <a class="btn" href="<?php echo base_url() ?>regirter">Register</a>
+          <a class="btn" href="<?php echo base_url() ?>register">Register</a>
         </div>
         <?php else: ?>
           <div class="dropdown">

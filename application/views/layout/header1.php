@@ -49,7 +49,7 @@
           <?php if (!$this->ion_auth->logged_in()): ?>
           <div>
             <a href="<?php echo base_url() ?>login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
-            <a class="btn" href="<?php echo base_url() ?>regirter">Register</a>
+            <a class="btn" href="<?php echo base_url() ?>register">Register</a>
           </div>
           <?php else: ?>
             <div class="dropdown">

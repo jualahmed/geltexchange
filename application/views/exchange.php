@@ -49,7 +49,7 @@
           <?php if (!$this->ion_auth->logged_in()): ?>
           <div>
             <a href="<?php echo base_url() ?>login" class="px-3 mr-3 margin1rem btn btn-sm thisbtn">Login</a>
-            <a href="<?php echo base_url() ?>regirter">Register</a>
+            <a href="<?php echo base_url() ?>register">Register</a>
           </div>
           <?php else: ?>
             <div class="dropdown">
@@ -317,7 +317,7 @@
       <h6>Ready to go Beyond? Start today with our free payment solution</h6>
       <div>
         <a href="<?php echo base_url().'login' ?>" class="px-3 m-3 btn btn-outline-primary">Login</a>
-        <a href="<?php echo base_url().'regirter' ?>" class="btn btn-primary thisbtn">Register</a>
+        <a href="<?php echo base_url().'register' ?>" class="btn btn-primary thisbtn">Register</a>
       </div>
   </div>
 </section>

@@ -211,7 +211,7 @@ class Home extends Public_Controller {
 
       // set any errors and display the form
       $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-     $this->__randerview('profile/forgerpassword', $this->data);
+     $this->load->view('profile/forgerpassword', $this->data);
     }
     else
     {

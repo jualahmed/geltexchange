@@ -20,7 +20,8 @@
 
 <section id="register">
   <div class="contentr bg-white">
-    <h4 class="thistext mt-5 pt-3">Account Registation</h4>
+    <img src="<?php echo base_url().'assets/temp/img/logo12.png' ?>" alt="" width="357px">
+    <h4 class="thistext mt-3 pt-0">Account Registation</h4>
     <form id="resisterform" action="<?php echo base_url() ?>auth/ajaxcreate" class="m-5">
       <div class="row">
         <div class="col-md-6 my-2">
