@@ -43,7 +43,7 @@
                         <?php if ($row->statuss==0): ?>
                                  <span class="btn btn-sm btn-info">Waiting for payment</span>
                               <?php elseif($row->statuss==1): ?>
-                                  <span class="btn btn-sm btn-primary">Pending</span>
+                                  <span class="btn btn-sm btn-secondary">Pending</span>
                               <?php elseif($row->statuss==2): ?>
                                   <span class="btn btn-sm btn-success">completed</span>
                               <?php elseif($row->statuss==3): ?>
@@ -68,47 +68,97 @@
   </div>
 </section>
 
-<section id="reserve" class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section box-shadow p-3">
-          <h3><strong>Reserve</strong></h3>
-            <div class="row">
-              <?php
-                $query2 = $this->db->get('gateways')->result();
-                if(count($query2)) {
-                  foreach ($query2 as $key => $row) {
-                  ?>
-                  <div class="col-md-2 col-sm-2">
-                    <div class="card text-center box-shadow fixed-heights">
-                      <img src="">
-                      <div class="card-body">
-                        <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="50px;" width="50px">
-                        <h5 class="card-title text-center">
-                          <strong>
-                            <?php echo $row->name; ?>
-                          </strong>
-                        </h5>
-                        <a href="#" class="btn-block">
-                          <strong>
-                            <?php echo $row->reserve?>
-                          </strong>
-                        </a>
+<section class="home-default bg-color pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="section box-shadow">
+                    <div class="row">
+                      <div class="col-md-8 col-sm-8">
+                        <h3 class="text-center"><strong>Reserve</strong></h3>
+                        <div class="row">
+                            <?php
+                              $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                              $query2 = $this->db->get('gateways')->result();
+                              if(count($query2)) {
+                                foreach ($query2 as $key => $row) {
+                            ?>
+                          <div class="col-md-3 col-sm-3 mb-3">
+                              <div class="card text-center box-shadow">
+                                 <div class="p-1">
+                                   <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="50px;" width="50px">
+                                 </div>
+                                <div class="p-1">
+                                  <p class="card-title text-center">
+                                       <?php echo $row->name; ?>
+                                  </p>
+                                  <a href="#" class="badge badge-primary p-2 m-2">
+                                    <strong>
+                                       <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
+                                    </strong>
+                                  </a>
+                                </div>
+                              </div>
+                          </div>
+                          <?php
+                                }
+                              }else{
+                            ?>
+                                <div class="col-md-12 col-sm-12">
+                                  <?php echo $lang['no_have_gateways']; ?>
+                                </div>
+                            <?php } ?>    
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4">
+                        <h3 class="text-center"><strong>Today's Buy-Sell Price</strong></h3>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <strong>We Accept</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>We Buy</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>We Sell</strong>
+                                        </th>
+                                    </tr>
+                                       <?php
+                                          $this->db->where('buy_price>0');
+                                          $query2 = $this->db->get('gateways')->result();
+                                        if(count($query2)) {
+                                         foreach ($query2 as $key => $row) {
+                                        ?>
+                                    <tr>
+                                       <td>
+                                        <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="30px;" width="30px">
+                                          <strong><?php echo $row->name; ?></strong>
+                                        </td>
+                                        <td class="text-center">
+                                            <strong><?php echo $row->buy_price; ?></strong>
+                                        </td>
+                                        <td class="text-center">
+                                          <strong><?php echo $row->sales_price; ?></strong>
+                                        </td>
+                                    </tr>
+                                     <?php
+                                        }
+                                      }else{
+                                      ?>
+                                        <div class="col-md-12">
+                                         <b> <?php echo 'no_have_gateways'; ?></b>
+                                        </div>
+                                      <?php } ?>   
+                                </tbody>
+                            </table>
+                        </div>
                       </div>
                     </div>
-                  </div>
-              <?php
-                  }
-                }else{
-              ?>
-                  <div class="col-md-12 col-sm-12">
-                    <?php echo $lang['no_have_gateways']; ?>
-                  </div>
-              <?php } ?>      
+                </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

@@ -26,10 +26,12 @@ class Profile extends Public_Controller {
 
   public function index()
   {
-    $this->__randerview1('profile/index', $this->data);
+    $this->__randerview('profile/index', $this->data);
   }
 
-  public function myexchanges()
+
+
+  public function exchanges()
   {
     $id=$this->ion_auth->user()->row()->id;
     $this->db->select('currency.*,gateways.*,exchanges.*,exchanges.status as statuss');
@@ -37,19 +39,19 @@ class Profile extends Public_Controller {
     $this->db->join('currency', 'currency.currency_id = gateways.currency');
     $this->db->where('exchanges.user_id',$id);
     $this->data['myexchange']=$this->db->get('exchanges')->result();
-    $this->__randerview1('profile/myexchanges', $this->data);
+    $this->__randerview('profile/myexchanges', $this->data);
   }
 
   public function testimonials($value='')
   { 
     $this->db->where('user_id', $this->ion_auth->user()->row()->id);
     $this->data['testmo']=$this->db->get('testimonials')->result();
-    $this->__randerview1('profile/testimonials', $this->data);
+    $this->__randerview('profile/testimonials', $this->data);
   }
 
   public function referrals($value='')
   {
-     $this->__randerview1('profile/referrals', $this->data);
+     $this->__randerview('profile/referrals', $this->data);
   }
 
   public function submit_testimonial($value='')
@@ -69,7 +71,7 @@ class Profile extends Public_Controller {
     }else{
        $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
     }
-    $this->__randerview1('profile/submit_testimonial', $this->data);
+    $this->__randerview('profile/submit_testimonial', $this->data);
   }
 
   public function testdelete($id='')
@@ -111,7 +113,7 @@ class Profile extends Public_Controller {
     }else{
       $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
     }
-    $this->__randerview1('profile/index', $this->data);
+    $this->__randerview('profile/index', $this->data);
   }
 
   public function changeprofile($id='')
@@ -125,7 +127,7 @@ class Profile extends Public_Controller {
     if ( ! $this->upload->do_upload('userfile'))
     {
       $this->data['message'] = array('error' => $this->upload->display_errors());
-      $this->__randerview1('profile/changeprofile', $this->data);
+      $this->__randerview('profile/changeprofile', $this->data);
     }
     else
     {
@@ -135,7 +137,7 @@ class Profile extends Public_Controller {
       $this->db->update('users');
       $this->db->where('id',$this->ion_auth->user()->row()->id);
       $this->data['user']=$this->db->get('users')->row();
-      $this->__randerview1('profile/changeprofile', $this->data);
+      $this->__randerview('profile/changeprofile', $this->data);
     }
   }
 
@@ -143,7 +145,7 @@ class Profile extends Public_Controller {
   {
     $this->db->where('id', $this->ion_auth->user()->row()->id);
     $this->data['users_info']=$this->db->get('users')->row();
-    $this->__randerview1('profile/verification', $this->data);
+    $this->__randerview('profile/verification', $this->data);
   }
 
   public function document_verified($value='')
@@ -161,7 +163,7 @@ class Profile extends Public_Controller {
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
       $this->data['error'] = $this->upload->display_errors();
-      $this->__randerview1('profile/verification', $this->data);
+      $this->__randerview('profile/verification', $this->data);
     }
     else
     {
@@ -175,7 +177,7 @@ class Profile extends Public_Controller {
       $this->db->set('document_1',$file_name);
       $this->db->update('users');
 
-      $this->__randerview1('profile/verification', $this->data);
+      $this->__randerview('profile/verification', $this->data);
     }
 
     if ( ! $this->upload->do_upload('document_2'))
@@ -183,7 +185,7 @@ class Profile extends Public_Controller {
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
       $this->data['error'] = $this->upload->display_errors();
-      $this->__randerview1('profile/verification', $this->data);
+      $this->__randerview('profile/verification', $this->data);
     }
     else
     {
@@ -194,7 +196,7 @@ class Profile extends Public_Controller {
 
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
-      $this->__randerview1('profile/verification', $this->data);
+      $this->__randerview('profile/verification', $this->data);
     }
   }
 
@@ -248,7 +250,7 @@ class Profile extends Public_Controller {
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
       $this->data['emailmessage']="We have send a link to your email. please check your email to varify email";
-      $this->__randerview1('profile/verification', $this->data);
+      $this->__randerview('profile/verification', $this->data);
     }
   }
 
@@ -262,7 +264,7 @@ class Profile extends Public_Controller {
 
   public function settings($value='')
   {
-    $this->__randerview1('profile/passwordchange', $this->data);
+    $this->__randerview('profile/passwordchange', $this->data);
   }
 
   public function change_password()
@@ -310,7 +312,7 @@ class Profile extends Public_Controller {
       );
 
       // render
-      $this->__randerview1('profile/index', $this->data);
+      $this->__randerview('profile/index', $this->data);
     }
     else
     {

@@ -1,34 +1,5 @@
 #register{
-	background: url('../img/logreg.jpg');
-	background-size: 100% 100%; 
-	background-repeat:no-repeat; 
-	min-height: 100vh;
-}
-.contentr{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-}
-.roundeddd{
-	border-radius: 25px;
-}
-
-@media (max-width: 768px) {
-	#register{
-		min-height: 700px;
-	}
 	.contentr{
-		margin-top: 150px;
-	}
-}
-
-@media (max-width: 425px) {
-	#register{
-		min-height: 900px;
-	}
-	.contentr{
-		margin-top: 250px;
+		margin: auto;
 	}
 }

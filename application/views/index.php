@@ -1,148 +1,470 @@
-
-<?php
-  $this->db->where('buy_price >', 0);
-  $this->db->where('sales_price >', 0);
-  $this->db->join('currency', 'currency.currency_id = gateways.currency');
-  $data=$this->db->get('gateways')->result();
-?>
-<section id="todayrate" class="py-5">
-  <div class="container">
-    <h3 class="text-center pb-4"><button class="btn btn-lg thisbtn color11 text-white ">Today USD Rate:</button></h3>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="single-box py-4 text-center">
-          <?php foreach ($data as $key => $var): ?>
-          <div class="singlegetway">
-               <?php if ($var->external_icon): ?>
-                  <img src="<?php echo base_url() ?><?php echo $var->external_icon ?>" alt="" width="50px" height="50px">
-                <?php else: ?>
-                  <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" alt="" width="50px" height="50px">
-                <?php endif ?>
-              <p>buy:<?php echo $var->buy_price ?> <?php echo $var->currency_name ?>,sale:<?php echo $var->sales_price ?> <?php echo $var->currency_name ?></p>
-            </div>
-            <?php if ($key==2)break; ?>
-          <?php endforeach ?>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="single-box py-4 text-center">
-          <?php foreach ($data as $key => $var): ?>
-            <?php if ($key<3)continue;?>
-              <div class="singlegetway">
-                <?php if ($var->external_icon): ?>
-                  <img src="<?php echo base_url() ?><?php echo $var->external_icon ?>" alt="" width="50px" height="50px">
-                <?php else: ?>
-                  <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" alt="" width="50px" height="50px">
-                <?php endif ?>
-                <p>buy:<?php echo $var->buy_price ?> <?php echo $var->currency_name ?>,sale:<?php echo $var->sales_price ?> <?php echo $var->currency_name ?></p>
-              </div>
-            <?php if ($key==5)break;  ?>
-          <?php endforeach ?>
-        </div>
-      </div>
-      <div class="col-md-4">
-          <div class="single-box py-4 text-center">
-          <?php foreach ($data as $key => $var): ?>
-            <?php if ($key<5)continue;?>
-              <div class="singlegetway">
-                <?php if ($var->external_icon): ?>
-                  <img src="<?php echo base_url() ?><?php echo $var->external_icon ?>" alt="" width="50px" height="50px">
-                <?php else: ?>
-                  <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" alt="" width="50px" height="50px">
-                <?php endif ?>
-                <p>buy:<?php echo $var->buy_price ?> <?php echo $var->currency_name ?>,sale:<?php echo $var->sales_price ?> <?php echo $var->currency_name ?></p>
-              </div>
-            <?php if ($key==7)break; ?>
-          <?php endforeach ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<?php
-  $this->db->order_by('testimonials.id', 'desc');
-  $this->db->limit(6);
-  $this->db->join('users', 'users.id = testimonials.user_id');
-  $data=$this->db->get('testimonials')->result();
-?>
-<section id="rating" class="py-5">
+<section id="home" class="mainexchange" style="background: #005455;">
   <div class="container">
     <div class="row">
+      <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
+
       <div class="col-md-3">
-         <div class="owl-carousel owl-theme">
-          <?php foreach ($data as $key => $var): ?>
-            <div class="item">
-              <div class="content m-3 p-3 single-review bg-white text-center">
-                <div class="text-center">
-                  <?php if ($var->profile): ?>
-                     <img src="<?php echo base_url() ?>assets/temp/img<?php echo $var->profile ?>" class="rounded-circle m-auto" style="width:100px;" alt="">
-                  <?php else: ?>
-                     <img src="<?php echo base_url() ?>assets/temp/img/av.jpg" class="rounded-circle m-auto" style="width:100px;" alt="">
-                  <?php endif ?>
-                </div>
-                <p class="p-1"><?php echo $var->content ?></p>
+        <h2 align="center" class="text-white">
+          Send <span>To</span>
+        </h2>
+        <div class="fixed-height scrollbar-outer scrollbar-outer1">
+          <form action="">
+            <?php
+              $this->db->where('allow_send', 1);
+              $this->db->where('status', 1);
+              $gateways = $this->db->get('gateways')->result();
+              if(count($gateways)) {?>
+                <?php foreach ($gateways as $key => $g): ?>
+                   <div class="inputGroup">
+                    <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
+                    <input @click="sendchange" v-model="send" id="<?php echo $g->id; ?>" name="send" value="<?php echo $g->id; ?>"  type="radio"/>
+                    <label for="<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
+                  </div>
+                <?php endforeach ?>
+              <?php
+              }else {
+                echo 'no_have_gateways';
+              }
+            ?>
+          </form>
+        </div>
+        <div id="clickforscroll" style="background: rgb(255, 255, 255); padding: 10px; text-align: center; cursor: pointer;">Show More</div>
+      </div>
+    
+      <div class="col-md-3" id="atmobile">
+        <h2 align="center" class="text-white">
+          Receive
+        </h2>
+        <div class="fixed-height scrollbar-outer scrollbaroutertest">
+          <form action="">
+          <?php
+            $this->db->where('allow_receive', 1);
+            $this->db->where('status', 1);
+            $gatewaysrevive = $this->db->get('gateways')->result();
+            if(count($gatewaysrevive)) {?>
+              <?php foreach ($gatewaysrevive as $key => $g): ?>
+                <div class="inputGroup">
+                  <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
+                  <input @click="recivechange" v-model="receive" id="receive<?php echo $g->id; ?>" name="receive" value="<?php echo $g->id; ?>" type="radio"/>
+                  <label for="receive<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
+                </div> 
+              <?php endforeach ?>
+            <?php
+              } else {
+                echo 'no_have_gateways';
+              }
+            ?>
+
+          </form>
+        </div>
+          <div id="scrollbaroutertestddd">Show More</div>
+      </div>
+
+      <div class="col-md-6 mt-5" v-if="confirmtransation">
+        <div id="bit_transaction_results" class="selectedsend">
+          <div class="row">
+              <div class="col-md-12">
+                  <div id="bit_transaction_results">
+                    <div class="alert alert-info">
+                      <i class="fa fa-info-circle"></i>
+                      You need to make payment manually, use the data below and enter the number of the account in the form below.
+                    </div>
+                  </div>
+                  <form id="bit_confirm_transaction">
+                      <table class="table table-striped table-responsive">
+                          <tbody>
+                              <tr>
+                                <td colspan="2">
+                                  <h4 class="text-center"><a href="" class="btn btn-success">Order Summery</a></h4>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                  <h4 class="text-center"><a href="" class="btn btn-success">Order ID : {{ gateways[0].id }}</a></h4>
+                                </td>
+                              </tr>
+                              <tr style="background: #003E11;color: #fff;">
+                                  <td class="text-center">
+                                      <div>You send</div>
+                                      <p>{{ gateways[0].amount_send }}</p>
+                                  </td>
+                                  <td class="text-center">
+                                      <div>You receive</div>
+                                      <p><b>{{ gateways[0].amount_receive }}</b></p>
+                                      <p>To account</p>
+                                      <p><b>{{ gateways[0].gateway_account }}</b></p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td colspan="2"></td>
+                              </tr>
+                              <tr class="text-center">
+                                <td>
+                                  <span style="font-size: 10px;" class="pull-left">Our {{ gateways[0].name }} Address:</span>
+                                </td>
+                                <td>
+                                  <span class="pull-right">
+                                    <input type="text" disabled="" :value="gateways[0].account" id="myInput" desa=""><button>Copy</button></span>
+                                </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <div class="form-group">
+                          <label></label>
+                          <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
+                      </div>
+                      <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
+                      <h4 class="text-danger" v-if="me">Please enter account.</h4>
+                  </form>
               </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-5" v-else>
+          <br>
+          <div class="selectedsend" id="bit_transaction_results">
+            <form v-if="send && receive" id="exchangeForm">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div id="sendCurrencyContainer">
+                      <p style="padding: 0px;margin: 0px;text-align: center;">Fee:  {{ sendfee }} {{ currency_form }} </p>
+                      <img alt="" :src="gatewaysendinfo.external_icon" class="getwayicon">
+                      <input type="text" @keyup="bit_calculator" id="sendAmount" v-model="rate_from" class="form-control from" style="text-align: right;">
+                        <p style="text-align: center;font-size: 12px;">Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}</p>
+
+                    </div>
+                  </div>
+            
+                  <div class="col-md-2" style="text-align: center;">
+                    <i class="fa fa-exchange fa-2x" style="margin-top: 26px;"></i>
+                  </div>
+
+                  <div class="col-md-5">
+                    <div id="receiveCurrencyContainer">
+                      <p style="padding: 0px;margin: 0px;text-align: center;">Fee: {{ recivefee }}{{ currency_to }}
+                        <span style="font-size: 11px;" v-if="extranandskill>0">Extra: {{extranandskill}} BDT</span></p>
+                            <input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
+                            <img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr">
+                             <p style="text-align: center;font-size: 12px;">Reserve: {{ reserve }}</p>
+                          </div>
+                        </div>
+                        <div class="col-md-12" style="color: red;text-align: center;">
+                          <div v-if="currency_to=='Wallet'" style="width: 220px!important;color: blue;background: #003E11;padding: 10px;
+                          text-align: center;
+                          min-width: 232px;
+                          margin: auto;">You will get : {{ parseFloat(rate_to)-(parseFloat(recivefee)+(parseFloat(sendfee)+parseFloat(extranandskill))/crate_from) }} {{ currency_to }}</div><div v-else style="width: 203px;border-radius: 35px;;color: red;background: #003E11;padding: 10px;
+                          text-align: center;
+                          
+                          margin: auto;">You will get:  {{ rate_to-recivefee }} {{ currency_to }}</div> <br><p style="padding: 11px;" class="box-shadow">Messsage: <span style="color: black;"> <?php  $d=json_decode($setting->data); if($d->exchangemessage) echo $d->exchangemessage; ?></span></p>
+                        </div>
+                      </div>
+                      <hr>
+
+                <div class="form-group">
+                  <label for="receiverID" style="visibility: visible;"><span class="receiveEcurrencyName"><span class="receiveAccountType">{{ messagessss }}</span></label>
+                  <input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your '+ placeholdermessage" style="visibility: visible;">
+                </div>
+
+                <div class="form-group" style="display: none;">
+                  <label for="exchangeEmail">Email</label>
+                  <input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="Enter your email" value="">
+                </div>
+
+                <div class="form-group" style="text-align: center;">
+                    <label class="checkbox">
+                    <input name="terms" type="checkbox" v-model="tos" value="1" id="term" required style="width: 20px;margin-left: -31px;">
+                    <?php if($d->importentmessage) echo $d->importentmessage; ?>
+                    <a style="text-decoration: underline;" href="<?php echo base_url().'home/termsofservices'; ?>" target="_blank">TOS</a>
+                </label>
+                  <button id="" class="btn btn-primary btn-sm" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
+                  <button id="startExchange" class="btn btn-primary btn-sm" type="button"  @click="submit" v-else>Start Order</button>
+                </div>
+                  
+                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
+                  <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
+                </div>
+
+                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
+                  <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
+                </div>
+              
+                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_from)<gatewaysendinfo.min_amount">
+                  <p style="margin: 0px;">{{ gatewaysendinfo.name }} Min. Amount: {{ gatewaysendinfo.min_amount }}</p>
+                </div>
+
+                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)>gatewayreciveinfo.max_amount">
+                  <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Max. Amount: {{ gatewayreciveinfo.max_amount }}</p>
+                </div>
+            </form>
+          </div>
+      </div>
+
+      <div class="col-md-3" id="atdesktop">
+        <h2 align="center" class="text-white">
+          Receive
+        </h2>
+        <div class="fixed-height scrollbar-outer scrollbaroutertest">
+          <form action="">
+          <?php
+            $this->db->where('allow_receive', 1);
+            $this->db->where('status', 1);
+            $gatewaysrevive = $this->db->get('gateways')->result();
+            if(count($gatewaysrevive)) {?>
+              <?php foreach ($gatewaysrevive as $key => $g): ?>
+                <div class="inputGroup">
+                  <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
+                  <input @click="recivechange" v-model="receive" id="receive<?php echo $g->id; ?>" name="receive" value="<?php echo $g->id; ?>" type="radio"/>
+                  <label for="receive<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
+                </div> 
+              <?php endforeach ?>
+            <?php
+              } else {
+                echo 'no_have_gateways';
+              }
+            ?>
+
+          </form>
+        </div>
+        <div id="scrollbaroutertestddd" style="background: rgb(255, 255, 255); padding: 10px; text-align: center; cursor: pointer;">Show More</div>
+      </div>
+
+    </div>
+  </div>
+</section>  
+
+<section class="home-default bg-color pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="section box-shadow">
+                    <div class="row">
+                      <div class="col-md-8 col-sm-8">
+                        <h3 class="text-center"><strong>Reserve</strong></h3>
+                        <div class="row">
+                            <?php
+                              $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                              $query2 = $this->db->get('gateways')->result();
+                              if(count($query2)) {
+                                foreach ($query2 as $key => $row) {
+                            ?>
+                          <div class="col-md-3 col-sm-3 mb-3">
+                              <div class="card text-center box-shadow">
+                                 <div class="p-1">
+                                   <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="50px;" width="50px">
+                                 </div>
+                                <div class="p-1">
+                                  <p class="card-title text-center">
+                                       <?php echo $row->name; ?>
+                                  </p>
+                                  <a href="#" class="badge badge-primary p-2 m-2">
+                                    <strong>
+                                       <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
+                                    </strong>
+                                  </a>
+                                </div>
+                              </div>
+                          </div>
+                          <?php
+                                }
+                              }else{
+                            ?>
+                                <div class="col-md-12 col-sm-12">
+                                  <?php echo $lang['no_have_gateways']; ?>
+                                </div>
+                            <?php } ?>    
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4">
+                        <h3 class="text-center"><strong>Today's Buy-Sell Price</strong></h3>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <strong>We Accept</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>We Buy</strong>
+                                        </th>
+                                        <th class="text-center">
+                                            <strong>We Sell</strong>
+                                        </th>
+                                    </tr>
+                                       <?php
+                                          $this->db->where('buy_price>0');
+                                          $query2 = $this->db->get('gateways')->result();
+                                        if(count($query2)) {
+                                         foreach ($query2 as $key => $row) {
+                                        ?>
+                                    <tr>
+                                       <td>
+                                        <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="30px;" width="30px">
+                                          <strong><?php echo $row->name; ?></strong>
+                                        </td>
+                                        <td class="text-center">
+                                            <strong><?php echo $row->buy_price; ?></strong>
+                                        </td>
+                                        <td class="text-center">
+                                          <strong><?php echo $row->sales_price; ?></strong>
+                                        </td>
+                                    </tr>
+                                     <?php
+                                        }
+                                      }else{
+                                      ?>
+                                        <div class="col-md-12">
+                                         <b> <?php echo 'no_have_gateways'; ?></b>
+                                        </div>
+                                      <?php } ?>   
+                                </tbody>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
-          <?php endforeach ?>
         </div>
-      </div>
-      <div class="right col-md-8 pl-4">
-        <div class="ml-5">
-          <h3 class="text-white">Our Inovaton are chaning the world</h3>
-          <img src="<?php echo base_url() ?>assets/temp/img/starsretins.png" alt="" width="250px;">
-          <br>
-          <span class="text-white">Excellent</span>
-          <br>
-          <br>
-          <a href="" class="btn thisbtn text-white border-r25">Place your revirw Sumbit</a>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
-
-<section id="startsections">
- <div id="startsection">
-  </div> 
-   <div class="startcontent">
-      <h6>Ready to go Beyond? Start today with our free payment solution</h6>
-      <div>
-        <a href="<?php echo base_url().'home/login' ?>" class="px-3 m-3 btn btn-outline-primary">Login</a>
-        <a href="<?php echo base_url().'home/regirter' ?>" class="btn btn-primary thisbtn">Register</a>
-      </div>
-  </div>
-</section>
-
-<section id="service" class="py-5">
+   
+<!-- Latest Exchanges -->
+<section id="sechange" class="pb-2 bg-color p-0">
   <div class="container">
-    <div class="row">
-      <div class="col-md-0 col-lg-1"></div>
-      <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_01.png" alt="" width="80px">
+    <div id="put">
+      <div class="section box-shadow p-3">
+        <h3 class="text-center">Latest Exchanges</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
+              <thead>
+                <tr>
+                  <th><span><?php echo 'username'; ?></span></th>
+                  <th><span><?php echo 'send'; ?></span></th>
+                  <th><span><?php echo 'receive'; ?></span></th>
+                  <th><span><?php echo 'Send amount'; ?></span></th>
+                  <th><span><?php echo 'Recive amount'; ?></span></th>
+                  <th class="al"><span> <?php echo 'status'; ?></span></th>
+                  <th class="al"><span> Date</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
+                $this->db->limit(10);
+                $this->db->order_by('exchanges.id', 'desc');
+                $this->db->join('users', 'users.id = exchanges.user_id');
+                $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+                $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                $query = $this->db->get('exchanges')->result();
+                if(count($query)) {
+                  foreach ($query as $key => $row) {
+                    $this->db->where('id', $row->gateway_receive);
+                    $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                    $reciveamoutn=$this->db->get('gateways')->row();
+                    ?>
+                    <tr>
+                      <td><?php echo $row->username ?></td>
+                      <td>
+                        <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
+                        <span class="pl-2"><?php echo $row->name; ?></span>
+                      </td>
+                      <td>
+                        <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
+                        <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
+                      </td>
+                      <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
+                      <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
+                      <td align="center">
+                        <?php if ($row->statuss==0): ?>
+                           <span class="btn btn-sm btn-info d-inline">Waiting for payment</span>
+                        <?php elseif($row->statuss==1): ?>
+                            <span class="btn btn-sm btn-secondary d-inline">Pending</span>
+                        <?php elseif($row->statuss==2): ?>
+                            <span class="btn btn-sm btn-success d-inline">completed</span>
+                        <?php elseif($row->statuss==3): ?>
+                          <span class="btn btn-sm btn-danger d-inline">rejected</span>
+                        <?php endif ?>
+                      </td>
+                      <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
+                    </tr>
+                          <?php
+                        }
+                      } else {
+                        echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
+                      }
+                  ?>
+              </tbody>
+            </table>
+        </div>
       </div>
-       <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_02.png" alt="" width="80px">
-      </div>
-       <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_03.png" alt="" width="80px">
-      </div>
-      <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_04.png" alt="" width="80px">
-      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_16.png" alt="" width="80px">
-      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_06.png" alt="" width="80px">
-      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_13.png" alt="" width="80px">
-      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_15.png" alt="" width="80px">
-      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_09.png" alt="" width="80px">
-      </div> <div class="col-md-2 col-lg-1 col-6 col-sm-3 text-center">
-        <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_11.png" alt="" width="80px">
-      </div>
-      <div class="col-md-2 col-lg-1"></div>
     </div>
   </div>
 </section>
+
+<?php
+    $this->db->join('users', 'users.id = testimonials.user_id');
+    $this->db->order_by('testimonials.id', 'desc');
+    $query = $this->db->get('testimonials')->result();
+?>
+<section id="feedback" class="pb-2 bg-color p-0">
+  <div class="container">
+    <div class="section box-shadow">
+      <h3 class="text-center"><strong>Customers Feedback</strong></h3>
+      <div class="featured-slider">
+        <div id="featured-slider" >
+           <?php if(count($query)) { ?>
+                <?php foreach ($query as $key => $var): ?>
+                <div class="featured box-shadow" style="border: 1px solid;height: 100px;text-align: center;">
+                  <div class="ad-info">
+                    <div class="text-center">
+                         <?php if($var->profile!=null){ ?>
+                          <img class="rounded-circle d-inline" style="width:150px;height: 150px" src="<?php echo base_url()?>assets/temp/profile/<?php echo $var->profile; ?>" alt="ssssss">
+                        <?php }else{ ?>
+                          <img class="rounded-circle d-inline" style="width:120px;height: 120px" src="<?php echo base_url()?>assets/temp/avatar-placeholder.svg" alt="ssssss">
+                        <?php } ?>
+                    </div>
+                    <h3 class="item-price"><span class="label label-success" style="color:#fff;"><i class="fa fa-smile-o"></i> Positive</span></h3>
+                      <?php if($var->type == "1") { ?>
+                      <h3 class="item-price">
+                        <span class="btn text-white btn-sm btn-success"><i class="fa fa-smile-o"></i> positive</span>
+                      </h3>
+                      <?php } elseif($var->type == "2") { ?>
+                      <h3 class="item-price">
+                        <span class="btn btn-sm btn-warning text-white">
+                          <i class="fa fa-meh-o"></i> neutral
+                        </span>
+                        </h3>
+                      
+                      <?php } elseif($var->type == "3") { ?>
+                      <h3 class="item-price"><span class="btn text-white btn-sm btn-danger">
+                        <i class="fa fa-frown-o"></i> negative</span>
+                      </h3>
+                      
+                      <?php } else { ?>
+                      <h3 class="item-price"><span class="btn text-white btn-sm btn-light"><i class="fa fa-meh-o"></i> Unknown</span></h3>
+                      <?php } ?>
+                    <h5 class="item-title">
+                        <?php echo $var->content ?>
+                    </h5>
+                    <div class="item-cat">
+                      <span><?php echo $var->username ?></span> 
+                    </div>
+                    <div><?php echo $var->date ?></div>
+                  </div><!-- ad-info -->
+                </div><!-- featured -->
+                <?php endforeach ?>
+              <?php } else { ?>
+                <h2> no_have_testimonials </h2>
+            <?php   }
+            ?>
+          </div>
+            <?php if(count($query)>3){ ?>
+              <div class="text-right"><a class="btn btn-info" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a></div>
+            <?php } ?>
+        </div><!-- featured-slider -->
+      </div>
+    </div>
+  </div>
+</section>
+
+     

@@ -13,7 +13,7 @@ class Home extends Public_Controller {
     if($this->ion_auth->logged_in()){
       $this->data['user_login']=$this->prefs_model->user_info_login($this->ion_auth->user()->row()->id);
     }
-      $this->data['title']               = $this->config->item('title');
+    $this->data['title']               = $this->config->item('title');
             $this->data['title_lg']            = $this->config->item('title_lg');
             $this->data['auth_social_network'] = $this->config->item('auth_social_network');
             $this->data['forgot_password']     = $this->config->item('forgot_password');
@@ -35,12 +35,12 @@ class Home extends Public_Controller {
 
   public function contact($value='')
   {
-    $this->__randerview1('contact', $this->data);
+    $this->__randerview('contact', $this->data);
   }
 
   public function review($value='')
   {
-    $this->__randerview1('allfeedback', $this->data);
+    $this->__randerview('allfeedback', $this->data);
   }
 
   public function recerve($value='',$adasd)
@@ -100,12 +100,12 @@ class Home extends Public_Controller {
   {
     $this->db->where('status',1);
     $this->data['info']=$this->db->get('faqandtutorial')->result();
-    $this->__randerview1('faq', $this->data);
+    $this->__randerview('faq', $this->data);
   }
 
   public function about($value='')
   {
-    $this->__randerview1('about', $this->data);
+    $this->__randerview('about', $this->data);
   }
 
   public function testimonials($value='')
@@ -115,7 +115,7 @@ class Home extends Public_Controller {
 
   public function termsofservices($value='')
   {
-    $this->__randerview1('termsofservices', $this->data);
+    $this->__randerview('termsofservices', $this->data);
   }
 
   public function privacypolicy($value='')
@@ -126,7 +126,7 @@ class Home extends Public_Controller {
   public function regirter($value='')
   {
     if(!$this->ion_auth->logged_in()){
-     $this->load->view('registation', $this->data);
+     $this->__randerview('registation', $this->data);
     }else{
       redirect('home','refresh');
     }
@@ -135,7 +135,7 @@ class Home extends Public_Controller {
   public function login($value='')
   {
     if(!$this->ion_auth->logged_in()){
-     $this->load->view('login', $this->data);
+     $this->__randerview('login', $this->data);
     }else{
       redirect('home','refresh');
     }
@@ -211,7 +211,7 @@ class Home extends Public_Controller {
 
       // set any errors and display the form
       $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-     $this->load->view('profile/forgerpassword', $this->data);
+     $this->__randerview('profile/forgerpassword', $this->data);
     }
     else
     {
@@ -370,6 +370,4 @@ class Home extends Public_Controller {
     $data=$this->db->get('gateways')->result();
     echo json_encode($data);
   }
-
-
 }
