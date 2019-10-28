@@ -9,7 +9,7 @@
         <div class="text-danger"><?php echo $message; ?></div>
       <?php endif ?>
     </div>
-    <form action="<?php echo base_url().'profile/editprofile' ?>" method="post">
+    <form action="<?php echo base_url().'profile/editprofile/'.$user->id ?>" method="post">
       <div class="container">
          <div class="row py-4">
             <div class="col-md-3 text-right text-right">
@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-9">
               <?php if ($user->profile): ?>
-                <img src="<?php echo base_url() ?>assets/temp/img/users/<?php echo $user->profile ?>" width="80px" alt=""> 
+                <img src="<?php echo base_url() ?>assets/temp<?php echo $user->profile ?>" width="80px" alt=""> 
               <?php else: ?>
                 <img src="<?php echo base_url() ?>assets/temp/img/images/allinco_19.png" width="80px" alt=""> 
               <?php endif ?>
@@ -61,7 +61,7 @@
               <p>Address: </p>
             </div>
             <div class="col-md-9">
-              <input class="form-control w-75" value="<?php echo $user->address ?>" type="text" placeholder="">
+              <input class="form-control w-75" value="<?php echo $user->address ?>" name="address" type="text" placeholder="">
             </div>
           </div>
           <div class="row py-2">
@@ -73,8 +73,9 @@
             </div>
           </div>
            <div class="row py-2">
-            <div class="col-md-3 text-right">
+            <div class="col-md-7 text-right">
               <button class="btn btn-primary px-5">Save</button>
+              <a class="btn btn-primary px-5 ml-2" href="<?php echo base_url()."profile/changeprofile" ?>">Change Your Profle Photo</a>
             </div>
           </div>
       </div>

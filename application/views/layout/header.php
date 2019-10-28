@@ -92,10 +92,10 @@
             <?php if ($this->ion_auth->logged_in()): ?>
             <div class="dropdown">
               <a style="display: flex;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="username mt-2"> <?php echo substr($user_login['username'], 0,10); ?></div>
+                  <div class="username" style="margin-top: 13px;margin-right: 4px;font-weight: 700;"> <?php echo substr($user_login['username'], 0,10); ?></div>
                   <div class="userprofile">
                     <?php if ($user_login['profile']): ?>
-                      <img src="<?php echo base_url().'assets/temp/profile'.$user_login['profile']; ?>" class="user-image rounded-circle" alt="User Image" width="55px">
+                      <img src="<?php echo base_url().'assets/temp'.$user_login['profile']; ?>" class="user-image rounded-circle" alt="User Image" width="55px">
                     <?php else: ?>
                       <img src="<?php echo base_url().'assets/temp'.'/avatar-placeholder.svg'; ?>" class="user-image rounded-circle" alt="User Image" width="55px">
                     <?php endif ?>
@@ -103,22 +103,22 @@
                  </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile">
-                  <img width="20px" src="<?php echo base_url().'assets/temp/svgicon/user.svg' ?>" alt="">
+                  <img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/user.svg' ?>" alt="">
                   My Profile
                 </a>
                 <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/exchanges">
-                  <img width="20px" src="<?php echo base_url().'assets/temp/svgicon/exchange.svg' ?>" alt="">
+                  <img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/exchange.svg' ?>" alt="">
                   My Exchanges
                 </a>
                 <a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/testimonials">
-                  <img width="20px" src="<?php echo base_url().'assets/temp/svgicon/commend.svg' ?>" alt="">
+                  <img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/commend.svg' ?>" alt="">
                   My Feedback
                 </a>
                 <a style="display: none;" class="dropdown-item" href="<?php echo base_url(); ?>account/referrals"><i class="fa fa-users"></i> Referrals</a>
                 <a class="dropdown-item" href="<?php echo base_url(); ?>profile/change_password">
-                  <img width="20px" src="<?php echo base_url().'assets/temp/svgicon/setting.svg' ?>" alt=""> Settings</a>
+                  <img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/setting.svg' ?>" alt=""> Settings</a>
                 <a class="dropdown-item" href="<?php echo base_url(); ?>profile/verification">
-                  <img width="20px" src="<?php echo base_url().'assets/temp/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
+                  <img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="text-center"><a href="<?php echo site_url('auth/logout'); ?>">Sign Out</a></h6>
               </div>

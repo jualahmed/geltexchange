@@ -31,8 +31,8 @@
         </div>
         <div class="col-md-12 my-2 text-center">
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">I have read this project <a href="<?php echo base_url() ?>home/" class="thistext">rules</a> and accept</label>
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <label class="form-check-label"  for="exampleCheck1">I have read this project <a href="<?php echo base_url() ?>home/" class="thistext">rules</a> and accept</label>
           </div>
         </div>
         

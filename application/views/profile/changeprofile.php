@@ -1,6 +1,6 @@
 <section class="my-4 py-4">
     <div class="container">
-        <div class="ads-info" style="display: block;">
+        <div class="ads-info text-center" style="display: block;">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="my-ads section" style="display: block;">
@@ -15,9 +15,9 @@
                                     </div>
                                     <div class="col-md-4" style="text-align: right;">
                                         <?php if ($user->profile): ?>
-                                          <img src="<?php echo base_url().'assets/images'.$user->profile; ?>" class="user-image" alt="User Image" width="100%">
+                                          <img src="<?php echo base_url().'assets/temp'.$user->profile; ?>" class="user-image" alt="User Image" width="100%">
                                         <?php else: ?>
-                                          <img src="<?php echo base_url().'assets/images'.'/avatar.jpg'; ?>" class="user-image" alt="User Image" width="100%">
+                                          <img src="<?php echo base_url().'assets/temp'.'/avatar-placeholder.svg'; ?>" class="user-image" alt="User Image" width="100%">
                                         <?php endif ?>
                                     </div>
                                     <div class="col-md-8" style="text-align: right; padding-top: 10px;">

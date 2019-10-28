@@ -82,6 +82,7 @@ class Profile extends Public_Controller {
   }
 
    // edit a user
+ 
   public function editprofile($id='')
   {
     if (!$this->ion_auth->logged_in() && !($this->ion_auth->user()->row()->id == $id))
@@ -96,10 +97,10 @@ class Profile extends Public_Controller {
 
     if ($this->form_validation->run() == TRUE)
     {
-      $username = strtolower($this->input->post('first_name')) . ' ' . strtolower($this->input->post('last_name'));
       $email    = strtolower($this->input->post('email'));
       $password = $this->input->post('password');
       $additional_data = array(
+        'address' => $this->input->post('address'),
         'first_name' => $this->input->post('first_name'),
         'last_name'  => $this->input->post('last_name'),
         'phone'      => $this->input->post('phone'),
@@ -118,7 +119,7 @@ class Profile extends Public_Controller {
 
   public function changeprofile($id='')
   {
-    $config['upload_path']          = './assets/images/users';
+    $config['upload_path']          = './assets/temp/userprofile';
     $config['allowed_types']        = '*';
     $config['max_size']             = 100;
     $config['max_width']            = 1024;
@@ -133,7 +134,7 @@ class Profile extends Public_Controller {
     {
       $dddd =$this->upload->data();
       $this->db->where('id', $id);
-      $this->db->set('profile','/users/'.$dddd['file_name']);
+      $this->db->set('profile','/userprofile/'.$dddd['file_name']);
       $this->db->update('users');
       $this->db->where('id',$this->ion_auth->user()->row()->id);
       $this->data['user']=$this->db->get('users')->row();

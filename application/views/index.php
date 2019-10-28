@@ -418,7 +418,7 @@
                   <div class="ad-info">
                     <div class="text-center">
                          <?php if($var->profile!=null){ ?>
-                          <img class="rounded-circle d-inline" style="width:150px;height: 150px" src="<?php echo base_url()?>assets/temp/profile/<?php echo $var->profile; ?>" alt="ssssss">
+                          <img class="rounded-circle d-inline" style="width:150px;height: 150px" src="<?php echo base_url()?>assets/temp/<?php echo $var->profile; ?>" alt="ssssss">
                         <?php }else{ ?>
                           <img class="rounded-circle d-inline" style="width:120px;height: 120px" src="<?php echo base_url()?>assets/temp/avatar-placeholder.svg" alt="ssssss">
                         <?php } ?>
