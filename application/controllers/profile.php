@@ -151,15 +151,13 @@ class Profile extends Public_Controller {
 
   public function document_verified($value='')
   {
-    $config['upload_path']          = './assets/images/document';
+    $config['upload_path']          = './assets/temp/img/document';
     $config['allowed_types']        = '*';
     $config['max_size']             = 100;
     $config['max_width']            = 1524;
     $config['max_height']           = 968;
-
     $this->load->library('upload', $config);
-
-    if ( ! $this->upload->do_upload('document_1'))
+    if (!$this->upload->do_upload('document_1'))
     {
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
@@ -170,18 +168,15 @@ class Profile extends Public_Controller {
     {
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
-
       $upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
       $file_name = $upload_data['file_name'];
-
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->db->set('document_1',$file_name);
       $this->db->update('users');
-
       $this->__randerview('profile/verification', $this->data);
     }
 
-    if ( ! $this->upload->do_upload('document_2'))
+    if (!$this->upload->do_upload('document_2'))
     {
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
@@ -192,9 +187,10 @@ class Profile extends Public_Controller {
     {
 
       $this->db->where('id', $this->ion_auth->user()->row()->id);
+      $upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+      $file_name = $upload_data['file_name'];
       $this->db->set('document_2',$file_name);
       $this->db->update('users');
-
       $this->db->where('id', $this->ion_auth->user()->row()->id);
       $this->data['users_info']=$this->db->get('users')->row();
       $this->__randerview('profile/verification', $this->data);

@@ -16,7 +16,6 @@ class Dashboard_model extends CI_Model {
         return $query;
     }
 
-
     public function disk_totalspace($dir = DIRECTORY_SEPARATOR)
     {
         return disk_total_space($dir);

@@ -22,14 +22,18 @@
                             <h4 class="text-info">You have upload file for Verification. admin is checking.....</h4>
                         <?php else: ?>
                           <form action="<?php echo base_url().'profile/document_verified' ?>" method="POST" enctype="multipart/form-data">
+                            <?php if (!$users_info->document_1): ?>
                             <div class="form-group">
                               <label>Scanned copy or photo of your ID Card/Passport/Driving License front part (Accept: JPG,JPEG,PNG or PDF)</label>
                               <input type="file" class="form-control" name="document_1">
                             </div>
-                            <div class="form-group">
-                              <label>Scanned copy or photo of your ID Card/Passport/Driving License back part (Accept: JPG,JPEG,PNG or PDF)</label>
-                              <input type="file" class="form-control" name="document_2">
-                            </div>
+                            <?php endif ?>
+                            <?php if (!$users_info->document_2): ?>
+                              <div class="form-group">
+                                <label>Scanned copy or photo of your ID Card/Passport/Driving License back part (Accept: JPG,JPEG,PNG or PDF)</label>
+                                <input type="file" class="form-control" name="document_2">
+                              </div>
+                            <?php endif ?>
                             <button type="submit" class="btn btn-primary btn-sm" name="bit_upload"><i class="fa fa-upload"></i> Upload</button>
                           </form>
                         <?php endif ?>

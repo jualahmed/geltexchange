@@ -80,13 +80,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="col-md-6">
 							 <div class="box">
 								<div class="box-header with-border">
-									<h3 class="box-title">xxxx</h3>
+									<h3 class="box-title">User Document</h3>
 								</div>
 								<div class="box-body">
                   <h3>Document 1</h3>
-                  <img src="<?php echo base_url().'assets/images/document/'.$user->document_1 ?>" alt="" width="100%" style="height: 400px">
+                  <img src="<?php echo base_url().'assets/temp/img/document/'.$user->document_1 ?>" alt="" width="100%" style="height: 400px">
                    <h3>Document 2</h3>
-                  <img src="<?php echo base_url().'assets/images/document/'.$user->document_2 ?>" alt="" width="100%" style="height: 400px">
+                  <img src="<?php echo base_url().'assets/temp/img/document/'.$user->document_2 ?>" alt="" width="100%" style="height: 400px">
 								</div>
 							</div>
 						</div>

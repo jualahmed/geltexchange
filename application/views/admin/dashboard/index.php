@@ -13,8 +13,8 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-maroon"><i class="fa fa-legal"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Licence</span>
-                        <span class="info-box-number">Free</span>
+                        <span class="info-box-text">Total Exchanges</span>
+                        <span class="info-box-number"><?php echo $exchanges ?></span>
                     </div>
                 </div>
             </div>
@@ -22,8 +22,8 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">AdminLTE version</span>
-                        <span class="info-box-number">2.3.1</span>
+                        <span class="info-box-text">gateways</span>
+                        <span class="info-box-number"><?php echo $gateways; ?></span>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fa fa-shield"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Security groups</span>
-                        <span class="info-box-number"><?php echo $count_groups; ?></span>
+                        <span class="info-box-text">Total Feedback</span>
+                        <span class="info-box-number"><?php echo $testimonials; ?></span>
                     </div>
                 </div>
             </div>
