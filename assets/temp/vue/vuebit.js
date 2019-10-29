@@ -33,7 +33,7 @@ const vm= new Vue({
 	created(){
 		var self = this;
 		self.loginuser=[];
-		var data_ursls = base_url+"/auth/getloginuser";
+		var data_ursls = base_url+"auth/getloginuser";
 		$.ajax({
 			url: data_ursls,
 			type: 'POST',
