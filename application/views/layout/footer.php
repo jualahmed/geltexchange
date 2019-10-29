@@ -82,9 +82,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js" integrity="sha256-apFUVcutYBHTJh5O835gpzGcVk3v6iUxg38lKBpQMDA=" crossorigin="anonymous"></script>
-    <script src="<?php echo base_url() ?>/assets/temp/vue/vue.js"></script>
-    <script src="<?php echo base_url() ?>/assets/temp/vue/vuebit.js"></script>
-    <input type="hidden" id="url" value="<?php echo base_url() ?>/">
+    <script src="<?php echo base_url() ?>assets/temp/js/vue/vue.js"></script>
+    <script src="<?php echo base_url() ?>assets/temp/js/vue/vuebit.js"></script>
     <!-- JS -->
     <script src="<?php echo base_url() ?>assets/temp/js/modernizr.min.js"></script>
     <script src="<?php echo base_url() ?>assets/temp/js/owl.carousel.min.js"></script>
