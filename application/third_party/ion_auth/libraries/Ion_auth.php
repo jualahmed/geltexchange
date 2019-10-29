@@ -189,7 +189,7 @@ class Ion_auth
             
           $msubject = 'Password Reset';
          
-          $mail->addAddress("md.jual.ah@gmail.com", "Recepient Name");
+          $mail->addAddress($user->email, "Recepient Name");
           $mail->isHTML(true);
           $mail->Subject = $msubject;
           $mail->Body = $message;
