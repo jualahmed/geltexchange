@@ -8,7 +8,7 @@
         <?php echo $breadcrumb; ?>
     </section>
 
-    <section class="content">
+    <section class="content" style="min-height: 100px">
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">

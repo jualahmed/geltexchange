@@ -44,9 +44,7 @@
                     <span class="label label-info">Manually</span>                </td>
                 <td colspan="2">
                     Status:
-                                <?php if ($stinglegetway->statuss==0): ?>
-                                    <span class="btn btn-sm btn-info">Waiting for payment</span>
-                                <?php elseif($stinglegetway->statuss==1): ?>
+                                <?php if($stinglegetway->statuss==1): ?>
                                     <span class="btn btn-sm btn-primary">Pending</span>
                                 <?php elseif($stinglegetway->statuss==2): ?>
                                     <span class="btn btn-sm btn-success">completed</span>
@@ -127,24 +125,16 @@
             <div class="form-group">
               <label>Status</label>
               <select class="form-control" name="status" onchange="show_field(this.value);">
-                <?php if ($stinglegetway->statuss==0): ?>
-                    <option value="0" selected>Waiting for payment</option>
-                    <option value="1">Pending</option>
-                    <option value="2">completed</option>
-                    <option value="3">rejected</option>
-                <?php elseif($stinglegetway->statuss==1): ?>
+                <?php if($stinglegetway->statuss==1): ?>
                     <option value="1" selected>Pending</option>
-                    <option value="0">Waiting for payment</option>
                     <option value="3">rejected</option>
                     <option value="2">completed</option>
                 <?php elseif($stinglegetway->statuss==2): ?>
                     <option value="2" selected>completed</option>
-                    <option value="0">Waiting for payment</option>
                     <option value="1">Pending</option>
                     <option value="3">rejected</option>
                 <?php elseif($stinglegetway->statuss==3): ?>
                     <option value="3" selected>rejected</option>
-                    <option value="0">Waiting for payment</option>
                     <option value="1">Pending</option>
                     <option value="2">completed</option>
                 <?php endif ?>
