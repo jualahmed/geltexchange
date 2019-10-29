@@ -1,5 +1,5 @@
 <div class="container py-4 my-4 text-center">
-  <div class="w-50 m-auto box-shadow">
+  <div class="w-50 m-auto box-shadow py-3">
       <h1><?php echo lang('reset_password_heading');?></h1>
       <div id="infoMessage"><?php echo $message;?></div>
 
@@ -12,13 +12,13 @@
 
         <p>
           <?php echo lang('reset_password_new_password_confirm_label', 'new_password_confirm');?> <br />
-          <?php echo form_input($new_password_confirm);?>
+          <?php echo form_input($new_password_confirm, array('class' =>'text-lowercase form-control','placeholder'=>"Enter new Passsword"));?>
         </p>
 
-        <?php echo form_input($user_id);?>
+        <?php echo form_input($user_id,array('class' =>'text-lowercase form-control','placeholder'=>"Confirm new Passsword"));?>
         <?php echo form_hidden($csrf); ?>
 
-        <p><?php echo form_submit('submit', "reset_password");?></p>
+        <p><?php echo form_submit('submit', "reset_password",array('class' =>'btn btn-success text-white py-2 px-5 roundeddd'));?></p>
 
       <?php echo form_close();?>
   </div>
