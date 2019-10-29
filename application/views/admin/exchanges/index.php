@@ -63,7 +63,7 @@
                                   <?php if ($v->statuss==0): ?>
                                       <span class="btn btn-sm btn-info btn-block">Waiting for payment</span>
                                   <?php elseif($v->statuss==1): ?>
-                                      <span class="btn btn-sm btn-primary btn-block">Pending</span>
+                                      <span class="btn btn-sm btn-primary btn-block">Processing</span>
                                   <?php elseif($v->statuss==2): ?>
                                       <span class="btn btn-sm btn-success btn-block">completed</span>
                                   <?php elseif($v->statuss==3): ?>

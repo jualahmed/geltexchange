@@ -50,13 +50,13 @@
                         <?php if ($row->statuss==0): ?>
                            <span class="btn btn-sm btn-info d-inline">Waiting for payment</span>
                         <?php elseif($row->statuss==1): ?>
-                            <span class="btn btn-sm btn-primary d-inline">Pending</span>
+                            <span class="btn btn-sm btn-primary d-inline">Processing</span>
                         <?php elseif($row->statuss==2): ?>
                             <span class="btn btn-sm btn-success d-inline">Completed</span>
                         <?php elseif($row->statuss==3): ?>
                           <span class="btn btn-sm btn-danger d-inline">Rejected</span>
                         <?php elseif($row->statuss==4): ?>
-                          <span class="btn btn-sm btn-primary d-inline">Pending</span>
+                          <span class="btn btn-sm btn-primary d-inline">Processing</span>
                         <?php endif ?>
                       </td>
                       <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
