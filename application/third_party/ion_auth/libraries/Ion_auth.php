@@ -136,14 +136,16 @@ class Ion_auth
 	 */
 	public function forgotten_password($identity)
 	{
+
 		if ($this->ion_auth_model->forgotten_password($identity))
 		{
 			// Get user information
 			$identifier = $this->ion_auth_model->identity_column; // use model identity column, so it can be overridden in a controller
-			$user = $this->where($identifier, $identity)->where('active', 1)->users()->row();
+			$user = $this->where($identifier, $identity)->users()->row();
 
 			if ($user)
 			{
+
 				$data = array(
 					'identity' => $user->{$this->config->item('identity', 'ion_auth')},
 					'forgotten_password_code' => $user->forgotten_password_code
@@ -163,18 +165,18 @@ class Ion_auth
           $mail->SMTPDebug = 0;                               
           //Set PHPMailer to use SMTP.
           $mail->isSMTP();            
-          $mail->Host = "smtp.gmail.com";
+          $mail->Host = "usdbuysell.com";
           //Set this to true if SMTP host requires authentication to send email
           $mail->SMTPAuth = true;                          
           //Provide username and password     
-          $mail->Username = "md.jual1212.ah@gmail.com";                 
-          $mail->Password = "Ad009257"; 
+          $mail->Username = "_mainaccount@usdbuysell.com";                 
+          $mail->Password = "Bm0r0w0GXz7G"; 
           //If SMTP requires TLS encryption then set it
           $mail->SMTPSecure = "ssl";                           
           //Set TCP port to connect to 
           $mail->Port = 465;                                   
-          $mail->From = "md.jual1212.ah@gmail.com";
-          $mail->FromName = "";
+          $mail->From = "_mainaccount@usdbuysell.com";
+          $mail->FromName = "usdbuysell";
           $mail->smtpConnect(
               array(
                 "ssl" => array(
@@ -187,10 +189,11 @@ class Ion_auth
             
           $msubject = 'Password Reset';
          
-          $mail->addAddress($user->email, "Recepient Name");
+          $mail->addAddress("md.jual.ah@gmail.com", "Recepient Name");
           $mail->isHTML(true);
           $mail->Subject = $msubject;
           $mail->Body = $message;
+
           if($mail->send()) 
           {
             $this->set_message('forgot_password_successful');
