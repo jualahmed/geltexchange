@@ -7,18 +7,18 @@
 
         <p>
           <label for="new_password"><?php echo sprintf(lang('reset_password_new_password_label'), $min_password_length);?></label> <br />
-          <?php echo form_input($new_password);?>
+         <input type="password" name="new" value="" class="form-control text-none" id="new" pattern="^.{8}.*$">
         </p>
 
         <p>
           <?php echo lang('reset_password_new_password_confirm_label', 'new_password_confirm');?> <br />
-          <?php echo form_input($new_password_confirm);?>
+         <input type="password" name="new_confirm" value="" id="new_confirm" class="form-control text-none" pattern="^.{8}.*$">
         </p>
 
         <?php echo form_input($user_id);?>
         <?php echo form_hidden($csrf); ?>
 
-        <p><?php echo form_submit('submit', "reset_password");?></p>
+        <input type="submit" name="submit" value="reset_password" class="btn btn-success text-white py-2 px-5 roundeddd">
 
       <?php echo form_close();?>
   </div>
