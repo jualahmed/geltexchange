@@ -24,6 +24,12 @@ class Exchanges_model extends CI_Model {
     return $query;
   }
 
+  public function fetch_users($limit, $start) {
+    $this->db->limit($limit, $start);
+    $query = $this->db->get("users")->result();
+    return $query;
+  }
+
   public function create(array $value)
   {
     $this->db->insert('exchanges', $value);

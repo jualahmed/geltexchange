@@ -16,29 +16,48 @@ class Users extends Admin_Controller {
 
 		/* Breadcrumbs :: Common */
 		$this->breadcrumbs->unshift(1, lang('menu_users'), 'admin/users');
+    $this->load->model('exchanges_model');
 	}
 
 	public function index()
 	{
 		if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
-		{
-			redirect('auth/login', 'refresh');
-		}
-		else
-		{
-			/* Breadcrumbs */
-			$this->data['breadcrumb'] = $this->breadcrumbs->show();
-
-			/* Get all users */
-			$this->data['users'] = $this->ion_auth->users()->result();
-			foreach ($this->data['users'] as $k => $user)
-			{
-				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-			}
-
-			/* Load Template */
-			$this->template->admin_render('admin/users/index', $this->data);
-		}
+    {
+      redirect('auth/login', 'refresh');
+    }
+    else
+    {
+      $this->load->library("pagination");
+      $this->load->helper("url");
+      $this->data['breadcrumb'] = $this->breadcrumbs->show();
+      $config['base_url']    = base_url().'admin/users/index';
+      $config['uri_segment'] = 4;
+      $config['total_rows']  = $this->db->count_all("users");
+      $config['per_page']    = 10;
+        //styling
+      $config['full_tag_open'] = "<ul class='pagination'>";
+      $config['full_tag_close'] ="</ul>";
+      $config['num_tag_open'] = '<li>';
+      $config['num_tag_close'] = '</li>';
+      $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+      $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+      $config['next_tag_open'] = "<li>";
+      $config['next_tagl_close'] = "</li>";
+      $config['prev_tag_open'] = "<li>";
+      $config['prev_tagl_close'] = "</li>";
+      $config['first_tag_open'] = "<li>";
+      $config['first_tagl_close'] = "</li>";
+      $config['last_tag_open'] = "<li>";
+      $config['last_tagl_close'] = "</li>";
+      $this->pagination->initialize($config);
+      $page = $this->uri->segment(4);
+      $offset = !$page?0:$page;
+      $start = $offset;
+      $limit = 8;
+      $this->data['users'] = $this->exchanges_model->fetch_users($limit,$start);
+      $this->data['start'] = $start;
+      $this->template->admin_render('admin/users/index', $this->data);
+    } 
 	}
 
 	public function create()

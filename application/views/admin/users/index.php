@@ -23,7 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<th><?php echo lang('users_firstname');?></th>
 												<th><?php echo lang('users_lastname');?></th>
 												<th><?php echo lang('users_email');?></th>
-												<th><?php echo lang('users_groups');?></th>
 												<th><?php echo lang('users_status');?></th>
 												<th><?php echo lang('users_action');?></th>
 											</tr>
@@ -37,13 +36,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<td>
 <?php
 
-foreach ($user->groups as $group)
-{
-
-	// Disabled temporary !!!
-	// echo anchor('admin/groups/edit/'.$group->id, '<span class="label" style="background:'.$group->bgcolor.';">'.htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8').'</span>');
-	echo anchor('admin/groups/edit/'.$group->id, '<span class="label label-default">'.htmlspecialchars($group->name, ENT_QUOTES, 'UTF-8').'</span>');
-}
 
 ?>
 												</td>
@@ -56,9 +48,12 @@ foreach ($user->groups as $group)
 <?php endforeach;?>
 										</tbody>
 									</table>
+                    <br>
+                  <div class="text-right"><?php echo $this->pagination->create_links(); ?></div>
 								</div>
 							</div>
 						 </div>
 					</div>
+
 				</section>
 			</div>
