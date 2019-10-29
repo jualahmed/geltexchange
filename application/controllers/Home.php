@@ -38,11 +38,6 @@ class Home extends Public_Controller {
     $this->__randerview('contact', $this->data);
   }
 
-  public function review($value='')
-  {
-    $this->__randerview('allfeedback', $this->data);
-  }
-
   public function recerve($value='',$adasd)
   { 
     $this->db->where('id', $adasd);
@@ -173,7 +168,7 @@ class Home extends Public_Controller {
 
     $this->db->join('users', 'users.id = testimonials.user_id');
     $this->db->order_by("testimonials.id", "desc");
-    $this->db->where('testimonials.status', 0);
+    $this->db->where('testimonials.status', 1);
     $this->db->limit($limit, $start);
     $this->data['results'] = $this->db->get("testimonials")->result();
     $this->data['start'] = $start;

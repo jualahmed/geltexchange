@@ -1,31 +1,37 @@
-<section id="sechange" class="mt-3 py-3">
+
+<section id="sechange" class="pb-2 bg-color p-0">
+  <!-- Latest Exchanges -->
+<br><br>
   <div class="container">
     <div id="put">
       <div class="section box-shadow p-3">
-        <h3>Latest Exchanges</h3>
+        <h3 class="text-center">Latest Exchanges</h3>
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
               <thead>
                 <tr>
-                  <th><?php echo 'username'; ?></th>
-                  <th><?php echo 'send'; ?></th>
-                  <th><?php echo 'receive'; ?></th>
-                  <th><?php echo 'amount'; ?></th>
-                  <th class="al"><?php echo 'status'; ?></th>
-                  <th class="al">Date</th>
+                  <th><span><?php echo 'username'; ?></span></th>
+                  <th><span><?php echo 'send'; ?></span></th>
+                  <th><span><?php echo 'receive'; ?></span></th>
+                  <th><span><?php echo 'Send amount'; ?></span></th>
+                  <th><span><?php echo 'Recive amount'; ?></span></th>
+                  <th class="al"><span> <?php echo 'status'; ?></span></th>
+                  <th class="al"><span> Date</span></th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                $this->db->select('users.*,gateways.*,exchanges.*,exchanges.status as statuss');
+                $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
                 $this->db->limit(10);
                 $this->db->order_by('exchanges.id', 'desc');
                 $this->db->join('users', 'users.id = exchanges.user_id');
                 $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+                $this->db->join('currency', 'currency.currency_id = gateways.currency');
                 $query = $this->db->get('exchanges')->result();
                 if(count($query)) {
                   foreach ($query as $key => $row) {
                     $this->db->where('id', $row->gateway_receive);
+                    $this->db->join('currency', 'currency.currency_id = gateways.currency');
                     $reciveamoutn=$this->db->get('gateways')->row();
                     ?>
                     <tr>
@@ -38,17 +44,20 @@
                         <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
                         <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
                       </td>
-                      <td><?php echo $row->amount_send;?></td>
+                      <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
+                      <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
                       <td align="center">
                         <?php if ($row->statuss==0): ?>
-                                 <span class="btn btn-sm btn-info">Waiting for payment</span>
-                              <?php elseif($row->statuss==1): ?>
-                                  <span class="btn btn-sm btn-secondary">Pending</span>
-                              <?php elseif($row->statuss==2): ?>
-                                  <span class="btn btn-sm btn-success">completed</span>
-                              <?php elseif($row->statuss==3): ?>
-                                <span class="btn btn-sm btn-danger">rejected</span>
-                              <?php endif ?>
+                           <span class="btn btn-sm btn-info d-inline">Waiting for payment</span>
+                        <?php elseif($row->statuss==1): ?>
+                            <span class="btn btn-sm btn-primary d-inline">Pending</span>
+                        <?php elseif($row->statuss==2): ?>
+                            <span class="btn btn-sm btn-success d-inline">Completed</span>
+                        <?php elseif($row->statuss==3): ?>
+                          <span class="btn btn-sm btn-danger d-inline">Rejected</span>
+                        <?php elseif($row->statuss==4): ?>
+                          <span class="btn btn-sm btn-primary d-inline">Pending</span>
+                        <?php endif ?>
                       </td>
                       <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
                     </tr>
@@ -60,9 +69,7 @@
                   ?>
               </tbody>
             </table>
-
         </div>
-        <div><?php echo $this->pagination->create_links(); ?></div>
       </div>
     </div>
   </div>

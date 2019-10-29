@@ -49,8 +49,9 @@
               <h2> no_have_testimonials </h2>
           <?php   }
           ?>
-      <div><?php echo $this->pagination->create_links(); ?></div>
+     
       </div>
+       <div><?php echo $this->pagination->create_links(); ?></div>
       </div>
     </div>
 </section>
