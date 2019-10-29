@@ -13,7 +13,7 @@
         </div>
         <div id="message" class="text-center text-danger"></div>
         <div class="col-md-12 my-2">
-          <input type="submit" class="btn btn-success text-white py-2 px-5 roundeddd" value="Sign up">
+          <input type="submit" class="btn btn-success text-white py-2 px-5 roundeddd" value="Login">
         </div>
         <div class="col-md-12">
           <p><a href="<?php echo base_url() ?>forgerpassword" class="thistext">Forget Passsword</a> | <a href="<?php echo base_url() ?>regirter" class="thistext">Create an account</a></p>
