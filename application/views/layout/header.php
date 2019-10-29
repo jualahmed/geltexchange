@@ -31,7 +31,6 @@
   <!--End of Tawk.to Script-->
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/styles/styles.css" >
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/main.css"> 
-  <link id="preset" rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/presets/preset2.css">
   <link rel="icon" href="<?php echo base_url() ?>/assets/temp/images/favicon.ico" type="image/x-icon"/>
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/icofont.css">

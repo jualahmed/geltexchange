@@ -151,7 +151,7 @@ class Profile extends Public_Controller {
 
   public function document_verified($value='')
   {
-    $config['upload_path']          = './assets/temp/img/document';
+    $config['upload_path']          = 'assets/temp/img/document';
     $config['allowed_types']        = '*';
     $config['max_size']             = 100;
     $config['max_width']            = 1524;

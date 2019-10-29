@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<h3 class="box-title"><?php echo anchor('admin/gateways/create', '<i class="fa fa-plus"></i> '. ('New Gateways Create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
 								</div>
 								<div class="box-body">
+                <div class="table-responsive">
 									<table class="table table-striped table-hover table-bordered table-responsive">
 										<thead>
 											<tr>
@@ -57,6 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php endforeach ?>
 										</tbody>
 									</table>
+                </div>
                   <br>
                   <div class="text-right"><?php echo $this->pagination->create_links(); ?></div>
 								</div>
