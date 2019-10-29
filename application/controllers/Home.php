@@ -270,8 +270,6 @@ class Home extends Public_Controller {
 
       if ($this->form_validation->run() == false)
       {
-        // display the form
-
         // set the flash data error message if there is one
         $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
