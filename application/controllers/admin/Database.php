@@ -29,12 +29,10 @@ class Database extends Admin_Controller {
         {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
             /* Data */
             $this->data['list_tables'] = $this->db->list_tables();
             $this->data['platform']    = $this->db->platform();
             $this->data['version']     = $this->db->version();
-
             /* Load Template */
             $this->template->admin_render('admin/database/index', $this->data);
         }

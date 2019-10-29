@@ -35,6 +35,14 @@ class Dashboard extends Admin_Controller {
             $this->data['memory_peak_usage'] = $this->dashboard_model->memory_peak_usage(TRUE);
             $this->data['memory_usepercent'] = $this->dashboard_model->memory_usepercent(TRUE, FALSE);
 
+            $this->db->select('users.*,gateways.*,currency.*,exchanges.*,exchanges.status as statuss');
+            $this->db->join('users', 'users.id = exchanges.user_id');
+            $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+            $this->db->join('currency', 'gateways.currency = currency.currency_id');
+            $this->db->order_by("exchanges.id", "desc");
+            $this->db->where('exchanges.status',1);
+            $this->data['results'] = $this->db->get("exchanges")->result();
+
             $this->data['url_exist']    = is_url_exist('http://www.domprojects.com');
             $this->template->admin_render('admin/dashboard/index', $this->data);
         }
