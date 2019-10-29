@@ -380,9 +380,9 @@
                         <?php elseif($row->statuss==1): ?>
                             <span class="btn btn-sm btn-secondary d-inline">Pending</span>
                         <?php elseif($row->statuss==2): ?>
-                            <span class="btn btn-sm btn-success d-inline">completed</span>
-                        <?php elseif($row->statuss==3): ?>
-                          <span class="btn btn-sm btn-danger d-inline">rejected</span>
+                            <span class="btn btn-sm btn-dark d-inline">Processing</span>
+                        <?php elseif($row->statuss==3 || $row->statuss==4): ?>
+                          <span class="btn btn-sm btn-success d-inline">completed</span>
                         <?php endif ?>
                       </td>
                       <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
@@ -414,7 +414,7 @@
         <div id="featured-slider" >
            <?php if(count($query)) { ?>
                 <?php foreach ($query as $key => $var): ?>
-                <div class="featured box-shadow" style="border: 1px solid;height: 100px;text-align: center;">
+                <div class="featured box-shadow" style="border: 1px solid;text-align: center;">
                   <div class="ad-info">
                     <div class="text-center">
                          <?php if($var->profile!=null){ ?>
