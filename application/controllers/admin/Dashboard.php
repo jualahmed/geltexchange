@@ -42,6 +42,8 @@ class Dashboard extends Admin_Controller {
             $this->db->order_by("exchanges.id", "desc");
             $this->db->where('exchanges.status',1);
             $this->data['results'] = $this->db->get("exchanges")->result();
+            $this->db->where('final_verified', 0);
+            $this->data['pendinguser'] = $this->db->get("users")->result();
 
             $this->data['url_exist']    = is_url_exist('http://www.domprojects.com');
             $this->template->admin_render('admin/dashboard/index', $this->data);

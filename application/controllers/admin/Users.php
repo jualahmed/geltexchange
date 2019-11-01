@@ -295,7 +295,6 @@ class Users extends Admin_Controller {
 		$this->template->admin_render('admin/users/edit', $this->data);
 	}
 
-
 	public function activate($id, $code = FALSE)
 	{
 		$id = (int) $id;
