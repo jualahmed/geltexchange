@@ -37,11 +37,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="">Rates From</label>
-                                    <input type="number" name="rate_from" class="form-control" required>
+                                    <input type="text" name="rate_from" class="form-control" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="">Rates To</label>
-                                    <input type="number" name="rate_to" class="form-control" required>
+                                    <input type="text" name="rate_to" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">

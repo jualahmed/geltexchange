@@ -60,18 +60,18 @@
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered">
-                      <thead>
+                      <thead >
                         <tr>
-                          <th>User Name</th>
-                          <th>Send</th>
-                          <th>Receive</th>
-                          <th>Amount Send</th>
-                          <th>Amount Receive</th>
-                          <th>Account Send</th>
-                          <th>Account Receive</th>
-                          <th>Date</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th nowrap>User Name</th>
+                          <th nowrap>Send</th>
+                          <th nowrap>Receive</th>
+                          <th nowrap>Amount Send</th>
+                          <th nowrap>Amount Receive</th>
+                          <th nowrap>Account Send</th>
+                          <th nowrap>Account Receive</th>
+                          <th nowrap>Date</th>
+                          <th nowrap>Status</th>
+                          <th nowrap>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -82,30 +82,30 @@
                               $gateway_r=$this->db->get('gateways')->row();
                             ?>
                               <tr>
-                                <td>
+                                <td nowrap>
                                   <?php if($v->profile): ?><img src="<?php echo $v->profile ?>" alt="" width="25px;">
                                   <?php else: ?><img src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="25px;">
                                   <?php endif ?>
                                  <span> <?php echo htmlspecialchars($v->username, ENT_QUOTES, 'UTF-8'); ?></span>
                                 </td>
-                                <td>
+                                <td nowrap>
                                   <?php if($v->external_icon): ?><img src="<?php echo base_url().$v->external_icon ?>" alt="" width="25px;">
                                   <?php else: ?><img src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="25px;">
                                   <?php endif ?>
                                   <span> <?php echo htmlspecialchars($v->name); ?></span>
                                 </td>
-                                <td><?php echo htmlspecialchars($v->amount_send.' '.$v->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td>
+                                <td nowrap><?php echo htmlspecialchars($v->amount_send.' '.$v->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td nowrap>
                                   <?php if($gateway_r->external_icon): ?><img src="<?php echo base_url().$gateway_r->external_icon ?>" alt="" width="25px;">
                                   <?php else: ?><img src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="25px;">
                                   <?php endif ?>
                                   <?php echo htmlspecialchars($gateway_r->name); ?>
                                 </td>
-                                <td><?php echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($v->send_account, ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($v->gateway_account, ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($v->created_at, ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td>
+                                <td nowrap><?php echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td nowrap><?php echo htmlspecialchars($v->send_account, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td nowrap><?php echo htmlspecialchars($v->gateway_account, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td nowrap><?php echo htmlspecialchars($v->created_at, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td nowrap>
                                   <?php if ($v->statuss==0): ?>
                                       <span class="btn btn-sm btn-info btn-block">Waiting for payment</span>
                                   <?php elseif($v->statuss==1): ?>
@@ -116,7 +116,7 @@
                                     <span class="btn btn-sm btn-danger btn-block">rejected</span>
                                   <?php endif ?>
                                 </td>
-                                <td>
+                                <td nowrap>
                                   <a class="btn btn-sm btn-warning" href="<?php echo base_url().'admin/exchanges/view/'.$v->id ?>" title="Edit">View</i></a> 
                                 </td>
                             </tr>
