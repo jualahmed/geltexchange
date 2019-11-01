@@ -3,13 +3,14 @@ browserSync = require('browser-sync').create();
 
 gulp.task('watch', function() {
   browserSync.init({
+    proxy: "http://localhost/currencyconverter",
     notify: false,
-    server: {
-      baseDir: "application/views/designtemplate"
-    }
+    options: {
+         reloadDelay: 250
+    },
   });
 
-  gulp.watch('./application/views/designtemplate/index.html', function() {
+  gulp.watch('./application/views/index.php', function() {
     browserSync.reload();
   });
 
