@@ -2,3 +2,7 @@
 https://exchange2bdt.com:2083/
 cPanel username	exchange
 cPanel password	Thank you anik.1971
+
+database : exchange_users
+user: exchange_2bdt
+password: https://exchange2bdt.com:2083/cpsess7445113841/frontend/

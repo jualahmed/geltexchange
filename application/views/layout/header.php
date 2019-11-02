@@ -71,7 +71,7 @@
   </div>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
-      <a class="navbar-brand p-1" href="<?php echo base_url() ?>"><img class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo"></a>
+      <a class="navbar-brand p-1" href="<?php echo base_url() ?>"><img class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo"     width="170px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
