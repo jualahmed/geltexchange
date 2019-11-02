@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2019 at 07:01 PM
+-- Generation Time: Nov 02, 2019 at 05:52 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `usdbuysell`
+-- Database: `currencyconverter`
 --
 
 -- --------------------------------------------------------
@@ -280,6 +280,14 @@ CREATE TABLE `login_attempts` (
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '127.0.0.1', 'md.jual.ah@gmail.com', 1572664783),
+(2, '127.0.0.1', 'md.jual.ah@gmail.com', 1572664784);
+
 -- --------------------------------------------------------
 
 --
@@ -413,7 +421,8 @@ INSERT INTO `rates` (`id`, `gateway_from`, `gateway_to`, `rate_from`, `rate_to`)
 (237, 57, 54, '100', '1'),
 (238, 58, 89, '95', '1'),
 (288, 26, 46, '1', '1'),
-(289, 26, 60, '1', '80');
+(289, 26, 60, '1', '80'),
+(290, 57, 57, '121', '.4');
 
 -- --------------------------------------------------------
 
@@ -431,9 +440,9 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `data`) VALUES
-(1, '{\"name\":\"Amaderhelp\",\"notice\":\"NOTE:Your Registered email and number must be verified then your account automatically actavited and you can set up the exchange, you do not have to pay the transfer fee if you buy above $20 \",\"start_time\":\"10.30\",\"end_time\":\"11.30\",\"is_online\":\"1\",\"siteabout\":\"Amaderhelp Is An Online Best Exchange Platform. Easy And Fast E-Currency Exchange.\",\"supportemail\":\"md.jual.ah@gmail.com\",\"skype\":\"jualahmed\",\"facebook\":\"https:\\/\\/www.facebook.com\\/md.jual.ah\",\"linkedin\":\"linkedin\",\"twtter\":\"twtter\",\"youtube\":\"youtube\",\"contactnumber\":\"01784622362\",\"exchangemessage\":\"this is a test messages \",\"importentmessage\":\"importent message\"}'),
-(2, '                           <p>                                                                                    </p><div><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p></div>                                                                           <p></p>                         '),
-(3, '                                                                                 <p>আমাদের মধ্যে অনেকেই অনলাইনে ছোট-খাটো কাজ করেন ও&nbsp;</p><p>অল্প পরিমাণ ডলার ইনকাম করেন। আবার অনেক সময় ডোমেইন/হোস্টিং বা অন্য কোনো</p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p>&nbsp;পণ্য পারচেস করার জন্য কারো কারো সামান্য পরিমান ডলারের প্রয়োজন হয়। সেক্ষেত্রে এতো অল্প পরিমাণ ডলার কোনো ব্যাংক বা আর্থিক প্রতিষ্�ানের কাছে বিক্রি করতে পারেন না এবং নিজেদের প্রয়োজন মতো ডলার ব্যাংকের মাধ্যমে কিনতেও পারেন না। তাই ফেসবুকসহ বিভিন্ন সোশ্যাল মিডিয়াতে যোগাযোগ করে কারো কাছ থেকে ডলার কিনতে গিয়ে এবং ইনকাম করা ডলার কারো কাছে বিক্রি করতে গিয়ে প্রায়ই প্রতারণার শিকার হতে হয়। তাদের কথা চিন্তা করেই আমাদের এ প্রয়াস। এখানে ক্রয়-বিক্রয়ের রেট একটু কম/বেশি হলেও আপনারা সম্পূর্ণ নিশ্চিন্তে ক্রয়-বিক্রয় করতে পারবেন। আশা করি আপনারা পাশে থাকবেন এবং প্রয়োজনীয় পরামর্শ দিয়ে আমাদের সাহায্য করবেন। বিশেষ দ্রষ্টব্যঃ আমাদের সেবা গ্রহণ করে অনলাইন জুয়া, অর্থ পাচার (মানি লন্ডারিং), সন্ত্রাসী কর্মকাণ্ড বা এজাতীয় যেকোনো অপরাধজনিত কাজ করা সম্পূর্ণভাবে নিষিদ্ধ। অপরাধের জন্য এ সার্ভিস ব্যবহার করলে USD Buy Sellকর্তৃপক্ষ কোনোভাবেই দায়ী থাকবে না।</p>                                                                           '),
+(1, '{\"name\":\"currencyconverter\",\"notice\":\"NOTE:Your Registered email and number must be verified then your account automatically actavited and you can set up the exchange, you do not have to pay the transfer fee if you buy above $20 \",\"start_time\":\"10.30\",\"end_time\":\"11.30\",\"is_online\":\"1\",\"siteabout\":\"Amaderhelp Is An Online Best Exchange Platform. Easy And Fast E-Currency Exchange.\",\"supportemail\":\"md.jual.ah@gmail.com\",\"skype\":\"jualahmed\",\"facebook\":\"https:\\/\\/www.facebook.com\\/md.jual.ah\",\"linkedin\":\"linkedin\",\"twtter\":\"twtter\",\"youtube\":\"youtube\",\"contactnumber\":\"01784622362\",\"exchangemessage\":\"this is a test messages \",\"importentmessage\":\"importent message\"}'),
+(2, '                                                      <p>                                                                                    </p><div><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-primary py-2\">Complete: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-danger py-2\">Wating: Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution Ready to go Beyond? Start today with our free payment solution</p><p class=\"text-secondary\">Wating: Ready to go Beyond? Start today with our free</p><p class=\"text-info\">Wating: Ready to go Beyond? Start today with our free</p></div>                                                                           <p></p>                                                  '),
+(3, '                                                                                                            <p>আমাদের মধ্যে অনেকেই অনলাইনে ছোট-খাটো কাজ করেন ও&nbsp;</p><p><strong>অল্প পরিমাণ ডলার ইনকাম করেন। আবার অনেক সময় ডোমেইন/হোস্টিং বা অন্য কোনো</strong></p><p>&nbsp;পণ্য পারচেস করার জন্য কারো কারো সামান্য পরিমান ডলারের প্রয়োজন হয়। সেক্ষেত্রে এতো অল্প পরিমাণ ডলার কোনো ব্যাংক বা আর্থিক প্রতিষ্�ানের কাছে বিক্রি করতে পারেন না এবং নিজেদের প্রয়োজন মতো ডলার ব্যাংকের মাধ্যমে কিনতেও পারেন না। তাই ফেসবুকসহ বিভিন্ন সোশ্যাল মিডিয়াতে যোগাযোগ করে কারো কাছ থেকে ডলার কিনতে গিয়ে এবং ইনকাম করা ডলার কারো কাছে বিক্রি করতে গিয়ে প্রায়ই প্রতারণার শিকার হতে হয়। তাদের কথা চিন্তা করেই আমাদের এ প্রয়াস। এখানে ক্রয়-বিক্রয়ের রেট একটু কম/বেশি হলেও আপনারা সম্পূর্ণ নিশ্চিন্তে ক্রয়-বিক্রয় করতে পারবেন। আশা করি আপনারা পাশে থাকবেন এবং প্রয়োজনীয় পরামর্শ দিয়ে আমাদের সাহায্য করবেন। বিশেষ দ্রষ্টব্যঃ আমাদের সেবা গ্রহণ করে অনলাইন জুয়া, অর্থ পাচার (মানি লন্ডারিং), সন্ত্রাসী কর্মকাণ্ড বা এজাতীয় যেকোনো অপরাধজনিত কাজ করা সম্পূর্ণভাবে নিষিদ্ধ। অপরাধের জন্য এ সার্ভিস ব্যবহার করলে USD Buy Sellকর্তৃপক্ষ কোনোভাবেই দায়ী থাকবে না।</p>                                                                                                    '),
 (4, '<p>আমাদের মধ্যে অনেকেই অনলাইনে ছোট-খাটো কাজ করেন ও অল্প পরিমাণ ডলার ইনকাম করেন। আবার অনেক সময় ডোমেইন/হোস্টিং বা অন্য কোনো পণ্য পারচেস করার জন্য কারো কারো সামান্য পরিমান ডলারের প্রয়োজন হয়। সেক্ষেত্রে এতো অল্প পরিমাণ ডলার কোনো ব্যাংক বা আর্থিক প্রতিষ্�ানের কাছে বিক্রি করতে পারেন না এবং নিজেদের প্রয়োজন মতো ডলার ব্যাংকের মাধ্যমে কিনতেও পারেন না। তাই ফেসবুকসহ বিভিন্ন সোশ্যাল মিডিয়াতে যোগাযোগ করে কারো কাছ থেকে ডলার কিনতে গিয়ে এবং ইনকাম করা ডলার কারো কাছে বিক্রি করতে গিয়ে প্রায়ই প্রতারণার শিকার হতে হয়। তাদের কথা চিন্তা করেই আমাদের এ প্রয়াস। এখানে ক্রয়-বিক্রয়ের রেট একটু কম/বেশি হলেও আপনারা সম্পূর্ণ নিশ্চিন্তে ক্রয়-বিক্রয় করতে পারবেন। আশা করি আপনারা পাশে থাকবেন এবং প্রয়োজনীয় পরামর্শ দিয়ে আমাদের সাহায্য করবেন। বিশেষ দ্রষ্টব্যঃ আমাদের সেবা গ্রহণ করে অনলাইন জুয়া, অর্থ পাচার (মানি লন্ডারিং), সন্ত্রাসী কর্মকাণ্ড বা এজাতীয় যেকোনো অপরাধজনিত কাজ করা সম্পূর্ণভাবে নিষিদ্ধ। অপরাধের জন্য এ সার্ভিস ব্যবহার করলে USD Buy Sellকর্তৃপক্ষ কোনোভাবেই দায়ী থাকবে না।</p>');
 
 -- --------------------------------------------------------
@@ -533,7 +542,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `address`, `username`, `document_verified`, `email_verified`, `phone_verified`, `final_verified`, `password`, `salt`, `email`, `profile`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `active`, `first_name`, `last_name`, `company`, `phone`, `document_1`, `document_2`, `last_login`, `created_on`) VALUES
-(1, '127.0.0.1', '', 'administrator', 1, 1, 1, 1, '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', '200ceb26807d6bf99fd6f4f0d1ca54d4', NULL, NULL, NULL, 1, 'Admin', 'istrator sadddddfffffff', 'ADMIN', '017846223000', '26231432_212902312605132_360853822587639721_n4.jpg', '26231432_212902312605132_360853822587639721_n4.jpg', 1572101993, 1268889823),
+(1, '127.0.0.1', '', 'administrator', 0, 0, 0, 0, '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', '200ceb26807d6bf99fd6f4f0d1ca54d4', NULL, NULL, NULL, 1, 'Admin', 'istrator sadddddfffffff', 'ADMIN', '017846223000', '26231432_212902312605132_360853822587639721_n4.jpg', '26231432_212902312605132_360853822587639721_n4.jpg', 1572713355, 1268889823),
 (2, '::1', '', 'jual ahmed', 1, 1, 1, 1, '$2y$08$qw8NkLuT4N//cjC2BSjpFOEcW8iC1j/RhJKCL9VJ07h3B3um.fYLm', NULL, 'md.jual.ah@gmail.com', '', '3487ea3999953536be770eae2e5c6e07', NULL, NULL, NULL, 1, 'jualaaaaaaaaaaaaaa', 'ahmed', 'no', '01784622362', '', '', 1569510651, 1567473347),
 (3, '::1', '', 'jual ahmed', 0, 0, 0, 0, '$2y$08$XfeuXFeZpJFveOcCHuXxrOxfMyqIxJbolmM.pT.EclDSJVUV4rMWu', NULL, 'md.jual.ah1@gmail.com', '', NULL, 'UwtaNDdlWEZOv5mNXgj8.ua9ce009554282a90f0', 1569508583, NULL, 1, 'jual', 'ahmed', NULL, '01784622362', '', '', NULL, 1567560748),
 (4, '::1', '', 'ahmed ahme', 1, 1, 1, 1, '$2y$08$9U4ZQt6itCI9vmJXuddoZ.8Vtqkxu2dOfYM.4Jh2LxiQi2dyWgTXK', NULL, 'md.jual.ah121@gmail.com', '', NULL, NULL, NULL, NULL, 1, 'ahmed', 'AHME', '', '01784622362', '', '', NULL, 1567560812),
@@ -550,7 +559,7 @@ INSERT INTO `users` (`id`, `ip_address`, `address`, `username`, `document_verifi
 (15, '::1', '', 'sdfsdfsdfsdf', 0, 0, 0, 0, '$2y$08$l8dgBVj/.IlX1vnc3GER9e5U.52tue9jvpaVA/8Yvy.jeZpV1f02.', NULL, 'adminsdfsdf@gmail.com', '', NULL, NULL, NULL, NULL, 1, 'sdfsdf', 'sdfsdf', NULL, '4788', '', '', 1569543081, 1569543080),
 (16, '::1', '', 'sdfsdfsdfsdf', 1, 1, 1, 1, '$2y$08$rcwAGKNMUhTo8rgdVjk8GeqAZLZ4IVNn37OhqbvsRbLy/mMwJBhCq', NULL, 'adminsdfsdf@gamil.com', '', NULL, NULL, NULL, NULL, 1, 'sdfsdf', 'sdfsdf', '', '01784622362', '', '', 1569637595, 1569637595),
 (17, '::1', 'sdfsdf', 'jualahmed', 0, 0, 0, 0, '$2y$08$0oRMDD4fEoK3LvakESdg6..5dYKw0dpXu1P2eqVF04dEjqtzcAwAe', NULL, 'jualahmed@gmail.com', '', NULL, NULL, NULL, NULL, 1, 'jual', 'ahmed', NULL, '017846235', '', '', 1570408831, 1570408831),
-(18, '::1', 'md.jual.ah@gmail.com', 'jualahmed1', 0, 0, 0, 0, '$2y$08$NTrztBX96pKHPGpoTzKyXebWaMcCnKwsoVvIpqwConNqr9VmkF9A.', NULL, 'md.jual.ah11@gmail.com', '', NULL, NULL, NULL, NULL, 1, 'jual', 'ahmed', NULL, '646', '', '', 1570544160, 1570543660);
+(18, '::1', 'md.jual.ah@gmail.com', 'jualahmed1', 0, 0, 0, 0, '$2y$08$NTrztBX96pKHPGpoTzKyXebWaMcCnKwsoVvIpqwConNqr9VmkF9A.', NULL, 'md.jual.ah11@gmail.com', '', NULL, NULL, NULL, NULL, 1, 'jual', 'ahmed', '', '01784622362', '', '', 1570544160, 1570543660);
 
 -- --------------------------------------------------------
 
@@ -586,7 +595,7 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (90, 15, 2),
 (99, 16, 2),
 (131, 17, 2),
-(132, 18, 2);
+(133, 18, 2);
 
 --
 -- Indexes for dumped tables
@@ -729,7 +738,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `public_preferences`
@@ -741,7 +750,7 @@ ALTER TABLE `public_preferences`
 -- AUTO_INCREMENT for table `rates`
 --
 ALTER TABLE `rates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -777,7 +786,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- Constraints for dumped tables
