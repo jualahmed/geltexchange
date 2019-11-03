@@ -15,9 +15,10 @@
    <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
    <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
    <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
-  <title>USD Buy Sell : Trusted Website for Dollar Buy Sell in Bangladesh</title>
+   <?php $d=json_decode($setting->data);?>
+   <title><?php echo $d->name ?> : Trusted Website for Dollar Buy Sell in Bangladesh</title>
   <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
+<!--   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -27,20 +28,12 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-  </script>
+  </script> -->
   <!--End of Tawk.to Script-->
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/styles/styles.css" >
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/main.css"> 
-  <link rel="icon" href="<?php echo base_url() ?>/assets/temp/images/favicon.ico" type="image/x-icon"/>
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/icofont.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/owl.carousel.css">  
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/slidr.css">     
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/responsive.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/jquery.scrollbar.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/style.css?v1.0.0">
-  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300,600,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -50,7 +43,7 @@
       <center> 
         <div class="btn btn top-header">
           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="MARQUEE1" class="scrolling">  
-            <b class="text-info">Notice : <?php $d=json_decode($setting->data);?>
+            <b class="text-info">Notice : 
               <span class="text-white"><?php echo $d->notice ?></span>
             </b>
           </marquee>  
