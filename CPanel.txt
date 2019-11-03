@@ -1,7 +1,12 @@
 
-https://exchange2bdt.com:2083/
-cPanel username	exchange
-cPanel password	Thank you anik.1971
+https://gator3096.hostgator.com:2083/
+cPanel username	saidul
+cPanel password	CSI@722003#2019
+
+domain:saidul2011@hotmail.com;
+password: MS@ij#042185
+
+
 
 database : exchange_users
 user: exchange_2bdt
