@@ -48,15 +48,15 @@
                       <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
                       <td align="center">
                         <?php if ($row->statuss==0): ?>
-                           <span class="btn btn-sm btn-info d-inline">Waiting for payment</span>
+                           <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
                         <?php elseif($row->statuss==1): ?>
-                            <span class="btn btn-sm btn-primary d-inline">Processing</span>
+                            <span class="badge badge-sm badge-primary d-inline">Processing</span>
                         <?php elseif($row->statuss==2): ?>
-                            <span class="btn btn-sm btn-success d-inline">Completed</span>
+                            <span class="badge badge-sm badge-success d-inline">Completed</span>
                         <?php elseif($row->statuss==3): ?>
-                          <span class="btn btn-sm btn-danger d-inline">Rejected</span>
+                          <span class="badge badge-sm badge-danger d-inline">Rejected</span>
                         <?php elseif($row->statuss==4): ?>
-                          <span class="btn btn-sm btn-primary d-inline">Processing</span>
+                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
                         <?php endif ?>
                       </td>
                       <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
@@ -75,11 +75,11 @@
   </div>
 </section>
 
-<section class="home-default bg-color pb-0">
+<section class="home-default bg-color py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="section box-shadow">
+                <div class="section box-shadow p-5">
                     <div class="row">
                       <div class="col-md-8 col-sm-8">
                         <h3 class="text-center"><strong>Reserve</strong></h3>

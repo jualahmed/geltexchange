@@ -1,4 +1,4 @@
-<section id="home" class="mainexchange" style="background: #005455;">
+<section id="home" class="mainexchange py-5" style="background: #005455;">
   <div class="container">
     <div class="row">
       <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
@@ -14,24 +14,19 @@
               $this->db->where('status', 1);
               $gateways = $this->db->get('gateways')->result();
               if(count($gateways)) {?>
-                <?php foreach ($gateways as $key => $g): ?>
-                   <div class="inputGroup">
-                    <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
-                    <input @click="sendchange" v-model="send" id="<?php echo $g->id; ?>" name="send" value="<?php echo $g->id; ?>"  type="radio"/>
-                    <label for="<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
-                  </div>
-                <?php endforeach ?>
+                  <select name="" id="">
+                    <?php foreach ($gateways as $key => $g): ?>
+                        <option value=""><?php echo $g->name; ?></option>
+                    <?php endforeach ?>
+                  </select>
               <?php
-              }else {
-                echo 'no_have_gateways';
               }
             ?>
           </form>
         </div>
-        <div id="clickforscroll" style="background: rgb(255, 255, 255); padding: 10px; text-align: center; cursor: pointer;">Show More</div>
       </div>
     
-      <div class="col-md-3" id="atmobile">
+      <div class="col-md-3" id="atmobile" style="display: none;">
         <h2 align="center" class="text-white">
           Receive
         </h2>
@@ -43,21 +38,17 @@
             $gatewaysrevive = $this->db->get('gateways')->result();
             if(count($gatewaysrevive)) {?>
               <?php foreach ($gatewaysrevive as $key => $g): ?>
-                <div class="inputGroup">
-                  <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
-                  <input @click="recivechange" v-model="receive" id="receive<?php echo $g->id; ?>" name="receive" value="<?php echo $g->id; ?>" type="radio"/>
-                  <label for="receive<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
-                </div> 
+                  <select name="" id="">
+                    <?php foreach ($gateways as $key => $g): ?>
+                        <option value=""><?php echo $g->name; ?></option>
+                    <?php endforeach ?>
+                  </select>
               <?php endforeach ?>
             <?php
-              } else {
-                echo 'no_have_gateways';
-              }
+              } 
             ?>
-
           </form>
         </div>
-          <div id="scrollbaroutertestddd">Show More</div>
       </div>
 
       <div class="col-md-6 mt-5" v-if="confirmtransation">
@@ -211,33 +202,30 @@
             $this->db->where('status', 1);
             $gatewaysrevive = $this->db->get('gateways')->result();
             if(count($gatewaysrevive)) {?>
-              <?php foreach ($gatewaysrevive as $key => $g): ?>
-                <div class="inputGroup">
-                  <img src="<?php echo base_url().$g->external_icon; ?>" class="imgages">
-                  <input @click="recivechange" v-model="receive" id="receive<?php echo $g->id; ?>" name="receive" value="<?php echo $g->id; ?>" type="radio"/>
-                  <label for="receive<?php echo $g->id; ?>"><div> <?php echo $g->name; ?></div></label>
-                </div> 
-              <?php endforeach ?>
+              <select name="" id="">
+                <?php foreach ($gatewaysrevive as $key => $g): ?>
+                      <?php foreach ($gateways as $key => $g): ?>
+                          <option value=""><?php echo $g->name; ?></option>
+                      <?php endforeach ?>
+                <?php endforeach ?>
+              </select>
             <?php
               } else {
                 echo 'no_have_gateways';
               }
             ?>
-
           </form>
         </div>
-        <div id="scrollbaroutertestddd" style="background: rgb(255, 255, 255); padding: 10px; text-align: center; cursor: pointer;">Show More</div>
       </div>
-
     </div>
   </div>
 </section>  
 
-<section class="home-default bg-color pb-0">
+<section class="home-default bg-color py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="section box-shadow">
+                <div class="section box-shadow p-5">
                     <div class="row">
                       <div class="col-md-8 col-sm-8">
                         <h3 class="text-center"><strong>Reserve</strong></h3>
@@ -331,92 +319,239 @@
 <!-- Latest Exchanges -->
 <section id="sechange" class="pb-2 bg-color p-0">
   <div class="container">
-    <div id="put">
-      <div class="section box-shadow p-3">
-        <h3 class="text-center">Latest Exchanges</h3>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
-              <thead>
-                <tr>
-                  <th><span><?php echo 'username'; ?></span></th>
-                  <th><span><?php echo 'send'; ?></span></th>
-                  <th><span><?php echo 'receive'; ?></span></th>
-                  <th><span><?php echo 'Send amount'; ?></span></th>
-                  <th><span><?php echo 'Recive amount'; ?></span></th>
-                  <th class="al"><span> <?php echo 'status'; ?></span></th>
-                  <th class="al"><span> Date</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
-                $this->db->limit(10);
-                $this->db->order_by('exchanges.id', 'desc');
-                $this->db->join('users', 'users.id = exchanges.user_id');
-                $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
-                $this->db->join('currency', 'currency.currency_id = gateways.currency');
-                $query = $this->db->get('exchanges')->result();
-                if(count($query)) {
-                  foreach ($query as $key => $row) {
-                    $this->db->where('id', $row->gateway_receive);
-                    $this->db->join('currency', 'currency.currency_id = gateways.currency');
-                    $reciveamoutn=$this->db->get('gateways')->row();
-                    ?>
-                    <tr>
-                      <td><?php echo $row->username ?></td>
-                      <td>
-                        <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
-                        <span class="pl-2"><?php echo $row->name; ?></span>
-                      </td>
-                      <td>
-                        <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
-                        <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
-                      </td>
-                      <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
-                      <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
-                      <td align="center">
-                        <?php if ($row->statuss==0): ?>
-                           <span class="btn btn-sm btn-info d-inline">Waiting for payment</span>
-                        <?php elseif($row->statuss==1): ?>
-                            <span class="btn btn-sm btn-primary d-inline">Processing</span>
-                        <?php elseif($row->statuss==2): ?>
-                            <span class="btn btn-sm btn-success d-inline">Completed</span>
-                        <?php elseif($row->statuss==3): ?>
-                          <span class="btn btn-sm btn-danger d-inline">Rejected</span>
-                        <?php elseif($row->statuss==4): ?>
-                          <span class="btn btn-sm btn-primary d-inline">Processing</span>
-                        <?php endif ?>
-                      </td>
-                      <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
-                    </tr>
-                          <?php
-                        }
-                      } else {
-                        echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
-                      }
+    <div class="section box-shadow p-5">
+      <h3 class="text-center">Latest Exchanges</h3>
+      <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
+            <thead>
+              <tr>
+                <th><span><?php echo 'username'; ?></span></th>
+                <th><span><?php echo 'send'; ?></span></th>
+                <th><span><?php echo 'receive'; ?></span></th>
+                <th><span><?php echo 'Send amount'; ?></span></th>
+                <th><span><?php echo 'Recive amount'; ?></span></th>
+                <th class="al"><span> <?php echo 'status'; ?></span></th>
+                <th class="al"><span> Date</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
+              $this->db->limit(10);
+              $this->db->order_by('exchanges.id', 'desc');
+              $this->db->join('users', 'users.id = exchanges.user_id');
+              $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+              $this->db->where('exchanges.status', 1);
+              $this->db->join('currency', 'currency.currency_id = gateways.currency');
+              $query = $this->db->get('exchanges')->result();
+              if(count($query)) {
+                foreach ($query as $key => $row) {
+                  $this->db->where('id', $row->gateway_receive);
+                  $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                  $reciveamoutn=$this->db->get('gateways')->row();
                   ?>
-              </tbody>
-            </table>
-        </div>
+                  <tr>
+                    <td><?php echo $row->username ?></td>
+                    <td>
+                      <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
+                      <span class="pl-2"><?php echo $row->name; ?></span>
+                    </td>
+                    <td>
+                      <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
+                      <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
+                    </td>
+                    <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
+                    <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
+                    <td align="center">
+                      <?php if ($row->statuss==0): ?>
+                         <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
+                      <?php elseif($row->statuss==1): ?>
+                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
+                      <?php elseif($row->statuss==2): ?>
+                          <span class="badge badge-sm badge-success d-inline">Completed</span>
+                      <?php elseif($row->statuss==3): ?>
+                        <span class="badge badge-sm badge-danger d-inline">Rejected</span>
+                      <?php elseif($row->statuss==4): ?>
+                        <span class="badge badge-sm badge-primary d-inline">Processing</span>
+                      <?php endif ?>
+                    </td>
+                    <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
+                  </tr>
+                        <?php
+                      }
+                    } else {
+                      echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
+                    }
+                ?>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>
 </section>
 
-<?php
-    $this->db->join('users', 'users.id = testimonials.user_id');
-    $this->db->order_by('testimonials.id', 'desc');
-    $query = $this->db->get('testimonials')->result();
-?>
-<section id="feedback" class="pb-2 bg-color p-0">
+<!-- Latest Completed -->
+<section id="sechange" class="pb-2 bg-color p-0 my-5">
   <div class="container">
-    <div class="section box-shadow">
+    <div class="section box-shadow p-5">
+      <h3 class="text-center">Latest Completed</h3>
+      <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
+            <thead>
+              <tr>
+                <th><span><?php echo 'username'; ?></span></th>
+                <th><span><?php echo 'send'; ?></span></th>
+                <th><span><?php echo 'receive'; ?></span></th>
+                <th><span><?php echo 'Send amount'; ?></span></th>
+                <th><span><?php echo 'Recive amount'; ?></span></th>
+                <th class="al"><span> <?php echo 'status'; ?></span></th>
+                <th class="al"><span> Date</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
+              $this->db->limit(10);
+              $this->db->order_by('exchanges.id', 'desc');
+              $this->db->join('users', 'users.id = exchanges.user_id');
+              $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+              $this->db->where('exchanges.status', 2);
+              $this->db->join('currency', 'currency.currency_id = gateways.currency');
+              $query = $this->db->get('exchanges')->result();
+              if(count($query)) {
+                foreach ($query as $key => $row) {
+                  $this->db->where('id', $row->gateway_receive);
+                  $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                  $reciveamoutn=$this->db->get('gateways')->row();
+                  ?>
+                  <tr>
+                    <td><?php echo $row->username ?></td>
+                    <td>
+                      <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
+                      <span class="pl-2"><?php echo $row->name; ?></span>
+                    </td>
+                    <td>
+                      <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
+                      <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
+                    </td>
+                    <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
+                    <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
+                    <td align="center">
+                      <?php if ($row->statuss==0): ?>
+                         <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
+                      <?php elseif($row->statuss==1): ?>
+                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
+                      <?php elseif($row->statuss==2): ?>
+                          <span class="badge badge-sm badge-success d-inline">Completed</span>
+                      <?php elseif($row->statuss==3): ?>
+                        <span class="badge badge-sm badge-danger d-inline">Rejected</span>
+                      <?php elseif($row->statuss==4): ?>
+                        <span class="badge badge-sm badge-primary d-inline">Processing</span>
+                      <?php endif ?>
+                    </td>
+                    <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
+                  </tr>
+                        <?php
+                      }
+                    } else {
+                      echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
+                    }
+                ?>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Rejected -->
+<section id="sechange" class="pb-2 bg-color p-0">
+  <div class="container">
+    <div class="section box-shadow p-5">
+      <h3 class="text-center">Latest Rejected</h3>
+      <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
+            <thead>
+              <tr>
+                <th><span><?php echo 'username'; ?></span></th>
+                <th><span><?php echo 'send'; ?></span></th>
+                <th><span><?php echo 'receive'; ?></span></th>
+                <th><span><?php echo 'Send amount'; ?></span></th>
+                <th><span><?php echo 'Recive amount'; ?></span></th>
+                <th class="al"><span> <?php echo 'status'; ?></span></th>
+                <th class="al"><span> Date</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
+              $this->db->limit(10);
+              $this->db->order_by('exchanges.id', 'desc');
+              $this->db->join('users', 'users.id = exchanges.user_id');
+              $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+              $this->db->where('exchanges.status', 3);
+              $this->db->join('currency', 'currency.currency_id = gateways.currency');
+              $query = $this->db->get('exchanges')->result();
+              if(count($query)) {
+                foreach ($query as $key => $row) {
+                  $this->db->where('id', $row->gateway_receive);
+                  $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                  $reciveamoutn=$this->db->get('gateways')->row();
+                  ?>
+                  <tr>
+                    <td><?php echo $row->username ?></td>
+                    <td>
+                      <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
+                      <span class="pl-2"><?php echo $row->name; ?></span>
+                    </td>
+                    <td>
+                      <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
+                      <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
+                    </td>
+                    <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
+                    <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
+                    <td align="center">
+                      <?php if ($row->statuss==0): ?>
+                         <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
+                      <?php elseif($row->statuss==1): ?>
+                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
+                      <?php elseif($row->statuss==2): ?>
+                          <span class="badge badge-sm badge-success d-inline">Completed</span>
+                      <?php elseif($row->statuss==3): ?>
+                        <span class="badge badge-sm badge-danger d-inline">Rejected</span>
+                      <?php elseif($row->statuss==4): ?>
+                        <span class="badge badge-sm badge-primary d-inline">Processing</span>
+                      <?php endif ?>
+                    </td>
+                    <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
+                  </tr>
+                        <?php
+                      }
+                    } else {
+                      echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
+                    }
+                ?>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<?php
+  $this->db->join('users', 'users.id = testimonials.user_id');
+  $this->db->order_by('testimonials.id', 'desc');
+  $query = $this->db->get('testimonials')->result();
+?>
+<section id="feedback" class="pb-2 bg-color p-0 my-5">
+  <div class="container">
+    <div class="section box-shadow p-5">
       <h3 class="text-center"><strong>Customers Feedback</strong></h3>
-      <div class="featured-slider">
-        <div id="featured-slider" >
-           <?php if(count($query)) { ?>
+        <div class="owl-carousel feedback">
+            <?php if(count($query)>1) { ?>
                 <?php foreach ($query as $key => $var): ?>
-                <div class="featured box-shadow" style="border: 1px solid;text-align: center;">
+                <div class="item box-shadow p-3" style="border: 1px solid;text-align: center;">
                   <div class="ad-info">
                     <div class="text-center">
                          <?php if($var->profile!=null){ ?>
@@ -457,14 +592,14 @@
                 <?php endforeach ?>
               <?php } else { ?>
                 <h2> no_have_testimonials </h2>
-            <?php   }
+            <?php }
             ?>
+        </div>
+        <?php if(count($query)>3){ ?>
+          <div class="text-right mt-3">
+            <a class="btn btn-success" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a>
           </div>
-            <?php if(count($query)>3){ ?>
-              <div class="text-right"><a class="btn btn-info" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a></div>
-            <?php } ?>
-        </div><!-- featured-slider -->
-      </div>
+        <?php } ?>
     </div>
   </div>
 </section>

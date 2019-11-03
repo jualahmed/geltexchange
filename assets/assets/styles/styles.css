@@ -1,10 +1,10 @@
 @import url('dependancy/bootstrap.min.css');
+@import url('globalcssmodule/__var.css');
+@import url('globalcssmodule/__typography.css');
+@import url('globalcssmodule/__btn.css');
 
-input{
-	text-transform: none!important;
-}
 .active a{
-	color: orange!important;
+	color: $color1!important;
 }
 #register{
 	.contentr{

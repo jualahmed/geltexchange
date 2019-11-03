@@ -30,10 +30,8 @@
     })();
   </script> -->
   <!--End of Tawk.to Script-->
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/styles/styles.css" >
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/owl.carousel.css">  
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/jquery.scrollbar.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/style.css?v1.0.0">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/temp/styles/styles.css" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
 </head>
 <body>
 
@@ -43,12 +41,11 @@
       <center> 
         <div class="btn btn top-header">
           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="MARQUEE1" class="scrolling">  
-            <b class="text-info">Notice : 
-              <span class="text-white"><?php echo $d->notice ?></span>
+            <b class="text-info">
+              <span class="text-info"><?php echo $d->notice ?></span>
             </b>
           </marquee>  
         </div>
-
       </center>
     </div>
     <div class="col-md-12 text-center" style="background: #005455;color: #fff;">
@@ -64,20 +61,36 @@
   </div>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
-      <a class="navbar-brand p-1" href="<?php echo base_url() ?>"><img class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo"></a>
+      <a class="navbar-brand p-1" href="<?php echo base_url() ?>">
+        <img width="250px" class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav">
-            <li class="<?php if($this->uri->segment(1)=='') echo 'active' ?>"><a href="<?php echo base_url() ?>">Home</a></li>
-            <li class="<?php if($this->uri->segment(1)=='about') echo 'active' ?>"><a href="<?php echo base_url() ?>about">About</a></li>
-            <li class="<?php if($this->uri->segment(1)=='faq') echo 'active' ?>"><a href="<?php echo base_url() ?>faq">FAQ</a></li>
-            <li class="<?php if($this->uri->segment(1)=='tutorial') echo 'active' ?>"><a href="<?php echo base_url() ?>tutorial">Tutorial</a></li>
-            <li class="<?php if($this->uri->segment(1)=='affiliate') echo 'active' ?>"><a href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a></li> 
-            <li class="<?php if($this->uri->segment(1)=='home') echo 'active' ?>"><a href="<?php echo base_url() ?>home/paymentproff">Payment Proof</a></li> 
-            <li class="<?php if($this->uri->segment(1)=='contact') echo 'active' ?>"><a href="<?php echo base_url() ?>contact">Contact</a></li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>">Home</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='about') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>about">About</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='faq') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>faq">FAQ</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='tutorial') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>tutorial">Tutorial</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1)=='affiliate') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a>
+            </li> 
+            <li class="nav-item <?php if($this->uri->segment(1)=='home') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>home/paymentproff">Payment Proof</a>
+            </li> 
+            <li class="nav-item <?php if($this->uri->segment(1)=='contact') echo 'active' ?>">
+              <a class="nav-link px-3" href="<?php echo base_url() ?>contact">Contact</a>
+            </li>
         </ul>
         <div>
           <ul class="nav navbar-nav">
@@ -116,8 +129,8 @@
               </div>
             </div>
             <?php else: ?>
-              <li class="<?php if($this->uri->segment(1)=='login') echo 'active' ?>"><a href="<?php echo base_url() ?>login">Login</a></li>
-              <li class="beforeicon <?php if($this->uri->segment(1)=='regirter') echo 'active' ?>"><a href="<?php echo base_url() ?>regirter">Register</a></li>
+              <li class="<?php if($this->uri->segment(1)=='login') echo 'active' ?>"><a class="nav-link px-3" href="<?php echo base_url() ?>login">Login</a></li>
+              <li class="beforeicon <?php if($this->uri->segment(1)=='regirter') echo 'active' ?>"><a class="nav-link px-3" href="<?php echo base_url() ?>regirter">Register</a></li>
             <?php endif ?>
           </ul><!-- sign-in --> 
         </div>

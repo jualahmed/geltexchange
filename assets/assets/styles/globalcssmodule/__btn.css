@@ -1,0 +1,7 @@
+.btn-success{
+	background: $color2!important;
+	border: $color2!important;
+}
+.btn-success.focus, .btn-success:focus, .btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus{
+	box-shadow: 0 0 0 0.2rem rgba($color1,$color2,$color3,.5)
+}
