@@ -604,4 +604,51 @@
   </div>
 </section>
 
+
+<section class="service_area mb-5">
+  <div class="container text-center">
+    <div class="section box-shadow p-5">
+     <h3 class="text-center"><strong>Service</strong></h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="service_box">
+            <div class="service-icon">
+                <i class="fas fa-user"></i>
+              </div>
+          <h2>Account sale</h2>
+          <p>Skrill&gt;Neteller&gt;paypal&gt; Payza&gt;PM account for sell . Account charge 2000-2500 Tk . Accounts are 100% safe from hacking </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box">
+            <div class="service-icon">
+                <i class="fa fa-laptop"></i>
+              </div>
+          <h2>Documents Sale</h2>
+          <p>if you will need Utility Bill &amp; Bank Statement, then you can contact with us . Our Documents charge 500 tk only </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box">
+            <div class="service-icon">
+                <i class="fas fa-user"></i>
+              </div>
+          <h2>Account verification</h2>
+          <p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box">
+            <div class="service-icon">
+                <i class="fas fa-user"></i>
+              </div>
+          <h2>Accounts problem solution</h2>
+          <p>If you will need any types help,then you can contact with us . Our Account verification charge</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</section>
+
      
