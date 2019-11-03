@@ -58,7 +58,7 @@ const vm= new Vue({
 					this.error.push("You Must Login to make any transaction <a class='varifynow' target='_blank' href='"+base_url+"login'>Login now</a>");
 				}else{
 					var ses_uid = this.loginuser[0].id;
-					if(this.loginuser[0].final_verified==0){
+					if(0){
 						this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href='"+base_url+"profile/verification'>Verify now</a>");
 					}else{
 						if(!this.receiverid){
