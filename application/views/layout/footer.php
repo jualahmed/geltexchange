@@ -65,7 +65,8 @@
               </a>
             </div>
             <div class="col-md-8">
-              <p style="margin-top: 0px;">Copyright © 2017 by USDBUYSELL.COM <span><i class="fa fa-cog fa-spin fa-lg fa-fw"></i>Developed by 
+               <?php $d=json_decode($setting->data);?>
+              <p style="margin-top: 0px;">Copyright © 2017 by <span class="text-uppercase"><?php echo $d->name ?></span> <span><i class="fa fa-cog fa-spin fa-lg fa-fw"></i>Developed by 
                   <span class="lead"> 
                     <a href="https://www.facebook.com/md.jual.ah" target="_blank" id="companyTitle"> 
                       Jual Ahmed
