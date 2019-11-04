@@ -5,7 +5,9 @@
             <div class="row">
               <div class="col-xl-4 col-lg-4 col-md-6">
                   <div class="about-hoster">
-                       <a class="navbar-brand" href="<?php echo base_url() ?>"><img class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo"></a>
+                      <a class="navbar-brand" href="<?php echo base_url() ?>">
+                        <img class="w-100" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo">
+                      </a>
                   </div>
                   <?php $var=json_decode($setting->data);?>
                   <div><p><?php echo $var->siteabout ?></p></div>

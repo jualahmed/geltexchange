@@ -611,38 +611,38 @@
      <h3 class="text-center"><strong>Service</strong></h3>
     <div class="row">
       <div class="col-md-3">
-        <div class="service_box">
+        <div class="service_box box-shadow p-3">
             <div class="service-icon">
                 <i class="fas fa-user"></i>
               </div>
-          <h2>Account sale</h2>
+          <h5>Account sale</h5>
           <p>Skrill&gt;Neteller&gt;paypal&gt; Payza&gt;PM account for sell . Account charge 2000-2500 Tk . Accounts are 100% safe from hacking </p>
-      </div>
+        </div>
     </div>
     <div class="col-md-3">
-        <div class="service_box">
+        <div class="service_box box-shadow p-3">
             <div class="service-icon">
                 <i class="fa fa-laptop"></i>
               </div>
-          <h2>Documents Sale</h2>
+          <h5>Documents Sale</h5>
           <p>if you will need Utility Bill &amp; Bank Statement, then you can contact with us . Our Documents charge 500 tk only </p>
       </div>
     </div>
     <div class="col-md-3">
-        <div class="service_box">
+        <div class="service_box box-shadow p-3">
             <div class="service-icon">
                 <i class="fas fa-user"></i>
               </div>
-          <h2>Account verification</h2>
+          <h5>Account verification</h5>
           <p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
       </div>
     </div>
     <div class="col-md-3">
-        <div class="service_box">
+        <div class="service_box box-shadow p-3">
             <div class="service-icon">
                 <i class="fas fa-user"></i>
               </div>
-          <h2>Accounts problem solution</h2>
+          <h5>Accounts problem solution</h5>
           <p>If you will need any types help,then you can contact with us . Our Account verification charge</p>
       </div>
     </div>
