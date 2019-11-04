@@ -15,7 +15,8 @@
    <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
    <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
    <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
-  <title>USD Buy Sell : Trusted Website for Dollar Buy Sell in Bangladesh</title>
+  <?php $d=json_decode($setting->data);?>
+   <title><?php echo $d->name ?> : Trusted Website for Dollar Buy Sell in Bangladesh</title>
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -50,7 +51,7 @@
       <center> 
         <div class="btn btn top-header">
           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="MARQUEE1" class="scrolling">  
-            <b class="text-info">Notice : <?php $d=json_decode($setting->data);?>
+            <b class="text-info">Notice :
               <span class="text-white"><?php echo $d->notice ?></span>
             </b>
           </marquee>  
