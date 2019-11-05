@@ -14,7 +14,7 @@
               $this->db->where('status', 1);
               $gateways = $this->db->get('gateways')->result();
               if(count($gateways)) {?>
-                  <select name="" id="">
+                  <select name="" id="" class="form-control">
                     <?php foreach ($gateways as $key => $g): ?>
                         <option value=""><?php echo $g->name; ?></option>
                     <?php endforeach ?>
@@ -38,7 +38,7 @@
             $gatewaysrevive = $this->db->get('gateways')->result();
             if(count($gatewaysrevive)) {?>
               <?php foreach ($gatewaysrevive as $key => $g): ?>
-                  <select name="" id="">
+                  <select name="" id="" class="form-control">
                     <?php foreach ($gateways as $key => $g): ?>
                         <option value=""><?php echo $g->name; ?></option>
                     <?php endforeach ?>
@@ -202,7 +202,7 @@
             $this->db->where('status', 1);
             $gatewaysrevive = $this->db->get('gateways')->result();
             if(count($gatewaysrevive)) {?>
-              <select name="" id="">
+              <select name="" id="" class="form-control">
                 <?php foreach ($gatewaysrevive as $key => $g): ?>
                       <?php foreach ($gateways as $key => $g): ?>
                           <option value=""><?php echo $g->name; ?></option>
