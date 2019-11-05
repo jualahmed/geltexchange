@@ -203,11 +203,9 @@
             $gatewaysrevive = $this->db->get('gateways')->result();
             if(count($gatewaysrevive)) {?>
               <select name="" id="" class="form-control">
-                <?php foreach ($gatewaysrevive as $key => $g): ?>
-                      <?php foreach ($gateways as $key => $g): ?>
-                          <option value=""><?php echo $g->name; ?></option>
-                      <?php endforeach ?>
-                <?php endforeach ?>
+                  <?php foreach ($gatewaysrevive as $key => $g): ?>
+                      <option value=""><?php echo $g->name; ?></option>
+                  <?php endforeach ?>
               </select>
             <?php
               } else {
