@@ -1,8 +1,12 @@
-const vm= new Vue({
-	el:"#home",
+Vue.component('multiselect', window.VueMultiselect.default)
+new Vue({
+	el:"#header",
 	data:{
-		send:'',
-		receive:"",
+		base_url:base_url,
+		send: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/img/images/allinco_01.png' },
+	    sendoptions: [],
+	    receive: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/img/images/allinco_01.png' },
+	    reciveoptions: [],
 		gatewaysendinfo:'',
 		gatewayreciveinfo:'',
 		currency_form:'',
@@ -12,7 +16,7 @@ const vm= new Vue({
 		rate_to: 0,
 		crate_to: 0,
 		reserve:'',
-		receiverid:'',
+		receiverid:'aaaaaaaaa',
 		email:'test@gmail.com',
 		error:[],
 		loginuser:[],
@@ -30,74 +34,65 @@ const vm= new Vue({
 		me:0,
 		messsssss:'dd',
 	},
-	created(){
-		var self = this;
-		self.loginuser=[];
-		var data_ursls = base_url+"Auth/getloginuser";
-		$.ajax({
-			url: data_ursls,
-			type: 'POST',
-		})
-		.done(function(re) {
-			if(re!="null"){
-				var re = JSON.parse(re)
-				self.loginuser.push(re);
-			}
-		})
-		.fail(function(re) {
-			console.log(re);
-		})
-	},
-	methods:{
-		submit(){
+	methods: {
+	    customLabel ({ title, desc }) {
+	      return `${title} – ${desc}`
+	    },
+	    submit(){
 			this.error=[];
 			var self=this;
 			var login_to_exchange = 1;
-			if(login_to_exchange == "1") {
-				if(this.loginuser.length==0) {
-					this.error.push("You Must Login to make any transaction <a class='varifynow' target='_blank' href='"+base_url+"login'>Login now</a>");
-				}else{
-					var ses_uid = this.loginuser[0].id;
-					if(this.loginuser[0].final_verified==0){
-						this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href='"+base_url+"profile/verification'>Verify now</a>");
+			if(this.rate_to && this.rate_from){
+				if(login_to_exchange == "1") {
+					if(this.loginuser.length==0) {
+						this.error.push("You Must need to Login <a class='varifynow' target='_blank' href="+base_url+"home/login>Login now</a>");
 					}else{
-						if(!this.receiverid){
-							this.error.push(this.gatewayreciveinfo.name + " Account is required");
-						}
-						else if(!this.email){
-							this.error.push("Email Account is required");
-						}else if(!this.validEmail(this.email)) {
-					        this.error.push('Valid email required.');
-					    }else if(this.tos==0){
-					    	 this.error.push('You Must Accept The Terms & Conditions');
-					    }
-						else{
-							var amountsend=parseFloat(this.rate_from);
-							var amount_receive=parseFloat(this.rate_to);
-							if(this.currency_to=='USD'){
-								amount_receive=parseFloat(this.rate_to)-(parseFloat(this.recivefee)+(parseFloat(this.sendfee)+parseFloat(this.extranandskill))/this.crate_from)
-							}else{
-								amount_receive=this.rate_to-this.recivefee;
+						var ses_uid = this.loginuser[0].id;
+						if(this.loginuser[0].final_verified==0){
+							this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href="+base_url+"profile/verification>Verify now</a>");
+						}else{
+							if(!this.receiverid){
+								console.log("receiverid")
+								this.error.push(this.gatewayreciveinfo.name + " Account is required");
 							}
-							var self = this;
-							var data_url =base_url+"exchanges/make_exchange";
-							$.ajax({
-								url: data_url,
-								type: 'POST',
-								data: {gateway_send: this.send,gateway_receive:this.receive,amount_send:amountsend,amount_receive:amount_receive,rate_from:this.crate_from,rate_to:this.crate_to,user_id:this.loginuser[0].id,gateway_account:this.receiverid},
-							})
-							.done(function(re) {
-								var re=JSON.parse(re);
-								self.gateways.push(re);
-								self.confirmtransation=1;
-								self.messsssss="Enter Your "+self.gateways[0].name+" address After Sending";
-							})
-							.fail(function() {
-								console.log("error");
-							})
+							else if(!this.email){
+								console.log("email")
+								this.error.push("Email Account is required");
+							}else if(!this.validEmail(this.email)) {
+						        this.error.push('Valid email required.');
+						    }else if(this.tos==1){
+						    	this.error.push('You Must Accept The Terms & Conditions');
+						    }
+							else{
+								var amountsend=parseFloat(this.rate_from);
+								var amount_receive=parseFloat(this.rate_to);
+								if(this.currency_to=='USD'){
+									amount_receive=parseFloat(this.rate_to)-(parseFloat(this.recivefee)+(parseFloat(this.sendfee)+parseFloat(this.extranandskill))/this.crate_from)
+								}else{
+									amount_receive=this.rate_to-this.recivefee;
+								}
+								var self = this;
+								var data_url =base_url+"exchanges/make_exchange";
+								$.ajax({
+									url: data_url,
+									type: 'POST',
+									data: {gateway_send: this.send.id,gateway_receive:this.receive.id,amount_send:amountsend,amount_receive:amount_receive,rate_from:this.crate_from,rate_to:this.crate_to,user_id:this.loginuser[0].id,gateway_account:this.receiverid},
+								})
+								.done(function(re) {
+									var re=JSON.parse(re);
+									self.gateways.push(re);
+									self.confirmtransation=1;
+									// self.messsssss="Enter Your "+self.gateways[0].name+" address After Sending";
+								})
+								.fail(function() {
+									console.log("error");
+								})
+							}
 						}
 					}
 				}
+			}else{
+				this.error.push("Please Select Gateways");
 			}
 		},
 		finalsubmit:function(){
@@ -126,8 +121,8 @@ const vm= new Vue({
 	      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	      return re.test(email);
 	    },
-		sendchange(id){
-			var id=id.target.value;
+		sendchange(data){
+			var id=data.id
 			var self = this;
 			var data_url = base_url+"exchanges/gateway_info/"+id;
 			$.ajax({
@@ -136,7 +131,7 @@ const vm= new Vue({
 			.done(function(re) {
 				self.sendfee=0;
 				self.extranandskill=0;
-				var re= JSON.parse(re);
+				var re = JSON.parse(re);
 				self.gatewaysendinfo=re;
 				self.bit_rates();
 			})
@@ -144,9 +139,10 @@ const vm= new Vue({
 				console.log("error");
 			});
 		},
-		recivechange(id){
-			var id=id.target.value;
+		recivechange(data){
+			var id=data.id;
 			var self = this;
+			console.log(id);
 			var data_url = base_url+"exchanges/gateway_info/"+id;
 			$.ajax({
 				url: data_url,
@@ -154,73 +150,17 @@ const vm= new Vue({
 			.done(function(re) {
 				self.recivefee=0;
 				self.extranandskill=0;
-				var re= JSON.parse(re);
+				var re = JSON.parse(re);
 				self.gatewayreciveinfo=re;
 				self.bit_rates();
-				self.bit_reserve();
-				if(re.name=='Rocket Agent'){
-					self.placeholdermessage="Rocket Agent Account Number";
-					self.messagessss="Rocket Agent";
-				}else if(re.name=='Perfect Money'){
-					self.messagessss="Perfect Money Account";
-					self.placeholdermessage="Perfect Money Account Number (U00000000)";
-				}
-				else if(re.name=='Rocket Personal'){
-					self.messagessss="Rocket Personal Account";
-					self.placeholdermessage="Rocket Personal Account Number";
-				}
-				else if(re.name=='Skrill'){
-					self.placeholdermessage="Skrill Email Address";
-					self.messagessss="Skrill Account";
-				}else if(re.name=='Bkash Agent'){
-					self.placeholdermessage="Bkash Agent Account Number";
-					self.messagessss="Bkash Agent Account";
-				}else if(re.name=='Bkash Personal'){
-					self.placeholdermessage="Bkash Personal Account Number";
-					self.messagessss="Bkash Personal Account";
-				}else if(re.name=='Neteller'){
-					self.messagessss="Neteller Account";
-					self.placeholdermessage="Neteller Email Address";
-				}else if(re.name=='Payza'){
-					self.messagessss="Payza Account";
-					self.placeholdermessage="Payza Email Address";
-				}else if(re.name=='Online Payment'){
-					self.messagessss="Online Payment Account";
-					self.placeholdermessage="Online Payment Details (link,id,password..)";
-				}else if(re.name=='DBBL'){
-					self.messagessss="DBBL Account";
-					self.placeholdermessage="DBBL Account Number";
-				}else if(re.name=='Payeer'){
-					self.messagessss="Payeer Account";
-					self.placeholdermessage="Payeer Account Number (P10000000)";
-				}else if(re.name=='WebMoney'){
-					self.messagessss="WebMoney Account";
-					self.placeholdermessage="WebMoney Account Number (Z000000)";
-				}else if(re.name=='Facebook Ads'){
-					self.messagessss="Facebook Ads";
-					self.placeholdermessage="Ads Details";
-				}else if(re.name=='Mobile Recharge'){
-					self.messagessss="Mobile Recharge";
-					self.placeholdermessage="Mobile Number";
-				}else if(re.name=='Google Ads'){
-					self.messagessss="Google Ads";
-					self.placeholdermessage="Ads Details (link,keyword,target...)";
-				}else if(re.name=='Nagad Agent'){
-					self.placeholdermessage="Nagad Agent Account Number";
-					self.messagessss="Nagad Agent Account";
-				}else if(re.name=='Nagad Personal'){
-					self.placeholdermessage="Nagad Personal Account Number";
-					self.messagessss="Nagad Personal Account";
-				}
-
 			})
 			.fail(function() {
 				console.log("error");
 			});
 		},
 		bit_rates(){
-			var gateway_send = this.send;
-			var gateway_receive = this.receive;
+			var gateway_send = this.send.id;
+			var gateway_receive = this.receive.id;
 			if(gateway_send && gateway_receive && gateway_send!=gateway_receive){
 				var self = this;
 				var data_url = base_url+"exchanges/rates"
@@ -288,25 +228,9 @@ const vm= new Vue({
 				}	
 			}
 			this.rate_from=data;
-		},
-		bit_reserve() {
-			var self=this;
-			var gateway_send = this.send
-			var gateway_receive =this.receive;
-			var data_url = base_url+"home/recerve/"+gateway_send+"/"+gateway_receive;
-			$.ajax({
-				type: "GET",
-				url: data_url,
-				dataType: "html",
-				success: function (data) {
-					console.log(data)
-					var data= JSON.parse(data)
-					self.reserve=data.reserve;
-				}
-			});
 		}
-	},
-	watch:{
+  	},
+  	watch:{
 		rate_to:function (val) {
 			if(this.gatewayreciveinfo.name=='Perfect Money'){
 				if(val<=99.99){
@@ -334,7 +258,6 @@ const vm= new Vue({
 					}
 				}
 			}
-
 			else if(this.gatewayreciveinfo.name=='Neteller'){
 
 				if(val>=0 && val<=9.99){
@@ -379,9 +302,7 @@ const vm= new Vue({
 					}
 				}
 			}
-
 			else if(this.gatewayreciveinfo.name=='Skrill'){
-
 				if(val>=0 && val<=9.99){
 					this.recivefee=0.6;
 					this.extranandskill=50;
@@ -425,7 +346,6 @@ const vm= new Vue({
 					}
 				}
 			}
-
 			else if(this.gatewayreciveinfo.name=='WebMoney'){
 				if(val>=0 && val<=99.99){
 					this.recivefee=(val*0.85)/100;
@@ -438,7 +358,6 @@ const vm= new Vue({
 					this.recivefee=0;
 				}
 			}
-
 			else if(this.gatewayreciveinfo.name=='Payeer'){
 				if(val>=0 && val<=99.99){
 					this.recivefee=(val*0.95)/100;
@@ -451,13 +370,12 @@ const vm= new Vue({
 					this.recivefee=0;
 				}
 			}
-
 			else if(this.gatewayreciveinfo.name=='Rocket Agent' || this.gatewayreciveinfo.name=='Bkash Agent' ||  this.gatewayreciveinfo.name=='Nagad Agent'){
 				this.recivefee=(this.rate_to*2)/100;
 			}
-			
 	    },
 	    rate_from:function (val){
+			
 	    	if(this.gatewaysendinfo.name=='Bkash Personal' || this.gatewaysendinfo.name=='Nagad Personal' || this.gatewaysendinfo.name=='Rocket Personal'){
 				this.sendfee=(this.rate_from*2)/100;
 			}
@@ -465,5 +383,48 @@ const vm= new Vue({
 				this.sendfee=0;
 			}
 	    }
-	}
+	},
+  	created(){
+  		var self = this;
+  		fetch(base_url+"home/getsend")
+		  .then((res)=>{
+		  		res.json()
+		  		.then((data)=>{
+		  			self.sendoptions=data
+		  		})
+		    }
+		  )
+		  .catch(function(err) {
+		    console.log('Fetch Error :-S', err);
+		  });
+
+		fetch(base_url+"home/getrecive")
+		  .then((res)=>{
+		  		res.json()
+		  		.then((data)=>{
+		  			self.reciveoptions=data
+		  		})
+		    }
+		  )
+		  .catch(function(err) {
+		    console.log('Fetch Error :-S', err);
+		  });
+
+		var self = this;
+		self.loginuser=[];
+		var data_ursls = base_url+"auth/getloginuser";
+		$.ajax({
+			url: data_ursls,
+			type: 'POST',
+		})
+		.done(function(re) {
+			if(re!="null"){
+				var re = JSON.parse(re)
+				self.loginuser.push(re);
+			}
+		})
+		.fail(function(re) {
+			console.log(re);
+		})
+  	}
 })

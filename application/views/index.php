@@ -25,6 +25,20 @@
           </form>
         </div>
       </div>
+
+      <multiselect @select="sendchange" v-model="send" label="name" placeholder="Select" track-by="name" :options="sendoptions" :option-height="104" :custom-label="customLabel" :show-labels="false" style="width: 80px;">
+          <template slot="singleLabel" slot-scope="props">
+            <img width="30px" class="option__image" :src="base_url+props.option.external_icon" :alt="props.option.name">
+          </template>
+          <template slot="option" slot-scope="props">
+            <img width="30px" class="option__image" :src="base_url+props.option.external_icon" :alt="props.option.name">
+          </template>
+        </multiselect>
+        <div>
+          <input type="text" v-model="rate_from" class="form-control"  @change="bit_calculator" style="padding: 24px;">
+        </div>
+      </div>
+      <span>Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
     
       <div class="col-md-3" id="atmobile" style="display: none;">
         <h2 align="center" class="text-white">
