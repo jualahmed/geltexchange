@@ -551,7 +551,7 @@
         <div class="owl-carousel feedback">
             <?php if(count($query)>1) { ?>
                 <?php foreach ($query as $key => $var): ?>
-                <div class="item box-shadow p-3" style="border: 1px solid;text-align: center;">
+                <div class="item box-shadow p-3 m-2" style="border: 1px solid;text-align: center;">
                   <div class="ad-info">
                     <div class="text-center">
                          <?php if($var->profile!=null){ ?>
@@ -611,38 +611,38 @@
      <h3 class="text-center"><strong>Service</strong></h3>
     <div class="row">
       <div class="col-md-3">
-        <div class="service_box box-shadow p-3">
-            <div class="service-icon">
-                <i class="fas fa-user"></i>
-              </div>
-          <h5>Account sale</h5>
+        <div class="service_box box-shadow p-3"  style="min-height: 310px;">
+          <div class="service-icon">
+            <img src="<?php echo base_url()."assets/temp/svgicon/like.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Account sale</h5>
           <p>Skrill&gt;Neteller&gt;paypal&gt; Payza&gt;PM account for sell . Account charge 2000-2500 Tk . Accounts are 100% safe from hacking </p>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="service_box box-shadow p-3">
-            <div class="service-icon">
-                <i class="fa fa-laptop"></i>
-              </div>
-          <h5>Documents Sale</h5>
+        <div class="service_box box-shadow p-3" style="min-height: 310px;">
+          <div class="service-icon">
+              <img src="<?php echo base_url()."assets/temp/svgicon/circle.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Documents Sale</h5>
           <p>if you will need Utility Bill &amp; Bank Statement, then you can contact with us . Our Documents charge 500 tk only </p>
       </div>
     </div>
     <div class="col-md-3">
-        <div class="service_box box-shadow p-3">
-            <div class="service-icon">
-                <i class="fas fa-user"></i>
-              </div>
-          <h5>Account verification</h5>
-          <p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
+      <div class="service_box box-shadow p-3" style="min-height: 310px;">
+          <div class="service-icon">
+            <img src="<?php echo base_url()."assets/temp/svgicon/smot.svg" ?>" alt="facebook" class="m-3" width="50px;">
+        </div>
+        <h5 class="text-success">Account verification</h5>
+        <p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
       </div>
     </div>
     <div class="col-md-3">
-        <div class="service_box box-shadow p-3">
-            <div class="service-icon">
-                <i class="fas fa-user"></i>
-              </div>
-          <h5>Accounts problem solution</h5>
+        <div class="service_box box-shadow p-3"  style="min-height: 310px;">
+         <div class="service-icon">
+              <img src="<?php echo base_url()."assets/temp/svgicon/verify.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Accounts problem solution</h5>
           <p>If you will need any types help,then you can contact with us . Our Account verification charge</p>
       </div>
     </div>
