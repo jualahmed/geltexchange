@@ -1,4 +1,4 @@
-     <footer id="footer" class="bg-white box-shadow pt-3">
+    <footer id="footer" class="bg-white box-shadow pt-3">
       <div class="footer">
         <div class="container">
           <div class="row">
