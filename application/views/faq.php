@@ -1,6 +1,6 @@
-<section class="py-3 my-3">
+<section class="py-5 bg-color">
   <div class="container">
-    <div class="faq-page box-shadow p-3" style="min-height: 300px">
+    <div class="faq-page bg-white box-shadow p-3" style="min-height: 300px">
       <div class="accordion">
           <div id="accordion" class="panel-group text-center">
             <h2 class="title"><button class="btn btn-lg pb-3">Frequently asked questions</button></h2>

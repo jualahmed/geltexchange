@@ -1,9 +1,32 @@
-var distance = $('#navigation-sections').offset().top; 
-$(window).scroll(function () {
-     if ($(window).scrollTop() >0) {
-         $('#navigation-sections').addClass("affix");
-     } else {
-         $('#navigation-sections').removeClass("affix");
-     }
- });
+jQuery(document).ready(function($) {
+    $('.feedback').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        items:3,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:2,
+                nav:false
+            },
+            1000:{
+                items:3,
+                nav:true,
+                loop:false
+            },
+            1500:{
+                items:4,
+                nav:true,
+                loop:false
+            }
+        }
+    })
+});
 
+jQuery(document).ready(function(){
+    jQuery('.scrollbar-outer').scrollbar();
+});

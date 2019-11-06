@@ -14,9 +14,9 @@
                 <div class="usefull-link">
                     <h6>Useful Links</h6>
                     <ul>
-                        <li><a style="font-size: 15px" href="<?php echo base_url() ?>">Home</a></li>
-                        <li><a style="font-size: 15px" href="<?php echo base_url() ?>about">About Us</a></li>
-                        <li><a style="font-size: 15px" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a></li>
+                        <li class=""><a style="font-size: 15px" href="<?php echo base_url() ?>">Home</a></li>
+                        <li class=""><a style="font-size: 15px" href="<?php echo base_url() ?>about">About Us</a></li>
+                        <li class=""><a style="font-size: 15px" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a></li>
                     </ul>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-6">
               <div class="contact-hoster">
                 <h6>Contact Us</h6>
                 <ul>
@@ -51,7 +51,7 @@
         </div>
         <div class="container">
           <div class="row">
-            <div class="col-md-3" style="text-align: center;">
+            <div class="col-md-4" style="text-align: center;">
               <a target="_blanck" href="<?php echo $var->facebook ?>" style="margin-right: 10px;">
                 <img src="<?php echo base_url()."assets/temp/svgicon/facebook.svg" ?>" alt="facebook" width="30px;">
               </a>
@@ -65,7 +65,7 @@
                 <img src="<?php echo base_url()."assets/temp/svgicon/yo.svg" ?>" alt="facebook" style="width: 44px;margin: 6px;">
               </a>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 text-center">
               <p style="margin-top: 10px;text-transform: uppercase;">Copyright © 2017 by 
                 <span class="text-uppercase mx-2"><?php echo $var->name ?></span>
                 <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
@@ -91,6 +91,6 @@
     <script src="<?php echo base_url() ?>assets/temp/scripts/vue/vuebit.js"></script>
     <!-- JS -->
     <script src="<?php echo base_url() ?>assets/temp/scripts/jquery.scrollbar.min.js"></script>   
-    <script src="<?php echo base_url() ?>assets/temp/scripts/custom.js"></script>
+    <script src="<?php echo base_url() ?>assets/temp/scripts/App.js"></script>   
   </body>
 </html>

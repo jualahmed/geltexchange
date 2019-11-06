@@ -1,6 +1,6 @@
 
 
-<section id="register">
+<section id="register" class="py-5 bg-color">
   <div class="contentr bg-white text-center box-shadow w-75 p-2">
     <h4 class="thistext mt-3 pt-0">Account Registation</h4>
     <form id="resisterform" action="<?php echo base_url() ?>auth/ajaxcreate" class="m-5">

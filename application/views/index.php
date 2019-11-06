@@ -404,19 +404,18 @@
 </section>
 
 <?php
-    $this->db->join('users', 'users.id = testimonials.user_id');
-    $this->db->order_by('testimonials.id', 'desc');
-    $query = $this->db->get('testimonials')->result();
+  $this->db->join('users', 'users.id = testimonials.user_id');
+  $this->db->order_by('testimonials.id', 'desc');
+  $query = $this->db->get('testimonials')->result();
 ?>
-<section id="feedback" class="py-5 pb-2 bg-color p-0">
+<section id="feedback" class="pb-2 bg-color p-0 pt-5">
   <div class="container">
-    <div class="section box-shadow bg-white p-3">
+    <div class="section box-shadow p-5 bg-white">
       <h3 class="text-center"><strong>Customers Feedback</strong></h3>
-      <div class="featured-slider">
-        <div id="featured-slider" >
-           <?php if(count($query)) { ?>
+        <div class="owl-carousel feedback">
+            <?php if(count($query)>1) { ?>
                 <?php foreach ($query as $key => $var): ?>
-                <div class="featured box-shadow" style="border: 1px solid;text-align: center;">
+                <div class="item box-shadow p-3 m-2" style="border: 1px solid;text-align: center;">
                   <div class="ad-info">
                     <div class="text-center">
                          <?php if($var->profile!=null){ ?>
@@ -457,14 +456,14 @@
                 <?php endforeach ?>
               <?php } else { ?>
                 <h2> no_have_testimonials </h2>
-            <?php   }
+            <?php }
             ?>
+        </div>
+        <?php if(count($query)>3){ ?>
+          <div class="text-right mt-3">
+            <a class="btn btn-success" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a>
           </div>
-            <?php if(count($query)>3){ ?>
-              <div class="text-right"><a class="btn btn-info" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a></div>
-            <?php } ?>
-        </div><!-- featured-slider -->
-      </div>
+        <?php } ?>
     </div>
   </div>
 </section>
