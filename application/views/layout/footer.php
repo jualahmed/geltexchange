@@ -89,11 +89,7 @@
     <script src="<?php echo base_url() ?>assets/temp/js/vue/vue.js"></script>
     <script src="<?php echo base_url() ?>assets/temp/js/vue/vuebit.js"></script>
     <!-- JS -->
-    <script src="<?php echo base_url() ?>assets/temp/js/modernizr.min.js"></script>
     <script src="<?php echo base_url() ?>assets/temp/js/owl.carousel.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/temp/js/scrollup.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/temp/js/price-range.js"></script> 
-    <script src="<?php echo base_url() ?>assets/temp/js/jquery.countdown.js"></script>   
     <script src="<?php echo base_url() ?>assets/temp/js/jquery.scrollbar.min.js"></script>   
     <script src="<?php echo base_url() ?>assets/temp/js/custom.js"></script>
   </body>
