@@ -9,6 +9,9 @@ body {
 *{
   text-transform: capitalize;
 }
+.form-control{
+  text-transform: none;
+}
 .thistext{
   color: $color1;
 }

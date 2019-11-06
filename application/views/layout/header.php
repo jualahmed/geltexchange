@@ -62,14 +62,14 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
       <a class="navbar-brand p-1" href="<?php echo base_url() ?>">
-        <img width="250px" class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo">
+        <img class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav w-100">
             <li class="nav-item <?php if($this->uri->segment(1)=='') echo 'active' ?>">
               <a class="nav-link px-3" href="<?php echo base_url() ?>">Home</a>
             </li>
@@ -92,7 +92,7 @@
               <a class="nav-link px-3" href="<?php echo base_url() ?>contact">Contact</a>
             </li>
         </ul>
-        <div>
+        <div class="form-inline my-2 my-lg-0 mr-0">
           <ul class="nav navbar-nav">
             <?php if ($this->ion_auth->logged_in()): ?>
             <div class="dropdown">

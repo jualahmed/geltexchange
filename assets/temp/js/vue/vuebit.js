@@ -1,6 +1,6 @@
 Vue.component('multiselect', window.VueMultiselect.default)
 new Vue({
-	el:"#header",
+	el:"#home",
 	data:{
 		base_url:base_url,
 		send: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/img/images/allinco_01.png' },
@@ -48,7 +48,8 @@ new Vue({
 						this.error.push("You Must need to Login <a class='varifynow' target='_blank' href="+base_url+"home/login>Login now</a>");
 					}else{
 						var ses_uid = this.loginuser[0].id;
-						if(this.loginuser[0].final_verified==0){
+						// this.loginuser[0].final_verified==0
+						if(0){
 							this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href="+base_url+"profile/verification>Verify now</a>");
 						}else{
 							if(!this.receiverid){

@@ -11,3 +11,23 @@
 		margin: auto;
 	}
 }
+.getwayicon{
+	position: absolute;
+	top: 3px;
+	left: 21px;
+}
+
+.getwayiconr{
+	position: absolute;
+	top: 3px;
+	right: 21px;
+}
+.img-responsive{
+	 width:250px!important;
+}
+
+@media (max-width: 330px) {
+	.img-responsive{
+		width:200px!important;
+	}
+}
