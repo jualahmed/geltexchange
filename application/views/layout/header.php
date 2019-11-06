@@ -30,9 +30,7 @@
     })();
   </script> -->
   <!--End of Tawk.to Script-->
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/styles/styles.css" >
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/owl.carousel.css">  
-  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/css/jquery.scrollbar.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/temp/styles/styles.css?v=1.0.0">
 </head>
 <body>
 

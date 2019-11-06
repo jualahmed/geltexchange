@@ -1,4 +1,5 @@
 @import url('dependancy/bootstrap.min.css');
+@import url('dependancy/jquery.scrollbar.css');
 
 @import url('globalcssmodule/__var.css');
 @import url('globalcssmodule/__typography.css');
