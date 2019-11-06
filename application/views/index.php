@@ -469,4 +469,49 @@
   </div>
 </section>
 
+<section class="service_area mb-5">
+  <div class="container text-center">
+    <div class="section box-shadow p-5">
+     <h3 class="text-center"><strong>Service</strong></h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="service_box box-shadow p-3"  style="min-height: 310px;">
+          <div class="service-icon">
+            <img src="<?php echo base_url()."assets/temp/svgicon/like.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Account sale</h5>
+          <p>Skrill&gt;Neteller&gt;paypal&gt; Payza&gt;PM account for sell . Account charge 2000-2500 Tk . Accounts are 100% safe from hacking </p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box box-shadow p-3" style="min-height: 310px;">
+          <div class="service-icon">
+              <img src="<?php echo base_url()."assets/temp/svgicon/circle.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Documents Sale</h5>
+          <p>if you will need Utility Bill &amp; Bank Statement, then you can contact with us . Our Documents charge 500 tk only </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="service_box box-shadow p-3" style="min-height: 310px;">
+          <div class="service-icon">
+            <img src="<?php echo base_url()."assets/temp/svgicon/smot.svg" ?>" alt="facebook" class="m-3" width="50px;">
+        </div>
+        <h5 class="text-success">Account verification</h5>
+        <p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box box-shadow p-3"  style="min-height: 310px;">
+         <div class="service-icon">
+              <img src="<?php echo base_url()."assets/temp/svgicon/verify.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Accounts problem solution</h5>
+          <p>If you will need any types help,then you can contact with us . Our Account verification charge</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</section>
      
