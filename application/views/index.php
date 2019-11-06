@@ -1,4 +1,4 @@
-<section id="home" class="mainexchange" style="background: #005455;">
+<section id="home" class="mainexchange py-5" style="background: #005455;">
   <div class="container">
     <div class="row">
       <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
@@ -60,7 +60,7 @@
           <div id="scrollbaroutertestddd">Show More</div>
       </div>
 
-      <div class="col-md-6 mt-5" v-if="confirmtransation">
+      <div class="col-md-6 mt-4" v-if="confirmtransation">
         <div id="bit_transaction_results" class="selectedsend">
           <div class="row">
               <div class="col-md-12">
@@ -121,7 +121,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 mt-5" v-else>
+      <div class="col-md-6 mt-4" v-else>
           <br>
           <div class="selectedsend" id="bit_transaction_results">
             <form v-if="send && receive" id="exchangeForm">
@@ -233,96 +233,96 @@
   </div>
 </section>  
 
-<section class="home-default bg-color pb-0">
+<section class="home-default py-5 bg-color pb-0">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="section box-shadow">
-                    <div class="row">
-                      <div class="col-md-8 col-sm-8">
-                        <h3 class="text-center"><strong>Reserve</strong></h3>
-                        <div class="row">
-                            <?php
-                              $this->db->join('currency', 'currency.currency_id = gateways.currency');
-                              $query2 = $this->db->get('gateways')->result();
-                              if(count($query2)) {
-                                foreach ($query2 as $key => $row) {
-                            ?>
-                          <div class="col-md-3 col-sm-3 mb-3">
-                              <div class="card text-center box-shadow">
-                                 <div class="p-1">
-                                   <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="50px;" width="50px">
-                                 </div>
-                                <div class="p-1">
-                                  <p class="card-title text-center">
-                                       <?php echo $row->name; ?>
-                                  </p>
-                                  <a href="#" class="badge badge-primary p-2 m-2">
-                                    <strong>
-                                       <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
-                                    </strong>
-                                  </a>
-                                </div>
-                              </div>
-                          </div>
+              <div class="section box-shadow p-3 bg-white">
+                  <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                      <h3 class="text-center"><strong>Reserve</strong></h3>
+                      <div class="row">
                           <?php
-                                }
-                              }else{
-                            ?>
-                                <div class="col-md-12 col-sm-12">
-                                  <?php echo $lang['no_have_gateways']; ?>
-                                </div>
-                            <?php } ?>    
+                            $this->db->join('currency', 'currency.currency_id = gateways.currency');
+                            $query2 = $this->db->get('gateways')->result();
+                            if(count($query2)) {
+                              foreach ($query2 as $key => $row) {
+                          ?>
+                        <div class="col-md-3 col-sm-3 mb-3">
+                            <div class="card text-center box-shadow">
+                               <div class="p-1">
+                                 <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="50px;" width="50px">
+                               </div>
+                              <div class="p-1">
+                                <p class="card-title text-center">
+                                     <?php echo $row->name; ?>
+                                </p>
+                                <a href="#" class="badge badge-primary p-2 m-2">
+                                  <strong>
+                                     <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
+                                  </strong>
+                                </a>
+                              </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-4 col-sm-4">
-                        <h3 class="text-center"><strong>Today's Buy-Sell Price</strong></h3>
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th>
-                                            <strong>We Accept</strong>
-                                        </th>
-                                        <th class="text-center">
-                                            <strong>We Buy</strong>
-                                        </th>
-                                        <th class="text-center">
-                                            <strong>We Sell</strong>
-                                        </th>
-                                    </tr>
-                                       <?php
-                                          $this->db->where('buy_price>0');
-                                          $query2 = $this->db->get('gateways')->result();
-                                        if(count($query2)) {
-                                         foreach ($query2 as $key => $row) {
-                                        ?>
-                                    <tr>
-                                       <td>
-                                        <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="30px;" width="30px">
-                                          <strong><?php echo $row->name; ?></strong>
-                                        </td>
-                                        <td class="text-center">
-                                            <strong><?php echo $row->buy_price; ?></strong>
-                                        </td>
-                                        <td class="text-center">
-                                          <strong><?php echo $row->sales_price; ?></strong>
-                                        </td>
-                                    </tr>
-                                     <?php
-                                        }
-                                      }else{
-                                      ?>
-                                        <div class="col-md-12">
-                                         <b> <?php echo 'no_have_gateways'; ?></b>
-                                        </div>
-                                      <?php } ?>   
-                                </tbody>
-                            </table>
-                        </div>
+                        <?php
+                              }
+                            }else{
+                          ?>
+                              <div class="col-md-12 col-sm-12">
+                                <?php echo $lang['no_have_gateways']; ?>
+                              </div>
+                          <?php } ?>    
                       </div>
                     </div>
-                </div>
+                    <div class="col-md-4 col-sm-4">
+                      <h3 class="text-center"><strong>Today's Buy-Sell Price</strong></h3>
+                      <div class="table-responsive">
+                          <table class="table table-sm table-bordered">
+                              <tbody>
+                                  <tr>
+                                      <th>
+                                          <strong>We Accept</strong>
+                                      </th>
+                                      <th class="text-center">
+                                          <strong>We Buy</strong>
+                                      </th>
+                                      <th class="text-center">
+                                          <strong>We Sell</strong>
+                                      </th>
+                                  </tr>
+                                     <?php
+                                        $this->db->where('buy_price>0');
+                                        $query2 = $this->db->get('gateways')->result();
+                                      if(count($query2)) {
+                                       foreach ($query2 as $key => $row) {
+                                      ?>
+                                  <tr>
+                                     <td>
+                                      <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="30px;" width="30px">
+                                        <strong><?php echo $row->name; ?></strong>
+                                      </td>
+                                      <td class="text-center">
+                                          <strong><?php echo $row->buy_price; ?></strong>
+                                      </td>
+                                      <td class="text-center">
+                                        <strong><?php echo $row->sales_price; ?></strong>
+                                      </td>
+                                  </tr>
+                                   <?php
+                                      }
+                                    }else{
+                                    ?>
+                                      <div class="col-md-12">
+                                       <b> <?php echo 'no_have_gateways'; ?></b>
+                                      </div>
+                                    <?php } ?>   
+                              </tbody>
+                          </table>
+                      </div>
+                    </div>
+                  </div>
+              </div>
             </div>
         </div>
     </div>
@@ -332,7 +332,7 @@
 <section id="sechange" class="pb-2 bg-color p-0">
   <div class="container">
     <div id="put">
-      <div class="section box-shadow p-3">
+      <div class="section box-shadow p-3 bg-white">
         <h3 class="text-center">Latest Exchanges</h3>
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
@@ -376,15 +376,15 @@
                       <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
                       <td align="center">
                         <?php if ($row->statuss==0): ?>
-                           <span class="btn btn-sm btn-info d-inline">Waiting for payment</span>
+                           <span class="badge badge-info d-inline">Waiting for payment</span>
                         <?php elseif($row->statuss==1): ?>
-                            <span class="btn btn-sm btn-primary d-inline">Processing</span>
+                            <span class="badge badge-primary d-inline">Processing</span>
                         <?php elseif($row->statuss==2): ?>
-                            <span class="btn btn-sm btn-success d-inline">Completed</span>
+                            <span class="badge badge-success d-inline">Completed</span>
                         <?php elseif($row->statuss==3): ?>
-                          <span class="btn btn-sm btn-danger d-inline">Rejected</span>
+                          <span class="badge badge-danger d-inline">Rejected</span>
                         <?php elseif($row->statuss==4): ?>
-                          <span class="btn btn-sm btn-primary d-inline">Processing</span>
+                          <span class="badge badge-primary d-inline">Processing</span>
                         <?php endif ?>
                       </td>
                       <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
@@ -404,19 +404,18 @@
 </section>
 
 <?php
-    $this->db->join('users', 'users.id = testimonials.user_id');
-    $this->db->order_by('testimonials.id', 'desc');
-    $query = $this->db->get('testimonials')->result();
+  $this->db->join('users', 'users.id = testimonials.user_id');
+  $this->db->order_by('testimonials.id', 'desc');
+  $query = $this->db->get('testimonials')->result();
 ?>
-<section id="feedback" class="pb-2 bg-color p-0">
+<section id="feedback" class="pb-2 bg-color p-0 pt-5">
   <div class="container">
-    <div class="section box-shadow">
+    <div class="section box-shadow p-5 bg-white">
       <h3 class="text-center"><strong>Customers Feedback</strong></h3>
-      <div class="featured-slider">
-        <div id="featured-slider" >
-           <?php if(count($query)) { ?>
+        <div class="owl-carousel feedback">
+            <?php if(count($query)>1) { ?>
                 <?php foreach ($query as $key => $var): ?>
-                <div class="featured box-shadow" style="border: 1px solid;text-align: center;">
+                <div class="item box-shadow p-3 m-2" style="border: 1px solid;text-align: center;">
                   <div class="ad-info">
                     <div class="text-center">
                          <?php if($var->profile!=null){ ?>
@@ -457,16 +456,61 @@
                 <?php endforeach ?>
               <?php } else { ?>
                 <h2> no_have_testimonials </h2>
-            <?php   }
+            <?php }
             ?>
+        </div>
+        <?php if(count($query)>3){ ?>
+          <div class="text-right mt-3">
+            <a class="btn btn-success" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a>
           </div>
-            <?php if(count($query)>3){ ?>
-              <div class="text-right"><a class="btn btn-info" href="<?php echo base_url().'home/allfeedback' ?>">All Feedback</a></div>
-            <?php } ?>
-        </div><!-- featured-slider -->
-      </div>
+        <?php } ?>
     </div>
   </div>
 </section>
 
+<section class="service_area bg-color py-5">
+  <div class="container text-center">
+    <div class="section box-shadow p-5 bg-white">
+     <h3 class="text-center"><strong>Service</strong></h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="service_box box-shadow p-3"  style="min-height: 310px;">
+          <div class="service-icon">
+            <img src="<?php echo base_url()."assets/temp/svgicon/like.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Account sale</h5>
+          <p>Skrill&gt;Neteller&gt;paypal&gt; Payza&gt;PM account for sell . Account charge 2000-2500 Tk . Accounts are 100% safe from hacking </p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box box-shadow p-3" style="min-height: 310px;">
+          <div class="service-icon">
+              <img src="<?php echo base_url()."assets/temp/svgicon/circle.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Documents Sale</h5>
+          <p>if you will need Utility Bill &amp; Bank Statement, then you can contact with us . Our Documents charge 500 tk only </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="service_box box-shadow p-3" style="min-height: 310px;">
+          <div class="service-icon">
+            <img src="<?php echo base_url()."assets/temp/svgicon/smot.svg" ?>" alt="facebook" class="m-3" width="50px;">
+        </div>
+        <h5 class="text-success">Account verification</h5>
+        <p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="service_box box-shadow p-3"  style="min-height: 310px;">
+         <div class="service-icon">
+              <img src="<?php echo base_url()."assets/temp/svgicon/verify.svg" ?>" alt="facebook" class="m-3" width="50px;">
+          </div>
+          <h5 class="text-success">Accounts problem solution</h5>
+          <p>If you will need any types help,then you can contact with us . Our Account verification charge</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</section>
      

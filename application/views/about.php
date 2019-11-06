@@ -1,6 +1,6 @@
 
-<section id="traking" class="py-5">
-  <div class="container box-shadow p-2" style="min-height: 400px;">
+<section id="traking" class="py-5 bg-color">
+  <div class="container box-shadow p-2 bg-white" style="min-height: 400px;">
     <div class="p-2">
       <h3 class="text-center">About</h3>
       <hr>

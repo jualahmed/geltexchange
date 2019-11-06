@@ -1,4 +1,13 @@
 
- 	https://usdbuysell.com:2083/
-cPanel username	Bm0r0w0GXz7G
-cPanel password	Bm0r0w0GXz7G
+https://gator3096.hostgator.com:2083/
+cPanel username	saidul
+cPanel password	CSI@722003#2019
+
+domain:saidul2011@hotmail.com;
+password: MS@ij#042185
+
+
+
+database : exchange_users
+user: exchange_2bdt
+password: https://exchange2bdt.com:2083/cpsess7445113841/frontend/

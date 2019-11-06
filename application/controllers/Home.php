@@ -76,6 +76,7 @@ class Home extends Public_Controller {
     $limit = 8;
     $this->data['results'] = $this->exchanges_model->fetch_exchanges($limit,$start);
     $this->data['start'] = $start;
+    $this->data["links"] = $this->pagination->create_links();
     $this->__randerview('paymentproff', $this->data);
   }
 

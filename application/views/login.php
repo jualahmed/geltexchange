@@ -1,6 +1,6 @@
 
 
-<section id="register">
+<section id="register" class="py-5 bg-color">
   <div class="contentr box-shadow bg-light text-center p-2 bg-white" style="max-width: 450px;">
     <h4 class="thistext mt-5 pt-1">Account Login</h4>
     <form action="<?php echo base_url() ?>auth/loginajax" class="m-5" id="login">
