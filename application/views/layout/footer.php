@@ -82,15 +82,15 @@
     <!-- footer -->
    
     <script>var base_url ="<?php echo base_url() ?>"</script>
-    <script src="<?php echo base_url() ?>/assets/temp/js/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/temp/scripts/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
-    <script src="<?php echo base_url() ?>assets/temp/js/vue/vue.js"></script>
-    <script src="<?php echo base_url() ?>assets/temp/js/vue/vuebit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/temp/scripts/vue/vue.js"></script>
+    <script src="<?php echo base_url() ?>assets/temp/scripts/vue/vuebit.js"></script>
     <!-- JS -->
-    <script src="<?php echo base_url() ?>assets/temp/js/owl.carousel.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/temp/js/jquery.scrollbar.min.js"></script>   
-    <script src="<?php echo base_url() ?>assets/temp/js/custom.js"></script>
+    <script src="<?php echo base_url() ?>assets/temp/scripts/jquery.scrollbar.min.js"></script>   
+    <script src="<?php echo base_url() ?>assets/temp/scripts/custom.js"></script>
   </body>
 </html>
