@@ -35,17 +35,18 @@
 </head>
 <body>
 
-<header id="header" class="bg-light box-shadow">
+<header id="header" class="bg-light" style="overflow-x: hidden;">
   <div class="row">
-    <div class="col-md-12 bg-dark">
+    <div class="col-md-12">
       <center> 
         <div class="btn btn top-header">
           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="MARQUEE1" class="scrolling">  
-            <b class="text-info">
-              <span class="text-info"><?php echo $d->notice ?></span>
+            <b class="text-info">Notice :
+              <span class="text-white"><?php echo $d->notice ?></span>
             </b>
           </marquee>  
         </div>
+
       </center>
     </div>
     <div class="col-md-12 text-center" style="background: #005455;color: #fff;">
@@ -57,42 +58,38 @@
         <button class="btn btn-danger btn-sm"> Offline</button>
       <?php } ?>
     </div>
-    </div>
   </div>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
       <a class="navbar-brand p-1" href="<?php echo base_url() ?>">
-        <img class="img-responsive" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav w-100">
+        <img class="logo" src="<?php echo base_url() ?>assets/temp/images/logo.png" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php if($this->uri->segment(1)=='') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>">Home</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>">Home</a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1)=='about') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>about">About</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>about">About</a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1)=='faq') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>faq">FAQ</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>faq">FAQ</a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1)=='tutorial') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>tutorial">Tutorial</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>tutorial">Tutorial</a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1)=='affiliate') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a>
             </li> 
             <li class="nav-item <?php if($this->uri->segment(1)=='home') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>home/paymentproff">Payment Proof</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>home/paymentproff">Payment Proof</a>
             </li> 
             <li class="nav-item <?php if($this->uri->segment(1)=='contact') echo 'active' ?>">
-              <a class="nav-link px-3" href="<?php echo base_url() ?>contact">Contact</a>
+              <a class="nav-link pl-3" href="<?php echo base_url() ?>contact">Contact</a>
             </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0 mr-0">
+          </ul>
           <ul class="nav navbar-nav">
             <?php if ($this->ion_auth->logged_in()): ?>
             <div class="dropdown">
@@ -129,12 +126,15 @@
               </div>
             </div>
             <?php else: ?>
-              <li class="<?php if($this->uri->segment(1)=='login') echo 'active' ?>"><a class="nav-link px-3" href="<?php echo base_url() ?>login">Login</a></li>
-              <li class="beforeicon <?php if($this->uri->segment(1)=='regirter') echo 'active' ?>"><a class="nav-link px-3" href="<?php echo base_url() ?>regirter">Register</a></li>
+              <li class="nav-item <?php if($this->uri->segment(1)=='login') echo 'active' ?>">
+                <a class="nav-link pl-3" href="<?php echo base_url() ?>login">Login</a>
+              </li>
+              <li class="nav-item beforeicon <?php if($this->uri->segment(1)=='regirter') echo 'active' ?>">
+                <a class="nav-link pl-3" href="<?php echo base_url() ?>regirter">Register</a>
+              </li>
             <?php endif ?>
           </ul><!-- sign-in --> 
         </div>
-      </div>
     </nav>
   </div>
 </header><!-- header -->
