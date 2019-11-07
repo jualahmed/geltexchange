@@ -1,0 +1,14 @@
+#footer{
+	li{
+		list-style: none;
+	}
+	.footerbottom{
+		text-align: right;
+	}	
+
+	@media (max-width: 320px){
+		.footerbottom{
+			text-align: left;
+		}	
+	}
+}

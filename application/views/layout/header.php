@@ -31,7 +31,7 @@
   </script> -->
   <!--End of Tawk.to Script-->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/temp/styles/styles.css" >
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/2.3.3/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/2.3.4/owl.carousel.min.css">
 </head>
 <body>
 
