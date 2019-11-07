@@ -3,6 +3,7 @@
 @import url('globalcssmodule/__typography.css');
 @import url('globalcssmodule/__btn.css');
 @import url('sectioncssmodule/__footer.css');
+@import url('sectioncssmodule/__header.css');
 
 .active a{
 	color: $color1!important;

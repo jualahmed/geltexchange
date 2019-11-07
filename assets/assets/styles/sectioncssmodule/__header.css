@@ -1,0 +1,13 @@
+#header{
+	.logo{
+		width:250px; 
+	}
+
+	@media (max-width: 320px){
+		.logo{
+			width:200px; 
+		}
+	}
+}
+
+

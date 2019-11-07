@@ -37,7 +37,7 @@
 
 <header id="header" class="bg-light" style="overflow-x: hidden;">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 bg-dark">
       <center> 
         <div class="btn btn top-header">
           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="MARQUEE1" class="scrolling">  
@@ -46,7 +46,6 @@
             </b>
           </marquee>  
         </div>
-
       </center>
     </div>
     <div class="col-md-12 text-center" style="background: #005455;color: #fff;">
