@@ -6,8 +6,6 @@ cPanel password	CSI@722003#2019
 domain:saidul2011@hotmail.com;
 password: MS@ij#042185
 
-
-
-database : exchange_users
-user: exchange_2bdt
-password: https://exchange2bdt.com:2083/cpsess7445113841/frontend/
+database : saidul_usdbuyandsell
+user: saidul_usdbuysel
+password: Ad009257
