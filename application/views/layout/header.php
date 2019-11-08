@@ -35,9 +35,9 @@
 </head>
 <body>
 
-<header id="header" class="bg-light" style="overflow-x: hidden;">
-  <div class="row">
-    <div class="col-md-12">
+<header id="header" class="bg-light">
+  <div>
+    <div>
       <center> 
         <div class="btn btn top-header">
           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" id="MARQUEE1" class="scrolling">  
@@ -49,7 +49,7 @@
 
       </center>
     </div>
-    <div class="col-md-12 text-center" style="background: #005455;color: #fff;">
+    <div class="text-center" style="background: #005455;color: #fff;">
       <img width="23px" src="<?php echo base_url()."assets/temp/uploads/clock.png"; ?>" alt=""> Office Time: <?php echo $d->start_time ?> - <?php echo $d->end_time ?>
       <img width="20px" src="<?php echo base_url()."assets/temp/uploads/operator.png"; ?>" alt=""> Operator:
       <?php if($d->is_online){ ?>
