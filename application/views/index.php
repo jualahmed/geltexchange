@@ -1,163 +1,211 @@
 <section id="home" class="mainexchange py-5" style="background: #005455;">
   <div class="container">
     <div class="row">
-      <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
-
-      <div class="col-md-3">
-          <h2 align="center" class="text-white">
-            Send <span>To</span>
-          </h2>
-          <div class="fixed-height scrollbar-outer scrollbar-outer1">
-            <multiselect @select="sendchange" v-model="send" label="name" placeholder="Select" track-by="name" :options="sendoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
-              <template slot="singleLabel" slot-scope="props">
-                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
-                {{ props.option.name }}
-              </template>
-              <template slot="option" slot-scope="props">
-                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
-              </template>
-            </multiselect>
+    <div class="col-md-8 bg-white">
+        <div class="row px-5">
+          <div class="col-md-12" v-if="!confirmtransation">
+            <p><p><span style="color: #ff0000;"><strong>Send</strong></span>= আপনি যা দিবেন,<span style="color: #339966;"><strong>Receive</strong></span>=আপনি যা পেতে চান(Submit পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে ) <strong>&nbsp; <span style="color: #ff6600;">১০০ এর উপর অর্ডারে প্রতি ডলারে ১ টাকা &nbsp;, ৩০০ উপর অর্ডারে প্রতি ডলারে ২ টাকা Discount দেওয়া হচ্ছে।অর্ডার করার পর এই Discount&nbsp;পাবেন ।তাই দেরি না করে এখনি অর্ডার করুন </p>
+            <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
           </div>
-          <span class="text-white">Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
-      </div>
 
-      <div class="col-md-6 mt-5" v-if="confirmtransation">
-        <div id="bit_transaction_results" class="selectedsend">
-          <div class="row bg-white p-3">
-            <div class="col-md-12">
-              <div id="bit_transaction_results">
-                <div class="alert alert-info">
-                  <i class="fa fa-info-circle"></i>
-                  You need to make payment manually, use the data below and enter the number of the account in the form below.
+          <div class="col-md-6" v-if="!confirmtransation">
+            <h3><img src="<?php echo base_url() ?>assets/temp/images/arrow-up.png" width="27" height="27"> Send</h3>
+            <div class="fixed-height scrollbar-outer scrollbar-outer1">
+              <multiselect @select="sendchange" v-model="send" label="name" placeholder="Select" track-by="name" :options="sendoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
+                <template slot="singleLabel" slot-scope="props">
+                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
+                  {{ props.option.name }}
+                </template>
+                <template slot="option" slot-scope="props">
+                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
+                </template>
+              </multiselect>
+            </div>
+            <span class="text-white">Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
+            <div id="sendCurrencyContainer">
+              <img alt="" :src="gatewaysendinfo.external_icon" class="getwayicon" width="30px">
+              <input type="text" @keyup="bit_calculator" id="sendAmount" v-model="rate_from" class="form-control from" style="text-align: right;">
+                <p class="text-white">
+                  Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}
+                </p>
+            </div>
+          </div>
+
+          <div class="col-md-6" v-if="!confirmtransation">
+          <h3><img src="<?php echo base_url() ?>assets/temp/images/arrow-down.png" width="27" height="27"> Receive</h3>
+            <div class="fixed-height scrollbar-outer scrollbar-outer1">
+              <multiselect @select="recivechange" v-model="receive" label="name" placeholder="Select" track-by="name" :options="reciveoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
+                <template slot="singleLabel" slot-scope="props">
+                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
+                  {{ props.option.name }}
+                </template>
+                <template slot="option" slot-scope="props">
+                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
+                </template>
+              </multiselect>
+            </div>
+            <span class="text-white">Minimum : {{ receive.min_amount }} {{ receive.currency_name }}</span>
+            <div id="receiveCurrencyContainer">
+                <input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
+                <img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr" width="30px">
+                 <p class="text-white">Reserve: {{ reserve }}</p>
+            </div>
+          </div>
+
+          <div class="col-md-12 mt-5" v-if="confirmtransation==1">
+            <p>         dfsdfsdf sdfsdfsdf</p>
+          </div>
+
+          <div class="col-md-12 mt-5" v-if="confirmtransation==2">
+            <div id="bit_transaction_results" class="selectedsend">
+              <div class="row bg-white p-3">
+                <div class="col-md-12">
+                  <div id="bit_transaction_results">
+                    <div class="alert alert-info">
+                      <i class="fa fa-info-circle"></i>
+                      You need to make payment manually, use the data below and enter the number of the account in the form below.
+                    </div>
+                  </div>
+                  <form id="bit_confirm_transaction">
+                    <table class="table table-striped">
+                      <tbody>
+                        <tr>
+                          <td colspan="2">
+                            <h4 class="text-center"><a href="" class="btn btn-success">Order Summery</a></h4>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <h4 class="text-center"><a href="" class="btn btn-success">Order ID : {{ gateways[0].id }}</a></h4>
+                          </td>
+                        </tr>
+                        <tr style="background: #003E11;color: #fff;">
+                            <td class="text-center">
+                                <div>You send</div>
+                                <p>{{ gateways[0].amount_send }}</p>
+                            </td>
+                            <td class="text-center">
+                                <div>You receive</div>
+                                <p><b>{{ gateways[0].amount_receive }}</b></p>
+                                <p>To account</p>
+                                <p><b>{{ gateways[0].gateway_account }}</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr class="text-center">
+                          <td>
+                            <span style="font-size: 10px;" class="pull-left">Our {{ gateways[0].name }} Address:</span>
+                          </td>
+                          <td>
+                            <span class="pull-right">
+                              <input type="text" disabled="" :value="gateways[0].account" id="myInput" desa=""><button>Copy</button></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="form-group">
+                      <label></label>
+                      <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
+                    </div>
+                    <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
+                    <h4 class="text-danger" v-if="me">Please enter account.</h4>
+                  </form>
                 </div>
               </div>
-              <form id="bit_confirm_transaction">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <td colspan="2">
-                        <h4 class="text-center"><a href="" class="btn btn-success">Order Summery</a></h4>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <h4 class="text-center"><a href="" class="btn btn-success">Order ID : {{ gateways[0].id }}</a></h4>
-                      </td>
-                    </tr>
-                    <tr style="background: #003E11;color: #fff;">
-                        <td class="text-center">
-                            <div>You send</div>
-                            <p>{{ gateways[0].amount_send }}</p>
-                        </td>
-                        <td class="text-center">
-                            <div>You receive</div>
-                            <p><b>{{ gateways[0].amount_receive }}</b></p>
-                            <p>To account</p>
-                            <p><b>{{ gateways[0].gateway_account }}</b></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr class="text-center">
-                      <td>
-                        <span style="font-size: 10px;" class="pull-left">Our {{ gateways[0].name }} Address:</span>
-                      </td>
-                      <td>
-                        <span class="pull-right">
-                          <input type="text" disabled="" :value="gateways[0].account" id="myInput" desa=""><button>Copy</button></span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="form-group">
-                  <label></label>
-                  <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
+            </div>
+          </div>
+
+          <div class="col-md-12 mt-5" v-else>
+            <div class="selectedsend" id="bit_transaction_results">
+              <form v-if="send && receive" id="exchangeForm">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <div class="form-group" style="display: none;">
+                      <label for="receiverID" style="visibility: hidden;"><span class="receiveEcurrencyName"><span class="receiveAccountType">{{ messagessss }}</span></label>
+                      <input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your '+ placeholdermessage" style="visibility: visible;">
+                    </div>
+
+                    <div class="form-group" style="display: none;">
+                      <label for="exchangeEmail">Email</label>
+                      <input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="Enter your email" value="">
+                    </div>
+
+                    <div class="form-group">
+                        <button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
+                        <button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else>Start Order</button>
+                    </div>
+                    
+                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
+                      <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
+                    </div>
+
+                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
+                      <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
+                    </div>
+                
+                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_from)<gatewaysendinfo.min_amount">
+                      <p style="margin: 0px;">{{ gatewaysendinfo.name }} Min. Amount: {{ gatewaysendinfo.min_amount }}</p>
+                    </div>
+
+                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)>gatewayreciveinfo.max_amount">
+                      <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Max. Amount: {{ gatewayreciveinfo.max_amount }}</p>
+                    </div>
+                  </div>
                 </div>
-                <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
-                <h4 class="text-danger" v-if="me">Please enter account.</h4>
               </form>
             </div>
           </div>
+     </div>
+  </div>
+     <div class="col-md-4 col-sm-4">
+      <div class="bg-white p-1">
+        <h3 class="text-center"><strong>Today's Buy-Sell Price</strong></h3>
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <th>
+                            <strong>We Accept</strong>
+                        </th>
+                        <th class="text-center">
+                            <strong>We Buy</strong>
+                        </th>
+                        <th class="text-center">
+                            <strong>We Sell</strong>
+                        </th>
+                    </tr>
+                       <?php
+                          $this->db->where('buy_price>0');
+                          $query2 = $this->db->get('gateways')->result();
+                        if(count($query2)) {
+                         foreach ($query2 as $key => $row) {
+                        ?>
+                    <tr>
+                       <td>
+                        <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="30px;" width="30px">
+                          <strong><?php echo $row->name; ?></strong>
+                        </td>
+                        <td class="text-center">
+                            <strong><?php echo $row->buy_price; ?></strong>
+                        </td>
+                        <td class="text-center">
+                          <strong><?php echo $row->sales_price; ?></strong>
+                        </td>
+                    </tr>
+                     <?php
+                        }
+                      }else{
+                      ?>
+                        <div class="col-md-12">
+                         <b> <?php echo 'no_have_gateways'; ?></b>
+                        </div>
+                      <?php } ?>   
+                </tbody>
+            </table>
         </div>
       </div>
-
-      <div class="col-md-6 mt-5" v-else>
-        <div class="selectedsend" id="bit_transaction_results">
-          <form v-if="send && receive" id="exchangeForm">
-            <div class="row">
-              <div class="col-md-6">
-                <div id="sendCurrencyContainer">
-                  <img alt="" :src="gatewaysendinfo.external_icon" class="getwayicon" width="30px">
-                  <input type="text" @keyup="bit_calculator" id="sendAmount" v-model="rate_from" class="form-control from" style="text-align: right;">
-                    <p class="text-white">
-                      Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}
-                    </p>
-                </div>
-              </div>
-        
-              <div class="col-md-6">
-                <div id="receiveCurrencyContainer">
-                  <input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
-                  <img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr" width="30px">
-                   <p class="text-white">Reserve: {{ reserve }}</p>
-                </div>
-              </div>
-              <div class="col-md-12 text-center">
-                <div class="form-group" style="display: none;">
-                  <label for="receiverID" style="visibility: hidden;"><span class="receiveEcurrencyName"><span class="receiveAccountType">{{ messagessss }}</span></label>
-                  <input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your '+ placeholdermessage" style="visibility: visible;">
-                </div>
-
-                <div class="form-group" style="display: none;">
-                  <label for="exchangeEmail">Email</label>
-                  <input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="Enter your email" value="">
-                </div>
-
-                <div class="form-group">
-                    <button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
-                    <button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else>Start Order</button>
-                </div>
-                
-                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
-                  <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
-                </div>
-
-                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
-                  <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
-                </div>
-            
-                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_from)<gatewaysendinfo.min_amount">
-                  <p style="margin: 0px;">{{ gatewaysendinfo.name }} Min. Amount: {{ gatewaysendinfo.min_amount }}</p>
-                </div>
-
-                <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)>gatewayreciveinfo.max_amount">
-                  <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Max. Amount: {{ gatewayreciveinfo.max_amount }}</p>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <h2 align="center" class="text-white">
-          Receive
-        </h2>
-        <div class="fixed-height scrollbar-outer scrollbaroutertest">
-          <div class="fixed-height scrollbar-outer scrollbar-outer1">
-            <multiselect @select="recivechange" v-model="receive" label="name" placeholder="Select" track-by="name" :options="reciveoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
-              <template slot="singleLabel" slot-scope="props">
-                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
-                {{ props.option.name }}
-              </template>
-              <template slot="option" slot-scope="props">
-                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
-              </template>
-            </multiselect>
-          </div>
-          <span class="text-white">Minimum : {{ receive.min_amount }} {{ receive.currency_name }}</span>
-        </div>
       </div>
     </div>
   </div>
@@ -169,7 +217,7 @@
             <div class="col-md-12 col-sm-12">
                 <div class="section box-shadow p-5">
                     <div class="row">
-                      <div class="col-md-8 col-sm-8">
+                      <div class="col-md-12 col-sm-12">
                         <h3 class="text-center"><strong>Reserve</strong></h3>
                         <div class="row">
                             <?php
@@ -205,52 +253,6 @@
                             <?php } ?>    
                         </div>
                       </div>
-                      <div class="col-md-4 col-sm-4">
-                        <h3 class="text-center"><strong>Today's Buy-Sell Price</strong></h3>
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th>
-                                            <strong>We Accept</strong>
-                                        </th>
-                                        <th class="text-center">
-                                            <strong>We Buy</strong>
-                                        </th>
-                                        <th class="text-center">
-                                            <strong>We Sell</strong>
-                                        </th>
-                                    </tr>
-                                       <?php
-                                          $this->db->where('buy_price>0');
-                                          $query2 = $this->db->get('gateways')->result();
-                                        if(count($query2)) {
-                                         foreach ($query2 as $key => $row) {
-                                        ?>
-                                    <tr>
-                                       <td>
-                                        <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="30px;" width="30px">
-                                          <strong><?php echo $row->name; ?></strong>
-                                        </td>
-                                        <td class="text-center">
-                                            <strong><?php echo $row->buy_price; ?></strong>
-                                        </td>
-                                        <td class="text-center">
-                                          <strong><?php echo $row->sales_price; ?></strong>
-                                        </td>
-                                    </tr>
-                                     <?php
-                                        }
-                                      }else{
-                                      ?>
-                                        <div class="col-md-12">
-                                         <b> <?php echo 'no_have_gateways'; ?></b>
-                                        </div>
-                                      <?php } ?>   
-                                </tbody>
-                            </table>
-                        </div>
-                      </div>
                     </div>
                 </div>
             </div>
@@ -283,7 +285,6 @@
               $this->db->order_by('exchanges.id', 'desc');
               $this->db->join('users', 'users.id = exchanges.user_id');
               $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
-              $this->db->where('exchanges.status', 1);
               $this->db->join('currency', 'currency.currency_id = gateways.currency');
               $query = $this->db->get('exchanges')->result();
               if(count($query)) {
@@ -331,155 +332,6 @@
     </div>
   </div>
 </section>
-
-<!-- Latest Completed -->
-<section id="sechange" class="pb-2 bg-color p-0 my-5">
-  <div class="container">
-    <div class="section box-shadow p-5">
-      <h3 class="text-center">Latest Completed</h3>
-      <div class="table-responsive">
-          <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
-            <thead>
-              <tr>
-                <th><span><?php echo 'username'; ?></span></th>
-                <th><span><?php echo 'send'; ?></span></th>
-                <th><span><?php echo 'receive'; ?></span></th>
-                <th><span><?php echo 'Send amount'; ?></span></th>
-                <th><span><?php echo 'Recive amount'; ?></span></th>
-                <th class="al"><span> <?php echo 'status'; ?></span></th>
-                <th class="al"><span> Date</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
-              $this->db->limit(10);
-              $this->db->order_by('exchanges.id', 'desc');
-              $this->db->join('users', 'users.id = exchanges.user_id');
-              $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
-              $this->db->where('exchanges.status', 2);
-              $this->db->join('currency', 'currency.currency_id = gateways.currency');
-              $query = $this->db->get('exchanges')->result();
-              if(count($query)) {
-                foreach ($query as $key => $row) {
-                  $this->db->where('id', $row->gateway_receive);
-                  $this->db->join('currency', 'currency.currency_id = gateways.currency');
-                  $reciveamoutn=$this->db->get('gateways')->row();
-                  ?>
-                  <tr>
-                    <td><?php echo $row->username ?></td>
-                    <td>
-                      <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
-                      <span class="pl-2"><?php echo $row->name; ?></span>
-                    </td>
-                    <td>
-                      <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
-                      <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
-                    </td>
-                    <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
-                    <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
-                    <td align="center">
-                      <?php if ($row->statuss==0): ?>
-                         <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
-                      <?php elseif($row->statuss==1): ?>
-                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
-                      <?php elseif($row->statuss==2): ?>
-                          <span class="badge badge-sm badge-success d-inline">Completed</span>
-                      <?php elseif($row->statuss==3): ?>
-                        <span class="badge badge-sm badge-danger d-inline">Rejected</span>
-                      <?php elseif($row->statuss==4): ?>
-                        <span class="badge badge-sm badge-primary d-inline">Processing</span>
-                      <?php endif ?>
-                    </td>
-                    <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
-                  </tr>
-                        <?php
-                      }
-                    } else {
-                      echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
-                    }
-                ?>
-            </tbody>
-          </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Latest Rejected -->
-<section id="sechange" class="pb-2 bg-color p-0">
-  <div class="container">
-    <div class="section box-shadow p-5">
-      <h3 class="text-center">Latest Rejected</h3>
-      <div class="table-responsive">
-          <table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
-            <thead>
-              <tr>
-                <th><span><?php echo 'username'; ?></span></th>
-                <th><span><?php echo 'send'; ?></span></th>
-                <th><span><?php echo 'receive'; ?></span></th>
-                <th><span><?php echo 'Send amount'; ?></span></th>
-                <th><span><?php echo 'Recive amount'; ?></span></th>
-                <th class="al"><span> <?php echo 'status'; ?></span></th>
-                <th class="al"><span> Date</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
-              $this->db->limit(10);
-              $this->db->order_by('exchanges.id', 'desc');
-              $this->db->join('users', 'users.id = exchanges.user_id');
-              $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
-              $this->db->where('exchanges.status', 3);
-              $this->db->join('currency', 'currency.currency_id = gateways.currency');
-              $query = $this->db->get('exchanges')->result();
-              if(count($query)) {
-                foreach ($query as $key => $row) {
-                  $this->db->where('id', $row->gateway_receive);
-                  $this->db->join('currency', 'currency.currency_id = gateways.currency');
-                  $reciveamoutn=$this->db->get('gateways')->row();
-                  ?>
-                  <tr>
-                    <td><?php echo $row->username ?></td>
-                    <td>
-                      <img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
-                      <span class="pl-2"><?php echo $row->name; ?></span>
-                    </td>
-                    <td>
-                      <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
-                      <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
-                    </td>
-                    <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
-                    <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
-                    <td align="center">
-                      <?php if ($row->statuss==0): ?>
-                         <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
-                      <?php elseif($row->statuss==1): ?>
-                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
-                      <?php elseif($row->statuss==2): ?>
-                          <span class="badge badge-sm badge-success d-inline">Completed</span>
-                      <?php elseif($row->statuss==3): ?>
-                        <span class="badge badge-sm badge-danger d-inline">Rejected</span>
-                      <?php elseif($row->statuss==4): ?>
-                        <span class="badge badge-sm badge-primary d-inline">Processing</span>
-                      <?php endif ?>
-                    </td>
-                    <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
-                  </tr>
-                        <?php
-                      }
-                    } else {
-                      echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
-                    }
-                ?>
-            </tbody>
-          </table>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <?php
   $this->db->join('users', 'users.id = testimonials.user_id');

@@ -3,9 +3,9 @@ new Vue({
 	el:"#home",
 	data:{
 		base_url:base_url,
-		send: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/img/images/allinco_01.png' },
+		send: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/svgicon/arrouwdown.svg' },
 	    sendoptions: [],
-	    receive: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/img/images/allinco_01.png' },
+	    receive: { name: 'Select', desc: 'Discovering new species!', external_icon:'assets/temp/svgicon/arrowup.svg' },
 	    reciveoptions: [],
 		gatewaysendinfo:'',
 		gatewayreciveinfo:'',
