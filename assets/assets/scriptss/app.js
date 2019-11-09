@@ -1,8 +1,7 @@
 jQuery(document).ready(function($) {
-    $('.feedback').owlCarousel({
+   $('.feedback').owlCarousel({
         loop:true,
         margin:10,
-        responsiveClass:true,
         items:3,
         responsive:{
             0:{
@@ -10,7 +9,7 @@ jQuery(document).ready(function($) {
                 nav:true
             },
             600:{
-                items:2,
+                items:3,
                 nav:false
             },
             1000:{
@@ -19,7 +18,7 @@ jQuery(document).ready(function($) {
                 loop:false
             },
             1500:{
-                items:4,
+                items:5,
                 nav:true,
                 loop:false
             }

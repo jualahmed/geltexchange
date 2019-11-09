@@ -7,6 +7,7 @@
 
 @import url('sectioncssmodule/__header.css');
 @import url('sectioncssmodule/__homesection.css');
+@import url('sectioncssmodule/__footer.css');
 input{
 	text-transform: none!important;
 }
@@ -20,4 +21,8 @@ input{
 }
 .box-shadow {
     box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+
+.owl-carousel {
+	touch-action: none; 
 }
