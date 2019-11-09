@@ -24,6 +24,7 @@
                 $this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
                 $this->db->limit(10);
                 $this->db->order_by('exchanges.id', 'desc');
+                $this->db->where('exchanges.status > ',0);
                 $this->db->join('users', 'users.id = exchanges.user_id');
                 $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
                 $this->db->join('currency', 'currency.currency_id = gateways.currency');
