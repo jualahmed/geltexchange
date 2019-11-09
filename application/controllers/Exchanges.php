@@ -56,7 +56,12 @@ class Exchanges extends Public_Controller {
 
   public function gateway_info($id)
   { 
-    $data=$this->gateways_model->find($id);
+    $data['info']=$this->gateways_model->find($id);
+
+    $this->db->where('gateway_from', $id);
+    $this->db->join('gateways', 'gateways.id = rates.gateway_to');
+    $data['getway']=$this->db->get('rates')->result();
+
     echo json_encode($data);
   }
 
@@ -113,6 +118,12 @@ class Exchanges extends Public_Controller {
     $this->db->set('status',1);
     $this->db->update('exchanges');
     echo "1"; 
+  }
+
+  public function delete($id='')
+  {
+    $this->db->where('id', $id);
+    echo $this->db->delete('exchanges');
   }
 
 }

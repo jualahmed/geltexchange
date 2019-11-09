@@ -2,162 +2,198 @@
   <div class="container">
     <div class="row">
     <div class="col-md-8 bg-white">
-        <div class="row px-5">
-          <div class="col-md-12" v-if="!confirmtransation">
-            <p><p><span style="color: #ff0000;"><strong>Send</strong></span>= আপনি যা দিবেন,<span style="color: #339966;"><strong>Receive</strong></span>=আপনি যা পেতে চান(Submit পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে ) <strong>&nbsp; <span style="color: #ff6600;">১০০ এর উপর অর্ডারে প্রতি ডলারে ১ টাকা &nbsp;, ৩০০ উপর অর্ডারে প্রতি ডলারে ২ টাকা Discount দেওয়া হচ্ছে।অর্ডার করার পর এই Discount&nbsp;পাবেন ।তাই দেরি না করে এখনি অর্ডার করুন </p>
-            <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
-          </div>
+      <div class="row">
+        <div class="col-md-12" v-if="confirmtransation==0">
+          <p><p><span style="color: #ff0000;"><strong>Send</strong></span>= আপনি যা দিবেন,<span style="color: #339966;"><strong>Receive</strong></span>=আপনি যা পেতে চান(Submit পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে ) <strong>&nbsp; <span style="color: #ff6600;">১০০ এর উপর অর্ডারে প্রতি ডলারে ১ টাকা &nbsp;, ৩০০ উপর অর্ডারে প্রতি ডলারে ২ টাকা Discount দেওয়া হচ্ছে।অর্ডার করার পর এই Discount&nbsp;পাবেন ।তাই দেরি না করে এখনি অর্ডার করুন </p>
+          <input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
+        </div>
 
-          <div class="col-md-6" v-if="!confirmtransation">
-            <h3><img src="<?php echo base_url() ?>assets/temp/images/arrow-up.png" width="27" height="27"> Send</h3>
-            <div class="fixed-height scrollbar-outer scrollbar-outer1">
-              <multiselect @select="sendchange" v-model="send" label="name" placeholder="Select" track-by="name" :options="sendoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
-                <template slot="singleLabel" slot-scope="props">
-                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
-                  {{ props.option.name }}
-                </template>
-                <template slot="option" slot-scope="props">
-                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
-                </template>
-              </multiselect>
-            </div>
-            <span class="text-white">Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
-            <div id="sendCurrencyContainer">
-              <img alt="" :src="gatewaysendinfo.external_icon" class="getwayicon" width="30px">
-              <input type="text" @keyup="bit_calculator" id="sendAmount" v-model="rate_from" class="form-control from" style="text-align: right;">
-                <p class="text-white">
-                  Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}
-                </p>
-            </div>
+        <div class="col-md-6" v-if="confirmtransation==0">
+          <h3><img src="<?php echo base_url() ?>assets/temp/images/arrow-up.png" width="27" height="27"> Send</h3>
+          <div class="fixed-height scrollbar-outer scrollbar-outer1">
+            <multiselect @select="sendchange" v-model="send" label="name" placeholder="Select" track-by="name" :options="sendoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
+              <template slot="singleLabel" slot-scope="props">
+                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
+                {{ props.option.name }}
+              </template>
+              <template slot="option" slot-scope="props">
+                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
+              </template>
+            </multiselect>
           </div>
+          <span class="text-white">Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
+          <div id="sendCurrencyContainer">
+            <img alt="" :src="gatewaysendinfo.external_icon" class="getwayicon" width="30px">
+            <input type="text" @keyup="bit_calculator" id="sendAmount" v-model="rate_from" class="form-control from" style="text-align: right;">
+              <p class="text-white">
+                Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}
+              </p>
+          </div>
+        </div>
 
-          <div class="col-md-6" v-if="!confirmtransation">
+        <div class="col-md-6" v-if="confirmtransation==0">
           <h3><img src="<?php echo base_url() ?>assets/temp/images/arrow-down.png" width="27" height="27"> Receive</h3>
-            <div class="fixed-height scrollbar-outer scrollbar-outer1">
-              <multiselect @select="recivechange" v-model="receive" label="name" placeholder="Select" track-by="name" :options="reciveoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
-                <template slot="singleLabel" slot-scope="props">
-                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
-                  {{ props.option.name }}
-                </template>
-                <template slot="option" slot-scope="props">
-                  <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
-                </template>
-              </multiselect>
-            </div>
-            <span class="text-white">Minimum : {{ receive.min_amount }} {{ receive.currency_name }}</span>
-            <div id="receiveCurrencyContainer">
-                <input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
-                <img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr" width="30px">
-                 <p class="text-white">Reserve: {{ reserve }}</p>
-            </div>
+          <div class="fixed-height scrollbar-outer scrollbar-outer1">
+            <multiselect @select="recivechange" v-model="receive" label="name" placeholder="Select" track-by="name" :options="reciveoptions" :option-height="104" :custom-label="customLabel" :show-labels="false">
+              <template slot="singleLabel" slot-scope="props">
+                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">
+                {{ props.option.name }}
+              </template>
+              <template slot="option" slot-scope="props">
+                <img width="30px" class="option__image px-1" :src="base_url+props.option.external_icon" :alt="props.option.name">{{ props.option.name }}
+              </template>
+            </multiselect>
           </div>
-
-          <div class="col-md-12 mt-5" v-if="confirmtransation==1">
-            <p>         dfsdfsdf sdfsdfsdf</p>
+          <span class="text-white">Minimum : {{ receive.min_amount }} {{ receive.currency_name }}</span>
+          <div id="receiveCurrencyContainer">
+              <input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
+              <img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr" width="30px">
+               <p class="text-white">Reserve: {{ reserve }}</p>
           </div>
+        </div>
 
-          <div class="col-md-12 mt-5" v-if="confirmtransation==2">
-            <div id="bit_transaction_results" class="selectedsend">
-              <div class="row bg-white p-3">
-                <div class="col-md-12">
-                  <div id="bit_transaction_results">
-                    <div class="alert alert-info">
-                      <i class="fa fa-info-circle"></i>
-                      You need to make payment manually, use the data below and enter the number of the account in the form below.
-                    </div>
+        <div class="col-md-12 mt-5" v-if="confirmtransation==0">
+          <div class="selectedsend" id="bit_transaction_results">
+            <form v-if="send && receive" id="exchangeForm">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <div class="form-group" style="display: none;">
+                    <label for="receiverID" style="visibility: hidden;"><span class="receiveEcurrencyName"><span class="receiveAccountType">{{ messagessss }}</span></label>
+                    <input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your '+ placeholdermessage" style="visibility: visible;">
                   </div>
-                  <form id="bit_confirm_transaction">
-                    <table class="table table-striped">
-                      <tbody>
-                        <tr>
-                          <td colspan="2">
-                            <h4 class="text-center"><a href="" class="btn btn-success">Order Summery</a></h4>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colspan="2">
-                            <h4 class="text-center"><a href="" class="btn btn-success">Order ID : {{ gateways[0].id }}</a></h4>
-                          </td>
-                        </tr>
-                        <tr style="background: #003E11;color: #fff;">
-                            <td class="text-center">
-                                <div>You send</div>
-                                <p>{{ gateways[0].amount_send }}</p>
-                            </td>
-                            <td class="text-center">
-                                <div>You receive</div>
-                                <p><b>{{ gateways[0].amount_receive }}</b></p>
-                                <p>To account</p>
-                                <p><b>{{ gateways[0].gateway_account }}</b></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                        </tr>
-                        <tr class="text-center">
-                          <td>
-                            <span style="font-size: 10px;" class="pull-left">Our {{ gateways[0].name }} Address:</span>
-                          </td>
-                          <td>
-                            <span class="pull-right">
-                              <input type="text" disabled="" :value="gateways[0].account" id="myInput" desa=""><button>Copy</button></span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="form-group">
-                      <label></label>
-                      <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
-                    </div>
-                    <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
-                    <h4 class="text-danger" v-if="me">Please enter account.</h4>
-                  </form>
+
+                  <div class="form-group" style="display: none;">
+                    <label for="exchangeEmail">Email</label>
+                    <input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="Enter your email" value="">
+                  </div>
+
+                  <div class="form-group">
+                      <button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
+                      <button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else>Start Order</button>
+                  </div>
+                  
+                  <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
+                    <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
+                  </div>
+
+                  <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
+                    <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
+                  </div>
+              
+                  <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_from)<gatewaysendinfo.min_amount">
+                    <p style="margin: 0px;">{{ gatewaysendinfo.name }} Min. Amount: {{ gatewaysendinfo.min_amount }}</p>
+                  </div>
+
+                  <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)>gatewayreciveinfo.max_amount">
+                    <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Max. Amount: {{ gatewayreciveinfo.max_amount }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
+        </div>
 
-          <div class="col-md-12 mt-5" v-else>
-            <div class="selectedsend" id="bit_transaction_results">
-              <form v-if="send && receive" id="exchangeForm">
-                <div class="row">
-                  <div class="col-md-12 text-center">
-                    <div class="form-group" style="display: none;">
-                      <label for="receiverID" style="visibility: hidden;"><span class="receiveEcurrencyName"><span class="receiveAccountType">{{ messagessss }}</span></label>
-                      <input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your '+ placeholdermessage" style="visibility: visible;">
-                    </div>
-
-                    <div class="form-group" style="display: none;">
-                      <label for="exchangeEmail">Email</label>
-                      <input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="Enter your email" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
-                        <button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else>Start Order</button>
-                    </div>
-                    
-                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
-                      <p style="margin: 0px;" v-for="e in error" v-html="e"></p>
-                    </div>
-
-                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received">
-                      <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Min. Amount: {{ gatewayreciveinfo.min_received }}</p>
-                    </div>
-                
-                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_from)<gatewaysendinfo.min_amount">
-                      <p style="margin: 0px;">{{ gatewaysendinfo.name }} Min. Amount: {{ gatewaysendinfo.min_amount }}</p>
-                    </div>
-
-                    <div style="padding: 9px;color: #fff;background: #db2c36;" v-if="parseFloat(rate_to)>gatewayreciveinfo.max_amount">
-                      <p style="margin: 0px;">{{ gatewayreciveinfo.name }} Max. Amount: {{ gatewayreciveinfo.max_amount }}</p>
-                    </div>
-                  </div>
-                </div>
-              </form>
+        <div class="col-md-12 mt-5" v-if="confirmtransation==1">
+          <h3>Additional Information</h3>
+            <h4 class="font-weight-bold">Your/Receiver {{ receive.name }} Account</h4>
+            <p>(Submit/Next পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে )</p>
+            <div class="form-group">
+              <label></label>
+              <input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
             </div>
+            <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="secendsubmit" class="btn btn-primary">Next</button></div>
+            <h4 class="text-danger" v-if="me">Please enter Your Receiver account.</h4>
+        </div>
+
+        <div class="col-md-12 mt-5" v-if="confirmtransation==2">
+          <div class="col-md-12">
+              <h2>Review Order</h2>
+              <table class="table table-striped">
+                  <tbody>
+                      <tr style="width: 50%">
+                          <td style="width: 50%;"><b>Order Id</b></td>
+                          <td>#{{ gateways[0].id }}</td>
+                      </tr>
+                      <tr>
+                          <td style="width: 50%;"><b>Send</b></td>
+                          <td>{{ send.name }}</td>
+                      </tr>
+                      <tr>
+                          <td style="width: 50%;"><b>Sending Amount</b></td>
+                          <td>{{ gateways[0].amount_send }}</td>
+                      </tr>
+                      <tr>
+                          <td style="width: 50%;"><b>Receive</b></td>
+                          <td>{{ receive.name }}</td>
+                      </tr>
+                      <tr>
+                          <td style="width: 50%;"><b>Receiving Amount</b></td>
+                          <td>{{ gateways[0].amount_receive }}</td>
+                      </tr>
+
+                      <tr>
+                          <td style="width: 50%;"><b>Your/Receiver {{ receive.name }} ID</b></td>
+                          <td>{{ send_account }}</td>
+                      </tr>
+
+                      <tr>
+                          <td colspan="2" style="height: 70px;"></td>
+                      </tr>
+                      <tr>
+                          <td style="width: 50%;"><b>Due</b></td>
+                          <td>{{ gateways[0].amount_send }} ({{ send.name }})</td>
+                      </tr>
+
+                      <tr>
+                          <td colspan="2" style="text-align: right;"><b>Total Due: </b>
+                              <div class="modal fade" id="totalDueAlert" tabindex="-1" role="dialog" style="display: none;">
+                                  <div class="modal-dialog" role="document">
+                                      <div class="modal-content modal-info">
+                                          <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">×</span>
+                                              </button>
+                                              <h1 class="modal-title">Attention Please</h1>
+                                          </div>
+                                          <div class="modal-body modal-spa">
+                                              Remember! You need to pay
+                                              <mark style="//font-size: 30px;">
+                                                  {{ gateways[0].amount_send }} ({{ send.name }})
+                                              </mark>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <a style="position: relative; top: 0; right: 0;" data-dismiss="modal" class="btn btn-primary pull-right">Ok</a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <mark style="font-size: 20px;">
+                                  {{ gateways[0].amount_send }} ({{ send.name }})
+                              </mark>
+                          </td>
+                      </tr>
+
+                      <tr>
+                          <td colspan="2">
+                              <h2>Payment</h2>
+                              <p>Our {{ send.name }} details ( {{ send.account }} )</p>
+                              <p>
+                                <label for="a5dc6277b940c5">Enter Your {{ send.name }} Account details </label>
+                                <input placeholder="" type="text" name="data[0]" id="a5dc6277b940c4" class="form-control" required="">
+                              </p>
+                              <label for="a5dc6277b940c5">Note (if you want)</label>
+                              <p></p>
+                              <p>
+                                  <input placeholder="Note (if you want)" type="text" name="data[1]" id="a5dc6277b940c5" class="form-control">
+                              </p>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
           </div>
-     </div>
+        </div>
+      </div>
   </div>
      <div class="col-md-4 col-sm-4">
       <div class="bg-white p-1">

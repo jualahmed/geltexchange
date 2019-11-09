@@ -133,12 +133,53 @@ new Vue({
 				self.sendfee=0;
 				self.extranandskill=0;
 				var re = JSON.parse(re);
-				self.gatewaysendinfo=re;
+				console.log(re);
+				self.reciveoptions=re.getway
+				self.gatewaysendinfo=re.info;
 				self.bit_rates();
 			})
 			.fail(function() {
 				console.log("error");
 			});
+		},
+		secendsubmit(){
+			this.confirmtransation=2;
+		},
+		cancelsubmit(){
+			var self = this;
+			Swal.fire({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.value) {
+			  	$.ajax({
+			  		url: base_url+'/exchanges/delete/'+self.gateways[0].id,
+			  		type: 'GET',
+			  	})
+			  	.done(function(re) {
+			  		console.log(re);
+			  	})
+			  	.fail(function() {
+			  		console.log("error");
+			  	})
+			  	.always(function() {
+			  		console.log("complete");
+			  	});
+			    Swal.fire(
+			      'Deleted!',
+			      'Your file has been deleted.',
+			      'success'
+			    )
+			    setTimeout(() => {
+		           location.reload();
+		        }, 2000);
+			  }
+			})
 		},
 		recivechange(data){
 			var id=data.id;
@@ -399,17 +440,17 @@ new Vue({
 		    console.log('Fetch Error :-S', err);
 		  });
 
-		fetch(base_url+"home/getrecive")
-		  .then((res)=>{
-		  		res.json()
-		  		.then((data)=>{
-		  			self.reciveoptions=data
-		  		})
-		    }
-		  )
-		  .catch(function(err) {
-		    console.log('Fetch Error :-S', err);
-		  });
+		// fetch(base_url+"home/getrecive")
+		//   .then((res)=>{
+		//   		res.json()
+		//   		.then((data)=>{
+		//   			self.reciveoptions=data
+		//   		})
+		//     }
+		//   )
+		//   .catch(function(err) {
+		//     console.log('Fetch Error :-S', err);
+		//   });
 
 		var self = this;
 		self.loginuser=[];
