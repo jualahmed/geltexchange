@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $active_group = 'default';
 $query_builder = TRUE;
+
+echo (ENVIRONMENT == 'production') ? 'us-cdbr-iron-east-05.cleardb.net' : 'localhost';
+
 $db['default'] = array(
   'dsn' => '',
   'hostname' => (ENVIRONMENT == 'production') ? 'us-cdbr-iron-east-05.cleardb.net' : 'localhost',

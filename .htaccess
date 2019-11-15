@@ -377,3 +377,15 @@ FileETag None
   # Other
     ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
 </IfModule>
+
+<IfModule mod_env.c>
+    SetEnv CI_ENV development
+</IfModule>
+
+<IfModule mod_env.c>
+    SetEnv CI_ENV testing
+</IfModule>
+
+<IfModule mod_env.c>
+    SetEnv CI_ENV production
+</IfModule>
