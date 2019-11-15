@@ -9,3 +9,6 @@ password: MS@ij#042185
 database : saidul_usdbuyandsell
 user: saidul_usdbuysel
 password: Ad009257
+
+
+mysql --host=us-cdbr-iron-east-05.cleardb.net --user=b0d3453f1a7678 --password=4d26eec5 --reconnect heroku_71bce20d6ad0557 < geltexchange.sql
