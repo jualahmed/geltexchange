@@ -31,22 +31,22 @@
                         <span class="pl-2"><?php echo $row->name; ?></span>
                       </td>
                       <td>
-                        <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
-                        <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
+                        <?php if(isset($reciveamoutn->external_icon)){?><img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20"><?php } ?>
+                        <span class="pl-2"><?php if(isset($reciveamoutn->name)) echo $reciveamoutn->name; else echo "Deleted"; ?></span>
                       </td>
-                      <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
-                      <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
+                      <td><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_send);?><?php if(isset($reciveamoutn->external_icon)) echo " ".$row->currency_name ?></td>
+                      <td><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_receive);?> <span><?php if(isset($reciveamoutn->external_icon)) echo " ".$reciveamoutn->currency_name ?></span></td>
                       <td align="center">
                         <?php if ($row->statuss==0): ?>
-                           <span class="badge badge-info d-inline">Waiting for payment</span>
+                           <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
                         <?php elseif($row->statuss==1): ?>
-                            <span class="badge badge-primary d-inline">Processing</span>
+                            <span class="badge badge-sm badge-primary d-inline">Processing</span>
                         <?php elseif($row->statuss==2): ?>
-                            <span class="badge badge-success d-inline">Completed</span>
+                            <span class="badge badge-sm badge-success d-inline">Completed</span>
                         <?php elseif($row->statuss==3): ?>
-                          <span class="badge badge-danger d-inline">Rejected</span>
+                          <span class="badge badge-sm badge-danger d-inline">Rejected</span>
                         <?php elseif($row->statuss==4): ?>
-                          <span class="badge badge-primary d-inline">Processing</span>
+                          <span class="badge badge-sm badge-primary d-inline">Processing</span>
                         <?php endif ?>
                       </td>
                       <td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>

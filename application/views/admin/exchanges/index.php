@@ -49,12 +49,12 @@
                               </td>
                               <td nowrap><?php echo htmlspecialchars($v->amount_send.' '.$v->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
                               <td nowrap>
-                                <?php if($gateway_r->external_icon): ?><img style="padding-right: 5px;" src="<?php echo base_url().$gateway_r->external_icon ?>" alt="" width="25px;">
+                                <?php if(isset($gateway_r)): ?><img style="padding-right: 5px;" src="<?php echo base_url().$gateway_r->external_icon ?>" alt="" width="25px;">
                                 <?php else: ?><img style="padding-right: 5px;" src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="25px;">
                                 <?php endif ?>
-                                <?php echo htmlspecialchars($gateway_r->name); ?>
+                                <?php if(isset($gateway_r)) echo htmlspecialchars($gateway_r->name); ?>
                               </td>
-                              <td nowrap><?php echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                              <td nowrap><?php if(isset($gateway_r)) echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
                               <td nowrap><?php echo htmlspecialchars($v->send_account, ENT_QUOTES, 'UTF-8'); ?></td>
                               <td nowrap><?php echo htmlspecialchars($v->gateway_account, ENT_QUOTES, 'UTF-8'); ?></td>
                               <td nowrap><?php echo htmlspecialchars($v->created_at, ENT_QUOTES, 'UTF-8'); ?></td>

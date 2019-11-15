@@ -81,7 +81,7 @@
                               $this->db->join('currency', 'gateways.currency = currency.currency_id');
                               $gateway_r=$this->db->get('gateways')->row();
                             ?>
-                              <tr>
+                            <tr>
                                 <td>
                                   <?php if($v->profile): ?><img src="<?php echo $v->profile ?>" alt="" width="25px;">
                                   <?php else: ?><img src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="25px;">
@@ -94,14 +94,14 @@
                                   <?php endif ?>
                                   <span> <?php echo htmlspecialchars($v->name); ?></span>
                                 </td>
-                                <td><?php echo htmlspecialchars($v->amount_send.' '.$v->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?php if(isset($v->amount_send)) echo htmlspecialchars($v->amount_send.' '.$v->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td>
-                                  <?php if($gateway_r->external_icon): ?><img src="<?php echo base_url().$gateway_r->external_icon ?>" alt="" width="25px;">
+                                  <?php if(isset($gateway_r->external_icon)): ?><img src="<?php echo base_url().$gateway_r->external_icon ?>" alt="" width="25px;">
                                   <?php else: ?><img src="<?php echo base_url().'assets/images/avatar.jpg' ?>" alt="" width="25px;">
                                   <?php endif ?>
-                                  <?php echo htmlspecialchars($gateway_r->name); ?>
+                                  <?php if(isset($gateway_r->name)) echo htmlspecialchars($gateway_r->name); ?>
                                 </td>
-                                <td><?php echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?php if(isset($gateway_r)) echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($v->send_account, ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($v->gateway_account, ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?php echo htmlspecialchars($v->created_at, ENT_QUOTES, 'UTF-8'); ?></td>
