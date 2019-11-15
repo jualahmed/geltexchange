@@ -405,6 +405,7 @@
 
 <?php
   $this->db->join('users', 'users.id = testimonials.user_id');
+  $this->db->where('testimonials.status', 1);
   $this->db->order_by('testimonials.id', 'desc');
   $query = $this->db->get('testimonials')->result();
 ?>

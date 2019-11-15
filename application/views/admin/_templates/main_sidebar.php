@@ -70,6 +70,12 @@
                 <i class="fa fa-refresh"></i> <span> FAQ & TUTORIAL</span>
               </a>
             </li>
+
+            <li class="<?=active_link_controller('feedback')?>">
+              <a href="<?php echo site_url('admin/feedback'); ?>">
+                <i class="fa fa-refresh"></i> <span> Feedback</span>
+              </a>
+            </li>
   
 
             <li class="<?=active_link_controller('users')?>">
