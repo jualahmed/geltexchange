@@ -43,5 +43,3 @@ Temporary Items
 node_modules
 .apdisk
 application/session/
-application/config/database.php
-application/config/common/dp_config.php
