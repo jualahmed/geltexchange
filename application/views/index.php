@@ -337,11 +337,11 @@
                       <span class="pl-2"><?php echo $row->name; ?></span>
                     </td>
                     <td>
-                      <img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20">
-                      <span class="pl-2"><?php echo $reciveamoutn->name; ?></span>
+                      <?php if(isset($reciveamoutn->external_icon)){?><img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20"><?php } ?>
+                      <span class="pl-2"><?php if(isset($reciveamoutn->name)) echo $reciveamoutn->name; else echo "Deleted"; ?></span>
                     </td>
-                    <td><?php echo sprintf('%0.2f',$row->amount_send);?><?php echo " ".$row->currency_name ?></td>
-                    <td><?php echo sprintf('%0.2f',$row->amount_receive);?> <span><?php echo " ".$reciveamoutn->currency_name ?></span></td>
+                    <td><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_send);?><?php if(isset($reciveamoutn->external_icon)) echo " ".$row->currency_name ?></td>
+                    <td><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_receive);?> <span><?php if(isset($reciveamoutn->external_icon)) echo " ".$reciveamoutn->currency_name ?></span></td>
                     <td align="center">
                       <?php if ($row->statuss==0): ?>
                          <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
