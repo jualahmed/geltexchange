@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
                 loop:false
             },
             1500:{
-                items:4,
+                items:3,
                 nav:true,
                 loop:false
             }
