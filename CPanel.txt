@@ -1,8 +1,7 @@
 
-http://e-wallet360.com/cpanel
-cPanel username	ewalknyk
-cPanel password	EN0uieryL9mW
+domain : https://xchangs.com
+cpanel: https://xchangs.com/cpanel
+user: xchaplgq
+pass: %Xchangs24%
 
-user : ewalknyk_main
-password: Ad009257
-database : ewalknyk_ewallet360
+demo site = safepaytm.com
