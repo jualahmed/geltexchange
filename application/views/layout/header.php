@@ -79,9 +79,6 @@
 						<li class="nav-item <?php if($this->uri->segment(1)=='tutorial') echo 'active' ?>">
 							<a class="nav-link pl-3" href="<?php echo base_url() ?>tutorial">Tutorial</a>
 						</li>
-						<li class="nav-item <?php if($this->uri->segment(1)=='affiliate') echo 'active' ?>">
-							<a class="nav-link pl-3" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a>
-						</li> 
 						<li class="nav-item <?php if($this->uri->segment(1)=='home') echo 'active' ?>">
 							<a class="nav-link pl-3" href="<?php echo base_url() ?>home/paymentproff">Payment Proof</a>
 						</li> 
