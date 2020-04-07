@@ -133,7 +133,6 @@ new Vue({
 				self.sendfee=0;
 				self.extranandskill=0;
 				var re = JSON.parse(re);
-				console.log(re);
 				self.reciveoptions=re.getway
 				self.gatewaysendinfo=re.info;
 				self.bit_rates();
@@ -190,10 +189,11 @@ new Vue({
 				url: data_url,
 			})
 			.done(function(re) {
+				console.log(re)
 				self.recivefee=0;
 				self.extranandskill=0;
 				var re = JSON.parse(re);
-				self.gatewayreciveinfo=re;
+				self.gatewayreciveinfo=re.info;
 				self.bit_rates();
 			})
 			.fail(function() {

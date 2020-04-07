@@ -21,13 +21,13 @@
 								</template>
 							</multiselect>
 						</div>
-						<span class="text-white">Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
+						<span class="text-black">Minimum : {{ send.min_amount }} {{ send.currency_name }}</span>
 						<div id="sendCurrencyContainer">
 							<img alt="" :src="gatewaysendinfo.external_icon" class="getwayicon" width="30px">
 							<input type="text" @keyup="bit_calculator" id="sendAmount" v-model="rate_from" class="form-control from" style="text-align: right;">
-								<p class="text-white">
-									Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}
-								</p>
+							<p class="text-black">
+								Exchange rate: {{ crate_from }} {{ currency_form }} = {{ crate_to  }} {{ currency_to }}
+							</p>
 						</div>
 					</div>
 
@@ -44,11 +44,11 @@
 								</template>
 							</multiselect>
 						</div>
-						<span class="text-white">Minimum : {{ receive.min_amount }} {{ receive.currency_name }}</span>
+						<span class="text-black">Minimum : {{ receive.min_amount }} {{ receive.currency_name }}</span>
 						<div id="receiveCurrencyContainer">
-								<input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
-								<img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr" width="30px">
-								 <p class="text-white">Reserve: {{ reserve }}</p>
+							<img alt="" :src="gatewayreciveinfo.external_icon" class="getwayiconr" width="30px">
+							<input type="text" @keyup="bit_calculatorr" id="receiveAmount" v-model="rate_to" class="form-control" style="text-align: left;">
+							<p class="text-black">Reserve: {{ gatewayreciveinfo.reserve }}</p>
 						</div>
 					</div>
 
@@ -195,22 +195,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-4">
+			<div class="col-md-4 col-sm-4 mt-2">
 				<div class="bg-white p-1">
-					<h3 class="text-center py-3"><strong>Today's Buy-Sell Price</strong></h3>
+					<h4 class="text-center py-3"><strong>Today's Buy-Sell Price</strong></h4>
 					<div class="table-responsive">
 						<table class="table table-bordered table-sm" style="font-size: 12px;">
 							<tbody>
 								<tr>
-										<th>
-												<strong>We Accept</strong>
-										</th>
-										<th class="text-center">
-												<strong>We Buy</strong>
-										</th>
-										<th class="text-center">
-												<strong>We Sell</strong>
-										</th>
+									<th>
+										<strong>We Accept</strong>
+									</th>
+									<th class="text-center">
+										<strong>We Buy</strong>
+									</th>
+									<th class="text-center">
+										<strong>We Sell</strong>
+									</th>
 								</tr>
 									<?php
 										$this->db->where('buy_price>0');
@@ -220,7 +220,7 @@
 									?>
 								<tr>
 									<td width="60%">
-										<img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle m-1" height="30px;" width="30px">
+										<img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle m-1" height="25px;" width="25px">
 										<strong><?php echo $row->name; ?></strong>
 									</td>
 									<td class="text-center">
@@ -251,10 +251,10 @@
 		<div class="container">
 				<div class="row">
 						<div class="col-md-12 col-sm-12">
-								<div class="section box-shadow p-5">
+								<div class="section box-shadow p-2">
 										<div class="row">
 											<div class="col-md-12 col-sm-12">
-												<h3 class="text-center"><strong>Reserve</strong></h3>
+												<h4 class="text-center"><strong>Reserve</strong></h4>
 												<div class="row">
 														<?php
 															$this->db->join('currency', 'currency.currency_id = gateways.currency');
@@ -263,21 +263,21 @@
 																foreach ($query2 as $key => $row) {
 														?>
 													<div class="col-md-3 col-sm-3 mb-3">
-															<div class="card text-center box-shadow">
-																 <div class="p-1">
-																	 <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="50px;" width="50px">
-																 </div>
-																<div class="p-1">
-																	<p class="card-title text-center">
-																			 <?php echo $row->name; ?>
-																	</p>
-																	<a href="#" class="badge badge-primary p-2 m-2">
-																		<strong>
-																			 <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
-																		</strong>
-																	</a>
-																</div>
+														<div class="card text-center box-shadow">
+															 <div class="p-1">
+																 <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="40px;" width="40px">
+															 </div>
+															<div class="p-1">
+																<p class="card-title text-center">
+																		 <?php echo $row->name; ?>
+																</p>
+																<a href="#" class="badge badge-primary p-2 m-2">
+																	<strong>
+																		 <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
+																	</strong>
+																</a>
 															</div>
+														</div>
 													</div>
 													<?php
 																}
@@ -295,23 +295,20 @@
 				</div>
 		</div>
 </section>
-	 
-<!-- Latest Exchanges -->
+
+<!-- Completed Exchanges -->
 <section id="sechange" class="pb-2 bg-color p-0">
 	<div class="container">
-		<div class="section box-shadow p-5">
-			<h3 class="text-center">Latest Exchanges</h3>
+		<div class="section box-shadow p-2">
+			<h4 class="text-center">Pending Exchanges</h4>
 			<div class="table-responsive">
 					<table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
 						<thead>
 							<tr>
-								<th><span><?php echo 'username'; ?></span></th>
 								<th><span><?php echo 'send'; ?></span></th>
 								<th><span><?php echo 'receive'; ?></span></th>
-								<th><span><?php echo 'Send amount'; ?></span></th>
-								<th><span><?php echo 'Recive amount'; ?></span></th>
+								<th><span><?php echo 'Amount'; ?></span></th>
 								<th class="al"><span> <?php echo 'status'; ?></span></th>
-								<th class="al"><span> Date</span></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -319,7 +316,9 @@
 							$this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
 							$this->db->limit(10);
 							$this->db->order_by('exchanges.id', 'desc');
-							$this->db->where('exchanges.status > ',0);
+							$this->db->where('exchanges.status = ',0);
+							$this->db->or_where('exchanges.status = ',1);
+							$this->db->or_where('exchanges.status = ',4);
 							$this->db->join('users', 'users.id = exchanges.user_id');
 							$this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
 							$this->db->join('currency', 'currency.currency_id = gateways.currency');
@@ -331,31 +330,101 @@
 									$reciveamoutn=$this->db->get('gateways')->row();
 									?>
 									<tr>
-										<td><?php echo $row->username ?></td>
-										<td>
+										<td width="25%">
 											<img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
 											<span class="pl-2"><?php echo $row->name; ?></span>
 										</td>
-										<td>
+										<td width="25%">
 											<?php if(isset($reciveamoutn->external_icon)){?><img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20"><?php } ?>
 											<span class="pl-2"><?php if(isset($reciveamoutn->name)) echo $reciveamoutn->name; else echo "Deleted"; ?></span>
 										</td>
-										<td><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_send);?><?php if(isset($reciveamoutn->external_icon)) echo " ".$row->currency_name ?></td>
-										<td><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_receive);?> <span><?php if(isset($reciveamoutn->external_icon)) echo " ".$reciveamoutn->currency_name ?></span></td>
-										<td align="center">
+										<td width="25%"><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_send);?><?php if(isset($reciveamoutn->external_icon)) echo " ".$row->currency_name ?> (<?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_receive);?> <span><?php if(isset($reciveamoutn->external_icon)) echo " ".$reciveamoutn->currency_name ?></span>)</td>
+										<td align="center" width="25%">
 											<?php if ($row->statuss==0): ?>
-												 <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
+												 <span class="badge badge-sm badge-info d-inline">Waiting</span>
 											<?php elseif($row->statuss==1): ?>
 													<span class="badge badge-sm badge-primary d-inline">Processing</span>
 											<?php elseif($row->statuss==2): ?>
-													<span class="badge badge-sm badge-success d-inline">Completed</span>
+													<span class="badge badge-sm badge-success d-inline">
+														<i class="fa fa-check"></i>Accept
+													</span>
 											<?php elseif($row->statuss==3): ?>
 												<span class="badge badge-sm badge-danger d-inline">Rejected</span>
 											<?php elseif($row->statuss==4): ?>
 												<span class="badge badge-sm badge-primary d-inline">Processing</span>
 											<?php endif ?>
 										</td>
-										<td><?php echo date("Y-m-d g:i:s A",strtotime($row->created_at)); ?></td>
+									</tr>
+											<?php
+										}
+									} else {
+										echo '<tr><td colspan="5">'.'still_no_exchanges'.'</td></tr>';
+									}
+								?>
+						</tbody>
+					</table>
+			</div>
+		</div>
+	</div>
+</section>
+	 
+<!-- Completed Exchanges -->
+<section id="sechange" class="pb-2 bg-color p-0 mt-2">
+	<div class="container">
+		<div class="section box-shadow p-2">
+			<h4 class="text-center">Completed Exchanges</h4>
+			<div class="table-responsive">
+					<table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
+						<thead>
+							<tr>
+								<th><span><?php echo 'send'; ?></span></th>
+								<th><span><?php echo 'receive'; ?></span></th>
+								<th><span><?php echo 'Amount'; ?></span></th>
+								<th class="al"><span> <?php echo 'status'; ?></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$this->db->select('currency.*,users.*,gateways.*,exchanges.*,exchanges.status as statuss');
+							$this->db->limit(10);
+							$this->db->order_by('exchanges.id', 'desc');
+							$this->db->where('exchanges.status = ',2);
+							$this->db->join('users', 'users.id = exchanges.user_id');
+							$this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
+							$this->db->join('currency', 'currency.currency_id = gateways.currency');
+							$query = $this->db->get('exchanges')->result();
+							if(count($query)) {
+								foreach ($query as $key => $row) {
+									$this->db->where('id', $row->gateway_receive);
+									$this->db->join('currency', 'currency.currency_id = gateways.currency');
+									$reciveamoutn=$this->db->get('gateways')->row();
+									?>
+									<tr>
+										<td width="25%">
+											<img src="<?php echo base_url().''.$row->external_icon ?>" width="20px" height="20">
+											<span class="pl-2"><?php echo $row->name; ?></span>
+										</td>
+										<td width="25%">
+											<?php if(isset($reciveamoutn->external_icon)){?><img src="<?php echo base_url().''.$reciveamoutn->external_icon ?>" width="20px" height="20"><?php } ?>
+											<span class="pl-2"><?php if(isset($reciveamoutn->name)) echo $reciveamoutn->name; else echo "Deleted"; ?></span>
+										</td>
+										<td width="25%"><?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_send);?><?php if(isset($reciveamoutn->external_icon)) echo " ".$row->currency_name ?> (<?php if(isset($reciveamoutn->external_icon)) echo sprintf('%0.2f',$row->amount_receive);?> <span><?php if(isset($reciveamoutn->external_icon)) echo " ".$reciveamoutn->currency_name ?></span>)
+										</td>
+										<td align="center" width="25%">
+											<?php if ($row->statuss==0): ?>
+												 <span class="badge badge-sm badge-info d-inline">Waiting for payment</span>
+											<?php elseif($row->statuss==1): ?>
+													<span class="badge badge-sm badge-primary d-inline">Processing</span>
+											<?php elseif($row->statuss==2): ?>
+													<span class="badge badge-sm badge-success d-inline">
+														<i class="fa fa-check"></i>Accept
+													</span>
+											<?php elseif($row->statuss==3): ?>
+												<span class="badge badge-sm badge-danger d-inline">Rejected</span>
+											<?php elseif($row->statuss==4): ?>
+												<span class="badge badge-sm badge-primary d-inline">Processing</span>
+											<?php endif ?>
+										</td>
 									</tr>
 												<?php
 											}
@@ -377,8 +446,8 @@
 ?>
 <section id="feedback" class="pb-2 bg-color p-0 my-5">
 	<div class="container">
-		<div class="section box-shadow p-5">
-			<h3 class="text-center"><strong>Customers Feedback</strong></h3>
+		<div class="section box-shadow p-2">
+			<h4 class="text-center"><strong>Customers Feedback</strong></h4>
 				<div class="owl-carousel feedback">
 						<?php if(count($query)>1) { ?>
 								<?php foreach ($query as $key => $var): ?>
@@ -435,50 +504,3 @@
 	</div>
 </section>
 
-<section class="service_area mb-5">
-	<div class="container text-center">
-		<div class="section box-shadow p-5">
-		 <h3 class="text-center"><strong>Service</strong></h3>
-		<div class="row">
-			<div class="col-md-3">
-				<div class="service_box box-shadow p-3"  style="min-height: 310px;">
-					<div class="service-icon">
-						<img src="<?php echo base_url()."assets/temp/svgicon/like.svg" ?>" alt="facebook" class="m-3" width="50px;">
-					</div>
-					<h5 class="text-success">Account sale</h5>
-					<p>Skrill&gt;Neteller&gt;paypal&gt; Payza&gt;PM account for sell . Account charge 2000-2500 Tk . Accounts are 100% safe from hacking </p>
-				</div>
-		</div>
-		<div class="col-md-3">
-				<div class="service_box box-shadow p-3" style="min-height: 310px;">
-					<div class="service-icon">
-							<img src="<?php echo base_url()."assets/temp/svgicon/circle.svg" ?>" alt="facebook" class="m-3" width="50px;">
-					</div>
-					<h5 class="text-success">Documents Sale</h5>
-					<p>if you will need Utility Bill &amp; Bank Statement, then you can contact with us . Our Documents charge 500 tk only </p>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="service_box box-shadow p-3" style="min-height: 310px;">
-					<div class="service-icon">
-						<img src="<?php echo base_url()."assets/temp/svgicon/smot.svg" ?>" alt="facebook" class="m-3" width="50px;">
-				</div>
-				<h5 class="text-success">Account verification</h5>
-				<p>If you will need any Account verification,then you can contact with us . Our Account verification charge 1000 tk only </p>
-			</div>
-		</div>
-		<div class="col-md-3">
-				<div class="service_box box-shadow p-3"  style="min-height: 310px;">
-				 <div class="service-icon">
-							<img src="<?php echo base_url()."assets/temp/svgicon/verify.svg" ?>" alt="facebook" class="m-3" width="50px;">
-					</div>
-					<h5 class="text-success">Accounts problem solution</h5>
-					<p>If you will need any types help,then you can contact with us . Our Account verification charge</p>
-			</div>
-		</div>
-		</div>
-	</div>
-	</div>
-</section>
-
-		 
