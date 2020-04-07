@@ -95,102 +95,101 @@
 
 					<div class="col-md-12 mt-5" v-if="confirmtransation==1">
 						<h3>Additional Information</h3>
-							<h4 class="font-weight-bold">Your/Receiver {{ receive.name }} Account</h4>
-							<p>(Submit/Next পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে )</p>
-							<div class="form-group">
-								<label></label>
-								<input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
-							</div>
-							<div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="secendsubmit" class="btn btn-primary">Next</button></div>
-							<h4 class="text-danger" v-if="me">Please enter Your Receiver account.</h4>
+						<h4 class="font-weight-bold">Your/Receiver {{ receive.name }} Account</h4>
+						<p>(Submit/Next পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে )</p>
+						<div class="form-group">
+							<label></label>
+							<input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
+						</div>
+						<h2>Payment</h2>
+						<p>Our {{ send.name }} details ( {{ send.account }} )</p>
+						<p>
+							<label for="a5dc6277b940c5">Enter Your {{ send.name }} Account details </label>
+							<input placeholder="" type="text" name="data[0]" id="a5dc6277b940c4" class="form-control" required="">
+						</p>
+						<label for="a5dc6277b940c5">Note (if you want)</label>
+						<p></p>
+						<p>
+							<input placeholder="Note (if you want)" type="text" name="data[1]" id="a5dc6277b940c5" class="form-control">
+						</p>
+						<div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="secendsubmit" class="btn btn-primary">Next</button></div>
+						<h4 class="text-danger" v-if="me">Please enter Your Receiver account.</h4>
 					</div>
 
 					<div class="col-md-12 mt-5" v-if="confirmtransation==2">
 						<div class="col-md-12">
-								<h2>Review Order</h2>
-								<table class="table table-striped">
-										<tbody>
-												<tr style="width: 50%">
-														<td style="width: 50%;"><b>Order Id</b></td>
-														<td>#{{ gateways[0].id }}</td>
-												</tr>
-												<tr>
-														<td style="width: 50%;"><b>Send</b></td>
-														<td>{{ send.name }}</td>
-												</tr>
-												<tr>
-														<td style="width: 50%;"><b>Sending Amount</b></td>
-														<td>{{ gateways[0].amount_send }}</td>
-												</tr>
-												<tr>
-														<td style="width: 50%;"><b>Receive</b></td>
-														<td>{{ receive.name }}</td>
-												</tr>
-												<tr>
-														<td style="width: 50%;"><b>Receiving Amount</b></td>
-														<td>{{ gateways[0].amount_receive }}</td>
-												</tr>
+							<h2>Review Order</h2>
+							<table class="table table-striped">
+								<tbody>
+									<tr style="width: 50%">
+										<td style="width: 50%;"><b>Order Id</b></td>
+										<td>#{{ gateways[0].id }}</td>
+									</tr>
+									<tr>
+										<td style="width: 50%;"><b>Send</b></td>
+										<td>{{ send.name }}</td>
+									</tr>
+									<tr>
+										<td style="width: 50%;"><b>Sending Amount</b></td>
+										<td>{{ gateways[0].amount_send }}</td>
+									</tr>
+									<tr>
+										<td style="width: 50%;"><b>Receive</b></td>
+										<td>{{ receive.name }}</td>
+									</tr>
+									<tr>
+										<td style="width: 50%;"><b>Receiving Amount</b></td>
+										<td>{{ gateways[0].amount_receive }}</td>
+									</tr>
 
-												<tr>
-														<td style="width: 50%;"><b>Your/Receiver {{ receive.name }} ID</b></td>
-														<td>{{ send_account }}</td>
-												</tr>
+									<tr>
+										<td style="width: 50%;"><b>Your/Receiver {{ receive.name }} ID</b></td>
+										<td>{{ send_account }}</td>
+									</tr>
 
-												<tr>
-														<td colspan="2" style="height: 70px;"></td>
-												</tr>
-												<tr>
-														<td style="width: 50%;"><b>Due</b></td>
-														<td>{{ gateways[0].amount_send }} ({{ send.name }})</td>
-												</tr>
+									<tr>
+										<td colspan="2" style="height: 70px;"></td>
+									</tr>
+									<tr>
+										<td style="width: 50%;"><b>Due</b></td>
+										<td>{{ gateways[0].amount_send }} ({{ send.name }})</td>
+									</tr>
 
-												<tr>
-														<td colspan="2" style="text-align: right;"><b>Total Due: </b>
-																<div class="modal fade" id="totalDueAlert" tabindex="-1" role="dialog" style="display: none;">
-																		<div class="modal-dialog" role="document">
-																				<div class="modal-content modal-info">
-																						<div class="modal-header">
-																								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																										<span aria-hidden="true">×</span>
-																								</button>
-																								<h1 class="modal-title">Attention Please</h1>
-																						</div>
-																						<div class="modal-body modal-spa">
-																								Remember! You need to pay
-																								<mark style="//font-size: 30px;">
-																										{{ gateways[0].amount_send }} ({{ send.name }})
-																								</mark>
-																						</div>
-																						<div class="modal-footer">
-																								<a style="position: relative; top: 0; right: 0;" data-dismiss="modal" class="btn btn-primary pull-right">Ok</a>
-																						</div>
-																				</div>
-																		</div>
-																</div>
-																<mark style="font-size: 20px;">
-																		{{ gateways[0].amount_send }} ({{ send.name }})
-																</mark>
-														</td>
-												</tr>
-
-												<tr>
-														<td colspan="2">
-																<h2>Payment</h2>
-																<p>Our {{ send.name }} details ( {{ send.account }} )</p>
-																<p>
-																	<label for="a5dc6277b940c5">Enter Your {{ send.name }} Account details </label>
-																	<input placeholder="" type="text" name="data[0]" id="a5dc6277b940c4" class="form-control" required="">
-																</p>
-																<label for="a5dc6277b940c5">Note (if you want)</label>
-																<p></p>
-																<p>
-																		<input placeholder="Note (if you want)" type="text" name="data[1]" id="a5dc6277b940c5" class="form-control">
-																</p>
-														</td>
-												</tr>
-										</tbody>
-								</table>
-								<div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button></div>
+									<tr>
+										<td colspan="2" style="text-align: right;"><b>Total Due: </b>
+											<div class="modal fade" id="totalDueAlert" tabindex="-1" role="dialog" style="display: none;">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content modal-info">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">×</span>
+															</button>
+															<h1 class="modal-title">Attention Please</h1>
+														</div>
+														<div class="modal-body modal-spa">
+															Remember! You need to pay
+															<mark style="//font-size: 30px;">
+																{{ gateways[0].amount_send }} ({{ send.name }})
+															</mark>
+														</div>
+														<div class="modal-footer">
+															<a style="position: relative; top: 0; right: 0;" data-dismiss="modal" class="btn btn-primary pull-right">Ok</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<mark style="font-size: 20px;">
+												{{ gateways[0].amount_send }} ({{ send.name }})
+											</mark>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<div style="text-align: center;">
+								<button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button>
+								<button id="dddddddddd" type="button" @click="finalsubmit" class="btn btn-primary">Confirm Order</button>
+							</div>
 						</div>
 					</div>
 				</div>
