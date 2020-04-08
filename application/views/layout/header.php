@@ -100,22 +100,22 @@
 									</div>
 								 </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile">
+								<a class="dropdown-item py-2" href="<?php echo base_url(); ?>Profile">
 									<img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/user.svg' ?>" alt="">
 									My Profile
 								</a>
-								<a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/exchanges">
+								<a class="dropdown-item py-2" href="<?php echo base_url(); ?>Profile/exchanges">
 									<img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/exchange.svg' ?>" alt="">
 									My Exchanges
 								</a>
-								<a class="dropdown-item py-2" href="<?php echo base_url(); ?>profile/testimonials">
+								<a class="dropdown-item py-2" href="<?php echo base_url(); ?>Profile/testimonials">
 									<img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/commend.svg' ?>" alt="">
 									My Feedback
 								</a>
 								<a style="display: none;" class="dropdown-item" href="<?php echo base_url(); ?>account/referrals"><i class="fa fa-users"></i> Referrals</a>
-								<a class="dropdown-item" href="<?php echo base_url(); ?>profile/change_password">
+								<a class="dropdown-item" href="<?php echo base_url(); ?>Profile/change_password">
 									<img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/setting.svg' ?>" alt=""> Settings</a>
-								<a class="dropdown-item" href="<?php echo base_url(); ?>profile/verification">
+								<a class="dropdown-item" href="<?php echo base_url(); ?>Profile/verification">
 									<img width="20px" class="mr-3" src="<?php echo base_url().'assets/temp/svgicon/checkmark.svg' ?>" alt="">Account verification</a>
 								<div class="dropdown-divider"></div>
 								<h6 class="text-center"><a href="<?php echo site_url('auth/logout'); ?>">Sign Out</a></h6>
