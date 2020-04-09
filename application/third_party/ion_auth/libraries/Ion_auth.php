@@ -165,18 +165,18 @@ class Ion_auth
           $mail->SMTPDebug = 0;                               
           //Set PHPMailer to use SMTP.
           $mail->isSMTP();            
-          $mail->Host = "usdbuysell.com";
+          $mail->Host = "smtp.gmail.com";
           //Set this to true if SMTP host requires authentication to send email
           $mail->SMTPAuth = true;                          
           //Provide username and password     
-          $mail->Username = "_mainaccount@usdbuysell.com";                 
-          $mail->Password = "Bm0r0w0GXz7G"; 
+           $mail->Username = "smtptestgm@gmail.com";                 
+		  $mail->Password = "Ad00925712"; 
           //If SMTP requires TLS encryption then set it
           $mail->SMTPSecure = "ssl";                           
           //Set TCP port to connect to 
           $mail->Port = 465;                                   
-          $mail->From = "_mainaccount@usdbuysell.com";
-          $mail->FromName = "usdbuysell";
+          $mail->From = "smtptestgm@gmail.com";
+          $mail->FromName = "xchangs";
           $mail->smtpConnect(
               array(
                 "ssl" => array(
