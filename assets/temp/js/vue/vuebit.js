@@ -16,8 +16,11 @@ new Vue({
 		rate_to: 0,
 		crate_to: 0,
 		reserve:'',
-		receiverid:'aaaaaaaaa',
-		email:'test@gmail.com',
+		email:'',
+		phone:'',
+		receiverid:'',
+		transactionid:'',
+		senderid:'',
 		error:[],
 		loginuser:[],
 		recivefee:0,
@@ -25,14 +28,9 @@ new Vue({
 		newcrate_from:0,
 		newcrate_to:0,
 		extranandskill:0,
-		tos:0,
-		placeholdermessage:'',
-		messagessss:'',
 		confirmtransation:0,
 		gateways:[],
-		send_account:"",
 		me:0,
-		messsssss:'dd',
 	},
 	methods: {
 	    customLabel ({ title, desc }) {
@@ -52,43 +50,28 @@ new Vue({
 						if(this.loginuser[0].email_verified==0){
 							this.error.push("Your account must be varified to make any Exchange <a class='varifynow' target='_blank' href="+base_url+"profile/verification>Verify now</a>");
 						}else{
-							if(!this.receiverid){
-								console.log("receiverid")
-								this.error.push(this.gatewayreciveinfo.name + " Account is required");
+							var amountsend=parseFloat(this.rate_from);
+							var amount_receive=parseFloat(this.rate_to);
+							if(this.currency_to=='USD'){
+								amount_receive=parseFloat(this.rate_to)-(parseFloat(this.recivefee)+(parseFloat(this.sendfee)+parseFloat(this.extranandskill))/this.crate_from)
+							}else{
+								amount_receive=this.rate_to-this.recivefee;
 							}
-							else if(!this.email){
-								console.log("email")
-								this.error.push("Email Account is required");
-							}else if(!this.validEmail(this.email)) {
-						        this.error.push('Valid email required.');
-						    }else if(this.tos==1){
-						    	this.error.push('You Must Accept The Terms & Conditions');
-						    }
-							else{
-								var amountsend=parseFloat(this.rate_from);
-								var amount_receive=parseFloat(this.rate_to);
-								if(this.currency_to=='USD'){
-									amount_receive=parseFloat(this.rate_to)-(parseFloat(this.recivefee)+(parseFloat(this.sendfee)+parseFloat(this.extranandskill))/this.crate_from)
-								}else{
-									amount_receive=this.rate_to-this.recivefee;
-								}
-								var self = this;
-								var data_url =base_url+"exchanges/make_exchange";
-								$.ajax({
-									url: data_url,
-									type: 'POST',
-									data: {gateway_send: this.send.id,gateway_receive:this.receive.id,amount_send:amountsend,amount_receive:amount_receive,rate_from:this.crate_from,rate_to:this.crate_to,user_id:this.loginuser[0].id,gateway_account:this.receiverid},
-								})
-								.done(function(re) {
-									var re=JSON.parse(re);
-									self.gateways.push(re);
-									self.confirmtransation=1;
-									// self.messsssss="Enter Your "+self.gateways[0].name+" address After Sending";
-								})
-								.fail(function() {
-									console.log("error");
-								})
-							}
+							var self = this;
+							var data_url =base_url+"exchanges/make_exchange";
+							$.ajax({
+								url: data_url,
+								type: 'POST',
+								data: {gateway_send: this.send.id,gateway_receive:this.receive.id,amount_send:amountsend,amount_receive:amount_receive,rate_from:this.crate_from,rate_to:this.crate_to,user_id:this.loginuser[0].id},
+							})
+							.done(function(re) {
+								var re=JSON.parse(re);
+								self.gateways.push(re);
+								self.confirmtransation=1;
+							})
+							.fail(function() {
+								console.log("error");
+							})
 						}
 					}
 				}
@@ -96,53 +79,13 @@ new Vue({
 				this.error.push("Please Select Gateways");
 			}
 		},
-		finalsubmit:function(){
-			if(this.send_account==''){
-				this.me=1;
-			}else{
-				$.ajax({
-					url:base_url+'exchanges/make_exchangefinal',
-					type: 'POST',
-					data: {send_account:this.send_account,id:this.gateways[0].id},
-				})
-				.done(function(re) {
-						Swal.fire(
-						  'You have successfully confirm the order!',
-						)
-						setTimeout(() => {
-				           location.reload();
-				        }, 2000);
-				})
-				.fail(function() {
-					console.log("error");
-				})
-			}
-		},
-		validEmail: function (email) {
-	      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	      return re.test(email);
-	    },
-		sendchange(data){
-			var id=data.id
-			var self = this;
-			var data_url = base_url+"exchanges/gateway_info/"+id;
-			$.ajax({
-				url: data_url,
-			})
-			.done(function(re) {
-				self.sendfee=0;
-				self.extranandskill=0;
-				var re = JSON.parse(re);
-				self.reciveoptions=re.getway
-				self.gatewaysendinfo=re.info;
-				self.bit_rates();
-			})
-			.fail(function() {
-				console.log("error");
-			});
-		},
 		secendsubmit(){
-			this.confirmtransation=2;
+			if(this.email && this.phone && this.receiverid){
+				this.confirmtransation=2;
+			}else{
+				this.error=[];
+				this.error.push("Please Fill up the form");
+			}
 		},
 		cancelsubmit(){
 			var self = this;
@@ -179,6 +122,54 @@ new Vue({
 		        }, 2000);
 			  }
 			})
+		},
+		secendsubmit1(){
+			this.confirmtransation=3
+		},
+		finalsubmit:function(){
+			if(this.receiverid==''){
+				this.me=1;
+			}else{
+				$.ajax({
+					url:base_url+'exchanges/make_exchangefinal',
+					type: 'POST',
+					data: {receiverid:this.receiverid,id:this.gateways[0].id,email:this.email,phone:this.phone,receiverid:this.receiverid,transactionid:this.transactionid,senderid:this.senderid},
+				})
+				.done(function(re) {
+						Swal.fire(
+						  'You have successfully confirm the order!',
+						)
+						setTimeout(() => {
+				           location.reload();
+				        }, 2000);
+				})
+				.fail(function() {
+					console.log("error");
+				})
+			}
+		},
+		validEmail: function (email) {
+	      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	      return re.test(email);
+	    },
+		sendchange(data){
+			var id=data.id
+			var self = this;
+			var data_url = base_url+"exchanges/gateway_info/"+id;
+			$.ajax({
+				url: data_url,
+			})
+			.done(function(re) {
+				self.sendfee=0;
+				self.extranandskill=0;
+				var re = JSON.parse(re);
+				self.reciveoptions=re.getway
+				self.gatewaysendinfo=re.info;
+				self.bit_rates();
+			})
+			.fail(function() {
+				console.log("error");
+			});
 		},
 		recivechange(data){
 			var id=data.id;

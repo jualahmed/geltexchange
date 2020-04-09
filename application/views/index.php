@@ -57,21 +57,10 @@
 							<form v-if="send && receive" id="exchangeForm">
 								<div class="row">
 									<div class="col-md-12 text-center">
-										<div class="form-group" style="display: none;">
-											<label for="receiverID" style="visibility: hidden;"><span class="receiveEcurrencyName"><span class="receiveAccountType">{{ messagessss }}</span></label>
-											<input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your '+ placeholdermessage" style="visibility: visible;">
-										</div>
-
-										<div class="form-group" style="display: none;">
-											<label for="exchangeEmail">Email</label>
-											<input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="Enter your email" value="">
-										</div>
-
 										<div class="form-group">
 												<button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
 												<button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else>Start Order</button>
 										</div>
-										
 										<div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
 											<p style="margin: 0px;" v-for="e in error" v-html="e"></p>
 										</div>
@@ -95,28 +84,64 @@
 
 					<div class="col-md-12 mt-5" v-if="confirmtransation==1">
 						<h3>Additional Information</h3>
-						<h4 class="font-weight-bold">Your/Receiver {{ receive.name }} Account</h4>
-						<p>(Submit/Next পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে )</p>
+
 						<div class="form-group">
-							<label></label>
-							<input type="text"  class="form-control" v-model="send_account" :placeholder="messsssss">
+							<label for="exchangeEmail">Your Valid Email Address</label>
+							<input id="exchangeEmail" type="email" name="email"  v-model="email" class="form-control error" type="text" placeholder="example@example.com" value="">
 						</div>
-						<h2>Payment</h2>
-						<p>Our {{ send.name }} details ( {{ send.account }} )</p>
-						<p>
-							<label for="a5dc6277b940c5">Enter Your {{ send.name }} Account details </label>
-							<input placeholder="" type="text" name="data[0]" id="a5dc6277b940c4" class="form-control" required="">
-						</p>
-						<label for="a5dc6277b940c5">Note (if you want)</label>
-						<p></p>
-						<p>
-							<input placeholder="Note (if you want)" type="text" name="data[1]" id="a5dc6277b940c5" class="form-control">
-						</p>
-						<div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="secendsubmit" class="btn btn-primary">Next</button></div>
-						<h4 class="text-danger" v-if="me">Please enter Your Receiver account.</h4>
+
+						<div class="form-group">
+							<label>Your Valid Phone Number</label>
+							<input type="text" class="form-control" v-model="phone" placeholder="+88017..........">
+						</div>
+
+						<div class="form-group">
+							<label for="receiverID"><span class="receiveEcurrencyName">
+								<span class="receiveAccountType">Enter your Valid {{ receive.name }} Account</span>
+							</label>
+							<input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your Valid '+ receive.name+' Account'">
+						</div>
+
+						<div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
+							<p style="margin: 0px;" v-for="e in error" v-html="e"></p>
+						</div>
+
+						<div style="text-align: center;">
+							<button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button>
+							<button id="dddddddddd" type="button" @click="secendsubmit" class="btn btn-primary">Next</button>
+						</div>
 					</div>
 
 					<div class="col-md-12 mt-5" v-if="confirmtransation==2">
+						
+						<div class="alert alert-primary" role="alert">
+						  You Need To Make Payment ManuallY. Use Below Data To Make Payment. 
+						</div>
+
+						<h4 class="font-weight-bold">Your/Receiver {{ receive.name }} Account</h4>
+						<p>(Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে )</p>
+
+						<h2>Data About Transfer</h2>
+						<p>Our {{ send.name }} details ( {{ send.account }} )</p>
+
+						<h2>Enter Payment Amount</h2>
+						<p>Total Due : {{ gateways[0].amount_send }} {{ send.currency_name }} </p>
+						
+						<p>
+							<label for="a">Enter Your Transaction id </label>
+							<input placeholder="" v-model="transactionid" type="text" id="f" class="form-control" required="">
+						</p>
+
+						<p>
+							<label for="a">Enter Your {{ send.name }} Account details </label>
+							<input placeholder="" v-model="senderid" type="text" id="f" class="form-control" required="">
+						</p>
+
+						<div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="secendsubmit1" class="btn btn-primary">Next</button></div>
+						<h4 class="text-danger" v-if="me">Please enter Your Receiver account.</h4>
+					</div>
+
+					<div class="col-md-12 mt-5" v-if="confirmtransation==3">
 						<div class="col-md-12">
 							<h2>Review Order</h2>
 							<table class="table table-striped">
@@ -131,7 +156,7 @@
 									</tr>
 									<tr>
 										<td style="width: 50%;"><b>Sending Amount</b></td>
-										<td>{{ gateways[0].amount_send }}</td>
+										<td>{{ gateways[0].amount_send }} {{ send.currency_name }}</td>
 									</tr>
 									<tr>
 										<td style="width: 50%;"><b>Receive</b></td>
@@ -139,49 +164,22 @@
 									</tr>
 									<tr>
 										<td style="width: 50%;"><b>Receiving Amount</b></td>
-										<td>{{ gateways[0].amount_receive }}</td>
+										<td>{{ gateways[0].amount_receive }} {{ receive.currency_name }}</td>
 									</tr>
 
 									<tr>
 										<td style="width: 50%;"><b>Your/Receiver {{ receive.name }} ID</b></td>
-										<td>{{ send_account }}</td>
+										<td>{{ receiverid }}</td>
 									</tr>
 
 									<tr>
-										<td colspan="2" style="height: 70px;"></td>
-									</tr>
-									<tr>
-										<td style="width: 50%;"><b>Due</b></td>
-										<td>{{ gateways[0].amount_send }} ({{ send.name }})</td>
+										<td style="width: 50%;"><b>Service Fee</b></td>
+										<td>{{ recivefee }} ({{ receive.currency_name }})</td>
 									</tr>
 
 									<tr>
-										<td colspan="2" style="text-align: right;"><b>Total Due: </b>
-											<div class="modal fade" id="totalDueAlert" tabindex="-1" role="dialog" style="display: none;">
-												<div class="modal-dialog" role="document">
-													<div class="modal-content modal-info">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">×</span>
-															</button>
-															<h1 class="modal-title">Attention Please</h1>
-														</div>
-														<div class="modal-body modal-spa">
-															Remember! You need to pay
-															<mark style="//font-size: 30px;">
-																{{ gateways[0].amount_send }} ({{ send.name }})
-															</mark>
-														</div>
-														<div class="modal-footer">
-															<a style="position: relative; top: 0; right: 0;" data-dismiss="modal" class="btn btn-primary pull-right">Ok</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<mark style="font-size: 20px;">
-												{{ gateways[0].amount_send }} ({{ send.name }})
-											</mark>
-										</td>
+										<td><b>Total For Payment: </b></td>
+										<td>{{ gateways[0].amount_send }} {{ send.currency_name }}</td>
 									</tr>
 									
 								</tbody>
@@ -194,6 +192,8 @@
 					</div>
 				</div>
 			</div>
+
+
 			<div class="col-md-4 col-sm-4 mt-2">
 				<div class="bg-white p-1">
 					<h4 class="text-center py-3"><strong>Today's Buy-Sell Price</strong></h4>

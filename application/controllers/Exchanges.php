@@ -83,7 +83,6 @@ class Exchanges extends Public_Controller {
 	{
 		$data = array(
 			'user_id'=>  $this->input->post('user_id'),
-			'gateway_account'=> $this->input->post('gateway_account'),
 			'gateway_send'=> $this->input->post('gateway_send'),
 			'gateway_receive'=> $this->input->post('gateway_receive'),
 			'amount_send'=> $this->input->post('amount_send'),
@@ -99,6 +98,11 @@ class Exchanges extends Public_Controller {
 	{
 		$send_account=$this->input->post('send_account');
 		$id = $this->input->post('id');
+		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
+		$receiverid = $this->input->post('receiverid');
+		$transactionid = $this->input->post('transactionid');
+		$senderid = $this->input->post('senderid');
 		$this->db->where('id', $id);
 		$ddddd=$this->db->get('exchanges')->row();
 
@@ -113,6 +117,11 @@ class Exchanges extends Public_Controller {
 
 		$this->db->where('id', $id);
 		$this->db->set('send_account',$send_account);
+		$this->db->set('email',$email);
+		$this->db->set('phone',$phone);
+		$this->db->set('receiverid',$receiverid);
+		$this->db->set('transactionid',$transactionid);
+		$this->db->set('senderid',$senderid);
 		$this->db->set('status',1);
 		$this->db->update('exchanges');
 		echo "1"; 
