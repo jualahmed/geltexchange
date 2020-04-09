@@ -201,7 +201,7 @@ class Profile extends Public_Controller {
 		$this->load->library("phpmailer_library");
 		$mail = $this->phpmailer_library->load();
 		//Enable SMTP debugging. 
-		$mail->SMTPDebug = 0;                               
+		$mail->SMTPDebug = 1;                               
 		//Set PHPMailer to use SMTP.
 		$mail->isSMTP();            
 		$mail->Host = "smtp.gmail.com";
