@@ -204,17 +204,17 @@ class Profile extends Public_Controller {
 		$mail->SMTPDebug = 1;                               
 		//Set PHPMailer to use SMTP.
 		$mail->isSMTP();            
-		$mail->Host = "smtp.gmail.com";
+		$mail->Host = "xchangs.com";
 		//Set this to true if SMTP host requires authentication to send email
 		$mail->SMTPAuth = true;                          
 		//Provide username and password     
-		$mail->Username = "smtptestgm@gmail.com";                 
-		$mail->Password = "Ad00925712"; 
+		$mail->Username = "noreplay@xchangs.com";                 
+		$mail->Password = "OCn2Ovk6z{*k"; 
 		//If SMTP requires TLS encryption then set it
 		$mail->SMTPSecure = "ssl";                           
 		//Set TCP port to connect to 
 		$mail->Port = 465;                                   
-		$mail->From = "md.jual1212.ah@gmail.com";
+		$mail->From = "noreplay@xchangs.com";
 		$mail->FromName = "";
 		$mail->smtpConnect(
 			array(
