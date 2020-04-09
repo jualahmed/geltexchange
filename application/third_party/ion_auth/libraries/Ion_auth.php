@@ -165,27 +165,27 @@ class Ion_auth
           $mail->SMTPDebug = 0;                               
           //Set PHPMailer to use SMTP.
           $mail->isSMTP();            
-          $mail->Host = "smtp.gmail.com";
-          //Set this to true if SMTP host requires authentication to send email
-          $mail->SMTPAuth = true;                          
-          //Provide username and password     
-           $mail->Username = "smtptestgm@gmail.com";                 
-		  $mail->Password = "Ad00925712"; 
-          //If SMTP requires TLS encryption then set it
-          $mail->SMTPSecure = "ssl";                           
-          //Set TCP port to connect to 
-          $mail->Port = 465;                                   
-          $mail->From = "smtptestgm@gmail.com";
-          $mail->FromName = "xchangs";
-          $mail->smtpConnect(
-              array(
-                "ssl" => array(
-                  "verify_peer" => false,
-                  "verify_peer_name" => false,
-                  "allow_self_signed" => true
-                )
-              )
-          );
+          $mail->Host = "mail.xchangs.com";
+			//Set this to true if SMTP host requires authentication to send email
+			$mail->SMTPAuth = true;                          
+			//Provide username and password     
+			$mail->Username = "noreplay@xchangs.com";                 
+			$mail->Password = "OCn2Ovk6z{*k"; 
+			//If SMTP requires TLS encryption then set it
+			$mail->SMTPSecure = "tls";                           
+			//Set TCP port to connect to 
+			$mail->Port = 26;                                   
+			$mail->From = "noreplay@xchangs.com";
+			$mail->FromName = "Xchangs";
+	        $mail->smtpConnect(
+	              array(
+	                "ssl" => array(
+	                  "verify_peer" => false,
+	                  "verify_peer_name" => false,
+	                  "allow_self_signed" => true
+	                )
+	              )
+	        );
             
           $msubject = 'Password Reset';
          

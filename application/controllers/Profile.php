@@ -201,7 +201,7 @@ class Profile extends Public_Controller {
 		$this->load->library("phpmailer_library");
 		$mail = $this->phpmailer_library->load();
 		//Enable SMTP debugging. 
-		$mail->SMTPDebug = 1;                               
+		$mail->SMTPDebug = 0;                               
 		//Set PHPMailer to use SMTP.
 		$mail->isSMTP();            
 		$mail->Host = "mail.xchangs.com";
@@ -215,7 +215,7 @@ class Profile extends Public_Controller {
 		//Set TCP port to connect to 
 		$mail->Port = 26;                                   
 		$mail->From = "noreplay@xchangs.com";
-		$mail->FromName = "";
+		$mail->FromName = "Xchangs";
 		$mail->smtpConnect(
 			array(
 				"ssl" => array(
