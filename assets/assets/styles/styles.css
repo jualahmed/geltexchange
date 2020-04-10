@@ -19,6 +19,10 @@
 	left: 21px;
 }
 
+.min-h-screen{
+	min-height: 55vh;
+}
+
 .getwayiconr{
 	position: absolute;
 	top: 115px;
@@ -27,7 +31,12 @@
 .img-responsive{
 	 width:250px!important;
 }
-
+.bg-footer{
+	background: $color4!important;
+}
+table,th,td,ul,li,a{
+	font-size: 14px;
+}
 @media (max-width: 330px) {
 	.img-responsive{
 		width:200px!important;

@@ -1,7 +1,7 @@
 <section id="home" class="mainexchange py-5" style="background: #005455;">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 bg-white py-3">
+			<div class="col-md-7 bg-white py-3">
 				<div class="row">
 					<div class="col-md-12" v-if="confirmtransation==0">
 						<p><p><span style="color: #ff0000;"><strong>Send</strong></span>= আপনি যা দিবেন,<span style="color: #339966;"><strong>Receive</strong></span>=আপনি যা পেতে চান(Submit পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে ) <strong>&nbsp; <span style="color: #ff6600;">১০০ এর উপর অর্ডারে প্রতি ডলারে ১ টাকা &nbsp;, ৩০০ উপর অর্ডারে প্রতি ডলারে ২ টাকা Discount দেওয়া হচ্ছে।অর্ডার করার পর এই Discount&nbsp;পাবেন ।তাই দেরি না করে এখনি অর্ডার করুন </p>
@@ -193,32 +193,35 @@
 				</div>
 			</div>
 
-
-			<div class="col-md-4 col-sm-4 mt-2">
+			<div class="col-md-5 mt-2">
 				<div class="bg-white p-1">
 					<h4 class="text-center py-3"><strong>Today's Buy-Sell Price</strong></h4>
 					<div class="table-responsive">
-						<table class="table table-bordered table-sm" style="font-size: 12px;">
+						<table class="table table-bordered table-sm" style="font-size: 10px;">
 							<tbody>
 								<tr>
 									<th>
-										<strong>We Accept</strong>
+										<strong class="text-info font-weight-bold text-center">We Accept</strong>
 									</th>
 									<th class="text-center">
-										<strong>We Buy</strong>
+										<strong class="text-info font-weight-bold text-center">We Buy</strong>
 									</th>
 									<th class="text-center">
-										<strong>We Sell</strong>
+										<strong class="text-info font-weight-bold text-center">We Sell</strong>
+									</th>
+									<th class="text-center">
+										<strong class="text-info font-weight-bold text-center">Available</strong>
 									</th>
 								</tr>
 									<?php
 										$this->db->where('buy_price>0');
+    									$this->db->join('currency', 'currency.currency_id = gateways.currency');
 										$query2 = $this->db->get('gateways')->result();
 									if(count($query2)) {
 									 foreach ($query2 as $key => $row) {
 									?>
 								<tr>
-									<td width="60%">
+									<td width="40%">
 										<img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle m-1" height="25px;" width="25px">
 										<strong><?php echo $row->name; ?></strong>
 									</td>
@@ -227,6 +230,9 @@
 									</td>
 									<td class="text-center">
 										<strong><?php echo $row->sales_price; ?></strong>
+									</td>
+									<td class="text-center">
+										<strong><?php echo sprintf('%0.2f',$row->reserve).' '; echo $row->currency_name;?></strong>
 									</td>
 								</tr>
 								<?php
@@ -246,57 +252,8 @@
 	</div>
 </section>  
 
-<section class="home-default bg-color py-5">
-		<div class="container">
-				<div class="row">
-						<div class="col-md-12 col-sm-12">
-								<div class="section box-shadow p-2">
-										<div class="row">
-											<div class="col-md-12 col-sm-12">
-												<h4 class="text-center"><strong>Reserve</strong></h4>
-												<div class="row">
-														<?php
-															$this->db->join('currency', 'currency.currency_id = gateways.currency');
-															$query2 = $this->db->get('gateways')->result();
-															if(count($query2)) {
-																foreach ($query2 as $key => $row) {
-														?>
-													<div class="col-md-3 col-sm-3 mb-3">
-														<div class="card text-center box-shadow">
-															 <div class="p-1">
-																 <img src="<?php echo base_url().''.$row->external_icon ?>" alt="" class="rounded-circle" height="40px;" width="40px">
-															 </div>
-															<div class="p-1">
-																<p class="card-title text-center">
-																		 <?php echo $row->name; ?>
-																</p>
-																<a href="#" class="badge badge-primary p-2 m-2">
-																	<strong>
-																		 <?php echo sprintf('%0.2f',$row->reserve)?> <span><?php echo $row->currency_name ?></span>
-																	</strong>
-																</a>
-															</div>
-														</div>
-													</div>
-													<?php
-																}
-															}else{
-														?>
-																<div class="col-md-12 col-sm-12">
-																	<?php echo $lang['no_have_gateways']; ?>
-																</div>
-														<?php } ?>    
-												</div>
-											</div>
-										</div>
-								</div>
-						</div>
-				</div>
-		</div>
-</section>
-
 <!-- Completed Exchanges -->
-<section id="sechange" class="pb-2 bg-color p-0">
+<section id="sechange" class="pb-2 mt-5 p-0">
 	<div class="container">
 		<div class="section box-shadow p-2">
 			<h4 class="text-center">Pending Exchanges</h4>
@@ -502,4 +459,5 @@
 		</div>
 	</div>
 </section>
+
 

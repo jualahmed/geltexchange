@@ -17,6 +17,7 @@
 	 <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
 	 <?php $d=json_decode($setting->data);?>
 	 <title><?php echo $d->name ?> : Trusted Website for Dollar Buy Sell in Bangladesh</title>
+	 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 	<!--Start of Tawk.to Script-->
 <!--   <script type="text/javascript">
 		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

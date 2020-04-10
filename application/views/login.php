@@ -1,7 +1,7 @@
 
 
 <section id="register">
-  <div class="contentr box-shadow bg-light text-center p-2 bg-white my-5" style="max-width: 450px;">
+  <div class="contentr box-shadow bg-light text-center p-2 bg-white my-5 min-h-screen" style="max-width: 450px;">
     <h4 class="thistext mt-5 pt-1">Account Login</h4>
     <form action="<?php echo base_url() ?>auth/loginajax" class="m-5" id="login">
       <div class="row">

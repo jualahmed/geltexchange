@@ -1,5 +1,5 @@
 <section id="register">
-	<div class="contentr bg-white text-center box-shadow w-75 p-2 my-5">
+	<div class="contentr bg-white text-center box-shadow w-75 p-2 my-5 min-h-screen">
 		<h4 class="thistext mt-3 pt-0">Account Registation</h4>
 		<form id="resisterform" action="<?php echo base_url() ?>auth/ajaxcreate" class="m-2">
 			<div class="row">
