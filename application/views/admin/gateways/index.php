@@ -20,18 +20,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<table class="table table-striped table-hover table-bordered table-responsive">
 										<thead>
 											<tr>
-                        <th>Icon</th>
-                        <th>Gateway name</th>
+						                        <th>Icon</th>
+						                        <th>Gateway name</th>
 												<th>Currency</th>
 												<th>Min. amount</th>
 												<th>Min received</th>
 												<th>Max. amount</th>
 												<th>Reserve</th>
-                        <th>Fee</th>
-                        <th>Allow send</th>
-                        <th>Allow receive</th>
-                        <th>Buy Price</th>
-                        <th>Sales Price</th>
+						                        <th>Fee</th>
+						                        <th>Allow send</th>
+						                        <th>Allow receive</th>
+						                        <th>Buy Price</th>
+						                        <th>Sales Price</th>
+						                        <th>Message</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -50,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <td><?php if($v->allow_receive){?><i class="fa fa-check text-success"></i><?php } else {?><i class="fa fa-times text-danger"></i><?php } ?></td>
                           <td><?php echo htmlspecialchars($v->buy_price, ENT_QUOTES, 'UTF-8'); ?></td>
                           <td><?php echo htmlspecialchars($v->sales_price, ENT_QUOTES, 'UTF-8'); ?></td>
+                          <td><?php echo htmlspecialchars($v->t_message, ENT_QUOTES, 'UTF-8'); ?></td>
                           <td>
                             <a class="btn btn-sm btn-success" href="<?php echo base_url().'admin/gateways/edit/'.$v->id ?>" title="Edit"><i class="fa fa-pencil"></i></a> 
                             <a onclick="return confirm('Are your sure to delete??')" class="btn btn-sm btn-danger" href="<?php echo base_url().'admin/gateways/delete/'.$v->id ?>" title="Delete"><i class="fa fa-times"></i></a>

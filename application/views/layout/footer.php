@@ -3,26 +3,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-3 col-lg-3 col-md-6">
-					<h6 class="text-white">Useful Links</h6>
+					<h6 class="text-white ml--1">xchangs</h6>
 					<ul class="pl-0">
-						<li><a class="text-white" href="<?php echo base_url() ?>">Home</a></li>
-						<li><a class="text-white" href="<?php echo base_url() ?>about">About Us</a></li>
-						<li><a class="text-white" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a></li>
+						<li><a class="text-white" href="<?php echo base_url() ?>">Buy & Sell</a></li>
+						<li><a class="text-white" href="<?php echo base_url() ?>allfeedback">Reviews</a></li>
 					</ul>
 					<?php $var=json_decode($setting->data);?>
 				</div>
 				<div class="col-xl-3 col-lg-3 col-md-6 ">
-					<h6 class="text-white">Useful Links</h6>
 					<ul class="pl-0">
-						<li><a class="text-white" href="<?php echo base_url() ?>">Home</a></li>
+						<li><a class="text-white" href="<?php echo base_url() ?>/tutorial">Tutorial</a></li>
 						<li><a class="text-white" href="<?php echo base_url() ?>about">About Us</a></li>
-						<li><a class="text-white" href="<?php echo base_url() ?>index.php?a=affiliate">Affiliate</a></li>
+						<li><a class="text-white" href="<?php echo base_url() ?>/faq">FAQS</a></li>
 					</ul>
 				</div>
 				<div class="col-xl-3 col-lg-3 col-md-6 ">
-					<h6 class="text-white">Help &amp; Support</h6>
 					<ul class="pl-0">
-						<li><a class="text-white" href="<?php echo base_url() ?>/faq">FAQS</a></li>
 						<li><a class="text-white" href="<?php echo base_url() ?>/contact">Contact</a></li>
 						<li>
 							<a class="text-white" href="<?php echo base_url() ?>termsofservices">
@@ -35,7 +31,6 @@
 					</ul>
 				</div>
 				<div class="col-xl-3 col-lg-3 col-md-6 text-white">
-					<h6 class="text-white">Contact Us</h6>
 					<ul class="pl-0">
 						<li><?php echo $var->supportemail ?></li>
 						<li>Mobile Number: <?php echo $var->contactnumber ?>  / <?php echo $var->facebook ?></li>

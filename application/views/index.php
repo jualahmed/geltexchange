@@ -97,9 +97,9 @@
 
 						<div class="form-group">
 							<label for="receiverID"><span class="receiveEcurrencyName">
-								<span class="receiveAccountType">Enter your Valid {{ receive.name }} Account</span>
+								<span class="receiveAccountType">{{ receive.t_message }}</span>
 							</label>
-							<input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="'Enter your Valid '+ receive.name+' Account'">
+							<input id="receiverID" name="receiverid" v-model="receiverid" class="form-control error" type="text" :placeholder="receive.t_message">
 						</div>
 
 						<div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
@@ -118,7 +118,7 @@
 						  You Need To Make Payment ManuallY. Use Below Data To Make Payment. 
 						</div>
 
-						<h4 class="font-weight-bold">Your/Receiver {{ receive.name }} Account</h4>
+						<h5 class="font-weight-bold">Your/Receiver {{ receive.t_message }}</h5>
 						<p>(Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে )</p>
 
 						<h2>Data About Transfer</h2>
@@ -133,12 +133,12 @@
 						</p>
 
 						<p>
-							<label for="a">Enter Your {{ send.name }} Account details </label>
+							<label for="a">{{ send.t_message }}</label>
 							<input placeholder="" v-model="senderid" type="text" id="f" class="form-control" required="">
 						</p>
 
 						<div style="text-align: center;"> <button id="dddddddddd" type="button" @click="cancelsubmit" class="btn btn-danger">Cancel Order</button> <button id="dddddddddd" type="button" @click="secendsubmit1" class="btn btn-primary">Next</button></div>
-						<h4 class="text-danger" v-if="me">Please enter Your Receiver account.</h4>
+						<h5 class="text-danger" v-if="me">Please enter Your Receiver account.</h5>
 					</div>
 
 					<div class="col-md-12 mt-5" v-if="confirmtransation==3">
@@ -168,7 +168,7 @@
 									</tr>
 
 									<tr>
-										<td style="width: 50%;"><b>Your/Receiver {{ receive.name }} ID</b></td>
+										<td style="width: 50%;"><b>Your/Receiver {{ receive.t_message }}</b></td>
 										<td>{{ receiverid }}</td>
 									</tr>
 
@@ -195,7 +195,7 @@
 
 			<div class="col-md-5 mt-2">
 				<div class="bg-white p-1">
-					<h4 class="text-center py-3"><strong>Today's Buy-Sell Price</strong></h4>
+					<h5 class="text-center py-3"><strong>Today's Buy-Sell Price</strong></h5>
 					<div class="table-responsive">
 						<table class="table table-bordered table-sm" style="font-size: 10px;">
 							<tbody>
@@ -255,8 +255,8 @@
 <!-- Completed Exchanges -->
 <section id="sechange" class="pb-2 mt-5 p-0">
 	<div class="container">
-		<div class="section box-shadow p-2">
-			<h4 class="text-center">Pending Exchanges</h4>
+		<div class="section box-shadow bg-light p-2">
+			<h5 class="text-center">Pending Exchanges</h5>
 			<div class="table-responsive">
 					<table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
 						<thead>
@@ -327,8 +327,8 @@
 <!-- Completed Exchanges -->
 <section id="sechange" class="pb-2 bg-color p-0 mt-2">
 	<div class="container">
-		<div class="section box-shadow p-2">
-			<h4 class="text-center">Completed Exchanges</h4>
+		<div class="section box-shadow bg-light p-2">
+			<h5 class="text-center">Completed Exchanges</h5>
 			<div class="table-responsive">
 					<table class="table table-bordered table-striped table-hover table-sm w-100" align="center">
 						<thead>
@@ -396,14 +396,14 @@
 </section>
 
 <?php
-	$this->db->join('users', 'users.id = testimonials.user_id');
+	$this->db->join('users', 'users.id = testimonials.user_id','left');
 	$this->db->order_by('testimonials.id', 'desc');
 	$query = $this->db->get('testimonials')->result();
 ?>
-<section id="feedback" class="pb-2 bg-color p-0 my-5">
+<section id="feedback" class="pb-2 p-0 my-5">
 	<div class="container">
-		<div class="section box-shadow p-2">
-			<h4 class="text-center"><strong>Customers Feedback</strong></h4>
+		<div class="section box-shadow bg-light p-2">
+			<h5 class="text-center"><strong>Customers Feedback</strong></h5>
 				<div class="owl-carousel feedback">
 						<?php if(count($query)>1) { ?>
 								<?php foreach ($query as $key => $var): ?>
@@ -416,7 +416,6 @@
 													<img class="rounded-circle d-inline" style="width:120px;height: 120px" src="<?php echo base_url()?>assets/temp/avatar-placeholder.svg" alt="ssssss">
 												<?php } ?>
 										</div>
-										<h3 class="item-price"><span class="label label-success" style="color:#fff;"><i class="fa fa-smile-o"></i> Positive</span></h3>
 											<?php if($var->type == "1") { ?>
 											<h3 class="item-price">
 												<span class="btn text-white btn-sm btn-success"><i class="fa fa-smile-o"></i> positive</span>
@@ -440,7 +439,7 @@
 												<?php echo $var->content ?>
 										</h5>
 										<div class="item-cat">
-											<span><?php echo $var->username ?></span> 
+											<span><?php if(isset($var->username)) { echo $var->username;  }  else echo "-" ; ?></span> 
 										</div>
 										<div><?php echo $var->date ?></div>
 									</div><!-- ad-info -->

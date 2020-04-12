@@ -144,7 +144,6 @@ class Home extends Public_Controller {
         $config['uri_segment'] = 3;
         $config['total_rows']  = $this->db->count_all("testimonials");
         $config['per_page']    = 10;
-//styling
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>'; 
         $config['num_tag_open'] = '<li class="page-item">';
@@ -166,7 +165,7 @@ class Home extends Public_Controller {
         $start = $offset;
         $limit = 8;
 
-        $this->db->join('users', 'users.id = testimonials.user_id');
+        $this->db->join('users', 'users.id = testimonials.user_id','left');
         $this->db->order_by("testimonials.id", "desc");
         $this->db->where('testimonials.status', 1);
         $this->db->limit($limit, $start);

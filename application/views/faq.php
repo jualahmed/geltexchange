@@ -13,7 +13,7 @@
                     <?php echo $var->title ?>
                   <span class="pull-right"><i class="fa fa-plus"></i></span></p></a>
                 </div>
-                <div id="faq-<?php echo $var->id ?>" class="panel-collapse collapse collapse px-4">
+                <div id="faq-<?php echo $var->id ?>" class="panel-collapse collapse collapse show">
                     <div class="panel-body">
                       <?php echo $var->content ?>
                     </div>

@@ -15,9 +15,9 @@ class Exchanges_model extends CI_Model {
 
   public function fetch_exchanges($limit, $start) {
     $this->db->select('users.*,gateways.*,currency.*,exchanges.*,exchanges.status as statuss');
-    $this->db->join('users', 'users.id = exchanges.user_id');
-    $this->db->join('gateways', 'gateways.id = exchanges.gateway_send');
-    $this->db->join('currency', 'gateways.currency = currency.currency_id');
+    $this->db->join('users', 'users.id = exchanges.user_id','left');
+    $this->db->join('gateways', 'gateways.id = exchanges.gateway_send','left');
+    $this->db->join('currency', 'gateways.currency = currency.currency_id','left');
     $this->db->order_by("exchanges.id", "desc");
     $this->db->limit($limit, $start);
     $query = $this->db->get("exchanges")->result();

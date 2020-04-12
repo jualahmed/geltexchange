@@ -18,8 +18,8 @@ class Rates_model extends CI_Model {
     $this->db->select('gateways.*, currency.*,rates.*,rates.id as rid');
     $this->db->order_by("rates.id", "desc");
     $this->db->limit($limit, $start);
-    $this->db->join('gateways', 'gateways.id = rates.gateway_from');
-    $this->db->join('currency','currency.currency_id = gateways.currency');
+    $this->db->join('gateways', 'gateways.id = rates.gateway_from','left');
+    $this->db->join('currency','currency.currency_id = gateways.currency','left');
     $query = $this->db->get("rates")->result();
     return $query;
   }
