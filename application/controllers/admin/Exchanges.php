@@ -69,11 +69,43 @@ class Exchanges extends Admin_Controller {
 		$exid=$this->input->post('exid');
 		$status=$this->input->post('status');
 		$note=$this->input->post('note');
+
+		if($status==2){
+			$this->db->where('id', $exid);
+			$ddddd=$this->db->get('exchanges')->row();
+
+			$this->db->where('id', $ddddd->gateway_send);
+			$this->db->set('reserve', 'reserve +'.$ddddd->amount_send,FALSE);
+			$this->db->update('gateways');
+
+			$this->db->where('id', $ddddd->gateway_receive);
+			$this->db->set('reserve', 'reserve -'.$ddddd->amount_receive,FALSE);
+			$this->db->update('gateways');
+		}
+		
 		$this->db->set('status',$status);
 		$this->db->set('note',$note);
 		$this->db->where('id', $exid);
 		$this->db->update('exchanges');
 		redirect('admin/exchanges','refresh');
+	}
+
+	public function timeout()
+	{
+		$this->db->where('status', 0);
+		$data = $this->db->get('exchanges')->result();
+		foreach ($data as $key => $value) {
+			$start = strtotime($value->created_at);
+			$end = strtotime(date('Y-m-d H:i:s'));
+			$mins = (int) ($end - $start) / 60;
+			if($mins>15){
+				echo $value->id;
+				$this->db->set('status',5);
+				$this->db->where('id', $value->id);
+				$this->db->update('exchanges');
+			}
+			
+		}
 	}
 }
 

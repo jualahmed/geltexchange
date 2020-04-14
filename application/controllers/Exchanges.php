@@ -106,14 +106,13 @@ class Exchanges extends Public_Controller {
 		$this->db->where('id', $id);
 		$ddddd=$this->db->get('exchanges')->row();
 
-		$this->db->where('id', $ddddd->gateway_send);
-		$this->db->set('reserve', 'reserve +'.$ddddd->amount_send,FALSE);
-		$this->db->update('gateways');
+		// $this->db->where('id', $ddddd->gateway_send);
+		// $this->db->set('reserve', 'reserve +'.$ddddd->amount_send,FALSE);
+		// $this->db->update('gateways');
 
-		$this->db->where('id', $ddddd->gateway_receive);
-		$this->db->set('reserve', 'reserve -'.$ddddd->amount_receive,FALSE);
-		$this->db->update('gateways');
-
+		// $this->db->where('id', $ddddd->gateway_receive);
+		// $this->db->set('reserve', 'reserve -'.$ddddd->amount_receive,FALSE);
+		// $this->db->update('gateways');
 
 		$this->db->where('id', $id);
 		$this->db->set('send_account',$send_account);

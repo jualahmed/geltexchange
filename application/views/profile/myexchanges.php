@@ -71,6 +71,10 @@
 																<span class="btn btn-sm btn-success">completed</span>
 														<?php elseif($var->statuss==3): ?>
 															<span class="btn btn-sm btn-danger">rejected</span>
+														<?php elseif($var->statuss==4): ?>
+															<span class="badge badge-sm badge-primary d-inline">Processing</span>
+														<?php elseif($var->statuss==5): ?>
+															<span class="badge badge-sm badge-danger d-inline">Timeout</span>
 														<?php endif ?>
 													</span>
 												</span>

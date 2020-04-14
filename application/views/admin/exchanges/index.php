@@ -74,6 +74,8 @@
 																			<span class="btn btn-sm btn-success btn-block">completed</span>
 																	<?php elseif($v->statuss==3): ?>
 																		<span class="btn btn-sm btn-danger btn-block">rejected</span>
+																	<?php elseif($v->statuss==5): ?>
+																		<span class="btn btn-sm btn-danger btn-block">Timeout</span>
 																	<?php endif ?>
 																</td>
 																<td>
