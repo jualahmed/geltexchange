@@ -62,8 +62,8 @@
 																	<?php if(isset($gateway_r->name)) echo htmlspecialchars($gateway_r->name); ?>
 																</td>
 																<td><?php if(isset($gateway_r->currency_name)) echo htmlspecialchars($v->amount_receive.' '.$gateway_r->currency_name, ENT_QUOTES, 'UTF-8'); ?></td>
-																<td><?php echo htmlspecialchars($v->send_account, ENT_QUOTES, 'UTF-8'); ?></td>
-																<td><?php echo htmlspecialchars($v->gateway_account, ENT_QUOTES, 'UTF-8'); ?></td>
+																<td><?php echo htmlspecialchars($v->senderid, ENT_QUOTES, 'UTF-8'); ?></td>
+																<td><?php echo htmlspecialchars($v->receiverid, ENT_QUOTES, 'UTF-8'); ?></td>
 																<td><?php echo htmlspecialchars($v->created_at, ENT_QUOTES, 'UTF-8'); ?></td>
 																<td>
 																	<?php if ($v->statuss==0): ?>

@@ -77,8 +77,8 @@
 								<td><span class="pull-right"> <b>Recive Account</b> </span></td>
 							</tr>
 							<tr>
-								<td><span class="pull-left"><span></span><br><?php echo $stinglegetway->send_account ?></span></td>
-								<td><span class="pull-right"><span><?php echo $stinglegetway->gateway_account ?></td>
+								<td><span class="pull-left"><span></span><br><?php echo $stinglegetway->senderid ?></span></td>
+								<td><span class="pull-right"><span><?php echo $stinglegetway->receiverid ?></td>
 							</tr>
 						</tbody>
 					</table>

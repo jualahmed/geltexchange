@@ -31,6 +31,14 @@ class Exchanges_model extends CI_Model {
     return $query;
   }
 
+  public function fetch_feedback($limit, $start) {
+    $this->db->limit($limit, $start);
+    $this->db->order_by('id', 'desc');
+    $query = $this->db->get("testimonials")->result();
+    return $query;
+  }
+
+
   public function create(array $value)
   {
     $this->db->insert('exchanges', $value);

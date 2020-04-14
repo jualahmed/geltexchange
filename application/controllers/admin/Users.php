@@ -423,4 +423,61 @@ class Users extends Admin_Controller {
 			return FALSE;
 		}
 	}
+
+	public function feedback()
+	{
+		if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+	    {
+	      redirect('auth/login', 'refresh');
+	    }
+	    else
+	    {
+	      $this->load->library("pagination");
+	      $this->load->helper("url");
+	      $this->data['breadcrumb'] = $this->breadcrumbs->show();
+	      $config['base_url']    = base_url().'admin/users/feedback';
+	      $config['uri_segment'] = 4;
+	      $config['total_rows']  = $this->db->count_all("testimonials");
+	      $config['per_page']    = 10;
+	        //styling
+	      $config['full_tag_open'] = "<ul class='pagination'>";
+	      $config['full_tag_close'] ="</ul>";
+	      $config['num_tag_open'] = '<li>';
+	      $config['num_tag_close'] = '</li>';
+	      $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+	      $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+	      $config['next_tag_open'] = "<li>";
+	      $config['next_tagl_close'] = "</li>";
+	      $config['prev_tag_open'] = "<li>";
+	      $config['prev_tagl_close'] = "</li>";
+	      $config['first_tag_open'] = "<li>";
+	      $config['first_tagl_close'] = "</li>";
+	      $config['last_tag_open'] = "<li>";
+	      $config['last_tagl_close'] = "</li>";
+	      $this->pagination->initialize($config);
+	      $page = $this->uri->segment(4);
+	      $offset = !$page?0:$page;
+	      $start = $offset;
+	      $limit = 8;
+	      $this->data['feedback'] = $this->exchanges_model->fetch_feedback($limit,$start);
+	      $this->data['start'] = $start;
+	      $this->template->admin_render('admin/users/feedback', $this->data);
+	    } 
+	}
+
+	public function deactivatef($id)
+	{	
+		$this->db->set('status',0);
+		$this->db->where('id', $id);
+		$this->db->update('testimonials');
+		redirect('/admin/users/feedback','refresh');
+	}
+
+	public function activatef($id)
+	{	
+		$this->db->set('status',1);
+		$this->db->where('id', $id);
+		$this->db->update('testimonials');
+		redirect('/admin/users/feedback','refresh');
+	}
 }

@@ -83,37 +83,10 @@
                     <i class="fa fa-shield"></i> <span><?php echo lang('menu_security_groups'); ?></span>
                 </a>
             </li>
-            <li class="treeview <?=active_link_controller('prefs')?>">
-                <a href="#">
-                    <i class="fa fa-cogs"></i>
-                    <span><?php echo lang('menu_preferences'); ?></span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="<?=active_link_function('interfaces')?>"><a href="<?php echo site_url('admin/prefs/interfaces/admin'); ?>"><?php echo lang('menu_interfaces'); ?></a></li>
-                </ul>
-            </li>
-            <li class="<?=active_link_controller('files')?>">
-                <a href="<?php echo site_url('admin/files'); ?>">
-                    <i class="fa fa-file"></i> <span><?php echo lang('menu_files'); ?></span>
-                </a>
-            </li>
-            <li class="<?=active_link_controller('database')?>">
-                <a href="<?php echo site_url('admin/database'); ?>">
-                    <i class="fa fa-database"></i> <span><?php echo lang('menu_database_utility'); ?></span>
-                </a>
-            </li>
 
-
-            <li class="header text-uppercase"><?php echo $title; ?></li>
-            <li class="<?=active_link_controller('license')?>">
-                <a href="<?php echo site_url('admin/license'); ?>">
-                    <i class="fa fa-legal"></i> <span><?php echo lang('menu_license'); ?></span>
-                </a>
-            </li>
-            <li class="<?=active_link_controller('resources')?>">
-                <a href="<?php echo site_url('admin/resources'); ?>">
-                    <i class="fa fa-cubes"></i> <span><?php echo lang('menu_resources'); ?></span>
+             <li class="<?=active_link_controller('users')?>">
+                <a href="<?php echo site_url('admin/users/feedback'); ?>">
+                    <i class="fa fa-shield"></i> <span><?php echo "feedback"; ?></span>
                 </a>
             </li>
         </ul>

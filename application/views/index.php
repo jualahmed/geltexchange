@@ -398,6 +398,7 @@
 <?php
 	$this->db->join('users', 'users.id = testimonials.user_id','left');
 	$this->db->order_by('testimonials.id', 'desc');
+	$this->db->where('status', 1);
 	$query = $this->db->get('testimonials')->result();
 ?>
 <section id="feedback" class="pb-2 p-0 my-5">
