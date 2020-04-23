@@ -15,6 +15,8 @@
 	 <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
 	 <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
 	 <meta property="og:image" content="<?php echo base_url() ?>temp/images/logo.png" />
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	 <?php $d=json_decode($setting->data);?>
 	 <title><?php echo $d->name ?> : Trusted Website for Dollar Buy Sell in Bangladesh</title>
 	 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">

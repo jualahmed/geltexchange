@@ -85,5 +85,25 @@
 <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
 <script src="<?php echo base_url() ?>assets/temp/js/vue/vuebit.js"></script>
 <script src="<?php echo base_url() ?>assets/temp/js/custom.js"></script>
+ 	<script>
+     $('#trumbowyg-demo').trumbowyg();
+        setInterval(function(){ 
+
+            $.ajax({
+                url:'<?php echo base_url() ?>admin/exchanges/timeout',
+            })
+             .done(function(re) {
+                 console.log(re);
+            })
+            .fail(function() {
+                 console.log("error");
+            })
+            .always(function() {
+                 console.log("complete");
+            });
+
+
+        }, 2 * 60 * 1000);
+    </script>
 	</body>
 </html>

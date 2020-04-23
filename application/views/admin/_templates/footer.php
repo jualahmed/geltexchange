@@ -32,27 +32,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <script src="<?php echo base_url($frameworks_dir); ?>/trumbowyg/trumbowyg.min.js"></script>
        <script>
          $('#trumbowyg-demo').trumbowyg();
+            setInterval(function(){ 
 
-        setInterval(function(){ 
-
-            $.ajax({
-                url:'<?php echo base_url() ?>admin/exchanges/timeout',
-            })
-             .done(function(re) {
-                 console.log(re);
-            })
-            .fail(function() {
-                 console.log("error");
-            })
-            .always(function() {
-                 console.log("complete");
-            });
+                $.ajax({
+                    url:'<?php echo base_url() ?>admin/exchanges/timeout',
+                })
+                 .done(function(re) {
+                     console.log(re);
+                })
+                .fail(function() {
+                     console.log("error");
+                })
+                .always(function() {
+                     console.log("complete");
+                });
 
 
-        }, 15 * 60 * 1000);
-       
-         
-
+            }, 2 * 60 * 1000);
        </script>
     </body>
 </html>
