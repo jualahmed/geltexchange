@@ -86,7 +86,6 @@
 <script src="<?php echo base_url() ?>assets/temp/js/vue/vuebit.js"></script>
 <script src="<?php echo base_url() ?>assets/temp/js/custom.js"></script>
  	<script>
-     $('#trumbowyg-demo').trumbowyg();
         setInterval(function(){ 
 
             $.ajax({
