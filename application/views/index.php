@@ -1,11 +1,12 @@
-<section id="home" class="mainexchange py-5" style="background: #005455;">
+
+<section id="home" class="mainexchange py-5" style="background: #83ba3b;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7 bg-white py-3">
 				<div class="row">
 					<div class="col-md-12" v-if="confirmtransation==0">
-						<p><p><span style="color: #ff0000;"><strong>Send</strong></span>= আপনি যা দিবেন,<span style="color: #339966;"><strong>Receive</strong></span>=আপনি যা পেতে চান(Submit পেজে Total due তে যে পরিমান টাকা/ডলার আসে তা পরিশোধ করতে হবে ) <strong>&nbsp; <span style="color: #ff6600;">১০০ এর উপর অর্ডারে প্রতি ডলারে ১ টাকা &nbsp;, ৩০০ উপর অর্ডারে প্রতি ডলারে ২ টাকা Discount দেওয়া হচ্ছে।অর্ডার করার পর এই Discount&nbsp;পাবেন ।তাই দেরি না করে এখনি অর্ডার করুন </p>
-						<input type="hidden" id="urlsssssssss" value="<?php echo base_url(); ?>">
+						<div class="pull-center" style="text-align: right;font-size: 16px;color: #A81A98;font-style: italic;">Instantly - 5 minutes ( 20 minutes max ) <a style="color:black" href="https://safepaytm.com/page/aml-policy"><b>AML&amp;KYC Policy</b></a></div>
+                        
 					</div>
 
 					<div class="col-md-6" v-if="confirmtransation==0">
@@ -58,8 +59,8 @@
 								<div class="row">
 									<div class="col-md-12 text-center">
 										<div class="form-group">
-												<button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled>Start Order</button>
-												<button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else>Start Order</button>
+												<button id="" class="btn btn-primary btn-lg" type="button"  @click="submit" v-if="parseFloat(rate_to)<gatewayreciveinfo.min_received || parseFloat(rate_from)<gatewaysendinfo.min_amount || parseFloat(rate_to)>gatewayreciveinfo.max_amount || rate_to==''" disabled><i class="fa fa-close" style="font-size:18px;color:red"></i> Exchange</button>
+												<button id="startExchange" class="btn btn-primary btn-lg" type="button"  @click="submit" v-else><i class="fa fa-exchange" style="font-size:18px;color:#FFFFFF"></i> Exchange</button>
 										</div>
 										<div style="padding: 9px;color: #fff;background: #db2c36;" v-if="error.length>0">
 											<p style="margin: 0px;" v-for="e in error" v-html="e"></p>
