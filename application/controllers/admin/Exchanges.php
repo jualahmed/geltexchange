@@ -66,6 +66,34 @@ class Exchanges extends Admin_Controller {
 
 	public function update()
 	{
+		$this->load->library("phpmailer_library");
+		$mail = $this->phpmailer_library->load();
+		//Enable SMTP debugging. 
+		$mail->SMTPDebug = 0;                               
+		//Set PHPMailer to use SMTP.
+		$mail->isSMTP();            
+		$mail->Host = "mail.xchangs.com";
+		//Set this to true if SMTP host requires authentication to send email
+		$mail->SMTPAuth = true;                          
+		//Provide username and password     
+		$mail->Username = "noreplay@xchangs.com";                 
+		$mail->Password = "OCn2Ovk6z{*k"; 
+		//If SMTP requires TLS encryption then set it
+		$mail->SMTPSecure = "tls";                           
+		//Set TCP port to connect to 
+		$mail->Port = 26;                                   
+		$mail->From = "noreplay@xchangs.com";
+		$mail->FromName = "Xchangs";
+		$mail->smtpConnect(
+			array(
+				"ssl" => array(
+					"verify_peer" => false,
+					"verify_peer_name" => false,
+					"allow_self_signed" => true
+				)
+			)
+		);
+
 		$exid=$this->input->post('exid');
 		$status=$this->input->post('status');
 		$note=$this->input->post('note');
@@ -81,7 +109,18 @@ class Exchanges extends Admin_Controller {
 			$this->db->where('id', $ddddd->gateway_receive);
 			$this->db->set('reserve', 'reserve -'.$ddddd->amount_receive,FALSE);
 			$this->db->update('gateways');
+
+			$mail->addAddress($ddddd->email, "Recepient Name");
+			$mail->isHTML(true);
+			$mail->Subject = "Order Completed";
+			$mail->Body = "Dear Customer Your Order Has Been Successfully Completed";
+			if(!$mail->send()) 
+			{
+				echo "Mailer Error: " . $mail->ErrorInfo;
+			} 
 		}
+
+
 		
 		$this->db->set('status',$status);
 		$this->db->set('note',$note);

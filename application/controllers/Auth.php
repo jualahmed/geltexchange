@@ -223,7 +223,7 @@ class Auth extends MY_Controller {
     echo json_encode($jsonData);
   }
 
-  public function logout($src = NULL)
+    public function logout($src = NULL)
 	{
         $logout = $this->ion_auth->logout();
 

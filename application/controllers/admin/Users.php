@@ -16,48 +16,48 @@ class Users extends Admin_Controller {
 
 		/* Breadcrumbs :: Common */
 		$this->breadcrumbs->unshift(1, lang('menu_users'), 'admin/users');
-    $this->load->model('exchanges_model');
+	$this->load->model('exchanges_model');
 	}
 
 	public function index()
 	{
 		if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
-    {
-      redirect('auth/login', 'refresh');
-    }
-    else
-    {
-      $this->load->library("pagination");
-      $this->load->helper("url");
-      $this->data['breadcrumb'] = $this->breadcrumbs->show();
-      $config['base_url']    = base_url().'admin/users/index';
-      $config['uri_segment'] = 4;
-      $config['total_rows']  = $this->db->count_all("users");
-      $config['per_page']    = 10;
-        //styling
-      $config['full_tag_open'] = "<ul class='pagination'>";
-      $config['full_tag_close'] ="</ul>";
-      $config['num_tag_open'] = '<li>';
-      $config['num_tag_close'] = '</li>';
-      $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-      $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-      $config['next_tag_open'] = "<li>";
-      $config['next_tagl_close'] = "</li>";
-      $config['prev_tag_open'] = "<li>";
-      $config['prev_tagl_close'] = "</li>";
-      $config['first_tag_open'] = "<li>";
-      $config['first_tagl_close'] = "</li>";
-      $config['last_tag_open'] = "<li>";
-      $config['last_tagl_close'] = "</li>";
-      $this->pagination->initialize($config);
-      $page = $this->uri->segment(4);
-      $offset = !$page?0:$page;
-      $start = $offset;
-      $limit = 8;
-      $this->data['users'] = $this->exchanges_model->fetch_users($limit,$start);
-      $this->data['start'] = $start;
-      $this->template->admin_render('admin/users/index', $this->data);
-    } 
+		{
+		  redirect('auth/login', 'refresh');
+		}
+		else
+		{
+		  $this->load->library("pagination");
+		  $this->load->helper("url");
+		  $this->data['breadcrumb'] = $this->breadcrumbs->show();
+		  $config['base_url']    = base_url().'admin/users/index';
+		  $config['uri_segment'] = 4;
+		  $config['total_rows']  = $this->db->count_all("users");
+		  $config['per_page']    = 10;
+			//styling
+		  $config['full_tag_open'] = "<ul class='pagination'>";
+		  $config['full_tag_close'] ="</ul>";
+		  $config['num_tag_open'] = '<li>';
+		  $config['num_tag_close'] = '</li>';
+		  $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		  $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		  $config['next_tag_open'] = "<li>";
+		  $config['next_tagl_close'] = "</li>";
+		  $config['prev_tag_open'] = "<li>";
+		  $config['prev_tagl_close'] = "</li>";
+		  $config['first_tag_open'] = "<li>";
+		  $config['first_tagl_close'] = "</li>";
+		  $config['last_tag_open'] = "<li>";
+		  $config['last_tagl_close'] = "</li>";
+		  $this->pagination->initialize($config);
+		  $page = $this->uri->segment(4);
+		  $offset = !$page?0:$page;
+		  $start = $offset;
+		  $limit = 8;
+		  $this->data['users'] = $this->exchanges_model->fetch_users($limit,$start);
+		  $this->data['start'] = $start;
+		  $this->template->admin_render('admin/users/index', $this->data);
+		} 
 	}
 
 	public function create()
@@ -166,7 +166,7 @@ class Users extends Admin_Controller {
 	{
 		$id = (int) $id;
 
-    $this->data['user']=$this->ion_auth->user($id)->row();
+	$this->data['user']=$this->ion_auth->user($id)->row();
 
 		if ( ! $this->ion_auth->logged_in() OR ( ! $this->ion_auth->is_admin() && ! ($this->ion_auth->user()->row()->id == $id)))
 		{
@@ -202,10 +202,10 @@ class Users extends Admin_Controller {
 					'first_name' => $this->input->post('first_name'),
 					'last_name'  => $this->input->post('last_name'),
 					'company'    => $this->input->post('company'),
-          'phone'      => $this->input->post('phone'),
-          'final_verified'      => $this->input->post('final_verified'),
-          'document_verified'      => $this->input->post('document_verified'),
-          'email_verified'      => $this->input->post('email_verified'),
+		  'phone'      => $this->input->post('phone'),
+		  'final_verified'      => $this->input->post('final_verified'),
+		  'document_verified'      => $this->input->post('document_verified'),
+		  'email_verified'      => $this->input->post('email_verified'),
 					'phone_verified'      => $this->input->post('phone_verified'),
 				);
 
@@ -427,42 +427,42 @@ class Users extends Admin_Controller {
 	public function feedback()
 	{
 		if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
-	    {
-	      redirect('auth/login', 'refresh');
-	    }
-	    else
-	    {
-	      $this->load->library("pagination");
-	      $this->load->helper("url");
-	      $this->data['breadcrumb'] = $this->breadcrumbs->show();
-	      $config['base_url']    = base_url().'admin/users/feedback';
-	      $config['uri_segment'] = 4;
-	      $config['total_rows']  = $this->db->count_all("testimonials");
-	      $config['per_page']    = 10;
-	        //styling
-	      $config['full_tag_open'] = "<ul class='pagination'>";
-	      $config['full_tag_close'] ="</ul>";
-	      $config['num_tag_open'] = '<li>';
-	      $config['num_tag_close'] = '</li>';
-	      $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-	      $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-	      $config['next_tag_open'] = "<li>";
-	      $config['next_tagl_close'] = "</li>";
-	      $config['prev_tag_open'] = "<li>";
-	      $config['prev_tagl_close'] = "</li>";
-	      $config['first_tag_open'] = "<li>";
-	      $config['first_tagl_close'] = "</li>";
-	      $config['last_tag_open'] = "<li>";
-	      $config['last_tagl_close'] = "</li>";
-	      $this->pagination->initialize($config);
-	      $page = $this->uri->segment(4);
-	      $offset = !$page?0:$page;
-	      $start = $offset;
-	      $limit = 8;
-	      $this->data['feedback'] = $this->exchanges_model->fetch_feedback($limit,$start);
-	      $this->data['start'] = $start;
-	      $this->template->admin_render('admin/users/feedback', $this->data);
-	    } 
+		{
+		  redirect('auth/login', 'refresh');
+		}
+		else
+		{
+		  $this->load->library("pagination");
+		  $this->load->helper("url");
+		  $this->data['breadcrumb'] = $this->breadcrumbs->show();
+		  $config['base_url']    = base_url().'admin/users/feedback';
+		  $config['uri_segment'] = 4;
+		  $config['total_rows']  = $this->db->count_all("testimonials");
+		  $config['per_page']    = 10;
+			//styling
+		  $config['full_tag_open'] = "<ul class='pagination'>";
+		  $config['full_tag_close'] ="</ul>";
+		  $config['num_tag_open'] = '<li>';
+		  $config['num_tag_close'] = '</li>';
+		  $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		  $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		  $config['next_tag_open'] = "<li>";
+		  $config['next_tagl_close'] = "</li>";
+		  $config['prev_tag_open'] = "<li>";
+		  $config['prev_tagl_close'] = "</li>";
+		  $config['first_tag_open'] = "<li>";
+		  $config['first_tagl_close'] = "</li>";
+		  $config['last_tag_open'] = "<li>";
+		  $config['last_tagl_close'] = "</li>";
+		  $this->pagination->initialize($config);
+		  $page = $this->uri->segment(4);
+		  $offset = !$page?0:$page;
+		  $start = $offset;
+		  $limit = 8;
+		  $this->data['feedback'] = $this->exchanges_model->fetch_feedback($limit,$start);
+		  $this->data['start'] = $start;
+		  $this->template->admin_render('admin/users/feedback', $this->data);
+		} 
 	}
 
 	public function deactivatef($id)
